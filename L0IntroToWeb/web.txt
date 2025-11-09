@@ -1,0 +1,55 @@
+🌐 What Is the Web (World Wide Web)?
+The Web (short for World Wide Web, or WWW) is a collection of interlinked web pages and resources that you can access using the Internet through a web browser (like Chrome, Edge, or Firefox).
+So in simple words:
+
+🧠 The Internet is the infrastructure (the cables, routers, and servers).
+🌐 The Web is the content that lives on top of it (websites, pages, videos, images).
+
+
+⚙️ How It Works
+
+
+You open a browser (e.g., Chrome).
+
+
+You type a URL — like https://www.google.com.
+
+
+The browser sends a request over the Internet to a web server.
+
+
+The server responds with web files (HTML, CSS, JS).
+
+
+Your browser displays them as a web page.
+
+
+
+🧩 Key Components of the Web
+ComponentDescriptionWeb BrowserApplication to access and view websites (e.g., Chrome, Safari, Firefox)Web ServerA computer that stores websites and delivers them to usersWeb PageA single document (written in HTML)WebsiteA collection of web pages under one domainURL (Uniform Resource Locator)The address used to access a web page (like https://www.wikipedia.org)HTTP / HTTPSProtocols used to transfer web data securely
+
+📚 Example
+When you visit:
+https://www.wikipedia.org
+
+
+
+You’re using the Internet to connect.
+
+
+You’re accessing the Web to view Wikipedia’s pages.
+
+
+The web pages are written in HTML, styled with CSS, and made interactive with JavaScript.
+
+
+
+🌍 Difference Between Internet and Web
+InternetWebGlobal network connecting computersCollection of websites and web pagesInfrastructure (hardware + protocols)Service that runs on top of the InternetIncludes email, VoIP, FTP, etc.Only websites and online contentExists without the WebDepends on the Internet
+
+✅ In short:
+
+The Web is the information system on the Internet — where you browse websites, read blogs, watch videos, and use apps.
+
+
+Would you like me to show a diagram that visually explains how the Internet and the Web are related (client–server model)?

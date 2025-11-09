@@ -1,0 +1,64 @@
+🌍 What is the Internet?
+
+The Internet is a global network of computers that are connected to each other so they can communicate, share information, and exchange data.
+
+It’s like a massive web that connects millions of private, public, academic, business, and government networks around the world.
+
+⚙️ How It Works
+
+Here’s the step-by-step idea:
+
+Devices (computers, phones, servers) connect to the Internet through Internet Service Providers (ISPs).
+
+These devices use a common set of rules called Internet Protocols (TCP/IP) to send and receive data.
+
+Data travels across the Internet in packets — small chunks that carry your information (like text, images, or videos).
+
+Routers and servers direct these packets to their destinations — like digital post offices!
+
+🧠 Simple Analogy
+
+Imagine the Internet as:
+
+Highways → the cables and connections
+
+Cars → the data packets
+
+Addresses → IP addresses
+
+Traffic signs → protocols (like HTTP, TCP/IP)
+
+Websites → destinations
+
+🌐 Key Components
+Component	Description
+ISP (Internet Service Provider)	Company that connects you to the Internet (like Jio, Airtel, BSNL)
+IP Address	Unique number assigned to every device on the Internet
+Router	Device that forwards data between networks
+Server	Computer that stores and serves data (like websites)
+Client	Your device that requests data (like your phone or laptop)
+💡 Examples of Internet Use
+
+Browsing websites (www.google.com)
+
+Sending emails
+
+Watching YouTube or Netflix
+
+Using social media
+
+Online gaming
+
+Cloud storage and communication (Google Drive, Zoom, etc.)
+
+🔗 Difference Between Internet and Web
+Internet	World Wide Web
+The physical network connecting devices	A collection of websites and web pages
+Foundation layer	Runs on top of the Internet
+Includes email, FTP, VoIP, etc.	Just one service of the Internet
+
+✅ In short:
+
+The Internet is the world’s largest network — a global system that lets computers and people communicate anywhere, anytime. 🌎💻
+
+Would you like a simple diagram showing how your computer connects to a website through the Internet (with servers, DNS, and routers)?
