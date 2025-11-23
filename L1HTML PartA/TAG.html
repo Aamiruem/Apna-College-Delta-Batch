@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Elements Reference Guide</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .search-box {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+        
+        #searchInput {
+            width: 100%;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tabs {
+            display: flex;
+            background-color: #f1f3f6;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            background-color: white;
+            border-bottom: 3px solid #2575fc;
+            color: #2575fc;
+        }
+        
+        .content {
+            display: none;
+            padding: 30px;
+        }
+        
+        .content.active {
+            display: block;
+        }
+        
+        .category {
+            margin-bottom: 40px;
+        }
+        
+        .category h2 {
+            color: #2575fc;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .element-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .element-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .element-header {
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .element-name {
+            font-weight: 700;
+            color: #2575fc;
+            font-size: 1.2rem;
+        }
+        
+        .element-description {
+            padding: 15px 20px;
+            color: #555;
+        }
+        
+        .element-example {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 15px 20px;
+            font-family: 'Courier New', monospace;
+            border-radius: 0 0 8px 8px;
+            overflow-x: auto;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f3f6;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HTML Elements Reference</h1>
+            <p class="subtitle">A comprehensive guide to all HTML tags with examples</p>
+        </header>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search for HTML elements...">
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="basic">Basic Structure</div>
+            <div class="tab" data-tab="text">Text Content</div>
+            <div class="tab" data-tab="media">Media</div>
+            <div class="tab" data-tab="forms">Forms</div>
+            <div class="tab" data-tab="semantic">Semantic</div>
+        </div>
+        
+        <div class="content active" id="basic-content">
+            <div class="category">
+                <h2>Document Structure</h2>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;!DOCTYPE&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines the document type and version of HTML.
+                    </div>
+                    <div class="element-example">
+                        &lt;!DOCTYPE html&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;html&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        The root element of an HTML page.
+                    </div>
+                    <div class="element-example">
+                        &lt;html lang="en"&gt;...&lt;/html&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;head&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Contains meta information about the document.
+                    </div>
+                    <div class="element-example">
+                        &lt;head&gt;<br>
+                        &nbsp;&nbsp;&lt;title&gt;Page Title&lt;/title&gt;<br>
+                        &lt;/head&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;body&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Contains the visible page content.
+                    </div>
+                    <div class="element-example">
+                        &lt;body&gt;<br>
+                        &nbsp;&nbsp;&lt;h1&gt;My Heading&lt;/h1&gt;<br>
+                        &nbsp;&nbsp;&lt;p&gt;My paragraph.&lt;/p&gt;<br>
+                        &lt;/body&gt;
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h2>Metadata</h2>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;title&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines the title of the document (shown in browser tab).
+                    </div>
+                    <div class="element-example">
+                        &lt;title&gt;My Web Page&lt;/title&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;meta&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines metadata about an HTML document.
+                    </div>
+                    <div class="element-example">
+                        &lt;meta charset="UTF-8"&gt;<br>
+                        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;link&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines the relationship between a document and an external resource.
+                    </div>
+                    <div class="element-example">
+                        &lt;link rel="stylesheet" href="styles.css"&gt;
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content" id="text-content">
+            <div class="category">
+                <h2>Headings</h2>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;h1&gt; to &lt;h6&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Define HTML headings from most important (h1) to least important (h6).
+                    </div>
+                    <div class="element-example">
+                        &lt;h1&gt;Heading 1&lt;/h1&gt;<br>
+                        &lt;h2&gt;Heading 2&lt;/h2&gt;<br>
+                        &lt;h3&gt;Heading 3&lt;/h3&gt;
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h2>Text Formatting</h2>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;p&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines a paragraph.
+                    </div>
+                    <div class="element-example">
+                        &lt;p&gt;This is a paragraph.&lt;/p&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;strong&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines important text (typically displayed in bold).
+                    </div>
+                    <div class="element-example">
+                        &lt;strong&gt;This text is important!&lt;/strong&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;em&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines emphasized text (typically displayed in italic).
+                    </div>
+                    <div class="element-example">
+                        &lt;em&gt;This text is emphasized.&lt;/em&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;span&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        An inline container used to mark up a part of a text.
+                    </div>
+                    <div class="element-example">
+                        My mother has &lt;span style="color:blue"&gt;blue&lt;/span&gt; eyes.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h2>Lists</h2>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;ul&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines an unordered (bulleted) list.
+                    </div>
+                    <div class="element-example">
+                        &lt;ul&gt;<br>
+                        &nbsp;&nbsp;&lt;li&gt;Coffee&lt;/li&gt;<br>
+                        &nbsp;&nbsp;&lt;li&gt;Tea&lt;/li&gt;<br>
+                        &lt;/ul&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;ol&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines an ordered (numbered) list.
+                    </div>
+                    <div class="element-example">
+                        &lt;ol&gt;<br>
+                        &nbsp;&nbsp;&lt;li&gt;First item&lt;/li&gt;<br>
+                        &nbsp;&nbsp;&lt;li&gt;Second item&lt;/li&gt;<br>
+                        &lt;/ol&gt;
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content" id="media-content">
+            <div class="category">
+                <h2>Images</h2>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;img&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Embeds an image in an HTML page.
+                    </div>
+                    <div class="element-example">
+                        &lt;img src="image.jpg" alt="Description of image"&gt;
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h2>Audio & Video</h2>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;audio&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Embeds sound content in a document.
+                    </div>
+                    <div class="element-example">
+                        &lt;audio controls&gt;<br>
+                        &nbsp;&nbsp;&lt;source src="audio.mp3" type="audio/mpeg"&gt;<br>
+                        &lt;/audio&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;video&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Embeds video content in a document.
+                    </div>
+                    <div class="element-example">
+                        &lt;video width="320" height="240" controls&gt;<br>
+                        &nbsp;&nbsp;&lt;source src="movie.mp4" type="video/mp4"&gt;<br>
+                        &lt;/video&gt;
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content" id="forms-content">
+            <div class="category">
+                <h2>Form Elements</h2>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;form&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines an HTML form for user input.
+                    </div>
+                    <div class="element-example">
+                        &lt;form action="/submit" method="post"&gt;<br>
+                        &nbsp;&nbsp;&lt;!-- form elements --&gt;<br>
+                        &lt;/form&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;input&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines an input control (many types available).
+                    </div>
+                    <div class="element-example">
+                        &lt;input type="text" name="username" placeholder="Enter username"&gt;<br>
+                        &lt;input type="password" name="password"&gt;<br>
+                        &lt;input type="email" name="email"&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;textarea&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines a multi-line text input control.
+                    </div>
+                    <div class="element-example">
+                        &lt;textarea rows="4" cols="50"&gt;<br>
+                        &nbsp;&nbsp;Enter text here...<br>
+                        &lt;/textarea&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;button&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines a clickable button.
+                    </div>
+                    <div class="element-example">
+                        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content" id="semantic-content">
+            <div class="category">
+                <h2>Semantic Elements</h2>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;header&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Represents introductory content or a set of navigational links.
+                    </div>
+                    <div class="element-example">
+                        &lt;header&gt;<br>
+                        &nbsp;&nbsp;&lt;h1&gt;Website Title&lt;/h1&gt;<br>
+                        &nbsp;&nbsp;&lt;nav&gt;...&lt;/nav&gt;<br>
+                        &lt;/header&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;nav&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines a set of navigation links.
+                    </div>
+                    <div class="element-example">
+                        &lt;nav&gt;<br>
+                        &nbsp;&nbsp;&lt;a href="/home"&gt;Home&lt;/a&gt;<br>
+                        &nbsp;&nbsp;&lt;a href="/about"&gt;About&lt;/a&gt;<br>
+                        &lt;/nav&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;main&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Specifies the main content of a document.
+                    </div>
+                    <div class="element-example">
+                        &lt;main&gt;<br>
+                        &nbsp;&nbsp;&lt;h1&gt;Main Heading&lt;/h1&gt;<br>
+                        &nbsp;&nbsp;&lt;p&gt;Main content...&lt;/p&gt;<br>
+                        &lt;/main&gt;
+                    </div>
+                </div>
+                
+                <div class="element-card">
+                    <div class="element-header">
+                        <div class="element-name">&lt;footer&gt;</div>
+                    </div>
+                    <div class="element-description">
+                        Defines a footer for a document or section.
+                    </div>
+                    <div class="element-example">
+                        &lt;footer&gt;<br>
+                        &nbsp;&nbsp;&lt;p&gt;Copyright 2023&lt;/p&gt;<br>
+                        &lt;/footer&gt;
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>HTML Elements Reference Guide &copy; 2023 | A comprehensive overview of HTML tags</p>
+        </footer>
+    </div>
+
+    <script>
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(`${tabId}-content`).classList.add('active');
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            const elementCards = document.querySelectorAll('.element-card');
+            
+            elementCards.forEach(card => {
+                const elementName = card.querySelector('.element-name').textContent.toLowerCase();
+                const elementDescription = card.querySelector('.element-description').textContent.toLowerCase();
+                
+                if (elementName.includes(searchTerm) || elementDescription.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
