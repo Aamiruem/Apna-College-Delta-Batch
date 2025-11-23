@@ -1,0 +1,46 @@
+/* h2{
+    font-weight: bold;
+} */
+h1{
+    color: red;
+    text-align: center; 
+    border: solid;
+    text-decoration: wavy black underline;
+    letter-spacing: 20px;
+    font-size: 25px;
+    font-family: arial;
+    font-family: avant garde, didot, sans serif;
+}
+
+h2{
+    font-weight: 80;
+    text-decoration: line-through;
+}
+
+
+h3{
+    font-weight: border;
+    text-decoration: overline;
+}
+
+
+h4{
+    font-weight: lighter;
+    text-decoration: double blue overline;
+    font-family: impact;
+}
+
+
+a{
+    text-decoration: none;
+    /* font-family: impact; */
+}
+
+p{
+    text-align: justify;
+    font-weight:400;
+    text-indent: 30px;
+    line-height: 2.5;
+    font-size: 20px;
+    
+}

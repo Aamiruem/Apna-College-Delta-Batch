@@ -1,0 +1,54 @@
+/* Qs1: Set the background page to color "wheat" */
+body {
+  background-color: wheat;
+}
+
+/* Qs2: Change the color of the poem to brown (hex code) */
+p {
+  color: #a52a2a; /* Brown color */
+}
+
+/* Qs3: Align all headings & the poem to the center */
+h1, h3, p {
+  text-align: center;
+}
+
+/* Qs4: Change the color of the poem to red & the poet’s name to black */
+p {
+  color: red;
+}
+h3 {
+  color: black;
+}
+
+/* Qs5: Change the font of the entire document to Georgia */
+body {
+  font-family: Georgia, serif;
+}
+
+/* Qs6: Set the color of the Wikipedia link to green & remove its underline */
+a {
+  color: rgb(0, 128, 0); /* Green color */
+  text-decoration: none; /* Remove underline */
+}
+
+/* Qs7: Change the button background color to white & button text to blueviolet */
+button {
+  background-color: white;
+  color: blueviolet;
+}
+
+/* Qs8: Set the textarea font color to black (hex code for black is #000000) */
+textarea {
+  color: #000000; /* Black color */
+}
+
+/* Qs9: Set the poem’s line-height to 30px */
+p {
+  line-height: 30px;
+}
+
+/* Qs10: Underline only the word "Ozymandias" inside the poem */
+.underline {
+  text-decoration: underline;
+}

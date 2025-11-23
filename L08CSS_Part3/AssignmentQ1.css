@@ -1,0 +1,20 @@
+#box{
+    text-align:center;
+    height: 150px;
+    width: 300px;
+    background-color: grey;
+    border: 5px dotted rgb(23, 236, 12);
+    margin: 20px 1em 40px 2em;
+    /* margin-right: 1em;
+    margin-bottom: 2em; */
+    padding: 1em;
+}
+
+div{
+    text-align:center;
+    font-size: 20px;
+    /* transform: matrix(1, 0.2, 0.2, 1, 0, 0);
+    transform: rotate(20deg);
+    transform: skew(20deg, 20deg);
+    transform: scale(1.5, 1.5); */
+}

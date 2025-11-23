@@ -1,0 +1,40 @@
+/* Part A: Selectors */
+#mainTopic {
+  color: blue;
+}
+
+* {
+  text-align: center;
+}
+
+h1, h3, h5 {
+  font-family: Georgia;
+}
+
+p {
+  color: white;
+  background-color: cornflowerblue;
+}
+
+div button {
+  background-color: purple;
+  color: azure;
+}
+
+/* Part B: Pseudo-classes & Pseudo-elements */
+button:hover {
+  background-color: yellow;
+  color: blue;
+}
+
+p:nth-child(odd) {
+  color: yellow;
+}
+
+h1::first-letter {
+  color: red;
+}
+
+input[type="checkbox"]:checked + label {
+  color: darkgreen;
+}

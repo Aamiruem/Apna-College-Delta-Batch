@@ -1,0 +1,22 @@
+div {
+    text-align: center;
+    height: 150px;
+    width: 300px;
+    background-color: grey;
+    border: 5px dotted rgb(23, 236, 12);
+    margin: 20px 1em 40px 2em;
+    margin-right: 1em;
+    margin-bottom: 2em;
+    margin-top: 40px;
+    padding: 1em;
+
+}
+
+/* div {
+    width: 200px;
+    height: 200px;
+    background-color: lightblue;
+    padding: 20px;
+    border: 10px solid black;
+    margin: 20px;
+} */

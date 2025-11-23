@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start; /* Align the box to the left initially */
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    border: 2px solid black;
+    position: relative;
+    animation: moveRight 3s linear infinite; /* Animation properties */
+}
+
+@keyframes moveRight {
+    0% {
+        left: 0; /* Start from the left */
+    }
+    100% {
+        left: calc(100% - 100px); /* Move to the right (subtract box width) */
+    }
+}

@@ -1,0 +1,17 @@
+span{
+    background-color: lime;
+    border: 2px  solid black;
+    height: 100px;
+    width: 200px;
+    padding: 50px;
+    margin: 50px;
+}
+
+div{
+    background-color: lime;
+    border: 2px  solid black;
+    height: 100px;
+    width: 200px;
+    padding: 50px;
+    margin: 50px;
+}

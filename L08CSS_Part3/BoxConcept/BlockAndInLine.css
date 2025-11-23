@@ -1,0 +1,15 @@
+h1{
+    color: blue;
+    font-size: 40px;
+    text-align: center;
+}
+
+
+
+block1{
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin: 10px;
+}

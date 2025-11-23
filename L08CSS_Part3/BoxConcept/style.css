@@ -1,0 +1,71 @@
+div{
+    height: 150px;
+    width: 500px;
+    text-align:center;
+    font-size: 16px;
+    background: #05a530;
+/* border style, color */
+    /* border: 3px dotted #ee082b; */
+    border-width: 4px;
+    border-style: solid;
+    border-color: black;
+     /* top, right, bottom, left */
+    /* margin: 40px 11em 40px 2em; */
+    padding: 1em;
+   
+    box-shadow: 10px 10px 5px grey;
+    /* border sides */
+    /* border-top-style: solid;
+    border-right-style: dotted;
+    border-bottom-style: solid;
+    border-left-style: dashed;
+    border-top-color: black;
+    border-right-color: red;
+    border-bottom-color: yellow;
+    border-left-color: blue; */
+    border-top: 5px solid yellow;
+    /* border radius */
+    border-radius: 10px;
+    /* border-radius: 50%; */
+
+
+    /* padding */
+    /* padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px; */
+    padding-left: 50px;
+
+
+
+    /* margin */
+    /* margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px; */
+    /* margin-top: 50px; */
+    /* margin-left: 10%;
+    margin-right: 10%; */
+    margin: 50px 50px 50px 30%;
+}
+
+h1 {
+    text-align: center;
+    font-size: 20px;
+    color: red;
+    margin-bottom: 20px;
+    padding: 1%;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: black;
+}
+button {
+    background-color: #4CAF50;
+    border-radius: 7px;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/server">
+        <input type="checkbox" id="age" name="age" >
+        <label for="age">I am 18+ </label>
+        <br>
+        <div>
+            <input type="radio" name="fruit" id="apple"/>
+            <label for="apple">apple</label>
+
+            <input type="radio" name="fruit" id="mango"/>
+            <label for="mango">mango</label>
+
+            <input type="radio" name="fruit" id="Banana"/>
+            <label for="Banana">Banana</label>
+
+            <input type="radio" name="fruit" id="grapes"/>
+            <label for="grapes">Grapes</label>
+        </div>
+
+        <br>
+
+        <div>
+            Choose your subject:
+            <br>
+            <input type="checkbox" id="math" name="subject" />
+        <label for="math">math</label>
+
+        <input type="checkbox" id="science" name="subject" />
+        <label for="science">Science</label>
+
+        <input type="checkbox" id="computer" name="subject" />
+        <label for="computer">Computer</label>
+        </div>
+        <br>
+        <br>
+        <div>
+            Choose your Profession
+            <select name="profession" id="profession">
+                <option>Select your option</option>
+                <option value="stu">Student</option>
+                <option value="dev">Developer</option>
+            </select>
+        </div>
+        <br>
+        <br>
+        <label for="vol">select your volume level: </label>
+        <input type="range" id="vol" min="0" max="100" step="10" value="90">
+        <br>
+        <button type="submit">submit</button>
+    </form>
+</body>
+</html>

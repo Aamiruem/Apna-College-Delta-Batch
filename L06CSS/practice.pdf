@@ -1,0 +1,17 @@
+1.Write the hexcode equivalent to rgb(255, 255, 255) and tell what color is it.
+
+
+255 ->Red
+255 ->Green
+255 ->Blue
+
+
+#ffffff = WhiteColor
+
+
+2.Write the best possible rgb and hexacode for following colors.
+
+
+yellow  => rgb(255, 255, 0) => #ffff00
+
+blue    => rgb(0, 0, 255)  => #0000ff

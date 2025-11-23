@@ -1,0 +1,15 @@
+body {
+    display: flex; /* Use flexbox to place divs in a single line */
+    justify-content: space-between; /* Add space between the divs */
+    align-items: center; /* Vertically center the divs */
+    margin: 10px;
+    padding: 20px; /* Add some padding for spacing */
+}
+
+.circle {
+    width: 100px; /* Set width */
+    height: 100px; /* Set height */
+    background-color: pink; /* Set background color */
+    border: 2px solid black; /* Set border */
+    border-radius: 50%; /* Make the div circular */
+}

@@ -1,0 +1,23 @@
+/* universal selector */
+*{
+    font-family: 'Courier New', Courier, monospace;
+}
+h1{
+    color: #1b74e4;
+}
+
+/* id selector */
+#searchbtn{
+    background-color:black;
+    color: white;
+}
+
+/* #login, #register{
+    background-color: aqua;
+    color: white;
+} */
+
+/* class selector */
+.userbtn{
+    background-color: aqua;
+}

@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start; /* Align the box to the left initially */
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    border: 2px solid black;
+    position: relative;
+    left: 0; /* Start from the left */
+    transition: left 2s ease; /* Smooth transition */
+}
+
+.box:hover {
+    left: calc(100% - 100px); /* Move to the right on hover */
+}

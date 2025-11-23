@@ -1,0 +1,177 @@
+h3  {
+    background-color: purple !important;
+}
+
+/* Universal Selector  => select everything */
+* {
+  font-family: "Courier New";
+  /* background-color:blue; */
+}
+
+/* h1  {
+    color: #b92b27;
+} */
+
+/* Element Selector => select specific element or tag name same type */
+
+h1,
+h3 {
+  color: #b92b27;
+}
+
+/* ID Selector => select an element base d on the value of the  element 's id attribute or select single particular element */
+#login {
+  background-color: white;
+}
+
+#signup {
+  background-color: #b92b27;
+  color: white;
+}
+
+/* class selector => select an element base d on the value of the element 's class attribute */
+/* .myclass {
+    property:value;
+} */
+
+.upvote {
+  background-color: green;
+  color: blue;
+}
+
+
+/* descendent selector => select all elements that are descendants(child class) of another element */
+.post a {
+  background-color: green;
+  color: blue;
+}
+
+/* child selector => select all elements that are direct children of another element */
+p a{
+  color: purple;
+  background-color: yellow;
+  text-decoration: underline;
+}
+nav ul li a {
+  color: blue;
+}
+/* Adjacent sibling Combinator=> select all elements that are adjacent(same level) to another element */
+nav + a {
+  color: red;
+}
+p + h3 {
+  text-decoration: underline;
+}
+
+.upvote + button {
+  background-color: cornflowerblue;
+  color: blue;
+}
+
+.upvote + button:hover {
+  background-color: blue;
+  color: cornflowerblue;
+}
+
+.upvote + button:active {
+  background-color: blue;
+  color: cornflowerblue;
+}
+
+.upvote + button:focus {
+  background-color: blue;
+  color: cornflowerblue;
+}
+
+.upvote + button:visited {
+  background-color: blue;
+  color: cornflowerblue;
+}
+
+.upvote + button:link {
+  background-color: blue;
+  color: cornflowerblue;
+}
+/* Child Combinator => select all elements that are direct children(change something inner level)  of another element */
+div > input {
+  background-color: darksalmon;
+  color: cornflowerblue;
+}
+
+/* Atribute selector => select elements based on the presence or value of a given attribute */
+
+input[type="text"] {
+  color: red;
+}
+
+input[type="password"] {
+  background-color: rgb(17, 255, 0);
+  color: red;
+}
+
+input[type="submit"] {
+  background-color: blue;
+  color: white;
+}
+
+input[type] {
+  background-color: blue;
+  color: white;
+}
+
+/* pseudo-class => select elements that are in a certain state */
+button:hover {
+  background-color: black;
+  color: white;
+}
+
+h3:hover {
+  text-decoration: overline;
+}
+/* active => select elements that are currently being interacted with */
+button:active {
+  background-color: hotpink;
+  color: black;
+}
+/* font weight bold and hover green */
+p:active {
+    font-weight: bold;
+    color: white;
+}
+
+input[type="radio"]:checked + label{
+    color: red;
+    font-weight: bold;
+}
+
+
+
+div:nth-of-type(2n){
+    background-color: yellow;
+}
+
+/* Pseudo Elements=> select elements that are in a certain state or part of an element  */
+h1::first-letter {
+    color: green;
+}
+
+
+p::first-line {
+    color: #0cb92c;
+}
+
+
+p::selection{
+    background-color: #b90c0c;
+    color: white;
+}
+
+
+h3 {
+    background-color:rgb(17, 255, 0)
+}
+
+h3 {
+    color: rgb(17, 255, 0)
+    background-color aqua;
+}

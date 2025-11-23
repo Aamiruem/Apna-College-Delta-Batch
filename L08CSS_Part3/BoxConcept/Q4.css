@@ -1,0 +1,14 @@
+ul li{
+    /* margin: 10px; */
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(214, 192, 255);
+    display: inline;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    background: #de0d0d;
+
+}
