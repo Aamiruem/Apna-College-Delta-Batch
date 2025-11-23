@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heading Tag</title>
+</head>
+
+<body style="background-color: lightgrey;">
+    <h1 style="color: blue; text-align: center;">This is Heading 1</h1>
+    <h2 style="color: green; text-align: center;">This is Heading 2</h2>
+    <h3 style="color: orange; text-align: center;">This is Heading 3</h3>
+    <h4 style="color: purple; text-align: center;">This is Heading 4</h4>
+    <h5 style="color: brown; text-align: center;">This is Heading 5</h5>
+    <h6 style="color: red; text-align: center;">This is Heading 6</h6>
+
+
+
+
+
+
+    <title>Headings demo — YourSite</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.5;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: auto;
+        }
+
+        .skip-link:focus {
+            left: 10px;
+            top: 10px;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 8px;
+            z-index: 1000;
+        }
+
+        header,
+        nav,
+        main,
+        footer {
+            margin-bottom: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            gap: 12px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: .25rem 0 .75rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            margin: .75rem 0 .5rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+            margin: .5rem 0;
+            color: #333;
+        }
+
+        .toc {
+            border-left: 3px solid #eee;
+            padding-left: 12px;
+            margin-bottom: 1rem;
+        }
+    </style>
+    </head>
+
+    <body>
+        <a href="#content" class="skip-link">Skip to content</a>
+
+        <header>
+            <h1>Understanding HTML Headings</h1>
+            <p>Why structure matters — headings, accessibility, and SEO.</p>
+        </header>
+
+        <nav aria-label="Table of contents">
+            <div class="toc" id="toc">
+                <!-- JS will populate TOC -->
+            </div>
+        </nav>
+
+        <main id="content">
+            <h2 id="what">What are headings?</h2>
+            <p>Headings provide semantic structure to a document.</p>
+
+            <h2 id="levels">Heading levels</h2>
+            <h3 id="h1">h1 — Page title</h3>
+            <p>Usually one per page.</p>
+            <h3 id="h2">h2 — Major sections</h3>
+            <p>Use for major section headings.</p>
+
+            <h2 id="accessibility">Accessibility tips</h2>
+            <p>Keep headings concise; use skip-links and logical order.</p>
+
+            <h2 id="conclusion">Conclusion</h2>
+            <p>Semantic headings are essential for all users and search engines.</p>
+        </main>
+
+        <footer>
+            <p>© Example</p>
+        </footer>
+
+        <script>
+            // Small TOC builder for headings h1-h3 inside <main>
+            (function () {
+                const toc = document.getElementById('toc');
+                const headings = document.querySelectorAll('#content h1, #content h2, #content h3');
+                if (!headings.length) { toc.textContent = "No headings found."; return; }
+                const ul = document.createElement('ul');
+                headings.forEach(h => {
+                    if (!h.id) h.id = h.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+                    const li = document.createElement('li');
+                    li.style.marginLeft = (parseInt(h.tagName[1], 10) - 1) * 8 + 'px';
+                    const a = document.createElement('a');
+                    a.href = '#' + h.id;
+                    a.textContent = h.textContent;
+                    li.appendChild(a);
+                    ul.appendChild(li);
+                });
+                toc.appendChild(ul);
+            })();
+        </script>
+    </body>
+
+</html>
