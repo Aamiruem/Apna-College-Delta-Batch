@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">          <!-- Attribute -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Attributes Complete Example</title>
+
+    <style>
+        .box {
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid black;
+        }
+        .highlight {
+            color: red;
+        }
+    </style>
+</head>
+
+<body id="top" style="font-family: Arial;">
+
+    <!-- Heading with title attribute -->
+    <h1 title="This is heading">HTML Attributes – Complete Example</h1>
+
+    <!-- Link attributes: href, target, title -->
+    <a href="https://google.com" target="_blank" title="Open Google">
+        Visit Google
+    </a>
+    <br><br>
+
+    <!-- Image attributes: src, alt, width, height -->
+    <img src="https://via.placeholder.com/150"
+         alt="Sample Image"
+         width="150"
+         height="150"
+         title="This is an image">
+    <br><br>
+
+    <!-- Div with id and class -->
+    <div id="container" class="box highlight">
+        This div uses: id, class, style (via CSS class)
+    </div>
+
+    <!-- Input attributes: type, placeholder, value, disabled, required -->
+    <input type="text" placeholder="Enter your name" required>
+    <br><br>
+
+    <input type="email" value="demo@example.com">
+    <br><br>
+
+    <input type="text" placeholder="Disabled field" disabled>
+    <br><br>
+
+    <!-- Button with onclick -->
+    <button onclick="alert('Button clicked!')" title="Click me">
+        Click Me
+    </button>
+
+    <hr>
+
+    <!-- List attributes -->
+    <ul style="list-style-type: square;">
+        <li id="item1">List Item 1</li>
+        <li class="highlight">List Item 2</li>
+        <li title="This is item 3">List Item 3</li>
+    </ul>
+
+    <hr>
+
+    <!-- Table with attributes -->
+    <table border="1" width="300" cellpadding="10" cellspacing="0">
+        <tr>
+            <th align="left">Name</th>
+            <th align="left">Age</th>
+        </tr>
+        <tr>
+            <td>Aamir</td>
+            <td>22</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <!-- Form with method, action -->
+    <form action="/submit" method="POST">
+        <label for="email">Email:</label><br>
+        <input id="email" name="email" type="email" placeholder="Enter Email"><br><br>
+
+        <input type="submit" value="Submit Form">
+    </form>
+
+    <br>
+
+    <!-- Back to top with id -->
+    <a href="#top">Back to Top</a>
+
+</body>
+</html>

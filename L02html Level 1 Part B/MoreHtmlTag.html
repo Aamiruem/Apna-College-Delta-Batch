@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete HTML Tags Reference</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .tag-count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .navigation {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .nav-links a {
+            color: #4b6cb7;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: #4b6cb7;
+            color: white;
+        }
+        
+        .tag-category {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .category-header {
+            background-color: #2d3748;
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.3rem;
+        }
+        
+        .tag-list {
+            padding: 20px;
+        }
+        
+        .tag-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .tag-item:last-child {
+            border-bottom: none;
+        }
+        
+        .tag-name {
+            display: inline-block;
+            background-color: #e2e8f0;
+            color: #2d3748;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .tag-description {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .tag-example {
+            background-color: #f8f9fa;
+            border-left: 4px solid #4b6cb7;
+            padding: 15px;
+            border-radius: 0 4px 4px 0;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+        
+        .tag-demo {
+            padding: 15px;
+            background-color: #f0f4f8;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        .code {
+            font-family: 'Courier New', monospace;
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .tag-count {
+                margin-top: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <h1>Complete HTML Tags Reference</h1>
+                    <p class="subtitle">A comprehensive guide to all HTML tags with examples</p>
+                </div>
+                <div class="tag-count">60+ Tags</div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav class="navigation">
+            <h2>Quick Navigation</h2>
+            <div class="nav-links">
+                <a href="#document">Document Structure</a>
+                <a href="#content">Content Tags</a>
+                <a href="#text">Text Formatting</a>
+                <a href="#media">Media Tags</a>
+                <a href="#forms">Form Elements</a>
+                <a href="#semantic">Semantic Tags</a>
+                <a href="#table">Table Tags</a>
+                <a href="#interactive">Interactive Tags</a>
+            </div>
+        </nav>
+        
+        <!-- Document Structure Tags -->
+        <section id="document" class="tag-category">
+            <div class="category-header">Document Structure Tags</div>
+            <div class="tag-list">
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;!DOCTYPE&gt;</div>
+                    <div class="tag-description">Defines the document type and version of HTML.</div>
+                    <div class="code">&lt;!DOCTYPE html&gt;</div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;html&gt;</div>
+                    <div class="tag-description">The root element of an HTML page.</div>
+                    <div class="code">&lt;html lang="en"&gt;...&lt;/html&gt;</div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;head&gt;</div>
+                    <div class="tag-description">Contains meta information about the document.</div>
+                    <div class="code">&lt;head&gt;&lt;title&gt;Page Title&lt;/title&gt;&lt;/head&gt;</div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;body&gt;</div>
+                    <div class="tag-description">Contains the visible page content.</div>
+                    <div class="tag-demo">This content is inside the &lt;body&gt; tag</div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <!-- Content Sectioning Tags -->
+        <section id="content" class="tag-category">
+            <div class="category-header">Content Sectioning Tags</div>
+            <div class="tag-list">
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;h1&gt; to &lt;h6&gt;</div>
+                    <div class="tag-description">Defines HTML headings from level 1 (most important) to level 6 (least important).</div>
+                    <div class="tag-demo">
+                        <h1>Heading 1</h1>
+                        <h2>Heading 2</h2>
+                        <h3>Heading 3</h3>
+                        <h4>Heading 4</h4>
+                        <h5>Heading 5</h5>
+                        <h6>Heading 6</h6>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;p&gt;</div>
+                    <div class="tag-description">Defines a paragraph.</div>
+                    <div class="tag-demo">
+                        <p>This is a paragraph of text. It can contain multiple sentences and will be displayed as a block element.</p>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;div&gt;</div>
+                    <div class="tag-description">Defines a division or section in an HTML document, used as a container for other elements.</div>
+                    <div class="tag-demo">
+                        <div style="background-color: #e2e8f0; padding: 10px; margin: 10px 0;">
+                            This is content inside a &lt;div&gt; element.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;span&gt;</div>
+                    <div class="tag-description">Defines an inline container for text.</div>
+                    <div class="tag-demo">
+                        This is <span style="color: red; font-weight: bold;">styled text</span> inside a span element.
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;br&gt;</div>
+                    <div class="tag-description">Inserts a single line break (empty tag, no closing tag).</div>
+                    <div class="tag-demo">
+                        This is the first line.<br>This is the second line after a line break.
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;hr&gt;</div>
+                    <div class="tag-description">Defines a thematic break or horizontal rule.</div>
+                    <div class="tag-demo">
+                        <p>Content above the horizontal rule.</p>
+                        <hr>
+                        <p>Content below the horizontal rule.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <!-- Text Formatting Tags -->
+        <section id="text" class="tag-category">
+            <div class="category-header">Text Formatting Tags</div>
+            <div class="tag-list">
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;strong&gt;</div>
+                    <div class="tag-description">Defines important text, typically displayed in bold.</div>
+                    <div class="tag-demo">
+                        This is <strong>important text</strong> using the strong tag.
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;em&gt;</div>
+                    <div class="tag-description">Defines emphasized text, typically displayed in italics.</div>
+                    <div class="tag-demo">
+                        This is <em>emphasized text</em> using the em tag.
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;u&gt;</div>
+                    <div class="tag-description">Defines underlined text.</div>
+                    <div class="tag-demo">
+                        This is <u>underlined text</u> using the u tag.
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;mark&gt;</div>
+                    <div class="tag-description">Defines marked/highlighted text.</div>
+                    <div class="tag-demo">
+                        This is <mark>highlighted text</mark> using the mark tag.
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;small&gt;</div>
+                    <div class="tag-description">Defines smaller text.</div>
+                    <div class="tag-demo">
+                        Regular text <small>and smaller text</small> using the small tag.
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;sub&gt;</div>
+                    <div class="tag-description">Defines subscript text.</div>
+                    <div class="tag-demo">
+                        H<sub>2</sub>O is water (2 is subscript).
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;sup&gt;</div>
+                    <div class="tag-description">Defines superscript text.</div>
+                    <div class="tag-demo">
+                        E = mc<sup>2</sup> (2 is superscript).
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;blockquote&gt;</div>
+                    <div class="tag-description">Defines a section quoted from another source.</div>
+                    <div class="tag-demo">
+                        <blockquote>
+                            "The only way to do great work is to love what you do."
+                            <cite>— Steve Jobs</cite>
+                        </blockquote>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;code&gt;</div>
+                    <div class="tag-description">Defines a piece of computer code.</div>
+                    <div class="tag-demo">
+                        Use <code>console.log()</code> to print to the console.
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <!-- Media Tags -->
+        <section id="media" class="tag-category">
+            <div class="category-header">Media Tags</div>
+            <div class="tag-list">
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;img&gt;</div>
+                    <div class="tag-description">Embeds an image in the document.</div>
+                    <div class="code">&lt;img src="image.jpg" alt="Description" width="300" height="200"&gt;</div>
+                    <div class="tag-demo">
+                        <img src="https://via.placeholder.com/300x150/4b6cb7/ffffff?text=Sample+Image" alt="Sample Image" style="max-width: 100%;">
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;audio&gt;</div>
+                    <div class="tag-description">Embeds sound content in the document.</div>
+                    <div class="code">&lt;audio controls&gt;&lt;source src="audio.mp3" type="audio/mpeg"&gt;&lt;/audio&gt;</div>
+                    <div class="tag-demo">
+                        <audio controls style="width: 100%;">
+                            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;video&gt;</div>
+                    <div class="tag-description">Embeds video content in the document.</div>
+                    <div class="code">&lt;video width="320" height="240" controls&gt;&lt;source src="movie.mp4" type="video/mp4"&gt;&lt;/video&gt;</div>
+                    <div class="tag-demo">
+                        <video controls style="width: 100%; max-width: 400px;">
+                            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;figure&gt; and &lt;figcaption&gt;</div>
+                    <div class="tag-description">Represents self-contained content with an optional caption.</div>
+                    <div class="tag-demo">
+                        <figure>
+                            <img src="https://via.placeholder.com/400x200/182848/ffffff?text=Figure+Example" alt="Example" style="width:100%">
+                            <figcaption>Fig.1 - Example of a figure with caption.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <!-- Form Tags -->
+        <section id="forms" class="tag-category">
+            <div class="category-header">Form Tags</div>
+            <div class="tag-list">
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;form&gt;</div>
+                    <div class="tag-description">Defines an HTML form for user input.</div>
+                    <div class="code">&lt;form action="/submit" method="post"&gt;...&lt;/form&gt;</div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;input&gt;</div>
+                    <div class="tag-description">Defines an input control with various types (text, password, checkbox, radio, etc.).</div>
+                    <div class="tag-demo">
+                        <form style="background: #f8f9fa; padding: 15px; border-radius: 5px;">
+                            <label for="name">Text Input:</label><br>
+                            <input type="text" id="name" placeholder="Enter your name"><br><br>
+                            
+                            <label>Checkbox:</label><br>
+                            <input type="checkbox" id="option1">
+                            <label for="option1">Option 1</label><br>
+                            
+                            <input type="checkbox" id="option2">
+                            <label for="option2">Option 2</label><br><br>
+                            
+                            <label>Radio Buttons:</label><br>
+                            <input type="radio" id="male" name="gender">
+                            <label for="male">Male</label><br>
+                            
+                            <input type="radio" id="female" name="gender">
+                            <label for="female">Female</label><br><br>
+                            
+                            <input type="submit" value="Submit Form">
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;textarea&gt;</div>
+                    <div class="tag-description">Defines a multi-line text input control.</div>
+                    <div class="tag-demo">
+                        <textarea rows="4" cols="50" placeholder="Enter your message here..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;select&gt; and &lt;option&gt;</div>
+                    <div class="tag-description">Defines a drop-down list.</div>
+                    <div class="tag-demo">
+                        <select>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;button&gt;</div>
+                    <div class="tag-description">Defines a clickable button.</div>
+                    <div class="tag-demo">
+                        <button type="button">Click Me!</button>
+                        <button type="button" style="background-color: #4b6cb7; color: white; border: none; padding: 8px 16px;">Styled Button</button>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;label&gt;</div>
+                    <div class="tag-description">Defines a label for an input element.</div>
+                    <div class="tag-demo">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username">
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <!-- Semantic Tags -->
+        <section id="semantic" class="tag-category">
+            <div class="category-header">Semantic Tags (HTML5)</div>
+            <div class="tag-list">
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;header&gt;</div>
+                    <div class="tag-description">Represents introductory content or a set of navigational links.</div>
+                    <div class="code">&lt;header&gt;&lt;h1&gt;Page Title&lt;/h1&gt;&lt;/header&gt;</div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;nav&gt;</div>
+                    <div class="tag-description">Defines a set of navigation links.</div>
+                    <div class="tag-demo">
+                        <nav style="background: #f0f4f8; padding: 10px;">
+                            <a href="#" style="margin-right: 15px;">Home</a>
+                            <a href="#" style="margin-right: 15px;">About</a>
+                            <a href="#" style="margin-right: 15px;">Services</a>
+                            <a href="#">Contact</a>
+                        </nav>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;main&gt;</div>
+                    <div class="tag-description">Specifies the main content of a document.</div>
+                    <div class="code">&lt;main&gt;&lt;p&gt;Main content goes here&lt;/p&gt;&lt;/main&gt;</div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;section&gt;</div>
+                    <div class="tag-description">Defines a section in a document.</div>
+                    <div class="tag-demo">
+                        <section style="background: #f0f4f8; padding: 15px; margin: 10px 0;">
+                            <h3>Section Title</h3>
+                            <p>This is content inside a section element.</p>
+                        </section>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;article&gt;</div>
+                    <div class="tag-description">Defines independent, self-contained content.</div>
+                    <div class="tag-demo">
+                        <article style="border: 1px solid #ddd; padding: 15px; margin: 10px 0;">
+                            <h3>Article Title</h3>
+                            <p>This is an example of an article element, which could be a blog post, news article, etc.</p>
+                        </article>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;aside&gt;</div>
+                    <div class="tag-description">Defines content aside from the main content (like a sidebar).</div>
+                    <div class="tag-demo">
+                        <aside style="background: #e2e8f0; padding: 15px; margin: 10px 0;">
+                            <h4>Related Information</h4>
+                            <p>This is content inside an aside element, often used for sidebars.</p>
+                        </aside>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;footer&gt;</div>
+                    <div class="tag-description">Defines a footer for a document or section.</div>
+                    <div class="code">&lt;footer&gt;&lt;p&gt;Copyright 2023&lt;/p&gt;&lt;/footer&gt;</div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <!-- Table Tags -->
+        <section id="table" class="tag-category">
+            <div class="category-header">Table Tags</div>
+            <div class="tag-list">
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;table&gt;</div>
+                    <div class="tag-description">Defines an HTML table.</div>
+                    <div class="code">&lt;table&gt;...&lt;/table&gt;</div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;tr&gt;</div>
+                    <div class="tag-description">Defines a row in an HTML table.</div>
+                    <div class="code">&lt;tr&gt;&lt;td&gt;Cell 1&lt;/td&gt;&lt;td&gt;Cell 2&lt;/td&gt;&lt;/tr&gt;</div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;td&gt;</div>
+                    <div class="tag-description">Defines a cell in an HTML table.</div>
+                    <div class="tag-demo">
+                        <table border="1" style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="padding: 8px;">Row 1, Cell 1</td>
+                                <td style="padding: 8px;">Row 1, Cell 2</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px;">Row 2, Cell 1</td>
+                                <td style="padding: 8px;">Row 2, Cell 2</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;th&gt;</div>
+                    <div class="tag-description">Defines a header cell in an HTML table.</div>
+                    <div class="tag-demo">
+                        <table border="1" style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <th style="padding: 8px; background-color: #f0f4f8;">Header 1</th>
+                                <th style="padding: 8px; background-color: #f0f4f8;">Header 2</th>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px;">Data 1</td>
+                                <td style="padding: 8px;">Data 2</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;</div>
+                    <div class="tag-description">Groups header, body, and footer content in a table.</div>
+                    <div class="tag-demo">
+                        <table border="1" style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th style="padding: 8px; background-color: #f0f4f8;">Name</th>
+                                    <th style="padding: 8px; background-color: #f0f4f8;">Age</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 8px;">John</td>
+                                    <td style="padding: 8px;">25</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px;">Jane</td>
+                                    <td style="padding: 8px;">30</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td style="padding: 8px; background-color: #f0f4f8;" colspan="2">Total: 2 people</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <!-- Interactive Tags -->
+        <section id="interactive" class="tag-category">
+            <div class="category-header">Interactive Tags</div>
+            <div class="tag-list">
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;a&gt;</div>
+                    <div class="tag-description">Defines a hyperlink to another page or location.</div>
+                    <div class="code">&lt;a href="https://example.com" target="_blank"&gt;Visit Example&lt;/a&gt;</div>
+                    <div class="tag-demo">
+                        <a href="#document" style="color: #4b6cb7;">Jump to Document Structure</a>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;details&gt; and &lt;summary&gt;</div>
+                    <div class="tag-description">Defines additional details that the user can view or hide.</div>
+                    <div class="tag-demo">
+                        <details>
+                            <summary>Click to expand</summary>
+                            <p>This is hidden content that appears when you click the summary.</p>
+                        </details>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;dialog&gt;</div>
+                    <div class="tag-description">Defines a dialog box or window.</div>
+                    <div class="tag-demo">
+                        <button onclick="document.getElementById('demoDialog').showModal()">Open Dialog</button>
+                        <dialog id="demoDialog" style="padding: 20px; border-radius: 5px;">
+                            <h3>Dialog Title</h3>
+                            <p>This is a dialog box example.</p>
+                            <button onclick="document.getElementById('demoDialog').close()" style="margin-top: 10px;">Close</button>
+                        </dialog>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;progress&gt;</div>
+                    <div class="tag-description">Represents the progress of a task.</div>
+                    <div class="tag-demo">
+                        <label for="file">Download progress:</label>
+                        <progress id="file" value="65" max="100"> 65% </progress>
+                    </div>
+                </div>
+                
+                <div class="tag-item">
+                    <div class="tag-name">&lt;meter&gt;</div>
+                    <div class="tag-description">Represents a scalar measurement within a known range.</div>
+                    <div class="tag-demo">
+                        <label for="disk">Disk usage:</label>
+                        <meter id="disk" value="0.7">70%</meter>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <footer>
+            <p>This HTML reference guide covers the most commonly used HTML tags. There are additional specialized tags available.</p>
+            <p>For a complete reference, visit the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank">MDN HTML elements reference</a>.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 20,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Highlight current section in navigation when scrolling
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.tag-category');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.style.backgroundColor = '';
+                link.style.color = '';
+                
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.style.backgroundColor = '#4b6cb7';
+                    link.style.color = 'white';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

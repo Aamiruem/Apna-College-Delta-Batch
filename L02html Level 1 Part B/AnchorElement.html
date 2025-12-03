@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Anchor Tag Examples</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .btn {
+            padding: 10px 15px;
+            background: blue;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .section {
+            margin-top: 60px;
+            padding: 20px;
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🔗 All Types of Anchor (&lt;a&gt;) Tag Examples</h1>
+    <hr>
+
+    <!-- 1. Basic Link -->
+    <h2>1. Basic Link</h2>
+    <a href="https://google.com">Go to Google</a>
+
+
+    <!-- 2. Open in New Tab -->
+    <h2>2. Open in New Tab</h2>
+    <a href="https://youtube.com" target="_blank">Open YouTube in New Tab</a>
+
+
+    <!-- 3. Link with Tooltip -->
+    <h2>3. Link with Title Attribute (Tooltip)</h2>
+    <a href="https://github.com" title="Open GitHub">GitHub</a>
+
+
+    <!-- 4. Jump to Page Section (Internal Link) -->
+    <h2>4. Jump to Section</h2>
+    <a href="#section2">Go to Section 2</a>
+
+
+    <!-- 5. Email Link -->
+    <h2>5. Email Link (mailto)</h2>
+    <a href="mailto:example@gmail.com">Send Email</a>
+
+
+    <!-- 6. Email with Subject & Body -->
+    <h2>6. Email with Subject & Body</h2>
+    <a href="mailto:test@gmail.com?subject=Hello&body=How are you?">
+        Send Email with Message
+    </a>
+
+
+    <!-- 7. Phone Call Link -->
+    <h2>7. Phone Call (tel)</h2>
+    <a href="tel:+919876543210">Call Now</a>
+
+
+    <!-- 8. WhatsApp Chat -->
+    <h2>8. WhatsApp Chat</h2>
+    <a href="https://wa.me/919876543210">Chat on WhatsApp</a>
+
+
+    <!-- 9. Google Maps Location -->
+    <h2>9. Google Maps</h2>
+    <a href="https://maps.google.com/?q=New Delhi">Open New Delhi in Maps</a>
+
+
+    <!-- 10. Download File -->
+    <h2>10. Download File</h2>
+    <a href="sample.pdf" download>Download PDF File</a>
+
+
+    <!-- 11. JavaScript in Anchor -->
+    <h2>11. JavaScript Action</h2>
+    <a href="javascript:void(0)">Do Nothing (Void)</a><br>
+    <a href="#" onclick="alert('Hello!')">Run JavaScript</a>
+
+
+    <!-- 12. Clickable Image -->
+    <h2>12. Clickable Image Link</h2>
+    <a href="https://google.com">
+        <img src="https://via.placeholder.com/150" alt="Image">
+    </a>
+
+
+    <!-- 13. Link with Class & ID -->
+    <h2>13. Link with class, id</h2>
+    <a href="#" id="link1" class="btn">Styled Button Link</a>
+
+
+    <!-- 14. Relative & Absolute Paths -->
+    <h2>14. Relative & Absolute Link</h2>
+    <a href="./about.html">Relative File Link</a><br>
+    <a href="https://example.com/about.html">Absolute File Link</a>
+
+
+    <!-- 15. Link in iFrame -->
+    <h2>15. Link to Open in iFrame</h2>
+    <iframe name="frame1" width="300" height="150" style="border:1px solid #000;"></iframe><br><br>
+    <a href="https://example.com" target="frame1">Open in Frame</a>
+
+
+    <!-- 16. Safe External Link (rel attribute) -->
+    <h2>16. Safe External Link</h2>
+    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+        Open Facebook (Safe)
+    </a>
+
+
+    <!-- 17. Link as Button -->
+    <h2>17. Anchor Styled as Button</h2>
+    <a href="#" class="btn">Styled Button Link</a>
+
+
+    <!-- 18. Anchor Without href -->
+    <h2>18. Anchor Without href</h2>
+    <a>No Link Anchor</a>
+
+
+    <!-- 19. Open Parent / Top Window -->
+    <h2>19. Parent & Top Window</h2>
+    <a href="page.html" target="_parent">Open in Parent</a><br>
+    <a href="page.html" target="_top">Open in Top</a>
+
+
+    <!-- 20. Query Parameter Link -->
+    <h2>20. Query Parameter Link</h2>
+    <a href="product.html?id=101&name=mouse">Product Details</a>
+
+
+    <hr><br><br>
+
+    <div id="section2" class="section">
+        <h2>🎯 Section 2</h2>
+        <p>You jumped to this section using an internal link.</p>
+        <a href="#top">Back to Top</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Image Tag Examples</title>
+
+    <style>
+        .bordered {
+            border: 3px solid black;
+            padding: 5px;
+        }
+
+        .rounded {
+            border-radius: 15px;
+        }
+
+        .box {
+            width: 200px;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🖼️ All Types of &lt;img&gt; Element Examples</h1>
+    <hr>
+
+    <!-- 1. Basic Image -->
+    <h2>1. Basic Image</h2>
+    <img src="https://via.placeholder.com/150" alt="Basic Image">
+
+
+    <!-- 2. Image with Width & Height -->
+    <h2>2. Width & Height</h2>
+    <img src="https://via.placeholder.com/250x150" width="250" height="150" alt="Sized Image">
+
+
+    <!-- 3. Title Tooltip -->
+    <h2>3. Tooltip (title attribute)</h2>
+    <img src="https://via.placeholder.com/150" alt="Tooltip image" title="This is a tooltip">
+
+
+    <!-- 4. Using CSS Classes -->
+    <h2>4. Image With Class (border + rounded)</h2>
+    <img src="https://via.placeholder.com/150" class="bordered rounded" alt="Styled Image">
+
+
+    <!-- 5. Image With ID -->
+    <h2>5. Image With ID</h2>
+    <img id="uniqueImage" src="https://via.placeholder.com/150" alt="Image with ID">
+
+
+    <!-- 6. Lazy Loading Image -->
+    <h2>6. Lazy Loading</h2>
+    <img src="https://via.placeholder.com/300" alt="Lazy Image" loading="lazy">
+
+
+    <!-- 7. Responsive Images (srcset + sizes) -->
+    <h2>7. Responsive Image (srcset)</h2>
+    <img src="small.jpg"
+         srcset="small.jpg 300w, medium.jpg 600w, large.jpg 1200w"
+         sizes="(max-width: 600px) 300px,
+                (max-width: 1200px) 600px,
+                1200px"
+         alt="Responsive Image">
+
+    <p><b>Note:</b> Replace small/medium/large.jpg with your real images.</p>
+
+
+    <!-- 8. Inline Styles -->
+    <h2>8. Inline Style</h2>
+    <img src="https://via.placeholder.com/150" style="border: 5px solid red; padding: 10px;" alt="Inline Styled Image">
+
+
+    <!-- 9. Clickable Image -->
+    <h2>9. Clickable Image (inside anchor)</h2>
+    <a href="https://google.com" target="_blank">
+        <img src="https://via.placeholder.com/150" alt="Clickable Image">
+    </a>
+
+
+    <!-- 10. Image Map (Clickable Areas) -->
+    <h2>10. Image Map</h2>
+    <img src="https://via.placeholder.com/300x200" usemap="#map1" alt="Image Map">
+
+    <map name="map1">
+        <area shape="rect" coords="0,0,150,100" href="https://google.com" alt="Google">
+        <area shape="rect" coords="150,100,300,200" href="https://youtube.com" alt="YouTube">
+    </map>
+
+
+    <!-- 11. Broken Image Example -->
+    <h2>11. Broken Image (shows alt text)</h2>
+    <img src="./image-not-found.jpg" alt="This image failed to load">
+
+
+    <!-- 12. SVG Image -->
+    <h2>12. SVG Image</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Bitmap_VS_SVG.svg" width="150" alt="SVG Example">
+
+
+    <!-- 13. Background Image (CSS only) -->
+    <h2>13. CSS Background Image</h2>
+    <div class="box"
+        style="
+            background-image: url('https://via.placeholder.com/200');
+            background-size: cover;
+            border: 2px solid black;
+        ">
+    </div>
+
+
+    <!-- 14. Picture Element (Adaptive Images) -->
+    <h2>14. Using &lt;picture&gt; for Modern Responsive Images</h2>
+    <picture>
+        <source srcset="large.jpg" media="(min-width: 1000px)">
+        <source srcset="medium.jpg" media="(min-width: 600px)">
+        <img src="small.jpg" alt="Picture Element Image">
+    </picture>
+
+
+    <!-- 15. Figure + Figcaption -->
+    <h2>15. Figure + Figcaption</h2>
+    <figure>
+        <img src="https://via.placeholder.com/200" alt="Figure Example">
+        <figcaption>This is a caption for the image.</figcaption>
+    </figure>
+
+</body>
+
+</html>
