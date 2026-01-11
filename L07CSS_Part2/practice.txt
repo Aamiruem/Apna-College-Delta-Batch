@@ -1,0 +1,263 @@
+I see your HTML code has some character encoding issues (the ‹ symbols instead of <). Let me fix it and provide the corrected version:
+
+Corrected HTML Code:
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice Qs1</title>
+</head>
+<body>
+    <h1>Facebook</h1>
+    <button class="userbtn">Log in</button>
+    <button class="userbtn">Register</button>
+    <hr />
+    <label for="search">Search</label>
+    <input placeholder="search your friends" id="search" />
+    <button id="searchbtn">Search</button>
+</body>
+</html>
+Issues Fixed:
+‹ changed to < (proper angle brackets)
+
+Added missing " in <button class="userbtn">
+
+Added missing > in <label for="search">
+
+Added proper indentation for readability
+
+CSS Selector Practice Based on Your HTML:
+1. Element Selectors
+css
+/* Style all h1 elements */
+h1 {
+    color: #1877f2; /* Facebook blue */
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Style all buttons */
+button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Style all input elements */
+input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 250px;
+}
+
+/* Style horizontal rule */
+hr {
+    margin: 20px 0;
+    border: 1px solid #eee;
+}
+2. Class Selectors
+css
+/* Style all elements with class "userbtn" */
+.userbtn {
+    background-color: #1877f2;
+    color: white;
+    margin-right: 10px;
+}
+
+/* Add hover effect to user buttons */
+.userbtn:hover {
+    background-color: #166fe5;
+}
+
+/* You could also add different styles for each */
+.userbtn:nth-child(1) { /* Log in button */
+    background-color: #42b72a; /* Different green color */
+}
+
+.userbtn:nth-child(2) { /* Register button */
+    background-color: #1877f2; /* Facebook blue */
+}
+3. ID Selectors
+css
+/* Style the search button specifically */
+#searchbtn {
+    background-color: #36a420;
+    color: white;
+    margin-left: 10px;
+}
+
+/* Add hover effect */
+#searchbtn:hover {
+    background-color: #2d921a;
+}
+
+/* Style the search input by its ID */
+#search {
+    border-color: #1877f2;
+}
+
+/* Style the search input when focused */
+#search:focus {
+    outline: none;
+    border-color: #166fe5;
+    box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+4. Combined Selectors
+css
+/* Style label that's specifically for the search input */
+label[for="search"] {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+}
+
+/* Style buttons inside the body */
+body button {
+    transition: all 0.2s ease;
+}
+
+/* Add a container style if needed */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+5. Complete CSS Example
+css
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Facebook header */
+h1 {
+    color: #1877f2;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+/* User buttons container */
+.userbtn {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 0 10px 10px 0;
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.userbtn:hover {
+    background-color: #166fe5;
+}
+
+/* Horizontal rule */
+hr {
+    margin: 30px 0;
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+}
+
+/* Search section */
+label[for="search"] {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+#search {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+#search:focus {
+    outline: none;
+    border-color: #1877f2;
+    box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+
+#searchbtn {
+    width: 100%;
+    padding: 12px;
+    background-color: #42b72a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#searchbtn:hover {
+    background-color: #36a420;
+}
+Practice Exercises:
+Exercise 1: Add CSS to make it look like Facebook
+Give the h1 the exact Facebook blue color (#1877f2)
+
+Make the "Log in" button green (#42b72a)
+
+Make the "Register" button Facebook blue
+
+Add hover effects to all buttons
+
+Style the search input to match Facebook's style
+
+Exercise 2: Use different selectors
+Style using only element selectors first
+
+Then add class selectors for buttons
+
+Finally use ID selectors for unique elements
+
+Compare the specificity of each approach
+
+Exercise 3: Make it responsive
+css
+@media (max-width: 600px) {
+    body {
+        margin: 20px auto;
+        padding: 20px;
+    }
+    
+    .userbtn {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+This gives you a good foundation to practice CSS selectors with real HTML elements!
+

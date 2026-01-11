@@ -1,0 +1,231 @@
+Element Selectors (Type Selectors)
+Element selectors are the most basic CSS selectors that target HTML elements by their tag name.
+
+Basic Syntax
+css
+element {
+  /* styles applied to all elements of this type */
+}
+Examples
+css
+/* Target all paragraphs */
+p {
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Target all headings */
+h1, h2, h3 {
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 1rem;
+}
+
+/* Target all images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+Common Use Cases
+1. Establishing Base Styles
+css
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f5f5f5;
+}
+
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul, ol {
+  padding-left: 2rem;
+}
+2. Form Element Styling
+css
+input, textarea, select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+3. Table Styling
+css
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+  padding: 0.75rem;
+}
+
+td {
+  padding: 0.75rem;
+  border-top: 1px solid #ddd;
+}
+Specificity
+Element selectors have low specificity (0,0,0,1):
+
+css
+/* Specificity: 0,0,0,1 */
+p {
+  color: black;
+}
+
+/* Specificity: 0,0,1,0 */
+.my-class {
+  color: blue; /* Wins over element selector */
+}
+
+/* Specificity: 0,1,0,0 */
+#my-id {
+  color: red; /* Wins over both */
+}
+Best Practices
+1. Use for Global Defaults
+css
+/* Good: Setting base styles */
+body, h1, h2, h3, p, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+/* Good: Typography defaults */
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+p { font-size: 1rem; }
+2. Combine with Other Selectors
+css
+/* Target specific sections */
+article p {
+  font-size: 1.1rem;
+}
+
+/* Target first paragraph */
+article p:first-of-type {
+  font-weight: bold;
+}
+
+/* Style all inputs except submit buttons */
+input:not([type="submit"]):not([type="button"]) {
+  width: 100%;
+}
+3. Avoid Over-styling
+css
+/* Avoid: Too broad */
+div {
+  margin: 10px; /* Affects ALL divs */
+}
+
+/* Better: Be specific */
+.container div {
+  margin: 10px; /* Only divs within .container */
+}
+
+/* Or use a class */
+.card {
+  margin: 10px;
+}
+Performance
+Element selectors are very efficient because browsers can match them quickly. However:
+
+css
+/* Fast: Direct element selector */
+header nav ul li a {
+  /* Browser reads right-to-left: a → li → ul → nav → header */
+}
+
+/* Faster: Simplify when possible */
+.header-nav a {
+  /* Fewer steps for browser */
+}
+CSS Reset Example
+css
+/* Common reset using element selectors */
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+Modern CSS with Custom Properties
+css
+/* Define variables on root */
+:root {
+  --primary-color: #007bff;
+  --font-family: 'Inter', sans-serif;
+}
+
+/* Apply using element selectors */
+body {
+  font-family: var(--font-family);
+  color: #333;
+}
+
+button, 
+input[type="submit"],
+input[type="button"] {
+  background-color: var(--primary-color);
+  color: white;
+}
+Comparison Table
+Selector Type	Example	Specificity	Use Case
+Universal	*	0,0,0,0	Reset styles
+Element	p, div	0,0,0,1	Base element styles
+Class	.class	0,0,1,0	Reusable components
+ID	#id	0,1,0,0	Unique elements
+Attribute	[type]	0,0,1,0	Form elements
+When to Use Element Selectors
+✅ Setting default styles for HTML elements
+
+✅ CSS resets/normalization
+
+✅ Global typography settings
+
+✅ Form styling foundations
+
+✅ When you want to style all instances of an element
+
+When to Avoid Element Selectors
+❌ When you need to style specific elements (use classes)
+
+❌ When styles might conflict with other components
+
+❌ For component-based architectures (React, Vue, etc.)
+
+❌ When you need high specificity
+
+Element selectors are fundamental to CSS and work best when establishing a solid foundation for your website's styles. They're most effective when combined with other selectors to create maintainable, scalable CSS architectures.
+

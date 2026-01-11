@@ -1,0 +1,86 @@
+The universal selector in CSS is the asterisk (*) symbol. It's a powerful selector that matches every single element on the page.
+
+Basic Syntax
+css
+* {
+  /* styles applied to ALL elements */
+}
+Common Uses
+1. CSS Reset / Normalization
+css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+2. Global Styles
+css
+* {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.5;
+}
+3. Combined with Other Selectors
+css
+/* All descendants of .container */
+.container * {
+  color: blue;
+}
+
+/* All direct children of body */
+body > * {
+  margin-bottom: 20px;
+}
+Performance Considerations
+Myth: "The universal selector is slow and should be avoided."
+Reality: Modern browsers are optimized, and * is actually quite efficient. However:
+
+It can affect performance when overused in complex selectors
+
+Specificity is very low (0,0,0,0)
+
+Styles can be overridden easily by other selectors
+
+Specificity Example
+css
+* {
+  color: black; /* Lowest specificity */
+}
+
+p {
+  color: blue; /* Wins over * for paragraphs */
+}
+
+#special {
+  color: red; /* Wins over both */
+}
+Practical Example
+css
+/* Global reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Apply to all elements */
+* {
+  transition: background-color 0.3s ease;
+}
+
+/* But exclude form elements */
+input, button, textarea, select {
+  transition: none;
+}
+Best Practices
+Use sparingly - Only when you truly need to style every element
+
+Combine carefully - div * can be heavy on large pages
+
+Consider inheritance - Some properties inherit naturally (like font-family)
+
+Be mindful of overrides - Other selectors will easily override *
+
+The universal selector is most useful for resets and establishing global baseline styles, but should be used judiciously in production code.
+
