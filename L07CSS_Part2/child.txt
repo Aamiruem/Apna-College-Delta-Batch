@@ -1,0 +1,98 @@
+child
+
+Great — Child Selector is a very important CSS topic (and you already know enough CSS for this to make it easy 💪).
+
+Let’s do it properly 👇
+
+🧱 CSS Child Selector — Complete Concept
+🧩 What is Child Selector?
+
+The child selector (>) selects only the direct children of an element.
+
+🧪 Syntax
+parent > child {
+  property: value;
+}
+
+🧪 Example 1 — Basic
+<div>
+  <p>Paragraph 1</p>
+  <section>
+    <p>Paragraph 2</p>
+  </section>
+</div>
+
+div > p {
+  color: red;
+}
+
+
+✔ Paragraph 1 becomes red
+❌ Paragraph 2 stays normal
+(because it is not a direct child)
+
+🧪 Example 2 — Real Website (Navigation Menu)
+<nav>
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <div>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+nav > a {
+  color: blue;
+}
+
+
+✔ Home, About → Blue
+❌ Contact → Not affected
+
+🧪 Example 3 — Card Layout
+<div class="card">
+  <h2>Title</h2>
+  <p>Description</p>
+  <div>
+    <p>Nested text</p>
+  </div>
+</div>
+
+.card > p {
+  font-size: 18px;
+}
+
+
+✔ Only Description increases
+❌ Nested text unchanged
+
+🧠 Child vs Descendant
+Selector	Meaning
+div p	All p inside div (any level)
+div > p	Only direct p children
+🎯 Why Child Selector is Important
+
+✔ Prevents unwanted styling
+✔ Makes layouts predictable
+✔ Faster rendering
+✔ Cleaner CSS
+
+🧾 Interview Questions
+
+Q: Difference between div p and div > p?
+→ > selects only direct children
+
+Q: Specificity?
+→ Same as normal selector combination
+
+🧪 Practice Task
+ul > li {
+  list-style: none;
+}
+
+
+Used in almost every navbar of real websites.
+
+If you want next:
+Sibling Selector ( + and ~ ) or
+Combinators full concept or
+Interview MCQs on CSS selectors

@@ -1,0 +1,193 @@
+Attribute all concept in css 
+
+Excellent topic 👍
+Attribute selectors are very powerful in CSS — and very important for interviews.
+
+I’ll explain ALL attribute selector concepts in the simplest way.
+
+🧩 What is Attribute Selector in CSS?
+
+Attribute selectors select HTML elements based on their attributes or attribute values.
+
+🧱 Basic Syntax
+[attribute] { }
+[attribute="value"] { }
+
+🧪 1. Select element having an attribute
+input[required] {
+  border: 2px solid red;
+}
+
+
+✔ Selects all inputs that have required attribute.
+
+🧪 2. Select attribute with exact value
+input[type="text"] {
+  background: yellow;
+}
+
+
+✔ Only type="text" inputs.
+
+🧪 3. Attribute value starts with ^
+a[href^="https"] {
+  color: green;
+}
+
+
+✔ Links starting with https
+
+🧪 4. Attribute value ends with $
+a[href$=".pdf"] {
+  color: red;
+}
+
+
+✔ Links ending with .pdf
+
+🧪 5. Attribute value contains *
+a[href*="google"] {
+  color: blue;
+}
+
+
+✔ Links containing "google"
+
+🧪 6. Attribute contains whole word ~
+div[class~="box"] {
+  border: 2px solid black;
+}
+
+
+✔ Matches class="main box large"
+❌ Doesn't match class="textbox"
+
+🧪 7. Attribute starts with value + dash |
+p[lang|="en"] {
+  color: purple;
+}
+
+
+✔ Matches lang="en" and lang="en-US"
+❌ Doesn't match lang="english"
+
+🧠 Attribute Selector vs Class Selector
+Selector	Use
+[type="text"]	When no class is given
+.input-text	When you control HTML
+🎯 Specificity of Attribute Selector
+
+Attribute selector has same power as a class selector → 10 points
+
+Example:
+
+input[type="text"] { }   /* 10 */
+
+🧪 Combined Example
+input[type="email"][required] {
+  background: pink;
+}
+
+
+✔ Selects required email inputs.
+
+🧾 Interview Questions
+Q1: Is attribute selector stronger than class?
+
+❌ No.
+They are equal specificity (10).
+
+Q2: Can attribute selector replace class?
+
+✔ Sometimes — when you don’t control HTML.
+
+If you want, I can also explain
+pseudo-classes vs attribute selectors,
+or give you real website examples next 😊
+
+all types
+
+Great — here is ALL TYPES of Attribute Selectors in CSS, explained clearly & simply 👇
+
+🧩 CSS Attribute Selectors — ALL TYPES
+
+There are 7 main types 👇
+
+1️⃣ [attribute]
+
+Select elements that have the attribute
+
+input[disabled] {
+  background: gray;
+}
+
+
+✔ <input disabled>
+
+2️⃣ [attribute="value"]
+
+Select elements with exact value
+
+input[type="password"] {
+  border: 2px solid red;
+}
+
+3️⃣ [attribute^="value"]
+
+Value starts with
+
+a[href^="https"] {
+  color: green;
+}
+
+4️⃣ [attribute$="value"]
+
+Value ends with
+
+a[href$=".pdf"] {
+  color: orange;
+}
+
+5️⃣ [attribute="value"]*
+
+Value contains
+
+a[href*="google"] {
+  color: blue;
+}
+
+6️⃣ [attribute~="value"]
+
+Contains whole word
+
+div[class~="box"] {
+  border: 3px solid black;
+}
+
+
+Matches: class="big box main"
+Does NOT match: class="textbox"
+
+7️⃣ [attribute|="value"]
+
+Value starts with value or value- (used for language)
+
+p[lang|="en"] {
+  color: purple;
+}
+
+
+Matches: en, en-US, en-GB
+Does NOT match: english
+
+🧠 Specificity Rule
+
+All attribute selectors have same power as class
+→ Specificity = 10
+
+🧾 One-Line Memory Trick
+[ ] , = , ^ , $ , * , ~ , |
+
+
+If you'd like, I can give you practice MCQs,
+interview questions, or a small project using these selectors 😄
