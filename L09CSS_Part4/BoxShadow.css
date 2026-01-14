@@ -1,0 +1,30 @@
+div{
+    height: 200px;
+    width: 200px;
+    text-align:center;
+    background-color: #7aa874;
+    border: 2px solid black;
+    margin: 10px auto;
+    box-shadow: 2px 2px 8px black;
+    
+}
+
+div:nth-of-type(2n){
+    background-color: #ebb02d;
+    box-shadow: 2px 2px 8px black;
+}
+/*     transform: skew(30deg, 30deg); */
+/* } */
+
+div{
+    height: 200px;
+    width: 200px;
+    text-align:center;
+    background-color: #80cb76;
+    box-shadow: 60px -16px teal;
+    box-shadow: 10px 5px 5px red;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+    box-shadow: inset 5em 1em gold;
+
+    box-shadow: 3px 3px red, -1em 0 .4em olive;
+}

@@ -1,0 +1,64 @@
+/*Qs1.Adda2stransitiononbox1forwidthchanges.Itshouldhave'ease-in'speedcurve&0.5sdelay */
+
+#box1 {
+    width: 100px;
+    height: 100px;
+    background: green;
+    transition: width 2s ease-in 0.5;
+}
+
+#box1:hover {
+    width: 600px;
+}
+
+
+/*Qs2.Usingtransform,movebox2200pxtotheright&200pxdown.Alsorotateit90deg.*/
+
+#box2 {
+    width: 100px;
+    height: 100px;
+    background: red;
+    transform: translate(200px, 200px) rotate(90deg);
+}
+
+
+/*Qs3.Usingtransform,skewbox320degalongthexaxis.*/
+
+#box3{
+    width: 100px;
+    height: 100px;
+    background: lightblue;
+    transform: skewX(20deg);
+}
+
+
+/*Qs4.Seta2pxhorizontal&2pxvertical,greenshadowforbox4,witha5pxblurradius.*/
+
+
+#box4{
+    width: 100px;
+    height: 100px;
+    background: lightgreen;
+    box-shadow: 2px 2px 5px green;
+    /* border-radius: 5px; */
+}
+
+
+/*Qs5.SetYourpictureoranypictureasthebackgroundofthediv"myPic".Also,settransparencyofthisdivto50%.*/
+
+
+#myPic{
+    width: 200px;
+    height: 200px;
+    background: pink;
+    background-image: url(bgImage1.jpeg);
+    background-size: cover;
+    background-position: center;
+    display:inline-block;
+    /* opacity: 50%; */
+    background-size: contain;
+    margin: 20px;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}

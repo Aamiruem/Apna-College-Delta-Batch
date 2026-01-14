@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout with Gap</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+        .container {
+            width: 600px;
+            height: 400px;
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr); /* Define 3 equal columns */
+            gap: 10px; /* Use 'gap' instead of 'grid-gap' */
+            row-gap: 10px; /* Add a 10px gap between rows */
+            columns-gap: 10px; /* Add a 10px gap between columns */
+            grid-gap: 10px 30px; /* Add a 10px gap between rows and columns */
+            background-color: #2196F3;
+            padding: 10px;
+        }
+
+        .item {
+            background-color: #f2f2f2;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>
+</body>
+</html>

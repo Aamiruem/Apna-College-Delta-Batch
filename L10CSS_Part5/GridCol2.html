@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explicit Grid Column Placement</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+            gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+
+        .item {
+            background-color: greenyellow;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .item1 {
+            grid-column: 2 / 4; /* Start at column 2, end at column 4 */
+        }
+
+        .item2 {
+            grid-column: 1; /* Place in column 1 */
+        }
+
+        .item3 {
+            grid-column: 3; /* Place in column 3 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item item1">1</div>
+        <div class="item item2">2</div>
+        <div class="item item3">3</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!-- % in Animation
+@keyframe myName (
+0% ( font-size : 20px; }
+50% { font-size: 30px; }
+100% ( font-size: 40px; } -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 300px;
+            background-color: red;
+            animation-name: myName;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes myName {
+            0% {
+                font-size: 20px;
+                background-color: aqua;
+            }
+
+            50% {
+                font-size: 30px;
+                background-color: blue;
+            }
+
+            100% {
+                font-size: 40px;
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Animation</h1>
+    <div class="box">
+        <p>Hello World</p>
+    </div>
+</body>
+
+</html>

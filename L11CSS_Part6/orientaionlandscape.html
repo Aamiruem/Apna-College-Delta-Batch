@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orientation: Landscape</title>
+    <style>
+        /* Default Styles */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: lightgray;
+            transition: background 0.5s ease;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Portrait Mode (Default) */
+        .container {
+            background-color: steelblue;
+        }
+
+        /* 📌 Landscape Mode */
+        @media (orientation: landscape) {
+            .container {
+                background-color: darkgreen;
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        Rotate your device to see the effect!
+    </div>
+
+</body>
+</html>
+
+
+<!-- Media Queries
+orientation (of viewport)
+
+@media (orientation: landscape) {
+div {
+background-color: red;
+}
+} -->

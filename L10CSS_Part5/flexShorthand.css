@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    border: 2px solid black;
+    width: 500px;
+    height: 200px;
+}
+
+.item {
+    background-color: lightblue;
+    margin: 5px;
+    text-align: center;
+    line-height: 100px;
+}
+
+.item1 {
+    flex: 1; /* Grow and shrink, initial size 0 */
+}
+
+.item2 {
+    flex: 0 1 150px; /* Do not grow, shrink, initial size 150px */
+}
+
+.item3 {
+    flex: 2 1 auto; /* Grow twice as much, shrink, initial size based on content */
+}

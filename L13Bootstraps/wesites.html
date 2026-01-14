@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Bootstrap 5 Navbar</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #f72585;
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+        }
+        
+        .navbar {
+            background: white !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 0.8rem 0;
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-item {
+            position: relative;
+            margin: 0 0.3rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark-color) !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 0.5rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link:focus {
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            color: var(--primary-color) !important;
+            font-weight: 600;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+        
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 0.75rem;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            font-weight: 400;
+            transition: var(--transition);
+            border-radius: 0.5rem;
+            margin: 0 0.5rem;
+            width: auto;
+        }
+        
+        .dropdown-item:hover, .dropdown-item:focus {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .dropdown-divider {
+            margin: 0.5rem 1rem;
+        }
+        
+        .badge-notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            font-size: 0.6rem;
+            padding: 0.25rem 0.4rem;
+        }
+        
+        .search-box {
+            position: relative;
+            max-width: 300px;
+        }
+        
+        .search-input {
+            padding-left: 2.5rem;
+            border-radius: 2rem !important;
+            border: 1px solid #e0e0e0;
+            transition: var(--transition);
+        }
+        
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.15);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            border-radius: 2rem;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(58, 12, 163, 0.2);
+        }
+        
+        .btn-outline {
+            border-radius: 2rem;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .btn-outline:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e0e0e0;
+            transition: var(--transition);
+        }
+        
+        .user-avatar:hover {
+            border-color: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        .mega-menu {
+            width: 100%;
+            left: 0;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 1rem 1rem;
+        }
+        
+        .mega-menu .col-md-3 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .mega-menu h5 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .mega-menu h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+        
+        .mega-menu a {
+            color: var(--dark-color);
+            padding: 0.3rem 0;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .mega-menu a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: relative;
+            width: 50px;
+            height: 26px;
+            border-radius: 50px;
+            background: #e0e0e0;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        
+        .dark-mode-toggle .toggle-thumb {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            transition: transform 0.3s ease;
+        }
+        
+        body.dark-mode {
+            background-color: #121212;
+            color: #f5f5f5;
+        }
+        
+        body.dark-mode .navbar {
+            background: #1e1e1e !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        body.dark-mode .nav-link {
+            color: #f5f5f5 !important;
+        }
+        
+        body.dark-mode .dropdown-menu {
+            background: #2d2d2d;
+        }
+        
+        body.dark-mode .dropdown-item {
+            color: #f5f5f5;
+        }
+        
+        body.dark-mode .dropdown-item:hover {
+            background-color: rgba(67, 97, 238, 0.2);
+        }
+        
+        body.dark-mode .search-input {
+            background: #2d2d2d;
+            border-color: #444;
+            color: #f5f5f5;
+        }
+        
+        body.dark-mode .search-input::placeholder {
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <!-- Brand with logo -->
+            <a class="navbar-brand animate__animated animate__fadeIn" href="#">
+                <img src="https://via.placeholder.com/40x40/4361ee/ffffff?text=PN" alt="Logo" class="animate__animated animate__bounceIn">
+                PremiumNav
+            </a>
+            
+            <!-- Mobile toggle button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPremium" aria-controls="navbarPremium" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar content -->
+            <div class="collapse navbar-collapse" id="navbarPremium">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Home -->
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <i class="fas fa-home me-1"></i> Home
+                        </a>
+                    </li>
+                    
+                    <!-- Features -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-star me-1"></i> Features
+                            <span class="badge bg-danger badge-notification animate__animated animate__bounceIn">New</span>
+                        </a>
+                    </li>
+                    
+                    <!-- Mega Menu -->
+                    <li class="nav-item dropdown dropdown-mega">
+                        <a class="nav-link dropdown-toggle" href="#" id="megaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-th-large me-1"></i> Products
+                        </a>
+                        <div class="dropdown-menu mega-menu animate__animated animate__fadeIn" aria-labelledby="megaDropdown">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h5><i class="fas fa-laptop-code me-2"></i> Web Solutions</h5>
+                                        <a href="#">Website Development</a>
+                                        <a href="#">E-Commerce</a>
+                                        <a href="#">Web Applications</a>
+                                        <a href="#">CMS Solutions</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h5><i class="fas fa-mobile-alt me-2"></i> Mobile Apps</h5>
+                                        <a href="#">iOS Applications</a>
+                                        <a href="#">Android Applications</a>
+                                        <a href="#">Cross-Platform</a>
+                                        <a href="#">PWA Development</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h5><i class="fas fa-chart-line me-2"></i> Digital Marketing</h5>
+                                        <a href="#">SEO Services</a>
+                                        <a href="#">Social Media</a>
+                                        <a href="#">PPC Advertising</a>
+                                        <a href="#">Content Marketing</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h5><i class="fas fa-cloud me-2"></i> Cloud Services</h5>
+                                        <a href="#">Hosting Solutions</a>
+                                        <a href="#">Cloud Storage</a>
+                                        <a href="#">Server Management</a>
+                                        <a href="#">DevOps Services</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- Regular dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-book me-1"></i> Resources
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-alt me-2"></i> Documentation</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-video me-2"></i> Tutorials</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-blog me-2"></i> Blog</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i> Help Center</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Contact -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-envelope me-1"></i> Contact
+                        </a>
+                    </li>
+                </ul>
+                
+                <!-- Search box -->
+                <div class="search-box me-3">
+                    <i class="fas fa-search search-icon"></i>
+                    <input class="form-control search-input" type="search" placeholder="Search..." aria-label="Search">
+                </div>
+                
+                <!-- User actions -->
+                <div class="d-flex align-items-center">
+                    <!-- Dark mode toggle -->
+                    <div class="dark-mode-toggle me-3" id="darkModeToggle">
+                        <div class="toggle-thumb"></div>
+                    </div>
+                    
+                    <!-- Notification -->
+                    <div class="dropdown me-3">
+                        <a class="btn btn-outline position-relative" href="#" role="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
+                            <li><h6 class="dropdown-header">Notifications</h6></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-comment-dots text-primary me-2"></i> New message</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user-plus text-success me-2"></i> New connection</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-exclamation-triangle text-warning me-2"></i> System alert</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-center" href="#">View all</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- User profile -->
+                    <div class="dropdown">
+                        <a class="d-flex align-items-center text-decoration-none dropdown-toggle" href="#" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://via.placeholder.com/36x36/4361ee/ffffff?text=JS" alt="User" class="user-avatar me-2">
+                            <span class="d-none d-lg-inline">John Smith</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-envelope me-2"></i> Messages</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero section -->
+    <section class="py-5 mt-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Premium Navbar Experience</h1>
+                    <p class="lead mb-4">This enhanced Bootstrap 5 navbar includes advanced features like mega menus, dark mode toggle, notifications, user dropdown, and smooth animations for a premium user experience.</p>
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-primary btn-lg px-4">Get Started</button>
+                        <button class="btn btn-outline btn-lg px-4">Learn More</button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://via.placeholder.com/600x400/4361ee/ffffff?text=Premium+UI" alt="Hero Image" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const thumb = this.querySelector('.toggle-thumb');
+            if (document.body.classList.contains('dark-mode')) {
+                thumb.style.transform = 'translateX(24px)';
+            } else {
+                thumb.style.transform = 'translateX(0)';
+            }
+        });
+        
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+        
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        document.addEventListener('DOMContentLoaded', animateOnScroll);
+    </script>
+</body>
+</html>

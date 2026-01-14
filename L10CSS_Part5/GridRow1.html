@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Rows with Span</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-rows: repeat(4, 100px); /* 4 rows with 100px height */
+            gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+
+        .item {
+            background-color: greenyellow;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .item1 {
+            grid-row: span 2; /* Span 2 rows */
+        }
+
+        .item2 {
+            grid-row: span 3; /* Span 3 rows */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item item1">1</div>
+        <div class="item item2">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+.container {
+    width: 600px;
+    height: 300px;
+    background-color: yellow;
+    /* display: flex; */ 
+    display: grid;
+    /* grid-template-rows: 50px 50px 50px 50px 50px;
+    grid-template-columns: 100px 100px 100px 100px; */
+    /* grid-template-columns: auto auto; */
+    grid-template-rows: auto;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-row-gap: 10px;
+    grid-column-gap: 30px;  */
+
+    grid-gap: 10px 10px;
+
+    /* grid-auto-rows: 50px;
+    grid-auto-columns: 100px; */
+
+    /* grid-auto-flow: row; */
+
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.one {
+    /* grid-column-start: 1;
+    grid-column-end: 3; */
+    /* grid-row-start: 1;
+    grid-row-end: 3; */
+grid-column: 1 / 4;
+    /* grid-column: 1 / span 3; */
+}
+
+.two {
+    /* grid-row-start: 1;
+    grid-column-end: 2; */
+
+    grid-row: 1 / span 2;
+}
+
+.item {
+    width: 100px;
+    height: 50px;
+    background-color: greenyellow;
+    border: 2px solid black;
+    /* color: white; */
+    text-align: center;
+    /* line-height: 50px; */
+}
+
+
+/* yes! In CSS Grid, gaps define the spacing between grid items:
+
+row-gap → Defines the space between rows.
+column-gap → Defines the space between columns.
+gap (or grid-gap in older versions) → A shorthand for both row-gap and column-gap (gap: rowGap columnGap;). */
+
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 10px; /* 20px row gap, 10px column gap */
+}
+
+
+
+
+
+
+
+
+
+
+/* You're spot on! In CSS Grid, grid-column is used to define an item's placement within the grid's columns. Here’s a breakdown:
+
+1. Individual Properties
+grid-column-start: line_number; → Specifies where the item starts.
+grid-column-end: line_number; → Specifies where the item ends.
+2. Shorthand Property
+grid-column: start_col / end_col; → Defines both start and end positions in one line.
+grid-column: start_col / span number; → Specifies the start and how many columns the item should span.
+Examples
+Using explicit start and end positions
+css
+Copy code */
+.item {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+/* OR using shorthand:
+
+css
+Copy code */
+.item {
+  grid-column: 2 / 4; /* Starts at column 2, ends at column 4 */
+}
+/* Using span to define how many columns to occupy
+css
+Copy code */
+.item {
+  grid-column: 2 / span 2; /* Starts at column 2 and spans 2 columns */
+}
+
+
+
+
+
+
+
+
+
+/* 
+You're absolutely right! CSS Grid Rows work similarly to columns but apply to rows instead.
+
+1. Individual Properties
+grid-row-start: line_number; → Defines where the item starts in a row.
+grid-row-end: line_number; → Defines where the item ends in a row.
+2. Shorthand Property
+grid-row: start_row / end_row; → Defines both the start and end positions.
+grid-row: start_row / span number; → Specifies the start and how many rows the item should span.
+Examples
+Using explicit start and end positions
+css
+Copy code */
+.item {
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+/* OR using shorthand:
+
+css
+Copy code */
+.item {
+  grid-row: 1 / 3; /* Starts at row 1, ends at row 3 */
+}
+/* Using span to define row span
+css
+Copy code */
+.item {
+  grid-row: 2 / span 2; /* Starts at row 2 and spans 2 rows */
+}
+
+
+
+
+
+
+
+
+
+
+
+.container {
+  width: 600px;
+  height: 300px;
+  background-color: yellow;
+  display: grid;
+  
+  /* Define 4 equal rows */
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  
+  /* Define 3 equal columns */
+  grid-template-columns: repeat(3, 1fr);
+  
+  /* Defines spacing between grid items */
+  gap: 10px; /* Short for row-gap and column-gap */
+}
+
+.item {
+  width: 100px;
+  height: 50px;
+  background-color: greenyellow;
+  border: 2px solid black;
+  text-align: center;
+  display: flex; /* Center content inside item */
+  align-items: center;
+  justify-content: center;
+}
+/* Key Points:
+grid-template-rows: 1fr 1fr 1fr 1fr; → Creates 4 equal-height rows.
+grid-template-columns: repeat(3, 1fr); → Creates 3 equal-width columns.
+gap: 10px; → Adds 10px spacing between grid items.
+.item uses Flexbox (display: flex;) to center the text inside. */

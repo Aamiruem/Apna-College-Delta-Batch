@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexBox playground</title>
+    <style>
+    /* Style for the container div */
+    #container {
+        height: 400px; /* Set the height of the container to 300 pixels */
+        width: 80%; /* Set the width of the container to 80% of its parent element */
+        background-color: azure; /* Set the background color of the container to azure */
+        margin: 10px auto; /* Set a margin of 10px on the top and bottom, and automatically center the container horizontally */
+        border: 2px solid black; /* Add a 2px solid black border around the container */
+        display: flex; /* Use Flexbox layout for the container */
+
+
+        flex-wrap: wrap; /* Allow flex items to wrap to the next line */
+        
+        /* The following lines set the direction of the flex items.
+           Note: Only the last `flex-direction` value will be applied since it overrides the previous ones. */
+           flex-direction: column; /* Arrange flex items in a column (top to bottom) */
+
+           flex-direction: row; /* Arrange flex items in a row (left to right) */
+
+        
+        /* The following lines set the alignment of flex items along the main axis.
+           Note: Only the last `align-content` value will be applied since it overrides the previous ones. */
+        align-content: flex-start; /* Align flex items to the start of the container */
+        align-content: flex-end; /* Align flex items to the end of the container */
+        align-content: center; /* Center align flex items in the container */
+        align-content: space-between; /* Distribute flex items with equal space between them */
+        align-content: space-around; /* Distribute flex items with equal space around them */
+        align-content: stretch; /* Stretch flex items to fill the container */
+        align-content: space-evenly; /* Distribute flex items evenly with equal space around and between them */
+
+        
+        /* Align an item along cross axis */
+        align-self: flex-start; /* Align the item to the start of the cross axis */
+        align-self: flex-end; /* Align the item to the end of the cross axis */
+        align-self: center; /* Align the item to the center of the cross axis */
+        align-self: baseline; /* Align the item to the baseline of the cross axis */
+
+        
+    }
+    #org{
+        align-self: baseline;
+    }
+
+    /* Style for the h1 heading */
+    h1 {
+        text-align: center; /* Center-align the text inside the h1 element */
+    }
+
+    /* Style for the div elements inside the container */
+    #container div {
+        width: 100px; /* Set the width of each div to 400 pixels */
+        height: 100px; /* Set the height of each div to 100 pixels */
+        color: white; /* Set the text color to white */
+        text-align: center; /* Center-align the text inside each div */
+        font-size: 1rem; /* Set the font size to 1rem (root em) */
+
+    }
+</style>
+</head>
+
+<body>
+    <h1>FlexBox Playground</h1>
+    <div id="container">
+        <div style="background-color: #9400d3;">Violet</div>
+        <div style="background-color: #736b79;">Indigo</div>
+        <div id="blue" style="background-color: #0000ff; height: 75px;">Blue</div>
+        <div style="background-color: #00ffff;">Cyan</div>
+        <div style="background-color: #00ff00;">Green</div>
+        <div style="background-color: #ffff00;">Yellow</div>
+        <div id="org" style="background-color: #ffa500; height: 200px;  ">Orange</div>
+        <div style="background-color: #ff0000;">Red</div>
+        <div style="background-color: #ad9696;">White</div>
+        <div style="background-color: #000000;">Black</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+div{
+    height: 400px;
+    width: 600px;
+    text-align:center;
+    background-color: #7aa874;
+    margin: 10px auto;
+    background-image: url("bgimage.jpeg");
+    background-image: url("bgImage1.jpeg");
+    background-size: contain;
+    /* background-size: cover; */
+    /* background-size: auto; */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    border-radius: 10px;
+    background-size: cover;
+    color: white;
+}

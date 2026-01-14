@@ -1,0 +1,83 @@
+<!-- HTML + CSS example that demonstrates the properties you mentioned:
+
+Properties Explanation:
+justify-items (For Containers) → Controls horizontal alignment of items in a grid container.
+align-items (For Containers) → Controls vertical alignment of items in both flexbox and grid.
+align-self (For Items) → Controls vertical alignment of an individual item.
+place-items (For Containers) → A shorthand for align-items and justify-items.
+place-self (For Items) → A shorthand for align-self and justify-self.
+Full Code Example:
+html
+Copy code -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Common Properties Demo</title>
+    <style>
+        /* Parent Container */
+        .container {
+            display: grid; /* Using CSS Grid */
+            display: inline-grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            height: 300px;
+            width: 400px;
+            border: 3px solid black;
+
+            /* Container-Level Properties */
+            justify-items: center;  /* Horizontally center all items */
+            align-items: center;    /* Vertically center all items */
+            /* place-items: center; */ /* Shorthand for align-items + justify-items */
+        }
+
+        /* Individual Items */
+        .item {
+            width: 80px;
+            height: 50px;
+            background-color: lightblue;
+            border: 2px solid darkblue;
+            display: flex;
+            align-items: center; /* Center content inside the box */
+            justify-content: center;
+        }
+
+        /* Align-self Example */
+        .item:nth-child(1) {
+            align-self: flex-start; /* Moves this item to the top */
+        }
+
+        .item:nth-child(2) {
+            align-self: flex-end; /* Moves this item to the bottom */
+        }
+
+        /* Place-self Example */
+        .item:nth-child(3) {
+            place-self: center; /* Centers this item */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+    </div>
+
+    <span>This is a span element</span>
+
+</body>
+</html>
+<!-- Explanation in Code:
+The .container uses CSS Grid and applies:
+
+justify-items: center; → Aligns items horizontally.
+align-items: center; → Aligns items vertically.
+place-items: center; → Combines both.
+Individual Items:
+
+align-self: flex-start; (Item 1) → Moves to the top.
+align-self: flex-end; (Item 2) → Moves to the bottom.
+place-self: center; (Item 3) → Centers both horizontally & vertically. -->

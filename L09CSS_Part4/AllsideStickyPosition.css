@@ -1,0 +1,40 @@
+.bulb {
+  position: sticky;
+  inset: 50px 100px 50px 100px;
+}
+
+div {
+  /* mark area defined by the inset boundaries using gray color */
+  background: linear-gradient(#9999, #9999) 100px 50px / 192px 100px no-repeat;
+}
+
+
+.bulb {
+    position: relative; /* Ensures it stays in the correct place within text */
+    top: 2px; /* Adjust this value as needed */
+}
+
+
+.bulb {
+    position: fixed;
+    top: 50px; /* Adjust to position vertically */
+    left: 50px; /* Adjust to position horizontally */
+}
+
+body {
+    width: 100vw; /* Makes the page wider than the viewport */
+    height: 100vh; /* Makes the page taller than the viewport */
+    overflow: scroll; /* Enables both horizontal and vertical scrolling */
+    margin: 0;
+    padding: 20px;
+}
+
+div {
+    max-width: 600px; /* Optional: Keeps text readable */
+    margin: 50px auto; /* Centers text */
+}
+
+.bulb {
+    position: relative; /* Ensures bulbs stay inline with text */
+    top: 2px; /* Adjust as needed */
+}

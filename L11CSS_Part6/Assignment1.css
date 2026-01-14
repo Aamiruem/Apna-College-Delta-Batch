@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-areas: 
+        "header header header"
+        "navigation navigation navigation"
+        "sidebar main ads"
+        "footer footer footer";
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.header {
+    grid-area: header;
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+}
+
+.navigation {
+    grid-area: navigation;
+    background-color: #c1c1c1;
+    padding: 20px;
+    text-align: center;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #a1a1a1;
+    padding: 20px;
+    text-align: center;
+}
+
+.main {
+    grid-area: main;
+    background-color: #e1e1e1;
+    padding: 20px;
+    text-align: center;
+}
+
+.ads {
+    grid-area: ads;
+    background-color: #d1d1d1;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #b1b1b1;
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-gap: 10px;
+}
+
+.container div {
+    background-color: pink;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    grid-column: 1 / span 12;
+    grid-row: 1;
+}
+
+.navigation {
+    grid-column: 4 / span 6;
+    grid-row: 2;
+}
+
+.sidebar {
+    grid-column: 1 / span 3;
+    grid-row: 2 / span 10;
+}
+
+.main {
+    grid-column: 4 / span 6;
+    grid-row: 3 / span 9;
+}
+
+.ads {
+    grid-column: 10 / span 3;
+    grid-row: 2 / span 10;
+}
+
+.footer {
+    grid-column: 1 / span 12;
+    grid-row: 12;
+} */
+
+
+
+
+
+
+/* @media (max-width: 720px){
+    .header{
+        grid-column: 1 / span 12;
+    }
+
+    .navigation{
+        grid-column: 1 / span 12;
+        grid-row: 2;
+    }
+
+    .sidebar{
+        grid-column: 1 / span 3;
+        grid-row: 3 / span 9;
+    }
+
+    .main{
+        grid-column: 1 / span 3;
+        grid-row: 12;
+    }
+
+    .footer{
+        grid-column: 4 / span 9;
+        grid-row: 12;
+    }
+} */

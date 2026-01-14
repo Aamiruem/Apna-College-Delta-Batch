@@ -1,0 +1,114 @@
+/* .box{
+    height: 100px;
+    width: 300px;
+    background-color: pink;
+    animation-name: fontAnimation;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 3;
+    animation-direction: normal;
+} */
+
+@keyframes  fontAnimation{
+    from{
+        font-size: 20px;
+    }
+
+    to{
+        font-size: 50px;
+    }
+}
+
+
+
+
+.box{
+    height: 100px;
+    width: 300px;
+    background-color: pink;
+
+    /* animation-name: widthAnimate;
+    animation-duration: 3s;
+    animation-timing-function: ease-in;
+    animation-delay: 0;
+    animation-fill-mode: forwards; */
+    /* animation-iteration-count: 3; */
+    /* animation-iteration-count: infinite; */
+    /* animation-direction: alternate; */
+    /* animation-direction: normal; */
+    /* animation-direction: alternate-reverse; */
+    /* animation-direction: reverse; */
+    animation: widthAnimate 3s ease-in 0s infinite normal;
+}
+
+@keyframes widthAnimate{
+    from{
+        width: 10px;
+        background-color: blue;
+    }
+
+    to{
+        width: 400px;
+        background-color: red;
+        border-radius: 15px;
+        transform: rotate(180deg);
+        transform: translate(100px, 50px);
+        transform: scale(2, 3);
+    }
+}
+
+/* .box{
+    height: 100px;
+    width: 300px;
+    background-color: pink;
+    animation-name: colorAnimate;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    animation-delay: 0;
+    animation-fill-mode: forwards;
+     animation-iteration-count: 3; 
+    animation-iteration-count: infinite;
+     animation-direction: alternate; 
+    animation-direction: normal;
+} 
+
+
+ @keyframes  colorAnimate{
+    from{
+        font-size: 20px;
+    }
+
+    to{
+        font-size: 50px;
+    }
+} */
+
+
+
+.box{
+    height: 100px;
+    width: 300px;
+    background-color: pink;
+
+    animation: colorAnimate 3s ease-in 0s 2 normal;
+
+}
+
+@keyframes colorAnimate{
+    0%{
+        font-size: 20px;
+        background-color: green;
+    }
+
+    50%{
+        font-size: 50px;
+        background-color: yellow;
+    }
+
+    100%{
+        font-size: 20px;
+        background-color: blue;
+    }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Badges</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Basic Badges</h2>
+        <span class="badge bg-primary">Primary</span>
+        <span class="badge bg-secondary">Secondary</span>
+        <span class="badge bg-success">Success</span>
+        <span class="badge bg-danger">Danger</span>
+        <span class="badge bg-warning text-dark">Warning</span>
+        <span class="badge bg-info text-dark">Info</span>
+        <span class="badge bg-light text-dark">Light</span>
+        <span class="badge bg-dark">Dark</span>
+
+        <h2 class="mt-4">Pill Badges</h2>
+        <span class="badge rounded-pill bg-primary">Primary</span>
+        <span class="badge rounded-pill bg-secondary">Secondary</span>
+        <span class="badge rounded-pill bg-success">Success</span>
+
+        <h2 class="mt-4">Badges in Headings</h2>
+        <h1>Heading 1 <span class="badge bg-secondary">New</span></h1>
+        <h2>Heading 2 <span class="badge bg-primary">New</span></h2>
+        <h3>Heading 3 <span class="badge bg-success">New</span></h3>
+
+        <h2 class="mt-4">Badges with Buttons</h2>
+        <button type="button" class="btn btn-primary">
+            Notifications <span class="badge bg-secondary">4</span>
+        </button>
+        <button type="button" class="btn btn-success ms-2">
+            Messages <span class="badge bg-light text-dark">12</span>
+        </button>
+
+        <h2 class="mt-4">Positioned Badges</h2>
+        <button type="button" class="btn btn-primary position-relative me-3">
+            Inbox
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                99+
+                <span class="visually-hidden">unread messages</span>
+            </span>
+        </button>
+
+        <button type="button" class="btn btn-dark position-relative">
+            Cart
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
+                5
+                <span class="visually-hidden">items in cart</span>
+            </span>
+        </button>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

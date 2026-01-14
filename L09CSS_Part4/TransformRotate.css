@@ -1,0 +1,99 @@
+section{
+    margin-top: 100px;
+}
+
+div{
+    height: 50px;
+    width: 200px;
+    text-align:center;
+    background-color: #4dff00ff;
+    border: 2px solid black;
+    margin: 0 auto;
+    margin: 10px auto;
+    /* transition: margin-top 2s ease-in 0.2s; */
+}
+
+div:nth-of-type(2n){
+    background-color: #ebb02d;
+}
+
+/* transform rotate */
+#one{
+    transform: rotate(90deg);
+    
+}
+
+#two{
+    transform: rotate(180deg);
+}
+
+#three{
+    transform: rotate(270deg);
+}
+
+#four{
+    transform: rotate(360deg);
+}
+
+#five{
+    transform: rotate(45deg);
+}
+
+/* scale */
+#two{
+    transform: scale(0.5);
+    transform: scale(1.5, 1.5);
+    transform: scale(1.5, 2.5);
+    transform: scale(2.5, 1.5);
+    transform: scale(0.5, 2.5);
+}
+#five{
+    transform: scaleX(0.5);
+    transform: scaleY(0.5);
+}
+
+/* translate */
+
+#three{
+    /* transform: translate(100px, 100px); */
+    transform: translateX(1000px);
+    transform: translateY(5px);
+}
+
+/* skew */
+
+#four{
+    /* transform: skew(300deg, 20deg); */
+    transform: skewX(2000deg);
+}
+
+#three{
+    transform: rotate(30deg) translateX(150px);
+}
+
+#four{
+    transform: rotate(30deg) translateY(150px);
+}
+
+#six{
+    transform: translate(500px, 500px);
+}
+
+
+/* rotateX, rotateY */
+#seven{
+    transform: rotateX(90deg);
+}
+
+#eight{
+    transform: rotateY(90deg);
+}
+
+#nine{
+    transform: rotateX(90deg) rotateY(90deg);
+}
+
+/* perspective */
+#ten{
+    transform: perspective(100px) rotateX(90deg);
+}

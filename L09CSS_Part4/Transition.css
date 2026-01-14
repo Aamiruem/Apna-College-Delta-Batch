@@ -1,0 +1,31 @@
+div{
+    height: 100px;
+    width: 100px;
+    background-color: #4dff00ff;
+    margin: 0 auto; /*for center*/
+    margin-top: 10px;
+    /* transition: margin-top 2s ease-in 0.2s; */
+    /* transition: all 2s ease-in 0.2s; */
+    transition: 2s;
+
+    /* Transition Shorthand
+property name | duration | timing-function | delay
+transition: margin-top 2s ease-in-out 0.2s; */
+
+
+    /* transition-duration: 2s;
+    transition-delay: 1s;
+
+    transition-timing-function: linear; */
+}
+
+div:hover{
+    background-color: black;
+    border-radius: 50%;
+}
+
+
+/* div:hover{
+    margin-top: 400px;
+    background-color: rgb(24, 14, 222);
+} */

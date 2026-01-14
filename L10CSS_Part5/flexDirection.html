@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexBox playground</title>
+    <style>
+        #container {
+            height: 300px;
+            width: 80%;
+            background-color: azure;
+            margin: 10px auto;
+            border: 2px solid black;
+            display: flex;
+            flex-direction: row;
+            flex-direction: column;
+            flex-direction: column-reverse;
+            flex-direction: row-reverse;
+
+            
+
+
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #container div {
+            width: 300px;
+            height: 100px;
+            color: white;
+            text-align: center;
+            font-size: 1rem;
+            
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>FlexBox Playground</h1>
+    <div id="container">
+        <div style="background-color: #9400d3;">Violet</div>
+        <div style="background-color: #4b0082;">Indigo</div>
+        <div id="blue" style="background-color: #0000ff; ">Blue</div>
+        <!-- <div style="background-color: #00ffff;">Cyan</div> -->
+        <div style="background-color: #00ff00;">Green</div>
+        <div style="background-color: #ffff00;">Yellow</div>
+        <div id="org" style="background-color: #ffa500; ">Orange</div>
+        <div style="background-color: #ff0000;">Red</div>
+        <div style="background-color: #ffffff;">White</div>
+        <div style="background-color: #000000;">Black</div>
+    </div>
+</body>
+
+</html>

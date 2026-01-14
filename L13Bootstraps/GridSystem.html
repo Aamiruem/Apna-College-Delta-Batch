@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap CSS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Button.css">
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+    <div class="container">
+        <h2>Grid System</h2>
+        <div class="row">
+            <div class="col-xl-4 bg-danger">one</div>
+            <div class="col-xl-8 bg-success">two</div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-2 bg-success">one</div>
+            <div class="col-8 bg-danger">two</div>
+            <div class="col-2 bg-success">three</div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col bg-success">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa officiis ullam amet earum, corporis magni minus nesciunt praesentium unde recusandae reiciendis repellat expedita voluptatem sapiente laboriosam dolor? Animi, nostrum eius?</div>
+            <div class="col bg-warning">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa officiis ullam amet earum, corporis magni minus nesciunt praesentium unde recusandae reiciendis repellat expedita voluptatem sapiente laboriosam dolor? Animi, nostrum eius?</div>
+            <div class="col bg-success">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa officiis ullam amet earum, corporis magni minus nesciunt praesentium unde recusandae reiciendis repellat expedita voluptatem sapiente laboriosam dolor? Animi, nostrum eius?</div>
+        </div>
+        <br>
+        <div class="row align-items-lg-start">
+            <div class="col-md-6 bg-success">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, aperiam autem, veniam, vitae repellendus quia tenetur veniam architecto ipsum voluptatum ex libero recusandae doloribus quidem voluptates nemo! Quas, commodi.</div>
+            <div class="col-md-6 bg-warning">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, aperiam autem, veniam, vitae repellendus quia tenetur veniam architecto ipsum voluptatum ex libero recusandae doloribus quidem voluptates nemo! Quas, commodi.</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Form Demo</h2>
+        <form class="mb-3">
+            <div class="mb-3">
+                <label class="form-label" for="email">Email</label>
+                <input type="email" class="form-control" placeholder="Email" id="email">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" class="form-control" placeholder="Password" id="password">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="address">Address</label>
+                <input type="text" class="form-control" placeholder="Address" id="address">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="city">City</label>
+                <select class="form-select" id="city">
+                    <option selected>Choose your city</option>
+                    <option value="1">Mumbai</option>
+                    <option value="2">Pune</option>
+                    <option value="3">Delhi</option>
+                    <option value="4">Bangalore</option>
+                </select>
+            </div>
+            <div class="normal mb-3">
+
+                <label class="form-label" for="dob">Date of Birth</label>
+                <input type="date" class="form-control" placeholder="Date of Birth" id="dob">
+
+                <label for="agree">Agree</label>
+                <input type="checkbox" id="agree">
+                <div class="mb-3 form-check">
+                    <input type="checkbox" id="agreebs" class="form-check-input">
+                    <label for="agreebs" class="form-check-label">Agree</label>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

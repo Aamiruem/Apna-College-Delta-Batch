@@ -1,0 +1,117 @@
+/* Style for the container div */
+#container {
+    height: 300px;
+    /* Set the height of the container to 300 pixels */
+    width: 80%;
+    /* Set the width of the container to 80% of its parent element */
+    background-color: azure;
+    /* Set the background color of the container to azure */
+    margin: 10px auto;
+    /* Set a margin of 10px on the top and bottom, and automatically center the container horizontally */
+    border: 2px solid black;
+    /* Add a 2px solid black border around the container */
+
+    /* Flexbox Properties */
+    display: flex;
+    /* Enable Flexbox layout for the container */
+
+    /* flex-direction: Defines the direction of the main axis and the order of flex items */
+    flex-direction: row;
+    /* Default: Arrange flex items in a row (left to right) */
+    /* flex-direction: column; Arrange flex items in a column (top to bottom) */
+    /* flex-direction: row-reverse; Arrange flex items in a row in reverse order (right to left) */
+    /* flex-direction: column-reverse; Arrange flex items in a column in reverse order (bottom to top) */
+
+    /* justify-content: Aligns flex items along the main axis */
+    justify-content: flex-start;
+    /* Default: Align items to the start of the container */
+    /* justify-content: flex-end; Align items to the end of the container */
+    /* justify-content: center; Center items in the container */
+    /* justify-content: space-between; Distribute items evenly, first item at start, last item at end */
+    /* justify-content: space-around; Distribute items evenly with equal space around them */
+    /* justify-content: space-evenly; Distribute items evenly with equal space around and between them */
+
+    /* align-items: Aligns flex items along the cross axis */
+    /* align-items: stretch; */
+    /* Default: Stretch items to fill the container's cross axis */
+    /* align-items: flex-start; Align items to the start of the cross axis */
+    /* align-items: flex-end; Align items to the end of the cross axis */
+    /* align-items: center; Center items along the cross axis */
+    /* align-items: baseline; Align items based on their text baseline */
+
+    /* flex-wrap: Controls whether flex items are forced onto one line or can wrap onto multiple lines */
+    /* flex-wrap: nowrap; */
+    /* Default: All items are on one line */
+    /* flex-wrap: wrap; Allow items to wrap onto multiple lines */
+    /* flex-wrap: wrap-reverse; Allow items to wrap onto multiple lines in reverse order */
+
+    /* align-content: Aligns flex lines (rows or columns) when there is extra space in the cross axis */
+    /* align-content: stretch; */
+    /* Default: Stretch lines to fill the remaining space */
+    /* align-content: flex-start; Align lines to the start of the cross axis */
+    /* align-content: flex-end; Align lines to the end of the cross axis */
+    /* align-content: center; Center lines along the cross axis */
+    /* align-content: space-between; Distribute lines evenly, first line at start, last line at end */
+    /* align-content: space-around; Distribute lines evenly with equal space around them */
+    /* align-content: space-evenly; Distribute lines evenly with equal space around and between them */
+
+    /* gap: Sets the spacing between flex items */
+    gap: 10px;
+    /* Add a 10px gap between flex items */
+    /* row-gap: 10px; Add a 10px gap between rows */
+    /* column-gap: 10px; Add a 10px gap between columns */
+
+    /* flex-grow: 1; */
+    /* flex-grow: Defines how much a flex item can grow relative to other items */
+    /* flex-grow: 0; Default: Item will not grow */
+    /* flex-grow: 1; Item will grow to fill available space */
+
+     flex-shrink: 1; /* Defines how much a flex item can shrink relative to other items */
+    /* flex-shrink: 1; Default: Item will shrink if necessary */
+    /* flex-shrink: 0; Item will not shrink */
+
+    /* flex-basis: Defines the initial size of a flex item before any growing or shrinking */
+    /* flex-basis: auto; Default: Item's size is based on its content */
+    /* flex-basis: 100px; Set the initial size to 100px */
+
+    /* flex: Shorthand for flex-grow, flex-shrink, and flex-basis */
+    /* flex: 1 1 auto; Default: Item can grow and shrink, initial size is based on content */
+    /* flex: 0 0 100px; Item cannot grow or shrink, initial size is 100px */
+
+    /* align-self: Overrides align-items for a specific flex item */
+    /* align-self: auto; Default: Inherits align-items value from the container */
+    /* align-self: flex-start; Aligns this item to the start of the cross axis */
+    /* align-self: flex-end; Aligns this item to the end of the cross axis */
+    /* align-self: center; Centers this item along the cross axis */
+    /* align-self: stretch; Stretches this item to fill the cross axis */
+}
+
+/* Style for the h1 heading */
+h1 {
+    text-align: center;
+    /* Center-align the text inside the h1 element */
+}
+
+/* Style for the div elements inside the container */
+.container div {
+    width: 400px;
+    /* Set the width of each div to 400 pixels */
+    height: 100px;
+    /* Set the height of each div to 100 pixels */
+    color: white;
+    /* Set the text color to white */
+    text-align: center;
+    /* Center-align the text inside each div */
+    font-size: 1rem;
+    /* Set the font size to 1rem (root em) */
+}
+
+#blue{
+    background-color: blue;
+    flex-basis: 100px;
+    text-align: center;
+    /* Center-align the text inside each div */
+    font-size: 1rem;
+    /* Set the font size to 1rem (root em) */
+    
+}
