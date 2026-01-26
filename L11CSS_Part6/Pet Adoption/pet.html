@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Paws Adoption Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base styles and variables */
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #ff7e5f;
+            --light-color: #f8f9fa;
+            --dark-color: #333;
+            --gray-color: #6c757d;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f9f9f9;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .btn:hover {
+            background-color: #ff6b4a;
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #3a5a8a;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+        
+        /* Header styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .logo i {
+            color: var(--secondary-color);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .nav-menu a {
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+        
+        /* Hero section */
+        .hero {
+            padding: 80px 20px;
+            background: linear-gradient(rgba(74, 111, 165, 0.9), rgba(74, 111, 165, 0.8)), url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* Pets section */
+        .pets-section {
+            padding: 80px 20px;
+            background-color: white;
+        }
+        
+        .pet-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .pets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .pet-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .pet-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pet-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .pet-info {
+            padding: 20px;
+        }
+        
+        .pet-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .pet-details {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--gray-color);
+        }
+        
+        .pet-details span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .pet-description {
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        /* Adoption process section */
+        .process-section {
+            padding: 80px 20px;
+            background-color: var(--light-color);
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(74, 111, 165, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        
+        .step h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 20px 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+            transition: var(--transition);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 99;
+            }
+            
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 60px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .pets-section, .process-section {
+                padding: 60px 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header-container {
+                padding: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .pet-filters {
+                gap: 8px;
+            }
+            
+            .filter-btn {
+                padding: 6px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .pets-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .step {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-paw"></i>
+                <span>Happy Paws</span>
+            </a>
+            
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#pets">Find a Pet</a></li>
+                <li><a href="#process">Adoption Process</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Find Your New Best Friend</h1>
+            <p>Every year, thousands of pets are waiting for a loving home. Adopt, don't shop, and give a shelter animal a second chance at happiness.</p>
+            <a href="#pets" class="btn">Browse Pets</a>
+        </div>
+    </section>
+
+    <!-- Pets Section -->
+    <section class="pets-section" id="pets">
+        <div class="container">
+            <h2 class="section-title">Pets Available for Adoption</h2>
+            
+            <div class="pet-filters">
+                <button class="filter-btn active" data-filter="all">All Pets</button>
+                <button class="filter-btn" data-filter="dog">Dogs</button>
+                <button class="filter-btn" data-filter="cat">Cats</button>
+                <button class="filter-btn" data-filter="other">Other Animals</button>
+            </div>
+            
+            <div class="pets-grid" id="petsContainer">
+                <!-- Pet cards will be generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Adoption Process Section -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <h2 class="section-title">Adoption Process</h2>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>1. Find a Pet</h3>
+                    <p>Browse our available pets online or visit our center to meet them in person.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>2. Submit Application</h3>
+                    <p>Fill out our adoption application form online or at our center.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>3. Meet & Greet</h3>
+                    <p>Schedule a meeting with the pet to ensure it's a good match for your family.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>4. Welcome Home</h3>
+                    <p>Complete the adoption paperwork and take your new friend home!</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#contact" class="btn btn-secondary">Start Adoption Process</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Happy Paws</h3>
+                    <p>We are a non-profit organization dedicated to finding loving homes for abandoned and stray animals. Our mission is to reduce pet homelessness through adoption and education.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#pets">Available Pets</a></li>
+                        <li><a href="#process">Adoption Process</a></li>
+                        <li><a href="#">Volunteer</a></li>
+                        <li><a href="#">Donate</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Adoption Street, Pet City</li>
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@happypaws.org</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9am-6pm, Sun: 10am-4pm</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Happy Paws Adoption Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Pets data
+        const pets = [
+            {
+                id: 1,
+                name: "Buddy",
+                type: "dog",
+                breed: "Golden Retriever",
+                age: "3 years",
+                gender: "male",
+                img: "https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Friendly and energetic, Buddy loves playing fetch and going for long walks."
+            },
+            {
+                id: 2,
+                name: "Luna",
+                type: "cat",
+                breed: "Domestic Shorthair",
+                age: "2 years",
+                gender: "female",
+                img: "https://images.unsplash.com/photo-1514888286974-6d03bde4ba14?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "A gentle and affectionate cat who enjoys cuddling and lounging in sunny spots."
+            },
+            {
+                id: 3,
+                name: "Max",
+                type: "dog",
+                breed: "Beagle",
+                age: "4 years",
+                gender: "male",
+                img: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Curious and playful, Max has a great sense of smell and loves exploring."
+            },
+            {
+                id: 4,
+                name: "Bella",
+                type: "cat",
+                breed: "Siamese",
+                age: "1 year",
+                gender: "female",
+                img: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "A vocal and intelligent cat who forms strong bonds with her humans."
+            },
+            {
+                id: 5,
+                name: "Rocky",
+                type: "dog",
+                breed: "German Shepherd",
+                age: "5 years",
+                gender: "male",
+                img: "https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Loyal and protective, Rocky is well-trained and great with older children."
+            },
+            {
+                id: 6,
+                name: "Simba",
+                type: "other",
+                breed: "Lionhead Rabbit",
+                age: "1.5 years",
+                gender: "male",
+                img: "https://images.unsplash.com/photo-1556838803-cc94986cb631?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "A fluffy and friendly rabbit who enjoys being petted and eating fresh veggies."
+            },
+            {
+                id: 7,
+                name: "Daisy",
+                type: "dog",
+                breed: "Dachshund",
+                age: "2 years",
+                gender: "female",
+                img: "https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "A sweet little dog who loves burrowing under blankets and going for short walks."
+            },
+            {
+                id: 8,
+                name: "Oreo",
+                type: "cat",
+                breed: "Tuxedo",
+                age: "3 years",
+                gender: "male",
+                img: "https://images.unsplash.com/photo-1561948955-570b270e7c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                description: "Playful and mischievous, Oreo loves chasing toys and climbing cat trees."
+            }
+        ];
+        
+        // Render pets
+        const petsContainer = document.getElementById('petsContainer');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        
+        function renderPets(filter = 'all') {
+            petsContainer.innerHTML = '';
+            
+            const filteredPets = filter === 'all' 
+                ? pets 
+                : pets.filter(pet => pet.type === filter);
+            
+            filteredPets.forEach(pet => {
+                const petCard = document.createElement('div');
+                petCard.className = 'pet-card';
+                petCard.innerHTML = `
+                    <img src="${pet.img}" alt="${pet.name}" class="pet-img">
+                    <div class="pet-info">
+                        <h3 class="pet-name">${pet.name}</h3>
+                        <div class="pet-details">
+                            <span><i class="fas fa-paw"></i> ${pet.breed}</span>
+                            <span><i class="fas fa-birthday-cake"></i> ${pet.age}</span>
+                            <span><i class="fas fa-${pet.gender === 'male' ? 'mars' : 'venus'}"></i> ${pet.gender}</span>
+                        </div>
+                        <p class="pet-description">${pet.description}</p>
+                        <button class="btn adopt-btn" data-id="${pet.id}">Adopt ${pet.name}</button>
+                    </div>
+                `;
+                
+                petsContainer.appendChild(petCard);
+            });
+            
+            // Add event listeners to adopt buttons
+            document.querySelectorAll('.adopt-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const petId = this.getAttribute('data-id');
+                    const pet = pets.find(p => p.id == petId);
+                    alert(`Thank you for your interest in adopting ${pet.name}! Our team will contact you shortly to discuss the adoption process.`);
+                });
+            });
+        }
+        
+        // Filter pets
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Filter and render pets
+                const filter = this.getAttribute('data-filter');
+                renderPets(filter);
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize page
+        renderPets();
+    </script>
+</body>
+</html>
