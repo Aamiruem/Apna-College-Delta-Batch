@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photography Portfolio | CSS Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .main_box {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transition: all 0.3s linear;
+        }
+
+        .btn_one {
+            color: white;
+            font-size: 30px;
+            font-weight: 700;
+            position: absolute;
+            left: 16px;
+            top: 16px;
+            cursor: pointer;
+            transition: all 0.3s linear;
+            z-index: 10;
+        }
+
+        .btn_one:hover {
+            transform: scale(1.1);
+        }
+
+        .sidebar_menu {
+            position: fixed;
+            left: -300px;
+            height: 100vh;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            transition: all 0.3s linear;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .sidebar_menu .logo {
+            position: absolute;
+            width: 100%;
+            line-height: 60px;
+            padding: 0 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar_menu .logo a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .sidebar_menu .logo hr {
+            border: none;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin-top: 5px;
+        }
+
+        .sidebar_menu .btn_two i {
+            color: #aaa;
+            font-size: 25px;
+            line-height: 60px;
+            position: absolute;
+            right: 20px;
+            top: 0;
+            cursor: pointer;
+            transition: all 0.3s linear;
+        }
+
+        .sidebar_menu .btn_two i:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .sidebar_menu .menu {
+            position: absolute;
+            width: 100%;
+            top: 80px;
+        }
+
+        .sidebar_menu .menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar_menu .menu li {
+            margin: 0;
+            padding: 15px 30px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .sidebar_menu .menu li:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding-left: 35px;
+        }
+
+        .sidebar_menu .menu i,
+        .sidebar_menu .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .sidebar_menu .menu i {
+            padding-right: 15px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .sidebar_menu .social_media {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 30px;
+            text-align: center;
+        }
+
+        .sidebar_menu .social_media ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .sidebar_menu .social_media a {
+            color: white;
+            opacity: 0.6;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .sidebar_menu .social_media a:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+
+        #check {
+            display: none;
+        }
+
+        #check:checked ~ .sidebar_menu {
+            left: 0;
+        }
+
+        #check:checked ~ .btn_one i {
+            opacity: 0;
+        }
+
+        #check:checked ~ .main_content {
+            transform: translateX(150px);
+            opacity: 0.7;
+        }
+
+        /* Main content styles */
+        .main_content {
+            padding: 100px 50px;
+            color: white;
+            max-width: 800px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+
+        .main_content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .main_content h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: #ddd;
+        }
+
+        .main_content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .photo_item {
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .photo_item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .photo_item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            padding: 0 20px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .main_content {
+                padding: 80px 20px;
+            }
+            
+            .main_content h1 {
+                font-size: 36px;
+            }
+            
+            .main_content h2 {
+                font-size: 24px;
+            }
+            
+            #check:checked ~ .main_content {
+                transform: translateX(0);
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main_box">
+        <input type="checkbox" id="check" />
+        <div class="btn_one">
+            <label for="check" style="color: white">
+                <i class="fa-solid fa-bars"></i>
+            </label>
+        </div>
+
+        <div class="sidebar_menu">
+            <div class="logo">
+                <a href="#">CaptureVision</a>
+                <hr>
+            </div>
+
+            <div class="btn_two">
+                <label for="check">
+                    <i class="fa-solid fa-xmark"></i>
+                </label>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-image"></i>
+                        <a href="#">Gallery</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <a href="#">Portfolio</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-photo-film"></i>
+                        <a href="#">Exhibits</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <a href="#">Events</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-store"></i>
+                        <a href="#">Store</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <a href="#">Contact</a>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-comments"></i>
+                        <a href="#">Feedback</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="social_media">
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="main_content">
+            <h1>Capturing Moments, Creating Memories</h1>
+            <h2>Professional Photography & Visual Storytelling</h2>
+            <p>Welcome to our visual journey where we capture the essence of moments, the beauty of landscapes, and the emotions of life through the lens. With over a decade of experience, we specialize in portrait, landscape, and event photography that tells your unique story.</p>
+            <a href="#" class="btn">View Portfolio</a>
+            <a href="#" class="btn" style="margin-left: 15px;">Book a Session</a>
+            
+            <div class="photo_grid">
+                <div class="photo_item">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Portrait">
+                </div>
+                <div class="photo_item">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Landscape">
+                </div>
+                <div class="photo_item">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Event">
+                </div>
+                <div class="photo_item">
+                    <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Nature">
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 CaptureVision Photography. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Close sidebar when clicking on a menu item (except social media)
+        document.querySelectorAll('.sidebar_menu .menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('check').checked = false;
+            });
+        });
+        
+        // Close sidebar when clicking outside of it
+        document.querySelector('.main_box').addEventListener('click', (e) => {
+            const sidebar = document.querySelector('.sidebar_menu');
+            const check = document.getElementById('check');
+            
+            if (check.checked && !sidebar.contains(e.target) && !e.target.closest('.btn_one')) {
+                check.checked = false;
+            }
+        });
+    </script>
+</body>
+</html>
