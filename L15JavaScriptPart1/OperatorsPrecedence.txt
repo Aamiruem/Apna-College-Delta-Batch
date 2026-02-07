@@ -79,3 +79,63 @@ let value = (2 + 3) *4; // 20 (grouping forces addition first)
 ✔ Use parentheses to make complex expressions clearer.
 
 Would you like a deeper explanation of any specific operator group? 😊
+
+
+
+
+
+
+🔢 Operator Precedence (Easy Explanation)
+Operator precedence tells us which operator is evaluated first when an expression has more than one operator.
+👉 Just like in math:
+BODMAS / PEMDAS → Brackets → Orders → Division/Multiplication → Addition/Subtraction
+
+✅ Example
+10 + 2 * 5
+
+✔ * runs before +
+✔ So it becomes: 10 + (2 * 5) = 10 + 10 = 20
+
+🧠 General Precedence Order (High → Low)
+
+
+() Parentheses
+
+
+** Exponent
+
+
+* / % Multiply, Divide, Modulus
+
+
++ - Add, Subtract
+
+
+< > <= >= Relational
+
+
+== != Equality
+
+
+&& Logical AND
+
+
+|| Logical OR
+
+
+= Assignment
+
+
+
+🧪 Example with Brackets
+(10 + 2) * 5 = 60
+
+Because parentheses go first ✅
+
+💡 Tip
+Use parentheses to make your code clear and avoid confusion.
+
+If you want, I can give:
+✔ Operator precedence in C / Java / Python / JavaScript
+✔ MCQs
+✔ Interview questions
