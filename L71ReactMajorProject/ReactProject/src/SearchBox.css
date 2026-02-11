@@ -1,0 +1,39 @@
+
+.SearchBox{
+    background-color: aliceblue;
+    text-align: center;
+    margin-bottom: 25px;
+    
+    /* width: 100%; */
+    
+}
+
+.SearchInput{
+    width: 100%;
+    padding: 10px;
+    border: none;
+}
+.Button{
+    background-color: rgb(51, 23, 209);
+    /* padding: 10px 20px; */
+    background-color: #1adc21;
+    /* border: none; */
+    /* cursor: pointer; */
+    /* width: 100%; */
+    margin-bottom: 25px;
+}
+
+.Button:hover{
+    background-color: #1aea20;
+}
+
+.h1{
+    color: black;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.h3{
+    color: black;
+    font-size: 18px;
+    margin-bottom: 10px;
+}

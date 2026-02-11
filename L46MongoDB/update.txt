@@ -1,0 +1,145 @@
+college> db.student.updateOne( {name: "adam"}, {$set: {marks: 99}} )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+college> college> db.student.findOne()
+ReferenceError: college is not defined
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6704d0c1fdd15e81b6c73bf8'),
+    name: 'adam',
+    age: 19,
+    marks: 99
+  },
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'bob',
+    city: 'Delhi',
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'Delhi'
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfb'),
+    name: 'donald',
+    marks: 90,
+    city: 'Mumbai'
+  }
+]
+college>
+
+college> db.dtudent.updateMany( {city: "Delhi"}, {$set: {city: "New Delhi"}} )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6704d0c1fdd15e81b6c73bf8'),
+    name: 'adam',
+    age: 19,
+    marks: 99
+  },
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'bob',
+    city: 'Delhi',
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'Delhi'
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfb'),
+    name: 'donald',
+    marks: 90,
+    city: 'Mumbai'
+  }
+]
+college> db.student.updateMany( {city: "Delhi"}, {$set: {city: "New Delhi"}} )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6704d0c1fdd15e81b6c73bf8'),
+    name: 'adam',
+    age: 19,
+    marks: 99
+  },
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'bob',
+    city: 'New Delhi',
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'New Delhi'
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfb'),
+    name: 'donald',
+    marks: 90,
+    city: 'Mumbai'
+  }
+]
+college> db.student.replaceOne( {name: "bob"}, {name: "kamran", marks: 98, state: "Haryana"} )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6704d0c1fdd15e81b6c73bf8'),
+    name: 'adam',
+    age: 19,
+    marks: 99
+  },
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'kamran',
+    marks: 98,
+    state: 'Haryana'
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'New Delhi'
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfb'),
+    name: 'donald',
+    marks: 90,
+    city: 'Mumbai'
+  }
+]
+college>

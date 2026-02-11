@@ -1,0 +1,413 @@
+
+test> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    72.00 KiB
+test> show collections
+users
+test> show collections
+employees
+users
+test> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    72.00 KiB
+test     16.00 KiB
+test>
+
+test> db.users.find()
+[
+  {
+    _id: ObjectId('670a2b83a933b5e3d8b38744'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  }
+]
+test> db.users.find()
+[
+  {
+    _id: ObjectId('670a2b83a933b5e3d8b38744'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a2cc802cb4b0992e74dd5'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a2cc802cb4b0992e74dd6'),
+    name: 'kamran',
+    email: 'kamran@123',
+    age: 23,
+    __v: 0
+  }
+]
+test> db.users.find()
+[
+  {
+    _id: ObjectId('670a2b83a933b5e3d8b38744'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a2cc802cb4b0992e74dd5'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a2cc802cb4b0992e74dd6'),
+    name: 'kamran',
+    email: 'kamran@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f94793977d'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f94793977e'),
+    name: 'kamran',
+    email: 'kamran@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f94793977f'),
+    name: 'Afroz',
+    email: 'Afroz@123',
+    age: 20,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f947939780'),
+    name: 'Shahbaz',
+    email: 'Shahbaz@123',
+    age: 19,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f947939781'),
+    name: 'Jawed',
+    email: 'Jawed@123',
+    age: 18,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f947939782'),
+    name: 'Gulrej',
+    email: 'Gulrej@123',
+    age: 18,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f947939783'),
+    name: 'shahil',
+    email: 'shahil@123',
+    age: 7,
+    __v: 0
+  }
+]
+test> db.users.find()
+[
+  {
+    _id: ObjectId('670a2b83a933b5e3d8b38744'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a2cc802cb4b0992e74dd5'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a2cc802cb4b0992e74dd6'),
+    name: 'kamran',
+    email: 'kamran@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f94793977d'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f94793977e'),
+    name: 'kamran',
+    email: 'kamran@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f94793977f'),
+    name: 'Afroz',
+    email: 'Afroz@123',
+    age: 20,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f947939780'),
+    name: 'Shahbaz',
+    email: 'Shahbaz@123',
+    age: 19,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f947939781'),
+    name: 'Jawed',
+    email: 'Jawed@123',
+    age: 18,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f947939782'),
+    name: 'Gulrej',
+    email: 'Gulrej@123',
+    age: 18,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f947939783'),
+    name: 'shahil',
+    email: 'shahil@123',
+    age: 7,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a4023adc21415e551b056'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a4023adc21415e551b057'),
+    name: 'kamran',
+    email: 'kamran@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a4023adc21415e551b058'),
+    name: 'Afroz',
+    email: 'Afroz@123',
+    age: 20,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a4023adc21415e551b059'),
+    name: 'Shahbaz',
+    email: 'Shahbaz@123',
+    age: 19,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a4023adc21415e551b05a'),
+    name: 'Jawed',
+    email: 'Jawed@123',
+    age: 18,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a4023adc21415e551b05b'),
+    name: 'Gulrej',
+    email: 'Gulrej@123',
+    age: 18,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a4023adc21415e551b05c'),
+    name: 'shahil',
+    email: 'shahil@123',
+    age: 7,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a43926837f0a867288273'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a43926837f0a867288274'),
+    name: 'kamran',
+    email: 'kamran@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a43926837f0a867288275'),
+    name: 'Afroz',
+    email: 'Afroz@123',
+    age: 20,
+    __v: 0
+  }
+]
+Type "it" for more
+test> db.users.find()
+[
+  {
+    _id: ObjectId('670a2b83a933b5e3d8b38744'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a2cc802cb4b0992e74dd5'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a2cc802cb4b0992e74dd6'),
+    name: 'kamran',
+    email: 'kamran@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f94793977d'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f94793977e'),
+    name: 'kamran',
+    email: 'kamran@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f94793977f'),
+    name: 'Afroz',
+    email: 'Afroz@123',
+    age: 20,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f947939780'),
+    name: 'Shahbaz',
+    email: 'Shahbaz@123',
+    age: 19,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f947939781'),
+    name: 'Jawed',
+    email: 'Jawed@123',
+    age: 18,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f947939782'),
+    name: 'Gulrej',
+    email: 'Gulrej@123',
+    age: 18,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a3e2e8c8e20f947939783'),
+    name: 'shahil',
+    email: 'shahil@123',
+    age: 7,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a4023adc21415e551b056'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a4023adc21415e551b057'),
+    name: 'kamran',
+    email: 'kamran@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a4023adc21415e551b058'),
+    name: 'Afroz',
+    email: 'Afroz@123',
+    age: 20,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a4023adc21415e551b059'),
+    name: 'Shahbaz',
+    email: 'Shahbaz@123',
+    age: 19,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a4023adc21415e551b05a'),
+    name: 'Jawed',
+    email: 'Jawed@123',
+    age: 18,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a4023adc21415e551b05b'),
+    name: 'Gulrej',
+    email: 'Gulrej@123',
+    age: 18,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a4023adc21415e551b05c'),
+    name: 'shahil',
+    email: 'shahil@123',
+    age: 7,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a43926837f0a867288273'),
+    name: 'Aamir',
+    email: 'aamir@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a43926837f0a867288274'),
+    name: 'kamran',
+    email: 'kamran@123',
+    age: 23,
+    __v: 0
+  },
+  {
+    _id: ObjectId('670a43926837f0a867288275'),
+    name: 'Afroz',
+    email: 'Afroz@123',
+    age: 20,
+    __v: 0
+  }
+]
+Type "it" for more
+test>

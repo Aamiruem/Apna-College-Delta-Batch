@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll Dice</title>
+</head>
+<body>
+    <h1>Dice gave value: <%= diceVal %> </h1>
+    <% if(diceVal == 6) { %>
+        <h1>Winner Winner Chicken Dinner</h1>
+    <% } else { %>
+        <h1>Better luck next time</h1>
+        
+        <h1>Nice! Roll dice again </h1>
+    <% } %>
+    <%- include("includes/footer.ejs") %>
+</body>
+</html>

@@ -1,0 +1,12 @@
+
+CREATE TABLE user(
+    id INT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE,
+    email VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE posts(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    title VARCHAR(30) NOT NULL,

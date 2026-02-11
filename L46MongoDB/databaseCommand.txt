@@ -1,0 +1,16 @@
+
+
+test> "apnacollege".toUpperCase()
+APNACOLLEGE
+test> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    88.00 KiB
+test> use college
+switched to db college
+college> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    88.00 KiB
+college> db
+college

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <style>
+        body {
+            background-color: rgb(255, 255, 255);
+        }
+        h1 {
+            color: rgb(0, 0, 0);
+            text-align: center;
+        }
+        h3 {
+            color: rgb(0, 0, 0);
+            text-align: center;
+        }
+        p {
+            color: rgb(0, 0, 0);
+            text-align:justify;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <h1>This is a home page 3 * 2</h1>
+    <h2>
+        <%= "Kamran" .toUpperCase() %>
+    </h2>
+    <h3><%= [ "Hello", "bonjour", "namaste", "asalamualaikum"][3] %></h3>
+    
+    <p>
+        Web Technology refers to the various tools and techniques that are utilized in the process of communication
+        between different types of devices over the Internet. A web browser is used to access web pages. Web browsers
+        can be defined as programs that display text, data, pictures, animation, and video on the Internet. Hyperlinked
+        resources on the World Wide Web can be accessed using software interfaces provided by Web browsers.
+    </p>
+    <button>click me</button>
+
+    <%- include("includes/footer.ejs") %>
+</body>
+
+</html>

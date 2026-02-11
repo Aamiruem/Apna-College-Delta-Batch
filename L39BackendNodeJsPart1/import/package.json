@@ -1,0 +1,17 @@
+{
+  "name": "import",
+  "version": "1.0.0",
+  "main": "math.js",
+  "dependencies": {
+    "random-words": "^2.0.1",
+    "seedrandom": "^3.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aamir Hussain",
+  "license": "ISC",
+  "description": "",
+  "type": "module"
+}

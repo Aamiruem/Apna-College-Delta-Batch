@@ -1,0 +1,227 @@
+college> db.student.find( {city: " Delhi"} )
+
+college> db.student.findOne( {city: " Delhi"} )
+null
+college> db.student.findOne( {name: " adam"} )
+null
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6704d0c1fdd15e81b6c73bf8'),
+    name: 'adam',
+    age: 19,
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'bob',
+    city: 'Delhi',
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'Delhi'
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfb'),
+    name: 'donald',
+    marks: 90,
+    city: 'Mumbai'
+  }
+]
+college> db.student.findOne( {name: " adam"} )
+null
+college> db.student.findOne( {name: "adam"} )
+{
+  _id: ObjectId('6704d0c1fdd15e81b6c73bf8'),
+  name: 'adam',
+  age: 19,
+  marks: 98
+}
+college> db.student.findOne( {city: "Delhi"} )
+{
+  _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+  name: 'bob',
+  city: 'Delhi',
+  marks: 98
+}
+college> db.student.find( {city: "Delhi"} )
+[
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'bob',
+    city: 'Delhi',
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'Delhi'
+  }
+]
+college> db.student.find( {city: "Delhi", marks: 98} )
+[
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'bob',
+    city: 'Delhi',
+    marks: 98
+  }
+]
+college>
+
+
+
+
+
+
+
+
+
+college> db.student.find( {city: " Delhi"} )
+
+college> db.student.findOne( {city: " Delhi"} )
+null
+college> db.student.findOne( {name: " adam"} )
+null
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6704d0c1fdd15e81b6c73bf8'),
+    name: 'adam',
+    age: 19,
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'bob',
+    city: 'Delhi',
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'Delhi'
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfb'),
+    name: 'donald',
+    marks: 90,
+    city: 'Mumbai'
+  }
+]
+college> db.student.findOne( {name: " adam"} )
+null
+
+college> db.student.find( {city: "Delhi", marks: {$gt: 78} )
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:50)
+
+> 1 | db.student.find( {city: "Delhi", marks: {$gt: 78} )
+    |                                                   ^
+  2 |
+
+college> db.student.find( {city: "Delhi", marks: {$gt: 78}} )
+[
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'bob',
+    city: 'Delhi',
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'Delhi'
+  }
+]
+college> db.student.find( {city: {$in: ["Delhi", "Mumbai"]}} )
+[
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'bob',
+    city: 'Delhi',
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'Delhi'
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfb'),
+    name: 'donald',
+    marks: 90,
+    city: 'Mumbai'
+  }
+]
+college> db.student.find( {city: "Delhi", marks: {$gte: 78}} )
+[
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'bob',
+    city: 'Delhi',
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'Delhi'
+  }
+]
+college> db.student.find( {city: {$in: ["Delhi", "Mumbai"]}} )
+[
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'bob',
+    city: 'Delhi',
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'Delhi'
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfb'),
+    name: 'donald',
+    marks: 90,
+    city: 'Mumbai'
+  }
+]
+college> db.student.find( {$or: [{marks: {$gt: 75}}, {city:  "Delhi"}]} )
+[
+  {
+    _id: ObjectId('6704d0c1fdd15e81b6c73bf8'),
+    name: 'adam',
+    age: 19,
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'bob',
+    city: 'Delhi',
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'Delhi'
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfb'),
+    name: 'donald',
+    marks: 90,
+    city: 'Mumbai'
+  }
+]
+college>

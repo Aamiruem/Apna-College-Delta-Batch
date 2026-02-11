@@ -1,0 +1,46 @@
+college> db.student.insertOne( {name: "farah", performance: {marks: 88, grade: "A"}} )
+{
+  acknowledged: true,
+  insertedId: ObjectId('6704e37efdd15e81b6c73bfc')
+}
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6704d0c1fdd15e81b6c73bf8'),
+    name: 'adam',
+    age: 19,
+    marks: 99
+  },
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'kamran',
+    marks: 98,
+    state: 'Haryana'
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'New Delhi'
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfb'),
+    name: 'donald',
+    marks: 90,
+    city: 'Mumbai'
+  },
+  {
+    _id: ObjectId('6704e37efdd15e81b6c73bfc'),
+    name: 'farah',
+    performance: { marks: 88, grade: 'A' }
+  }
+]
+college> db.student.find( {"performance.marks": 88} )
+[
+  {
+    _id: ObjectId('6704e37efdd15e81b6c73bfc'),
+    name: 'farah',
+    performance: { marks: 88, grade: 'A' }
+  }
+]
+college>

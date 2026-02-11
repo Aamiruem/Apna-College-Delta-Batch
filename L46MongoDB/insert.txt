@@ -1,0 +1,87 @@
+
+college> show collections
+
+college> db.collection.insertOne()
+MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 0 (Collection.insertOne)
+college> show collections
+
+college> db.student.insertOne({name: "adam", age: 19, marks: 98} )
+{
+  acknowledged: true,
+  insertedId: ObjectId('6704d0c1fdd15e81b6c73bf8')
+}
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6704d0c1fdd15e81b6c73bf8'),
+    name: 'adam',
+    age: 19,
+    marks: 98
+  }
+]
+college> db.student.insertOne({name: "bob", city:  "Delhi", marks: 98} )
+{
+  acknowledged: true,
+  insertedId: ObjectId('6704d1cefdd15e81b6c73bf9')
+}
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6704d0c1fdd15e81b6c73bf8'),
+    name: 'adam',
+    age: 19,
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'bob',
+    city: 'Delhi',
+    marks: 98
+  }
+]
+college> db.student.insertMany([ {name: "catlyn", marks: 87, city: "Delhi"}, {name: "donald", marks: 90, city: "Mumbai"} ]
+... db.student.insertMany([ {name: "catlyn", marks: 87, city: "Delhi"}, {name: "donald", marks: 90, city: "Mumbai"} ])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (2:0)
+
+  1 | db.student.insertMany([ {name: "catlyn", marks: 87, city: "Delhi"}, {name: "donald", marks: 90, city: "Mumbai"} ]
+> 2 | db.student.insertMany([ {name: "catlyn", marks: 87, city: "Delhi"}, {name: "donald", marks: 90, city: "Mumbai"} ])
+    | ^
+  3 |
+
+college> db.student.insertMany([ {name: "catlyn", marks: 87, city: "Delhi"}, {name: "donald", marks: 90, city: "Mumbai"} ] )
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6704d338fdd15e81b6c73bfa'),
+    '1': ObjectId('6704d338fdd15e81b6c73bfb')
+  }
+}
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6704d0c1fdd15e81b6c73bf8'),
+    name: 'adam',
+    age: 19,
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d1cefdd15e81b6c73bf9'),
+    name: 'bob',
+    city: 'Delhi',
+    marks: 98
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'Delhi'
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfb'),
+    name: 'donald',
+    marks: 90,
+    city: 'Mumbai'
+  }
+]
+college>

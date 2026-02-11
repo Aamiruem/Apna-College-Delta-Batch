@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All users</title>
+    <style>
+        table, tr, th, td{
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+        </tr>
+        {% endfor %}
+        {% if users.length == 0 %}
+        <tr>
+            <td colspan="3">No users found</td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td colspan="3">
+                <a href="/user/new">Add new user</a>
+            </td>
+            <td><a href="/logout">Logout</a></td>
+            <td><a href="/users/search">Search Users</a></td>
+            <td><a href="/">Home</a></td>
+            <td><a href="/user">All Users</a></td>
+            <td><a href="/users/new">Add New User</a></td>
+            <td><a href="/users">All Users</a></td>
+            <td><a href="/users/new">Add New User</a></td>
+            <td><a href="/users">All Users</a></td>
+            <td><a href="/users/new">Add New User</a></td>
+        </tr>
+    </table> -->
+
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>UserName</th>
+        </tr>
+        
+        <% for(user of users) { %>
+    <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.username %></td>
+    </tr>
+<% } %>
+<tr>
+    <form method="GET" action="/user/<%=user.id%>/Edit">
+        <button>Edit UserName</button>
+    </form>
+</tr>
+    </table>
+</body>
+</html>

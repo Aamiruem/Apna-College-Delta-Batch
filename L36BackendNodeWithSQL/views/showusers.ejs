@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All users</title>
+    <style>
+        table, th, td{
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        <?php foreach ($users as $user) :?>
+            <tr>
+                <td><?php echo $user['id'];?></td>
+                <td><?php echo $user['name'];?></td>
+                <td><?php echo $user['email'];?></td>
+            </tr>
+        <?php endforeach;?>
+        <tr>
+            <td><a href="/users">Back</a></td>
+            <td colspan="2"><a href="/users/create">Create New User</a></td>
+            <td><a href="/logout">Logout</a></td>
+            <td><a href="/users/search">Search Users</a></td>
+        </tr>
+        <%for(user of users){%>
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <form action="/user/<%=user.id%>/edit" method="GET"></form>
+                    <td><a href="/users/edit/{{user.id}}">Edit</a></td>
+                    <td><button type="submit" name="delete" value="{{user.id}}">Delete</button></td>
+                    <button>Edit username</button>
+                </form>
+                </td>
+            </tr>
+        <%}%>
+    </table>
+</body>
+</html>

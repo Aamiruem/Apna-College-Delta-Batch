@@ -1,0 +1,92 @@
+
+college> db.student.deleteOne( {state: "Haryana"} )
+{ acknowledged: true, deletedCount: 1 }
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6704d0c1fdd15e81b6c73bf8'),
+    name: 'adam',
+    age: 19,
+    marks: 99
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfa'),
+    name: 'catlyn',
+    marks: 87,
+    city: 'New Delhi'
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfb'),
+    name: 'donald',
+    marks: 90,
+    city: 'Mumbai'
+  },
+  {
+    _id: ObjectId('6704e37efdd15e81b6c73bfc'),
+    name: 'farah',
+    performance: { marks: 88, grade: 'A' }
+  }
+]
+college> db.student.deleteMany( {marks: {$lt: 87}} )
+{ acknowledged: true, deletedCount: 0 }
+college> db.student.deleteMany( {marks: {$lt: 90}} )
+{ acknowledged: true, deletedCount: 1 }
+college> db.student.find()
+[
+  {
+    _id: ObjectId('6704d0c1fdd15e81b6c73bf8'),
+    name: 'adam',
+    age: 19,
+    marks: 99
+  },
+  {
+    _id: ObjectId('6704d338fdd15e81b6c73bfb'),
+    name: 'donald',
+    marks: 90,
+    city: 'Mumbai'
+  },
+  {
+    _id: ObjectId('6704e37efdd15e81b6c73bfc'),
+    name: 'farah',
+    performance: { marks: 88, grade: 'A' }
+  }
+]
+college> db.student.deleteMany()
+MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 0 (Collection.deleteMany)
+college> db.student.deleteMany({})
+{ acknowledged: true, deletedCount: 3 }
+college> db.student.find()
+
+college> db.dropDatabase()
+{ ok: 1, dropped: 'college' }
+college>
+
+college> shoe dbs
+Uncaught:
+SyntaxError: Missing semicolon. (1:4)
+
+> 1 | shoe dbs
+    |     ^
+  2 |
+
+college> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    88.00 KiB
+college> db.student.insertOne( {name: "farah", performance: {marks: 88, grade: "A"}} )
+{
+  acknowledged: true,
+  insertedId: ObjectId('6704e673fdd15e81b6c73bfd')
+}
+college> show dbs
+admin     40.00 KiB
+college    8.00 KiB
+config   108.00 KiB
+local     88.00 KiB
+college> db.dropDatabase()
+{ ok: 1, dropped: 'college' }
+college> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    88.00 KiB
+college>

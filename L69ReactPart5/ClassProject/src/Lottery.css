@@ -1,0 +1,35 @@
+/* .ticket{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 14px;
+    width: 50%;
+    background-color: #d30f15;
+}
+
+.tickets-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.button{
+    background-color: #d30f15;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    
+} */
+
+
+
+
+
+.ticket{
+border: 1px solid pink;
+border-radius: 14px;
+}
