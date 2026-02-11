@@ -1,0 +1,50 @@
+:------------------------------ React - Part 1 ------------------------------:
+______________________________________________________________________________
+______________________________________________________________________________
+______________________________________________________________________________
+
+React :-
+        React is a javascript library for creating  user-interfaces (UI/UX)
+        from components.
+______________________________________________________________________________
+JSX (JavaScript Extension Syntax) :-
+                                    It lets us write HTML inside JS.
+                                    ---------------------------------
+                            Note :- Bable is a tool that converts JSX file's
+                                    into pure javascript. (It happens automatically
+                                    behind the seen).
+______________________________________________________________________________
+Setup Local Environment :-
+                         CreateReact-App vs Vite
+Vite :-
+       We'll use vite because it is quicker and faster (Released in 2020)
+Install :- npm create vite@latest -> npm install (for dependencies)
+Run :- npm run dev
+______________________________________________________________________________
+
+Component :-
+           Component is a reusable & independent piece of code.
+______________________________________________________________________________
+Import & Export :-
+                Named export are useful when you want to export multiple values
+                and import them with their specific names, while default exports
+                are handy for exporting a single value and giving it a custom name
+                when importing. The choice between the two depends on the structure
+                and requirements of your codebase.
+______________________________________________________________________________
+Writing Markup in JSX :-
+Rules :-
+1. Return a single root element
+2. Close all the tags
+3. camelCase most of the things, also we cannot use javascript reserved keyword in jsx
+______________________________________________________________________________
+Fragment :-
+         Fragment let you group a list of children without adding extra nodes to the DOM.
+Usage :- <></>
+______________________________________________________________________________
+JSX with Currely Braces :-
+                        We can write pure javascript code inside currely braces.
+______________________________________________________________________________
+
+              Visit React official documentation for more details.
+______________________________________________________________________________

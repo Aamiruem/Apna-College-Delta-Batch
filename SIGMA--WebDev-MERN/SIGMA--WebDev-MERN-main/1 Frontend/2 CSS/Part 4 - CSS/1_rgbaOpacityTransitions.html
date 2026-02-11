@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rgba, Opacity and Transitions</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            padding: 10px;
+            display: inline-block;
+        }
+        /* Alpha Channel */
+        .rgba {
+            background-color: rgba(255, 0, 0, 0.75); /* RGBA value */
+            color: #ffffffa0; /* RGBA value in Hexcode */
+        }
+        /* Opacity */
+        .opacity {
+            background-color: #00fa;
+            color: #fffe;
+            opacity: 0.75; /* Opacity value */
+        }
+        .transitions {
+            background-color: #00fd;
+            /* transition-duration: 1s;
+            transition-timing-function: ease-in-out;
+            transition-delay: 0.45s; */
+            transition: 1s ease-in 0.5s; /* Transitions */
+        }
+        .transitions:hover {
+            color:red;
+            background-color: #2f0;
+            border-radius: 50%;
+            margin: 100px;
+            padding: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="rgba">RGBA</div>
+    <div class="opacity">Opacity</div>
+    <div class="transitions">Transitions</div>
+</body>
+</html>

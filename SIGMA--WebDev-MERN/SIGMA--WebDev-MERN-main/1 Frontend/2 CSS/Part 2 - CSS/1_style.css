@@ -1,0 +1,136 @@
+/* Universal Selector */
+* {
+    font-family: Lucida Sans;
+    background-color: wheat;
+}
+
+/* Element Selector */
+h1, h3 {
+    color: #b92b27;
+}
+
+/* Id Selector */
+#login {
+    background-color: white;
+}
+#signup {
+    background-color: #b92b27;
+    color: white;
+}
+
+/* Class Selector */
+.upvote {
+    background-color: green;
+    color: aliceblue;
+}
+
+/* Descendant Selector */
+nav a {
+    color: #ffaf00;
+    background-color: aqua;
+}
+.post a {
+    color: whitesmoke;
+    background-color: #5b0;
+}
+
+/* Adjacent Sibling Combinator */
+p + h3 {
+    color: purple;
+    text-decoration: purple underline;
+}
+.upvote + button {
+    background-color: cornflowerblue;
+    color: red;
+}
+
+/* Child Selector */
+div > input {
+    background-color: black;
+}
+
+/* Attribute Selector */
+input[type="text"] {
+    color: red;
+}
+input[type="password"] {
+    color: red;
+}
+input[type] {
+    background-color: ghostwhite;
+}
+/* Pseudo-Class Selector */
+button:hover {
+    background-color: #000;
+    color: #fff;
+}
+#login:hover, #signup:hover {
+    background-color: #000;
+    color: #fff;
+}
+p:active {
+    font-weight: bold;
+    color: green;
+    text-decoration: underline;
+}
+h3:active {
+    text-decoration: overline;
+    font-weight: bolder;
+}
+input[type="radio"]:checked + label {
+    font-weight: bold;
+    color: red;
+}
+.post:nth-of-type(1) {
+    background-color: green;
+}
+.post:nth-of-type(2n) {
+    background-color: blue;
+}
+.list li:first-child {
+    background-color: black;
+    color: white;
+}
+nav ul li:last-child {
+    background-color: red;
+    color: yellow;
+}
+.list li:nth-child(2) {
+    background-color: blue;
+    color: white;
+}
+
+/* Pseudo Element Selector */
+h1::first-letter {
+    font-size: 50px;
+    color: red;
+}
+footer p::first-line {
+    color: yellow;
+    background-color: black;
+}
+p::selection {
+    color: yellow;
+    background-color: red;
+}
+
+/* CSS - Cascading (StyleSheets) :- 
+    What is Cascading in CSS :- The CSS cascade algorithm's job is to select CSS declaration
+    in order to determine the correct values  for CSS properties.
+    h1 { color: red; } h1 { color: blue; }
+    In this way, "blue" color will be apply according to the Cascade's algorithm. */
+
+    /* CSS - Selector Specificity :- 
+                        Specificity is an algorithm that calculates the weight that is
+                        applied to a given declaration.
+                        !important = 10,000 value
+                        Inline = 1000 value
+                        Id = 100 value
+                        Class, attribute & pseudo class = 10 value
+                        Element & Psuedo element = 1 value */
+
+/* !important :- To show the most specific thing in document. */
+#login:hover, #signup:hover {
+    background-color: #f00 !important;
+    color: #fff !important;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline and Block Elements - Display</title>
+    <style>
+        h2 {
+            display: inline;
+            background-color: lightblue;
+        }
+        #spans {
+            display: block;
+            background-color: pink;
+        }
+        #span {
+            border: 3px solid black;
+            background-color: pink;
+            height: 100px;
+            width: 100px;
+            padding: 20px;
+            margin: 20px;
+            display: none; /* for HIDE content */
+        }
+        .box {
+            border: 2px solid black;
+            background-color: green;
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+            display: inline-block; /* INLINE will not work in the div */
+        }
+    </style>
+</head>
+<body>
+    <h2>Heading 1</h2>
+    <h2>Heading 2</h2>
+    <span id="spans">Span 1</span>
+    <span id="spans">Span 2</span>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente beatae explicabo magni deserunt ipsaLorem ipsum, dolor sit amet consectetur adipisicing elit. Atque doloremque nam culpa molestiae? Minima rem dignissimos vel fugiat temporibus magni, quo aliquam pariatur! Totam veritatis rem incidunt! Aut unde magnam a error debitis maiores quam reprehenderit aspernatur consequuntur? Velit modi unde labore adipisci deserunt nam, tempora quas? Accusantium corrupti repudiandae corporis <span id="span">INLINE</span> aperiam tempore? Adipisci, magnam voluptatem nisi assumenda iste praesentium repellendus facilis, aliquam temporibus commodi deserunt reprehenderit porro suscipit, explicabo fugiat rem earum accusamus quia? Blanditiis eligendi recusandae in vel aperiam ratione labore nihil vero, deleniti officiis neque nulla ipsa quaerat aut non, aliquam unde officia? Cumque tempora ut alias Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus, rerum.
+    </p>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</body>
+</html>

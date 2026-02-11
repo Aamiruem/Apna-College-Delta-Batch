@@ -1,0 +1,37 @@
+body {
+    margin: 20px;
+}
+.chat {
+    display: inline-block;
+    background-color: aliceblue;
+    border-radius: 15px;
+    padding: 15px;
+}
+.msg {
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 15px;
+    padding: 5px 15px;
+}
+button {
+    background-color: dodgerblue;
+    color: white;
+    font-weight: bold;
+    border: 1px solid aliceblue;
+    padding: 6px 12px;
+    border-radius: 7px;
+    margin: 2px;
+    cursor: pointer;
+}
+.time {
+    margin-top: -7px;
+}
+.date {
+    margin-top: -16px;
+    margin-left: -10px;
+}
+.dlt-btn {
+    position: relative;
+    top: -33px;
+    left: 51px;
+}

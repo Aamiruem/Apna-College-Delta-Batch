@@ -1,0 +1,44 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+    <title>Clickable Input Button</title>
+</head>
+<body>
+    <script>
+        let Button = document.createElement('button');
+        let input = document.createElement('input');
+        Button.innerHTML = "Click Me";
+
+        document.querySelector("body").append(input);
+        document.querySelector("body").append(Button);
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Clickable Input Button</title>
+</head>
+<body>
+    <script>
+        let inputField = document.createElement('input');
+        let button = document.createElement('button');
+        let label = document.createElement('label');
+
+        inputField.type = "text";
+        button.innerHTML = "Click Me";
+        label.appendChild(button);
+        label.htmlFor = inputField.id = "myInput";
+
+        document.querySelector("body").append(inputField);
+        document.querySelector("body").append(label);
+    </script>
+</body>
+</html>

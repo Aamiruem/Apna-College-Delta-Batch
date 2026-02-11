@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM Events Tutorial</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin: 25px 0 15px;
+            color: #6e8efb;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin: 20px 0 10px;
+            color: #a777e3;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .code-example {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+        
+        .interactive-demo {
+            background: #eef5ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        button {
+            background: #6e8efb;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 8px;
+            transition: background 0.3s, transform 0.2s;
+            font-size: 1rem;
+        }
+        
+        button:hover {
+            background: #5a7de3;
+            transform: translateY(-2px);
+        }
+        
+        input, select {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 8px;
+            width: 200px;
+        }
+        
+        .event-log {
+            height: 200px;
+            overflow-y: auto;
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .event-area {
+            height: 150px;
+            background: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 2px dashed #a777e3;
+            transition: all 0.3s;
+        }
+        
+        .keyboard-box {
+            width: 100px;
+            height: 100px;
+            background: #6e8efb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            margin: 20px auto;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        
+        .form-demo {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .highlight {
+            background: #fff8e1;
+            border-left: 4px solid #ffd54f;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 30px;
+            color: #777;
+        }
+        
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .tab-buttons {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .tab-button {
+            background: #ddd;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .tab-button.active {
+            background: #6e8efb;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript DOM Events Tutorial</h1>
+            <p>Learn how to handle events in the Document Object Model</p>
+        </header>
+        
+        <div class="card">
+            <h2>What are DOM Events?</h2>
+            <p>DOM events are actions that occur as a result of user interaction or other activities in the browser. JavaScript can detect these events and execute code in response.</p>
+            
+            <div class="highlight">
+                <p>Events allow you to create dynamic, interactive web applications by responding to user actions like clicks, keyboard input, mouse movements, and more.</p>
+            </div>
+            
+            <h3>Common Event Types</h3>
+            <ul>
+                <li><strong>Mouse Events:</strong> click, dblclick, mousedown, mouseup, mousemove, mouseover, mouseout</li>
+                <li><strong>Keyboard Events:</strong> keydown, keyup, keypress</li>
+                <li><strong>Form Events:</strong> submit, change, focus, blur, input</li>
+                <li><strong>Window Events:</strong> load, resize, scroll, beforeunload</li>
+                <li><strong>Touch Events:</strong> touchstart, touchmove, touchend</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2>Event Handling Methods</h2>
+            
+            <div class="two-column">
+                <div>
+                    <h3>Inline Event Handlers</h3>
+                    <div class="code-example">
+                        &lt;button onclick="handleClick()"&gt;<br>
+                        &nbsp;&nbsp;Click Me<br>
+                        &lt;/button&gt;<br><br>
+                        &lt;script&gt;<br>
+                        &nbsp;&nbsp;function handleClick() {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;alert('Button clicked!');<br>
+                        &nbsp;&nbsp;}<br>
+                        &lt;/script&gt;
+                    </div>
+                    <p>Simple but not recommended for complex applications (mixes HTML and JavaScript).</p>
+                </div>
+                
+                <div>
+                    <h3>Event Listeners</h3>
+                    <div class="code-example">
+                        &lt;button id="myBtn"&gt;Click Me&lt;/button&gt;<br><br>
+                        &lt;script&gt;<br>
+                        &nbsp;&nbsp;const button = document.getElementById('myBtn');<br>
+                        &nbsp;&nbsp;button.addEventListener('click', function() {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;alert('Button clicked!');<br>
+                        &nbsp;&nbsp;});<br>
+                        &lt;/script&gt;
+                    </div>
+                    <p>Recommended approach - separates structure from behavior and allows multiple handlers.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Interactive Examples</h2>
+            
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="showTab(0)">Mouse Events</button>
+                <button class="tab-button" onclick="showTab(1)">Keyboard Events</button>
+                <button class="tab-button" onclick="showTab(2)">Form Events</button>
+            </div>
+            
+            <div class="tab-content active">
+                <h3>Mouse Events</h3>
+                <p>Try these mouse interactions in the area below:</p>
+                
+                <div class="interactive-demo">
+                    <div id="mouse-area" class="event-area">
+                        <p>Move, click or scroll here</p>
+                    </div>
+                    
+                    <div class="event-log" id="mouse-log">
+                        <div>Event log will appear here...</div>
+                    </div>
+                    
+                    <button onclick="clearLog('mouse-log')">Clear Log</button>
+                </div>
+            </div>
+            
+            <div class="tab-content">
+                <h3>Keyboard Events</h3>
+                <p>Press keys while focused on the input field or the page:</p>
+                
+                <div class="interactive-demo">
+                    <input type="text" id="key-input" placeholder="Focus here and type">
+                    
+                    <div class="keyboard-box" id="key-box">
+                        A
+                    </div>
+                    
+                    <div class="event-log" id="keyboard-log">
+                        <div>Event log will appear here...</div>
+                    </div>
+                    
+                    <button onclick="clearLog('keyboard-log')">Clear Log</button>
+                </div>
+            </div>
+            
+            <div class="tab-content">
+                <h3>Form Events</h3>
+                <p>Try interacting with this form to see form-specific events:</p>
+                
+                <div class="interactive-demo">
+                    <div class="form-demo">
+                        <form id="demo-form">
+                            <input type="text" id="name" placeholder="Enter your name">
+                            <select id="country">
+                                <option value="">Select country</option>
+                                <option value="us">United States</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="ca">Canada</option>
+                            </select>
+                            <br>
+                            <input type="checkbox" id="subscribe">
+                            <label for="subscribe">Subscribe to newsletter</label>
+                            <br><br>
+                            <button type="submit">Submit Form</button>
+                        </form>
+                    </div>
+                    
+                    <div class="event-log" id="form-log">
+                        <div>Form event log will appear here...</div>
+                    </div>
+                    
+                    <button onclick="clearLog('form-log')">Clear Log</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Event Object</h2>
+            <p>When an event occurs, the browser creates an event object containing information about the event. This object is passed to the event handler.</p>
+            
+            <div class="code-example">
+                element.addEventListener('click', function(event) {<br>
+                &nbsp;&nbsp;console.log(event.type); // Event type (e.g., 'click')<br>
+                &nbsp;&nbsp;console.log(event.target); // Element that triggered the event<br>
+                &nbsp;&nbsp;console.log(event.clientX, event.clientY); // Mouse coordinates<br>
+                &nbsp;&nbsp;event.preventDefault(); // Prevent default behavior<br>
+                &nbsp;&nbsp;event.stopPropagation(); // Stop event bubbling<br>
+                });
+            </div>
+            
+            <div class="highlight">
+                <p>The event object provides valuable information about the event and methods to control its behavior.</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Event Propagation: Bubbling and Capturing</h2>
+            
+            <div class="two-column">
+                <div>
+                    <h3>Event Bubbling</h3>
+                    <p>Events bubble up from the target element to the root:</p>
+                    <div class="code-example">
+                        document.getElementById('child').addEventListener('click', function() {<br>
+                        &nbsp;&nbsp;console.log('Child clicked');<br>
+                        });<br><br>
+                        document.getElementById('parent').addEventListener('click', function() {<br>
+                        &nbsp;&nbsp;console.log('Parent clicked');<br>
+                        });
+                    </div>
+                    <p>When the child is clicked, both handlers will fire (child first, then parent).</p>
+                </div>
+                
+                <div>
+                    <h3>Event Capturing</h3>
+                    <p>Events can be captured from root to target (less common):</p>
+                    <div class="code-example">
+                        document.getElementById('parent').addEventListener('click', function() {<br>
+                        &nbsp;&nbsp;console.log('Parent captured');<br>
+                        }, true); // Use capture phase<br><br>
+                        document.getElementById('child').addEventListener('click', function() {<br>
+                        &nbsp;&nbsp;console.log('Child clicked');<br>
+                        });
+                    </div>
+                    <p>With capturing, the parent handler fires before the child handler.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>JavaScript DOM Events Tutorial - Created for educational purposes</p>
+            <p>Try experimenting with the examples to deepen your understanding of DOM events!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Tab functionality
+        function showTab(index) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-button');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            buttons.forEach(button => button.classList.remove('active'));
+            
+            tabs[index].classList.add('active');
+            buttons[index].classList.add('active');
+        }
+        
+        // Clear log function
+        function clearLog(logId) {
+            document.getElementById(logId).innerHTML = '<div>Log cleared</div>';
+        }
+        
+        // Mouse events
+        const mouseArea = document.getElementById('mouse-area');
+        const mouseLog = document.getElementById('mouse-log');
+        
+        mouseArea.addEventListener('click', logEvent);
+        mouseArea.addEventListener('dblclick', logEvent);
+        mouseArea.addEventListener('mousedown', logEvent);
+        mouseArea.addEventListener('mouseup', logEvent);
+        mouseArea.addEventListener('mousemove', throttle(logEvent, 500));
+        mouseArea.addEventListener('mouseenter', logEvent);
+        mouseArea.addEventListener('mouseleave', logEvent);
+        mouseArea.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            logEvent(e);
+            return false;
+        });
+        
+        // Keyboard events
+        const keyInput = document.getElementById('key-input');
+        const keyBox = document.getElementById('key-box');
+        const keyboardLog = document.getElementById('keyboard-log');
+        
+        keyInput.addEventListener('keydown', logEvent);
+        keyInput.addEventListener('keyup', logEvent);
+        keyInput.addEventListener('keypress', logEvent);
+        
+        // Also listen for keyboard events on the whole document
+        document.addEventListener('keydown', function(e) {
+            if (e.key.length === 1) {
+                keyBox.textContent = e.key.toUpperCase();
+            }
+            
+            if (e.key === ' ') {
+                keyBox.textContent = 'Space';
+            }
+            
+            logEvent(e, 'keyboard-log');
+        });
+        
+        // Form events
+        const form = document.getElementById('demo-form');
+        const nameInput = document.getElementById('name');
+        const countrySelect = document.getElementById('country');
+        const subscribeCheck = document.getElementById('subscribe');
+        const formLog = document.getElementById('form-log');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            logEvent(e, 'form-log');
+            formLog.innerHTML += '<div>Form would normally submit now</div>';
+        });
+        
+        nameInput.addEventListener('focus', logFormEvent);
+        nameInput.addEventListener('blur', logFormEvent);
+        nameInput.addEventListener('input', logFormEvent);
+        nameInput.addEventListener('change', logFormEvent);
+        
+        countrySelect.addEventListener('change', logFormEvent);
+        countrySelect.addEventListener('focus', logFormEvent);
+        countrySelect.addEventListener('blur', logFormEvent);
+        
+        subscribeCheck.addEventListener('change', logFormEvent);
+        
+        // Event logging functions
+        function logEvent(e, logId = 'mouse-log') {
+            const logElement = document.getElementById(logId);
+            logElement.innerHTML += `<div>${e.type} event</div>`;
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+        
+        function logFormEvent(e) {
+            const logElement = document.getElementById('form-log');
+            let details = '';
+            
+            if (e.type === 'input' || e.type === 'change') {
+                details = `: ${e.target.value}`;
+            }
+            
+            logElement.innerHTML += `<div>${e.target.id} ${e.type}${details}</div>`;
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+        
+        // Utility function to throttle frequent events like mousemove
+        function throttle(func, delay) {
+            let timeout = null;
+            return function() {
+                const context = this;
+                const args = arguments;
+                if (!timeout) {
+                    timeout = setTimeout(function() {
+                        func.apply(context, args);
+                        timeout = null;
+                    }, delay);
+                }
+            };
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,926 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h1>My Text Editor</h1>
+    <textarea name="" id="text" cols="30" rows="10"></textarea>
+    <input placeholder="type something">
+    <form action="/action">
+        <input placeholder="username" type="text" id="user"/>
+        <input placeholder="password" type="password" id="pass"/>
+        <button>submit</button>
+    </form>
+
+    <script src="ExtractFormat.js"></script>
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h1>My Text Editor</h1>
+    <p></p>
+    
+    <input placeholder="type something" id="text"/>
+
+    <script src="ExtractFormat.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Text Editor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-bottom: 10px;
+        }
+        
+        .editor-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .format-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        
+        .format-btn {
+            padding: 10px 15px;
+            background: linear-gradient(45deg, #3A7BD5, #00D2FF);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .format-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .format-btn.active {
+            background: linear-gradient(45deg, #00b09b, #96c93d);
+        }
+        
+        .text-input {
+            width: 100%;
+            min-height: 150px;
+            padding: 20px;
+            border: 2px solid #ffcc00;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            resize: vertical;
+            margin-bottom: 20px;
+        }
+        
+        .text-input:focus {
+            outline: none;
+            border-color: #ff8e53;
+            box-shadow: 0 0 10px rgba(255, 142, 83, 0.5);
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .action-btn {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .output-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .output-title {
+            font-size: 1.5rem;
+            color: #ffcc00;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .output-content {
+            min-height: 100px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        
+        .format-info {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .info-title {
+            font-size: 1.5rem;
+            color: #ffcc00;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .info-content {
+            line-height: 1.6;
+        }
+        
+        .info-content ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        .info-content li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .format-toolbar {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .format-btn {
+                width: 100%;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Enhanced Text Editor</h1>
+            <p class="subtitle">Type text and apply formatting to see the extracted formats</p>
+        </header>
+        
+        <div class="editor-container">
+            <div class="format-toolbar">
+                <button class="format-btn" id="boldBtn" data-format="bold">Bold</button>
+                <button class="format-btn" id="italicBtn" data-format="italic">Italic</button>
+                <button class="format-btn" id="uppercaseBtn" data-format="uppercase">UPPERCASE</button>
+                <button class="format-btn" id="lowercaseBtn" data-format="lowercase">lowercase</button>
+                <button class="format-btn" id="capitalizeBtn" data-format="capitalize">Capitalize</button>
+            </div>
+            
+            <textarea class="text-input" id="textInput" placeholder="Type something here..."></textarea>
+            
+            <div class="action-buttons">
+                <button class="action-btn" id="extractBtn">Extract Formatting</button>
+                <button class="action-btn" id="clearBtn">Clear Text</button>
+            </div>
+        </div>
+        
+        <div class="output-container">
+            <h2 class="output-title">Extracted Format Information</h2>
+            <div class="output-content" id="outputContent">
+                Format details will appear here after extraction...
+            </div>
+        </div>
+        
+        <div class="format-info">
+            <h2 class="info-title">How to Use This Editor</h2>
+            <div class="info-content">
+                <ul>
+                    <li>Type text in the text area</li>
+                    <li>Select a formatting option (Bold, Italic, etc.)</li>
+                    <li>Click <span class="highlight">Extract Formatting</span> to analyze your text</li>
+                    <li>The results will show detailed format information</li>
+                    <li>Use <span class="highlight">Clear Text</span> to start over</li>
+                </ul>
+                <p><span class="highlight">Pro Tip:</span> You can also use keyboard shortcuts: Ctrl+B for Bold, Ctrl+I for Italic</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Enhanced Text Editor | Created with HTML, CSS, and JavaScript</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textInput = document.getElementById('textInput');
+            const outputContent = document.getElementById('outputContent');
+            const extractBtn = document.getElementById('extractBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const formatBtns = document.querySelectorAll('.format-btn');
+            
+            let activeFormat = null;
+            
+            // Set up event listeners for format buttons
+            formatBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Toggle active state
+                    formatBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    activeFormat = this.dataset.format;
+                    
+                    // Apply the selected format to the text
+                    applyFormat(activeFormat);
+                });
+            });
+            
+            // Extract button event listener
+            extractBtn.addEventListener('click', function() {
+                extractFormatInfo();
+            });
+            
+            // Clear button event listener
+            clearBtn.addEventListener('click', function() {
+                textInput.value = '';
+                outputContent.textContent = 'Format details will appear here after extraction...';
+                formatBtns.forEach(b => b.classList.remove('active'));
+                activeFormat = null;
+                textInput.focus();
+            });
+            
+            // Keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                // Ctrl+B for bold
+                if (e.ctrlKey && e.key === 'b') {
+                    e.preventDefault();
+                    document.getElementById('boldBtn').click();
+                }
+                
+                // Ctrl+I for italic
+                if (e.ctrlKey && e.key === 'i') {
+                    e.preventDefault();
+                    document.getElementById('italicBtn').click();
+                }
+            });
+            
+            // Function to apply formatting
+            function applyFormat(format) {
+                const text = textInput.value;
+                if (!text) return;
+                
+                let formattedText = '';
+                
+                switch(format) {
+                    case 'bold':
+                        formattedText = makeBold(text);
+                        break;
+                    case 'italic':
+                        formattedText = makeItalic(text);
+                        break;
+                    case 'uppercase':
+                        formattedText = text.toUpperCase();
+                        break;
+                    case 'lowercase':
+                        formattedText = text.toLowerCase();
+                        break;
+                    case 'capitalize':
+                        formattedText = capitalizeWords(text);
+                        break;
+                }
+                
+                textInput.value = formattedText;
+            }
+            
+            // Formatting functions
+            function makeBold(text) {
+                return text.split(' ').map(word => {
+                    return `**${word}**`;
+                }).join(' ');
+            }
+            
+            function makeItalic(text) {
+                return text.split(' ').map(word => {
+                    return `_${word}_`;
+                }).join(' ');
+            }
+            
+            function capitalizeWords(text) {
+                return text.split(' ').map(word => {
+                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                }).join(' ');
+            }
+            
+            // Function to extract format information
+            function extractFormatInfo() {
+                const text = textInput.value;
+                if (!text) {
+                    outputContent.textContent = 'Please enter some text first.';
+                    return;
+                }
+                
+                // Analyze the text
+                const wordCount = text.split(/\s+/).filter(word => word.length > 0).length;
+                const charCount = text.length;
+                const lineCount = text.split('\n').length;
+                
+                // Detect formatting patterns
+                const boldCount = (text.match(/\*\*.+?\*\*/g) || []).length;
+                const italicCount = (text.match(/_.+?_/g) || []).length;
+                const uppercaseCount = (text.match(/\b[A-Z]{2,}\b/g) || []).length;
+                
+                // Create output
+                let output = `TEXT ANALYSIS RESULTS:\n\n`;
+                output += `Word Count: ${wordCount}\n`;
+                output += `Character Count: ${charCount}\n`;
+                output += `Line Count: ${lineCount}\n\n`;
+                output += `FORMATTING DETECTED:\n\n`;
+                
+                if (boldCount > 0) {
+                    output += `• Bold text: ${boldCount} instance(s)\n`;
+                }
+                
+                if (italicCount > 0) {
+                    output += `• Italic text: ${italicCount} instance(s)\n`;
+                }
+                
+                if (uppercaseCount > 0) {
+                    output += `• Uppercase words: ${uppercaseCount}\n`;
+                }
+                
+                if (boldCount === 0 && italicCount === 0 && uppercaseCount === 0) {
+                    output += `• No special formatting detected\n`;
+                }
+                
+                output += `\nCLEAN TEXT PREVIEW:\n\n`;
+                output += text.replace(/\*\*/g, '').replace(/_/g, '');
+                
+                outputContent.textContent = output;
+            }
+            
+            // Focus the text input on load
+            textInput.focus();
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracting Form Data with JavaScript</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 25px 0 15px;
+            color: #ffcc00;
+        }
+        
+        p {
+            margin: 15px 0;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+        }
+        
+        .form-section, .output-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #ffcc00;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 15px;
+            font-size: 1.1rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        #submitBtn {
+            background: linear-gradient(45deg, #00b09b, #96c93d);
+        }
+        
+        #resetBtn {
+            background: linear-gradient(45deg, #3A7BD5, #00D2FF);
+        }
+        
+        .output-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            min-height: 400px;
+        }
+        
+        .output-content {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            min-height: 300px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .method {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .method h3 {
+            color: #ffcc00;
+            margin-bottom: 15px;
+        }
+        
+        .code-example {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-family: monospace;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+        
+        .highlight {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Extracting Form Data with JavaScript</h1>
+            <p>Learn different methods to extract data from HTML forms using JavaScript</p>
+        </header>
+        
+        <div class="content">
+            <div class="form-section">
+                <h2>User Registration Form</h2>
+                
+                <div class="form-container">
+                    <form id="userForm">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="age">Age:</label>
+                            <input type="number" id="age" name="age" min="13" max="120" placeholder="Enter your age">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="country">Country:</label>
+                            <select id="country" name="country">
+                                <option value="">Select your country</option>
+                                <option value="usa">United States</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="canada">Canada</option>
+                                <option value="australia">Australia</option>
+                                <option value="germany">Germany</option>
+                                <option value="france">France</option>
+                                <option value="japan">Japan</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Subscribe to:</label>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+                                <label for="newsletter">Newsletter</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="notifications" name="notifications" value="yes">
+                                <label for="notifications">Notifications</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Gender:</label>
+                            <div class="checkbox-group">
+                                <input type="radio" id="male" name="gender" value="male">
+                                <label for="male">Male</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="radio" id="female" name="gender" value="female">
+                                <label for="female">Female</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="radio" id="other" name="gender" value="other">
+                                <label for="other">Other</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bio">Bio:</label>
+                            <textarea id="bio" name="bio" placeholder="Tell us about yourself" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="btn-group">
+                            <button type="submit" id="submitBtn">Submit Form</button>
+                            <button type="reset" id="resetBtn">Reset Form</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="method">
+                    <h3>Method 1: FormData Object</h3>
+                    <p>The FormData object provides a way to easily construct a set of key/value pairs representing form fields and their values.</p>
+                    <div class="code-example">
+// Using FormData to extract form values
+const form = document.getElementById('userForm');
+const formData = new FormData(form);
+
+// Access individual values
+const username = formData.get('username');
+const email = formData.get('email');
+
+// Iterate through all values
+for (let [key, value] of formData.entries()) {
+    console.log(key, value);
+}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="output-section">
+                <h2>Extracted Form Data</h2>
+                
+                <div class="output-container">
+                    <div class="output-content" id="outputContent">
+                        Form data will appear here after submission...
+                    </div>
+                </div>
+                
+                <div class="method">
+                    <h3>Method 2: Direct Element Access</h3>
+                    <p>You can access form values directly through DOM elements using their ID or name attributes.</p>
+                    <div class="code-example">
+// Accessing form values directly
+const username = document.getElementById('username').value;
+const email = document.getElementById('email').value;
+const country = document.getElementById('country').value;
+
+// For checkboxes and radio buttons
+const newsletter = document.getElementById('newsletter').checked;
+const gender = document.querySelector('input[name="gender"]:checked')?.value;
+                    </div>
+                </div>
+                
+                <div class="method">
+                    <h3>Method 3: Form Element Access</h3>
+                    <p>Form elements can be accessed through the form object itself using their name attributes.</p>
+                    <div class="code-example">
+// Accessing form values through form element
+const form = document.getElementById('userForm');
+const username = form.username.value;
+const email = form.email.value;
+const country = form.country.value;
+
+// For checkboxes
+const newsletter = form.newsletter.checked;
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Form Data Extraction Demo | Created with HTML, CSS, and JavaScript</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('userForm');
+            const outputContent = document.getElementById('outputContent');
+            
+            // Form submit event
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Method 1: Using FormData API
+                const formData = new FormData(form);
+                let output = 'METHOD 1: FormData API\n';
+                output += '========================\n';
+                
+                for (let [key, value] of formData.entries()) {
+                    output += `${key}: ${value}\n`;
+                }
+                
+                output += '\nMETHOD 2: Direct Element Access\n';
+                output += '===============================\n';
+                
+                // Method 2: Direct element access
+                output += `username: ${document.getElementById('username').value}\n`;
+                output += `email: ${document.getElementById('email').value}\n`;
+                output += `password: ${document.getElementById('password').value}\n`;
+                output += `age: ${document.getElementById('age').value}\n`;
+                output += `country: ${document.getElementById('country').value}\n`;
+                output += `newsletter: ${document.getElementById('newsletter').checked ? 'yes' : 'no'}\n`;
+                output += `notifications: ${document.getElementById('notifications').checked ? 'yes' : 'no'}\n`;
+                
+                const genderElement = document.querySelector('input[name="gender"]:checked');
+                output += `gender: ${genderElement ? genderElement.value : 'not selected'}\n`;
+                output += `bio: ${document.getElementById('bio').value}\n`;
+                
+                output += '\nMETHOD 3: Form Element Access\n';
+                output += '=============================\n';
+                
+                // Method 3: Form element access
+                output += `username: ${form.username.value}\n`;
+                output += `email: ${form.email.value}\n`;
+                output += `password: ${form.password.value}\n`;
+                output += `age: ${form.age.value}\n`;
+                output += `country: ${form.country.value}\n`;
+                output += `newsletter: ${form.newsletter.checked ? 'yes' : 'no'}\n`;
+                output += `notifications: ${form.notifications.checked ? 'yes' : 'no'}\n`;
+                
+                const genderForm = form.gender.value;
+                output += `gender: ${genderForm || 'not selected'}\n`;
+                output += `bio: ${form.bio.value}\n`;
+                
+                outputContent.textContent = output;
+            });
+            
+            // Form reset event
+            form.addEventListener('reset', function() {
+                outputContent.textContent = 'Form data will appear here after submission...';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Effect Card</title>
+    <style>
+        .card {
+            height: 295px;
+            width: 193px;
+            border: 2px solid black;
+            display: inline-block;
+            margin: 15px;
+            border-radius: 5px;
+            box-shadow: 1px 3px 7px black;
+            transition: 1s ease;
+        }
+        .card:hover {
+            box-shadow: 3px 7px 14px black;
+        }
+        img {
+            width: 100%;
+            border-radius: 5px 5px 0 0;
+        }
+        .desc {
+            padding: 0 0 0 7px;
+        }
+        h3 {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="men.png" alt="">
+        <div class="desc">
+            <h3>Rahul Kumar</h3>
+            <p>Data Analyst</p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="women.png" alt="">
+        <div class="desc">
+            <h3>Neha Sharma</h3>
+            <p>Software Engineer</p>
+        </div>
+    </div>
+</body>
+</html>

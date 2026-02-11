@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <style>
+        /* add some basic styling to make the changes visible */
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let button = document.createElement('button');
+        let input = document.createElement('input');
+        let h1 = document.createElement("h1");
+        let p = document.createElement("p");
+
+        input.type = "text";
+        input.placeholder = "username";
+        button.id = "btn";
+        button.innerHTML = "Click Me";
+
+        h1.innerHTML = "<u>DOM Practice</u>";
+        h1.style.color = "purple";
+
+        p.innerHTML = "Apna College <b>Delta</b> Practice";
+
+        document.querySelector("body").append(input);
+        document.querySelector("body").append(button);
+        document.querySelector("body").append(h1);
+        document.querySelector("body").append(p);
+
+        // access the button using querySelector and button id
+        let btn = document.querySelector("#btn");
+
+        // change the button background color to blue and text color to white
+        btn.style.backgroundColor = "blue";
+        btn.style.color = "white";
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+body {
+    text-align: center;
+}
+div {
+    height: 100px;
+    width: 450px;
+    border: 1px solid black;
+    margin: 15px auto;
+    text-shadow: 2px 2px 7px white;
+}
+#text {
+    margin: 10px auto;
+    margin-top: 100px;
+    padding: 0 2px 2px 2px;
+}

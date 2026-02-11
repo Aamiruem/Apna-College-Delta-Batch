@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #ff8e53, #ff6b6b);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        .color-display {
+            height: 150px;
+            border-radius: 15px;
+            margin: 25px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 22px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            transition: all 0.5s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        p {
+            margin: 20px 0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .box {
+            width: 120px;
+            height: 120px;
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+        }
+        
+        .color-code {
+            font-family: monospace;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: inline-block;
+        }
+        
+        .instructions {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            text-align: left;
+        }
+        
+        .instructions h4 {
+            margin-bottom: 10px;
+            color: #ffcc00;
+        }
+        
+        .instructions ul {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 0.5s ease;
+        }
+        
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Generate a Random Color</h3>
+        
+        <button id="generateBtn">Generate Color</button>
+        
+        <div class="color-display" id="colorDisplay">
+            This is your new color
+        </div>
+        
+        <div class="color-code" id="colorCode">#FFFFFF</div>
+        
+        <p>This is a paragraph that will change color along with the background.</p>
+        
+        <div class="box" id="colorBox"></div>
+        
+        <div class="instructions">
+            <h4>How it works:</h4>
+            <ul>
+                <li>Click the "Generate Color" button to create a new random color</li>
+                <li>The large box will display the new color</li>
+                <li>The square box will also change to the same color</li>
+                <li>The hex code of the color will be displayed</li>
+                <li>The paragraph text will change to a complementary color</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        Created with HTML, CSS, and JavaScript
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generateBtn');
+            const colorDisplay = document.getElementById('colorDisplay');
+            const colorBox = document.getElementById('colorBox');
+            const colorCode = document.getElementById('colorCode');
+            const paragraph = document.querySelector('p');
+            
+            // Initial color
+            let currentColor = '#6a89cc';
+            updateColor(currentColor);
+            
+            generateBtn.addEventListener('click', function() {
+                // Generate random hex color
+                const letters = '0123456789ABCDEF';
+                let color = '#';
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                
+                currentColor = color;
+                updateColor(color);
+                
+                // Add animation effect
+                colorDisplay.classList.add('pulse');
+                colorBox.classList.add('pulse');
+                
+                // Remove animation class after animation completes
+                setTimeout(() => {
+                    colorDisplay.classList.remove('pulse');
+                    colorBox.classList.remove('pulse');
+                }, 500);
+            });
+            
+            function updateColor(color) {
+                // Update color display
+                colorDisplay.style.backgroundColor = color;
+                colorBox.style.backgroundColor = color;
+                colorCode.textContent = color;
+                
+                // Calculate complementary text color
+                const textColor = getContrastYIQ(color);
+                colorDisplay.style.color = textColor;
+                paragraph.style.color = textColor;
+            }
+            
+            // Function to determine text color based on background
+            function getContrastYIQ(hexcolor) {
+                if (!hexcolor) return 'black';
+                
+                // Remove # if present
+                hexcolor = hexcolor.replace("#", "");
+                
+                const r = parseInt(hexcolor.substr(0, 2), 16);
+                const g = parseInt(hexcolor.substr(2, 2), 16);
+                const b = parseInt(hexcolor.substr(4, 2), 16);
+                const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+                return (yiq >= 128) ? 'black' : 'white';
+            }
+        });
+    </script>
+</body>
+</html>

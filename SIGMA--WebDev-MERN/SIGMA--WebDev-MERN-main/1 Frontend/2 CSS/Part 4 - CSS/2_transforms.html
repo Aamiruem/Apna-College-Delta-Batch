@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transforms and Shadow</title>
+    <style>
+        div {
+            height: 50px;
+            width: 150px;
+            margin: 10px auto;
+            padding: 30px;
+            color: #fff;
+            background-color: #e0d;
+            border: 2px solid black;
+            font-size: 20px;
+        }
+        div:nth-of-type(2n) {
+            background-color: #11f;
+        }
+        div:nth-of-type(3n) {
+            background-color: #fa1;
+        }
+        /* Transforms */
+        #one {
+            transform: rotate(-5deg); /* transform: rotateZ(-5deg); */
+            /* transform: rotateX(45deg); */ /* transform: rotateY(45deg); */
+        }
+        #two {
+            transform: scale(0.77);
+            /* transform: scaleX(1.2); transform: scaleY(0.5); */
+        }
+        #three {
+            transform: translate(-220px, 50px);
+        }
+        #four {
+            transform: skew(25deg, 9deg);
+            /* transform: skewX(25deg); transform: skewY(25deg); */
+        }
+        #five {
+            transform: rotate(-20deg) translate(250px) scale(0.7) skew(10deg);
+        }
+        /* Box Shadow */
+        #two {
+            box-shadow: 2px 3px 20px black;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div id="one">First</div>
+        <div id="two">Second</div>
+        <div id="three">Third</div>
+        <div id="four">Forth</div>
+        <div id="five">Fifth</div>
+    </section>
+</body>
+</html>

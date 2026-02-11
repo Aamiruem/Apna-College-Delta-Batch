@@ -1,0 +1,15 @@
+{
+  "name": "1e_importexample",
+  "version": "1.0.0",
+  "main": "2a_math.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sam Altmash",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "random-words": "^2.0.1"
+  }
+}

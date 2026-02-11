@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form in HTML</title>
+</head>
+<body>
+    <!-- Form in HTML -->
+    <form action="/server">
+        <!-- It's for "Get" request, After we will learn about "Post" request -->
+        <div>
+            <label for="username">Username : </label>
+            <input type="text" id="username" name="usr" placeholder="Enter your username..." required>
+        </div>
+        <div>
+            <label for="password">Password : </label>
+            <input type="password" id="password" name="pass" placeholder="Enter your password..." required>
+        </div>
+        <div>
+            <label for="age">Age : </label>
+            <input type="number" id="age" name="age" placeholder="Enter your age...">
+        </div>
+        <button>Submit</button>
+        <!-- <input type="submit"> -->
+        <!-- <input type="button" value="Click me"> -->
+        <input type="reset">
+    </form>
+    <hr>
+    <form action="https://www.youtube.com/results">
+        <input type="text" name="search_query" placeholder="Search on Youtube">
+        <button>Search</button>
+    </form>
+    <hr>
+    <!-- Practice Question : 8 -->
+    <form action="https://www.google.com/search">
+        <input type="text" name="q" placeholder="Search on Google">
+        <button>Search</button>
+    </form>
+    <hr>
+    <form action="/action">
+        <input type="checkbox" id="age" name="age" checked>
+        <label for="age">I am 18+ old.</label>
+        <div>
+            Choose your subject : 
+            <input type="radio" id="pcb" name="sub" value="pcb">
+            <label for="pcb">Science (PCB)</label>
+            <input type="radio" id="pcm" name="sub" value="pcm">
+            <label for="pcm">Science PCM)</label>
+            <input type="radio" id="art" name="sub" value="art">
+            <label for="art">Art</label>
+        </div>
+        <div>
+            Select your favourite fruits :
+            <input type="checkbox" id="apple" name="fruit" value="apple">
+            <label for="apple">Apple</label>
+            <input type="checkbox" id="mango" name="fruit" value="mango">
+            <label for="mango">Mango</label>
+            <input type="checkbox" id="orange" name="fruit" value="orange">
+            <label for="orange">Orange</label>
+            <input type="checkbox" id="grapes" name="fruit" value="grapes">
+            <label for="grapes">Grapes</label>
+        </div>
+        <div>
+            Select your state : 
+            <select name="state" id="state">
+                <option value="none" selected>Select your state</option>
+                <option value="bihar">Bihar</option>
+                <option value="delhi">Delhi</option>
+                <option value="haryana">Haryana</option>
+                <option value="punjab">Punjab</option>
+                <option value="rajasthan">Rajasthan</option>
+                <option value="up">Uttar Pradesh</option>
+                <option value="ukd">Uttarakhand</option>
+            </select>
+        </div>
+        <div>
+            <label for="vol">Select your volume : </label>
+            <input type="range" id="vol" name="vol" min="5" max="100" step="5" value="50">
+        </div>
+        <div>
+            <label for="file">Upload your file : </label>
+            <input type="file" id="file" name="file_name">
+        </div>
+        <div>
+            <label for="date">Select today's date : </label>
+            <input type="date" id="date" name="today_date">
+        </div>
+        <div>
+            <label for="time">Select current time : </label>
+            <input type="time" id="time" name="current_time">
+        </div>
+        <div>
+            <label for="color">Select your favorite color : </label>
+            <input type="color" id="color" name="fav_color">
+        </div>
+        <div>
+            <label for="feedback">Please give your valuable feedback : </label>
+            <br>
+            <textarea id="feedback" name="feedback" rows="7" cols="40" placeholder="Write your feedback here..."></textarea>
+        </div>
+        <button>Submit</button>
+    </form>
+    <hr>
+    <!-- Practice Question : 9 -->
+    <h2>Registration Form</h2>
+    <form action="/register">
+        <div>
+            <input type="text" name="fname" placeholder="First Name">
+            <input type="text" name="lname" placeholder="Last Name">
+        </div>
+        <div>
+            <label for="gender">Please select your gender : </label>
+            <select name="gender" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div> Do you agree to all terms of services? 
+            <input type="checkbox" id="tos_agree" name="tos">
+            <label for="tos_agree">Yes, I agree</label>
+        </div>
+        <button>Register</button>
+    </form>
+</body>
+</html>

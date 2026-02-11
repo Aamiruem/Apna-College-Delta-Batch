@@ -1,0 +1,40 @@
+:---------------- Backend Part 2 - NodeJs (Express) ----------------:
+______________________________________________________________________
+All theory written in this txt file, which is explained in the lectures
+
+
+:---------------------- Library vs Framework ------------------------:
+______________________________________________________________________
+Library :-
+        A library is a collection of pre-written code that can be used to perform 
+        specific tasks.
+    eg : axios
+__________________________________________________________________________________
+Framework :-
+            A framework is a set of pre-written code that provides a structure for
+            developing software applications.
+        eg : express
+
+____________________________________________________________________________________
+Express :-
+        A NodeJs web application framework that helps us to make web applications.
+        It is used for server side programming.
+4 major usage of express :-
+                        (1) Listen for incoming requests
+                        (2) Parse the requests
+                        (3) Match response with routes
+                        (4) Send suitable response
+___________________________________________________________________________
+:---------------------- Getting Started with Express ----------------------:
+
+*Ports are the logical endpoints of a network connection that is used to exchange
+        information between a web server and a web client.
+    eg : 3000 & 8080 (port)
+_______________________________________________________________________________________
+Routing :-
+        It is a process of selecting a path for traffic in a network or between or across
+        multiple networks.
+        
+________________________________________________________________________________________
+Nodemon :-
+        To automatically restart server with code changes.

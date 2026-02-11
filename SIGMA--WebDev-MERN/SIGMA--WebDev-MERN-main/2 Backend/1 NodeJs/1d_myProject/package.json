@@ -1,0 +1,15 @@
+{
+  "name": "1d_myproject",
+  "version": "1.0.0",
+  "description": "It is an example directory as a project when i am learning about 'npm' packages.",
+  "main": "\u001b[D\u001b[D\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[ \u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[\u001b[C\u001b[C\u001b[C\u001b[C\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[C\u001b[C\u001b[",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sam AltMash\u001b[D\u001b[D\u001b[D\u001b[D \u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[tmash",
+  "license": "ISC",
+  "dependencies": {
+    "figlet": "^1.7.0",
+    "give-me-a-joke": "^0.5.1"
+  }
+}

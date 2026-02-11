@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Queries in CSS</title>
+    <style>
+        h1 {
+            background-color: #ff0;
+            border: 2px solid black;
+        }
+        div {
+            height: 100px;
+            width: 100px;
+            background-color: pink;
+        }
+
+        /* Media Queries using min-width and max-width */
+        @media (max-width: 450px) { /* (min-width: 450px) */
+            h1 {
+                background-color: #f00;
+            }
+            div {
+                background-color: #00f;
+            }
+        }
+        /* Media Queries using both properties (min-width and max-width) */
+        @media (min-width: 350px) and (max-width: 700px) {
+            h1 {
+                color: white;
+                background-color: black;
+            }
+            div {
+                width: 200px;
+                color: white;
+                background-color: black;
+            }
+        }
+        /* Media Queries using Orientation (Landscape and Portrait) */
+        @media (orientation: landscape) { /* (orientation: portrait) */
+            h1 {
+                border: none;
+                text-shadow: 5px 5px 8px grey;
+            }
+            div {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Media Queries Demo</h1>
+    <div>This is a div</div>
+</body>
+</html>

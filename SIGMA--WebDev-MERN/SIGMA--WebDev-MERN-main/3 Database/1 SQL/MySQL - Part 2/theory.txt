@@ -1,0 +1,100 @@
+:--------------------------------- MySQL - Part 2 ---------------------------------:
+____________________________________________________________________________________
+
+Clauses :-
+          To define some conditions.
+____________________________________________________________________________________
+Where Clause :-
+              Operators
+-----------------------------------------------------------------------------------
+Arithmetic Operators :-
+                   :::>   + (addition),  - (substraction),  * (multiplication),
+                   :::>   / (division),  % (modulus)
+-------------------------------------------------------------------------------------
+Comparison Operators :-
+                  :::>  = (equal to),  != (not equal to),  > (greater than),  < (less than),
+                  :::>  >= (greater than equal to), <= (less than or equal to)
+-----------------------------------------------------------------------------------------
+Logical Operators :-
+                :::>  AND, OR, NOT, IN, BETWEEN, ALL, LIKE, ANY
+------------------------------------------------------------------------------
+Bitwise Operators :-
+                :::>  & (Bitwise AND),  | (Bitwise OR)
+____________________________________________________________________________________
+Frequently Used Operators :-
+                    AND     :::>  To check for both conditions to be true.
+                    OR      :::>  To check for one of the conditions to be true.
+                    BETWEEN :::>  Selects for a given range.
+                    IN      :::>  Matches any value in the list.
+                    NOT     :::>  To negate the given condition.
+____________________________________________________________________________________
+Limit Clause :-
+            Sets an upper limit on number of tuples/rows to be returned.
+____________________________________________________________________________________
+Order by Clause :-
+                  To sort in Ascending (ASC) and Descending (DESC) order.
+            ASC  : for Ascending order
+            DESC : for Descending order
+____________________________________________________________________________________
+Aggregate Functions :-
+                      Aggregate functions perform a calculation on set of values,
+                      and return a single value.
+                -----------------------------------------------------------------
+                :::> COUNT(), MIN(), MAX(), SUM(), AVG()
+____________________________________________________________________________________
+Group by Clause :-
+                   Groups rows that have same values into summary rows.
+                :- It collects data from multiple records and groups the result by one
+                    or more column.
+                :- Generally we use GROUP BY with some Aggregation function.
+____________________________________________________________________________________
+Having Clause :-
+                Similar to Where i.e. applies some condition on rows.
+                But it is used when we want to apply any condition after grouping.
+                ----------------------------------------------------------------------
+            ::> WHERE is for the table, HAVING is for a group.
+            ::> Group is necessary for HAVING.
+____________________________________________________________________________________
+General Order :-
+                If we want to write multiple clauses together so it is way that how
+                can we write. (Combination of clauses)
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+Table Queries :-
+              -----------------------------------------------------------------------
+Delete :-
+        To delete existing rows.
+        Use WHERE condition with DELETE otherwise they will delete all rows from the table.
+----------------------------------------------------------------------------------------
+Note :- Before executing the DELETE you need to Disable 'Safe Update Mode' and after the
+        disable you can execute DELETE.
+Enable :- SET SQL_SAFE_UPDATES = 1;  <--- Use this to enable 'Safe Update Mode'
+Disable :- SET SQL_SAFE_UPDATES = 0;  <--- Use this to disable 'Safe Update Mode'
+____________________________________________________________________________________
+Alter :-
+        To change the schema.
+        -----------------------------------------------------------------
+Add Column :-
+            To add a column in the table.
+            ------------------------------------------------------------
+Drop Column :-
+            To delete a column from the table.
+            ------------------------------------------------------------
+Rename To :-
+              To change/rename the table name.
+              ------------------------------------------------------------
+Change Column :-
+                To change the name of a column.
+                ------------------------------------------------------------
+Modify :-
+        To change the datatype and consstraints of a column.
+        ------------------------------------------------------------------
+Truncate :-
+           To delete table's data.
+           ------------------------------------------------------------------
+Drop :-
+        To delete table completely from database.
+        ---------------------------------------------------------------------
+        ____________________________________________________________________________________

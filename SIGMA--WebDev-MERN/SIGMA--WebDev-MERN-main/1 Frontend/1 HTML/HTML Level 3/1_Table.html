@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table in HTML</title>
+</head>
+<body>
+    <table border="black">
+        <caption>Food Menu</caption>
+        <tr>
+            <th>Sr No.</th>
+            <th>Items</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td align="center">1.</td>
+            <td align="center">Frooti</td>
+            <td align="center">10</td>
+        </tr>
+        <tr>
+            <td align="center">2.</td>
+            <td align="center">Samosa</td>
+            <td align="center">8</td>
+        </tr>
+        <tr>
+            <td align="center">3.</td>
+            <td align="center">Chips</td>
+            <td align="center">10</td>
+        </tr>
+        <tr>
+            <td align="center">4.</td>
+            <td align="center">Sting</td>
+            <td align="center">20</td>
+        </tr>
+        <tr>
+            <td align="center">5.</td>
+            <td align="center">Ice Cream</td>
+            <td align="center">25</td>
+        </tr>
+    </table>
+    <hr>
+    <!-- Semantic tags and Colspan & Rowspan attributes in table -->
+    <table border="black">
+        <caption>Food Menu</caption>
+        <thead>
+            <tr>
+                <th rowspan="2" align="center">Sr No.</th>
+                <th rowspan="2" align="center">Items</th>
+                <th colspan="2" align="center">Price</th>
+            </tr>
+            <tr>
+                <th>INR</th>
+                <th>USD</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td align="center">1.</td>
+                <td align="center">Frooti</td>
+                <td align="center">10</td>
+                <td align="center">0.12</td>
+            </tr>
+            <tr>
+                <td align="center">2.</td>
+                <td align="center">Samosa</td>
+                <td align="center">8</td>
+                <td align="center">0.09</td>
+            </tr>
+            <tr>
+                <td align="center">3.</td>
+                <td align="center">Chips</td>
+                <td align="center">10</td>
+                <td align="center">0.12</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <!-- Practice Question : 7 -->
+    <table border="black">
+        <caption>A test table with merged cells</caption>
+        <tr>
+            <td rowspan="2"></td>
+            <td colspan="2" align="center">Average</td>
+            <td rowspan="2" align="center">Red Eyes</td>
+        </tr>
+        <tr>
+            <td align="center">Height</td>
+            <td align="center">Weight</td>
+        </tr>
+        <tr>
+            <td align="center">Males</td>
+            <td align="center">1.9</td>
+            <td align="center">0.003</td>
+            <td align="center">40%</td>
+        </tr>
+        <tr>
+            <td align="center">Females</td>
+            <td align="center">1.7</td>
+            <td align="center">0.002</td>
+            <td align="center">43%</td>
+        </tr>
+    </table>
+</body>
+</html>

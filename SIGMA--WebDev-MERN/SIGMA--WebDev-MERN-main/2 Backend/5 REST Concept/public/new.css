@@ -1,0 +1,37 @@
+body {
+    margin: 5px;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white;
+}
+h2 {
+    color: aqua;
+    text-shadow: 2px 2px 2px maroon;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+input, textarea {
+    background-color: wheat;
+    color: black;
+    margin-left: 25px;
+    margin-top: 5px;
+    padding: 7px 5px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+.submit-btn {
+    background-color: aqua;
+    color: black;
+    font-size: 14.5px;
+    font-weight: 700;
+    border-radius: 9px;
+    padding: 7px 9px;
+    margin-left: 25px;
+    margin-top: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.submit-btn:hover {
+    font-size: 15px;
+}

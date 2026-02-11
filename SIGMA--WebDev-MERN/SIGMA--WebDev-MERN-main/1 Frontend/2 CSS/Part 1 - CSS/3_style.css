@@ -1,0 +1,15 @@
+h1 {
+    color: lightblue;
+    background-color: black;
+}
+h2 {
+    color: yellow;
+    background-color: red;
+    font-size: 33px;
+}
+p {
+    color: pink;
+    background-color: blue;
+    font-size: 19px;
+    letter-spacing: 2px;
+}

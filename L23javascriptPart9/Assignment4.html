@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* add some basic styling to make the changes visible */
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let button = document.createElement('button');
+        let input = document.createElement('input');
+        let h1 = document.createElement('h1');
+
+        input.type = "text";
+        input.placeholder = "username";
+        button.id = "btn";
+        button.innerHTML = "Click Me";
+
+        document.querySelector("body").append(input);
+        document.querySelector("body").append(button);
+        document.querySelector("body").append(h1);
+
+        // access the button using querySelector and button id
+        let btn = document.querySelector("#btn");
+
+        // change the button background color to blue and text color to white
+        btn.style.backgroundColor = "blue";
+        btn.style.color = "white";
+
+        // set the h1 element text to "DOM Practice" and underline it
+        h1.textContent = "DOM Practice";
+        h1.style.textDecoration = "underline";
+        h1.style.color = "purple";
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <style>
+        /* add some basic styling to make the changes visible */
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let button = document.createElement('button');
+        let input = document.createElement('input');
+        let h1 = document.createElement("h1");
+
+        input.type = "text";
+        input.placeholder = "username";
+        button.id = "btn";
+        button.innerHTML = "Click Me";
+
+        h1.innerHTML = "<u>DOM Practice</u>";
+        h1.style.color = "purple";
+
+        document.querySelector("body").append(input);
+        document.querySelector("body").append(button);
+        document.querySelector("body").append(h1);
+
+        // access the button using querySelector and button id
+        let btn = document.querySelector("#btn");
+
+        // change the button background color to blue and text color to white
+        btn.style.backgroundColor = "blue";
+        btn.style.color = "white";
+    </script>
+</body>
+</html>

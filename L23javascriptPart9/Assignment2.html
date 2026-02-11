@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let button = document.createElement('button');
+        let input = document.createElement('input');
+
+        input.type = "text";
+        input.placeholder = "username";
+        button.id = "btn";
+        button.innerHTML = "Click Me";
+
+        document.querySelector("body").append(input);
+        document.querySelector("body").append(button);
+    </script>
+</body>
+</html>

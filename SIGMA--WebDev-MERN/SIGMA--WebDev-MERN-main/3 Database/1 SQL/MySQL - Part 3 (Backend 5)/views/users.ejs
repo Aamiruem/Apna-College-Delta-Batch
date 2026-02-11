@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Users</title>
+    <style>
+        body {
+            padding: 10px;
+            display: grid;
+            grid-template-columns: 3.2fr 1fr;
+            column-gap: 50px;
+        }
+        table {
+            border: 1.5px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+        caption {
+            border: 1px solid black;
+            padding: 5px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 2px 5px;
+            text-align: center;
+        }
+        .edit-btn {
+            border: none;
+        }
+        .new-user {
+            padding: 3px 77px;
+            margin: 2px;
+            font-size: 17.5px;
+            background-color: whitesmoke;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .page-tools input, .search-btn {
+            padding: 2px 3px;
+            margin: 2px;
+            font-size: 16px;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>All Users Information</caption>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+        <% for (user of users) { %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td class="edit-btn">
+                    <form method="get" action="/user/<%=user.id%>/edit">
+                        <button>Edit Username</button>
+                    </form>
+                </td>
+                <td class="dlt-btn edit-btn">
+                    <form method="get" action="/user/<%=user.id%>/delete">
+                        <button>Delete User</button>
+                    </form>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+    <div class="page-tools">
+        <form method="get" action="/user/search">
+            <input type="search" name="u" placeholder="Search user">
+            <button class="search-btn">Search</button>
+        </form>
+        <br>
+        <form method="get" action="/user/new">
+            <button class="new-user">Add New User</button>
+        </form>
+    </div>
+</body>
+</html>

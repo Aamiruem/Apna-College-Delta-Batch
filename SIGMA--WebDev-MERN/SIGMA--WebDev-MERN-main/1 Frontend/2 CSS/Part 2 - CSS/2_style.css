@@ -1,0 +1,23 @@
+* {
+    font-family: 'Courier New';
+}
+h1 {
+    color: #1b74e4;
+}
+#searchbtn {
+    background-color: black;
+    color: white;
+}
+.userbtn {
+    background-color: aqua;
+}
+
+/* Practice Question : 2 */
+/* This method is valid */
+/* #myid p {
+    background-color: green;
+} */
+div[id="myid"] {
+    background-color: green;
+    color: white;
+}

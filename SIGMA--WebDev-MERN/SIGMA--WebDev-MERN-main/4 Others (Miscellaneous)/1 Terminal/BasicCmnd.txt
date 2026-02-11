@@ -1,0 +1,73 @@
+The Terminal :-
+                A text input and output environment.
+
+
+Different Terms :-
+    Command Line : Any interface that is used by entering textual commands (Gen. Windows centric)
+    Terminal : This is a type of command line (Gen. Mac centric)
+    Console : A command line interface used to work with your computer
+
+    Shell : A program running on terminal
+
+    Bash : A popular shell on Mac/Linux/Windows
+    Z-Shell : Another shell (by default on Mac)
+
+
+Basic Commands :-
+            ls : list files and folders/directories (Show my files and folders/directories)
+            pwd : print working directory (where am i?)
+            clear : clear screen of the terminal
+            Upwards Arrow Key : Show our previous command
+            Downwards Arrow Key : Show our next command
+
+
+Navigation :- 
+            Inside & outside directories
+        cd : change directory
+
+        cd <folder name> : Go to folder/directory (which folder name you entered)
+        cd .. : Go to back with double dott(..)
+        Tab Key : Fill exist directory/folder name when we typing any directory name
+
+Paths :-
+Relative Path : cd <directory name> (Ex. cd Desktop) it starts with name
+Absolute Path : cd </dir name/dir name/dir name> (Ex. cd /Users/lenovo/Desktop) it starts 
+                with / (slash)
+cd ../../.. : three time back
+cd / : root directory
+cd ~ : home directory
+
+
+Making directories/folders and files :-
+                mkdir : make directory/folder
+                mkdir <directory name> : which directory name you want to keep (Ex. mkdir newDir)
+                mkdir <relative path> : mkdir Desktop/newDir/relDir
+                mkdir <absolute path> : mkdir /Users/lennovo/newDir/relDir/absDir
+
+
+Flags :-
+       Flags are characters that we pass with commands to modify their behaviour
+Manual Command :
+       man ls : gives information about ls command
+       man mkdir : gives information about mkdir command
+Commands with flags :
+            ls -l : list in long format
+            ls -a : include directory entries whose names begin with a dot (show all hidden files/dirs)
+            ls -la : both with one command
+
+
+Touch command :-
+            Used to create files
+touch <file name> : create a new file
+touch index.html : Created a file with .html extension (HTML file)
+touch style.css : (CSS file)
+touch script.js : (JavaScript file)
+touch notes.txt : (Document file)
+
+
+Deleting files and directories/folders :-
+                                rm : removes files
+                                rmdir : removes empty directory/folder
+                                rm -rf : removes any directory/folder
+
+Note : we cannot restore any file or folder which is deleted by this delete commands

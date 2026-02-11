@@ -1,0 +1,40 @@
+/* Qs: 1 */
+#box1 {
+    height: 100px;
+    width: 100px;
+    background-color: green;
+    transition: width 2s ease-in 0.5s;
+}
+#box1:hover {
+    width: 100%;
+}
+/* Qs: 2 */
+#box2 {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    transform: translate(200px 200px) rotate(90deg);
+}
+/* Qs: 3 */
+#box3 {
+    height: 100px;
+    width: 100px;
+    background-color: lightblue;
+    transform: skewX(20deg);
+}
+/* Qs: 4 */
+#box4 {
+    height: 100px;
+    width: 100px;
+    background-color: lightgreen;
+    box-shadow: 2px 2px 5px green;
+}
+/* Qs: 5 */
+#myPic {
+    height: 200px;
+    width: 200px;
+    background-color: pink;
+    background-image: url("picture.jpeg");
+    background-size: cover;
+    opacity: 50%;
+}

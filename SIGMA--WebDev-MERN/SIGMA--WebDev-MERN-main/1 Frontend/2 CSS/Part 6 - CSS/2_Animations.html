@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animations</title>
+    <style>
+        .box {
+            height: 100px;
+            width: 300px;
+            background-color: pink;
+            font-size: 0px;
+
+            animation-name: animation1;
+            animation-duration: 4s;
+            animation-timing-function: ease-in;
+            animation-delay: 0.15s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        .box1 {
+            background-color: orange;
+            /* ShortHand to apply Animation */
+            animation: animation2 4s ease-in 0.1s infinite alternate;
+        }
+        .box2 {
+            animation: animation3 4s ease-in 0.1s infinite alternate;
+        }
+        @keyframes animation1 {
+            from {
+                font-size: 1px;
+            }
+            to {
+                margin: 10px;
+                font-size: 40px;
+                color: white;
+                background-color: black;
+            }
+        }
+        @keyframes animation2 {
+            from {
+                height: 1px;
+                width: 1px;
+                background-color: black;
+            }
+            to {
+                margin: 20px;
+                height: 300px;
+                width: 300px;
+                border-radius: 50%;
+                background-color: red;
+            }
+        }
+        @keyframes animation3 {
+            1% {
+                height: 1vh;
+                width: 1vw;
+                background-color: black;
+            }
+            25% {
+                width: 25vw;
+                background-color: blue;
+            }
+            50% {
+                width: 50vw;
+                background-color: purple;
+            }
+            75% {
+                width: 75vw;
+                background-color: green;
+            }
+            100% {
+                height: 20vh;
+                width: 100vw;
+                background-color: red;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Animations</h1>
+    <div class="box">This is a box</div>
+    <div class="box2"></div>
+    <div class="box1"></div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Detail</title>
+    <style>
+        table {
+            border: 1.5px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+        caption {
+            border: 1px solid black;
+            padding: 5px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 2px 8px;
+            text-align: center;
+        }
+        .edit-btn {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Search result for: <%= user.username %></h2>
+    <br>
+    <table>
+        <caption>User Detail</caption>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td><%= user.id %></td>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td class="edit-btn">
+                    <form method="get" action="/user/<%=user.id%>/edit">
+                        <button>Edit Username</button>
+                    </form>
+                </td>
+                <td class="dlt-btn edit-btn">
+                    <form method="get" action="/user/<%=user.id%>/delete">
+                        <button>Delete User</button>
+                    </form>
+                </td>
+        </tr>
+    </table>
+</body>
+</html>

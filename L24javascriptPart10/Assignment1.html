@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDiv">Hover over me!</div>
+    <input id="myInput" type="text" placeholder="Type something...">
+    <div id="myDiv" style="height: 500px; overflow-y: scroll;">
+        <!-- add some content to make the div scrollable -->
+        <p>Scroll down!</p>
+        <p>Scroll down!</p>
+        <p>Scroll down!</p>
+        <!-- ... -->
+      </div>
+      <img id="myImage" src="https://via.placeholder.com/350x150" alt="An image">
+    <script>
+        const Div = document.getElementById('myDiv');
+
+Div.addEventListener('mouseout', function(event) {
+  console.log('Mouse out!');
+  console.log(event);
+});
+
+const myInput = document.getElementById('myInput');
+
+myInput.addEventListener('keypress', function(event) {
+  console.log('Key pressed!');
+  console.log(event);
+});
+
+const myDiv = document.getElementById('myDiv');
+
+myDiv.addEventListener('scroll', function(event) {
+  console.log('Scrolled!');
+  console.log(event);
+});
+const myImage = document.getElementById('myImage');
+
+myImage.addEventListener('load', function(event) {
+  console.log('Image loaded!');
+  console.log(event);
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hello Kamran</h1>
+
+    <script src="PracticeQS.js">
+        let para1 = document.createElement("p");
+        para1.innerText = "Hey I'm red and I am new para";
+        document.body.append(para1);
+        para1.classList.add("red");
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+<br>
+<hr>
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Practice</title>
+    <style>
+        /* Optional: Just to make the container visible */
+        #container {
+            margin: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+
+    <script>
+        // Get the container element
+        const container = document.getElementById('container');
+
+        // i) Create red paragraph
+        const redPara = document.createElement('p');
+        redPara.textContent = "Hey I'm red!";
+        redPara.style.color = 'red';
+        container.appendChild(redPara);
+
+        // ii) Create blue h3
+        const blueH3 = document.createElement('h3');
+        blueH3.textContent = "I'm a blue h3!";
+        blueH3.style.color = 'blue';
+        container.appendChild(blueH3);
+
+        // iii) Create div with border and pink background
+        const styledDiv = document.createElement('div');
+        styledDiv.style.border = '1px solid black';
+        styledDiv.style.backgroundColor = 'pink';
+
+        // Create h1 inside div
+        const divH1 = document.createElement('h1');
+        divH1.textContent = "I'm in a div";
+        styledDiv.appendChild(divH1);
+
+        // Create paragraph inside div
+        const divPara = document.createElement('p');
+        divPara.textContent = "ME TOO!";
+        styledDiv.appendChild(divPara);
+
+        // Add the styled div to container
+        container.appendChild(styledDiv);
+    </script>
+</body>
+
+</html>

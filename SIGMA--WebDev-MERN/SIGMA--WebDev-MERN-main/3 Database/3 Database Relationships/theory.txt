@@ -1,0 +1,41 @@
+:---------------------- Database Relationships ----------------------:
+______________________________________________________________________
+______________________________________________________________________
+______________________________________________________________________
+
+Relationships :-
+SQL (via Foreign Keys) :-
+                       : One to one relation - [(1 x 1) Cardinality]
+                       : One to many relation - [(1 x N) Cardinality]
+                       : Many to many relation - [(N x N) Cardinality]
+______________________________________________________________________
+______________________________________________________________________
+
+Mongo Relationships :-
+One to many | Approach 1 (One to few) :-
+                                      : Store the child document inside parent.
+                         Example file : user.js
+________________________________________________________________________________
+One to many | Approach 2 :-
+                         : Store a reference to the child document inside parent.
+            Example file : customer.js
+_________________________________________________________________________________
+One to many | Approach 3 (One to squillions) :-
+                                             : Store a reference to the parent document
+                                               inside child.
+                                Example file : posts.js
+_____________________________________________________________________________________
+_____________________________________________________________________________________
+_____________________________________________________________________________________
+Read this docs :-
+                Read on this website :- https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design
+_____________________________________________________________________________________________________________________
+_____________________________________________________________________________________________________________________
+_____________________________________________________________________________________________________________________
+
+Handling Deletion :-
+using Mongoose Middleware :- We can use 2 middlewares :
+                      Pre :- Run before the query is executed.
+                     Post :- Run after the query is executed.
+              Example file : customer.js
+_____________________________________________________________________________________________________________________

@@ -1,0 +1,74 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon says Game</title>
+    <link rel="stylesheet" href="simonGame.css">
+</head>
+<body>
+    <h1>Simon Says Game</h1>
+    <h2>Press any key to start the game</h2>
+    <div class="btn-container">
+        <div class="line-one">
+            <div class="btn red" type="button" id="red">1</div>
+            <div class="btn yellow" type="button" id="yellow">2</div>
+        </div>
+
+        <div class="line-one">
+            <div class="btn green" type="button" id="green">3</div>
+            <div class="btn purple" type="button" id="purple">4</div>
+        </div>
+    </div>
+    <script src="simonGame.js"></script>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Says Game</title>
+    <link rel="stylesheet" href="simonGame.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <h1>SIMON SAYS</h1>
+        <div class="game-info">
+            <h2 id="level-title">Press Any Key to Start</h2>
+            <div class="score-display">High Score: <span id="high-score">0</span></div>
+        </div>
+        
+        <div class="game-board">
+            <div class="btn-container">
+                <div class="line-one">
+                    <div class="btn red" id="red"></div>
+                    <div class="btn yellow" id="yellow"></div>
+                </div>
+                <div class="line-two">
+                    <div class="btn green" id="green"></div>
+                    <div class="btn purple" id="purple"></div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="control-btn" id="start-btn">Start</button>
+                <button class="control-btn" id="reset-btn">Reset</button>
+            </div>
+        </div>
+    </div>
+    
+    <audio id="red-sound" src="sounds/red.mp3"></audio>
+    <audio id="yellow-sound" src="sounds/yellow.mp3"></audio>
+    <audio id="green-sound" src="sounds/green.mp3"></audio>
+    <audio id="purple-sound" src="sounds/purple.mp3"></audio>
+    <audio id="wrong-sound" src="sounds/wrong.mp3"></audio>
+    
+    <script src="simonGame.js"></script>
+</body>
+</html>

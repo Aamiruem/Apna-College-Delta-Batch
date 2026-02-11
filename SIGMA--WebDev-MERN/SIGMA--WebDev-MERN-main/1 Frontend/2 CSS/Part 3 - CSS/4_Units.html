@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relative units - CSS</title>
+    <style>
+        /* Percentange(%), em & rem(Root em) */
+        .outer {
+            height: 400px;
+            width: 400px;
+            background-color: yellow;
+            border: 2px solid black;
+            margin: 50px;
+            font-size: 20px;
+        }
+        .inner {
+            height: 100px;
+            width: 100px;
+            background-color: pink;
+            border: 2px solid black;
+            margin-left: 10%; /* Percentage: relativee to parent(40px) */
+            font-size: 1.5em; /* em: relativee to parent(30px) */
+            padding: 1em; /* em: relativee to its font-size(30px) */
+        }
+        button {
+            background-color: yellow;
+            border-radius: 10px;
+            font-size: 50px;
+            padding-left: 1em; /* em: relativee to its font-size(50px) */
+            padding-right: 1em; /* em: relativee to its font-size(50px) */
+        }
+        section {
+            font-size: 20px;
+        }
+        /* div { its increasing relative to every parent, this is a drawback of em
+            font-size: 1.5em;
+        } */
+        div { /* it will be relative to only one outer parent of all eachother's child, which is section */
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <h2>Heading</h2>
+    <div class="outer">OUTER
+        <div class="inner">INNER</div>
+    </div>
+    <button>Click me</button>
+    <section>Section
+        <div>Div1
+            <div>Div2
+                <div>Div3</div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

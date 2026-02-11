@@ -1,0 +1,16 @@
+body {
+    margin: 20px;
+}
+input, textarea {
+    margin: 3px 5px;
+}
+.submit-btn {
+    background-color: dodgerblue;
+    color: white;
+    font-weight: bold;
+    border: 1px solid lightblue;
+    padding: 6px 12px;
+    border-radius: 7px;
+    font-size: 14px;
+    cursor: pointer;
+}

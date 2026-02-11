@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid in CSS</title>
+    <style>
+        .container {
+            height: 300px;
+            width: 600px;
+            outline: 2px solid black;
+            display: grid;
+            grid-template-areas: "nav nav nav"
+                                "side article article"
+                                "footer footer footer";
+        }
+        .item1 {
+            grid-area: nav;
+            background-color: pink;
+        }
+        .item2 {
+            grid-area: side;
+            background-color: #ff0;
+        }
+        .item3 {
+            grid-area: article;
+            background-color: lightgreen;
+        }
+        .item4 {
+            grid-area: footer;
+            background-color: lightblue;
+        }
+        .item5 {
+            grid-area: nav;
+        }
+        .items {
+            height: 50px;
+            /* width: 100px; */
+            border: 2px solid orange;
+            text-align: center;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Grid Playground</h1>
+    <div class="container">
+        <div class="items item1">1</div>
+        <div class="items item2">2</div>
+        <div class="items item3"">3</div>
+        <div class="items item4"">4</div>
+        <div class="items item5"">5</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+:------------------------------- Starting with SQL -------------------------------:
+___________________________________________________________________________________
+
+What is Database :-
+                    It is a collection of data in a format that can be easily accessed.
+Why databases?
+             : can store large data
+             : features like security, scalability etc.
+             : easier to insert, update or delete data
+___________________________________________________________________________________
+
+SQL vs NoSQL :-
+        SQL :-
+            :- Relatinal Database  (data stored in tables)
+         eg :- MySQL, Oracle, PostgreSQL etc.
+
+         NoSQL :-
+                :- Non Relational Database (data stored in document[like-key:value/graphs etc.])
+             eg :- MongoDb, Cassandra, Neo4j etc.
+___________________________________________________________________________________
+
+SQL :- Structured Query Language
+    SQL is a programming language used to interact with relational databases.
+
+Table in SQL :-                     USERS INFO TABLE
+    -----------------------------------------------------------------------------------
+            |   Id   |    Name    |          Email           |  Followers | Following |
+            |   1    |   John     |    john123@gmail.com     |      123   |     32    |
+            |   2    |  Starc     |     starc123@gmail.com   |      213   |     64    |
+            |   3    |  Russell    |    russell123@gmail.com |      312   |     48    |
+            ---------------------------------------------------------------------------
+            Columns  ->  Vertical/Portrait
+            Rows     ->  Horizontal/Landscape  -> touple (called in database)
+___________________________________________________________________________________
+
+Our 1st Database :-
+                CREATE DATABASE db_name;  -> Create a new database
+                DROP DATABASE db_name;    -> Delete a database
+                USE db_name;              -> Use database before creating a table
+___________________________________________________________________________________
+
+Our 1st Table :-
+                CREATE TABLE table_name (          -> Create a new table
+                    column_name1 datatype constraint,
+                    column_name2 datatype constraint,
+                    column_name3 datatype constraint
+                );
+                ------------------------------------------------------------------------
+                INSERT INTO table_name                          -> Adding values in table
+                VALUES (column1_value, column2_value, column3_value),
+                       (column1_value, column2_value, column3_value),
+                       (column1_value, column2_value, column3_value);
+                ------------------------------------------------------------------------
+                SELECT * FROM table_name;   -> Show/Check table data
+___________________________________________________________________________________
+Database Queries :-
+        CREATE DATABASE db_name;    -> Create a new database
+        CREATE DATABASE IF NOT EXISTS db_name;  -> Create database if already not exists
+        DROP DATABASE db_name;  -> Delete a database
+        DROP DATABASE IF EXISTS db_name;   -> Delete database if already exists
+        SHOW DATABASES;   -> Show all databases
+        USE db_name;      -> Use the database before showing the table
+        SHOW TABLES;      -> Show all tables
+___________________________________________________________________________________
+Table Queries :-
+            CREATE -> Create table
+            Syntax :- CREATE TABLE table_name (
+                        col1_name datatype constraint,
+                        col2_name datatype constraint
+                      );
+            ----------------------------------------------------
+            INSERT -> Insert data
+            Syntax :- INSERT INTO table_name
+                        (col1_name, col2_name)
+                        VALUES
+                        (col1_val, col2_val),
+                        (col1_val, col2_val);
+            ---------------------------------------------------
+            UPDATE -> Update/Change data
+            ALTER -> Change columns
+            TRUNCATE -> Empty table
+            DELETE -> Delete table
+___________________________________________________________________________________
+
+Data Types :-
+----------------------------------------------------------------------------------
+SR NO.|  DATATYPE |                 DESCRIPTION                         |  USAGE
+----- | --------- | --------------------------------------------------- | -------
+  1.  |  CHAR     | String(0-255), can store chars of fixed length      | CHAR(50)
+  2.  |  VARCHAR  | String(0-255), can store chars up to given length   | VARCHAR(50)
+  3.  |  BLOB     | String(0-65535), can store binary large object      | BLOB(1000)
+  4.  |  INT      | integer(-2,147,483,648 to 2,147,483,647)            | INT
+  5.  |  TINYINT  | integer(-128 to 127)                                | TINYINT
+  6.  |  BIGINT   | integer(-9,223,372,036,854,775,808 to +[same-1])    | BIGINT
+  7.  |  BIT      | can store x-bit values, x can range => (1 to 64)    | BIT(2)
+  8.  |  FLOAT    | decimal number - with precision to 23 digits        | FLOAT
+  9.  |  DOUBLE   | decimal number - with 24 to 53 digits               | DOUBLE
+  10. |  BOOLEAN  | boolean values 0 or 1                               | BOOLEAN
+  11. |  DATE     | date format & range => (1000-01-01 to 9999-12-31)   | DATE
+  12. |  YEAR     | year in format ranging from  (1901 to 2155)         | YEAR
+  ----------------------------------------------------------------------------------
+  UNSIGNED :-
+            Example with TINYINT : Its range is -128 to 127, if i want to convert all
+            negative integer to positive so it will be give us a range till  positive 256
+            Usage : column_name TINYINT UNSIGNED
+___________________________________________________________________________________
+
+Constraints :-
+             Rules for data in the table
+   NOT NULL : columns cannot have a null value
+   UNIQUE   : all values in columns are different
+   DEFAULT  : sets the default value of a column
+            : Example ->   salary INT DEFAULT 25000
+   CHECK    : it can limit the values allowed in a column
+            : Example ->   CONSTRAINT age_check CHECK (age >= 18 AND city = "Delhi")
+    -----------------------------------------------------------------------------------
+    PRIMARY KEY : makes a column UNIQUE & NOT NULL but used only for one
+    FOREIGN KEY : prevent actions that would destroy links between tables
+___________________________________________________________________________________
+See Visuals to Table in Diagram form :- Click on "Database" then click on 'Reverse
+                                    Engineer' and after the Execute you can see it.
+                            : "Diagram" called 'ER Diagram'
+                            : "Tables" called 'Relation' and "ER" mean 'Entity Relation'
+___________________________________________________________________________________
+
+What are Keys :-
+                Keys are special columns in the table.
+                -----------------------------------------------------------------
+Primary Key :- It is a column (or set of columns) in a table that uniquely identifies
+               each row. (a unique id)
+              : There is only 1 PK & it should be NOT null.
+              -------------------------------------------------------------------
+Foreign Key :- A foriegn key is a column (or set of columns) in a table that refers
+               to the primary key in another table.
+              : FKs can have duplicate & null values.
+              : There can be multiple FKs.
+___________________________________________________________________________________
+
+SELECT COMMAND :- Select & Show data from the Database.
+        Syntax :---------------------------------------------------->
+                SELECT * FROM table_name;   -> Show all data using *
+                SELECT col1_name col2_name FROM table_name;  -> Show data only of given column
+                SELECT DISTINCT col1_name FROM table_name;   -> Show unique data using DISTINCT
+___________________________________________________________________________________

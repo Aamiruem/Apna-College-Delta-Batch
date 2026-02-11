@@ -1,0 +1,91 @@
+h1, h2 {
+    text-align: center;
+    text-decoration: underline;
+    font-family: monospace;
+    margin-top: 50px;
+}
+
+/* Answer: 1 */
+#container {
+    height: 100vh;
+    margin: 10px auto;
+    padding: 0 55px;
+    display: grid;
+    grid-template-rows: repeat(12, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 10px;
+}
+#container div {
+    background-color: pink;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.header {
+    grid-column: 1/ span 12;
+}
+.sidebar {
+    grid-row: 2/ span 10;
+    grid-column: 1/ span 3;
+}
+.navigation {
+    grid-column: 4/ span 6;
+}
+.ads {
+    grid-row: 2/ span 10;
+    grid-column: 10/ span 3;
+}
+.main {
+    grid-row: 3/ span 9;
+    grid-column: 4/ span 6;
+}
+.footer {
+    grid-column: 1/ span 12;
+}
+
+/* Answer: 2 */
+/* Add MEDIA QUERY in Qs 1 layout */
+h2 > span {
+    font-size: 14px;
+}
+@media (max-width: 720px) {
+    .header {
+        grid-column: 1/ span 12;
+    }
+    .navigation {
+        grid-row: 2;
+        grid-column: 1/ span 12;
+    }
+    .sidebar {
+        grid-row: 3/ span 9;
+        grid-column: 1/ span 3;
+    }
+    .main {
+        grid-row: 3/ span 9;
+        grid-column: 4/ span 9;
+    }
+    .ads {
+        grid-row: 12;
+        grid-column: 1/ span 3;
+    }
+    .footer {
+        grid-column: 4/ span 9;
+    }
+}
+
+.loader {
+    height: 120px;
+    width: 120px;
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid goldenrod;
+    border-radius: 50%;
+    margin: 10px auto;
+    animation: spin 1.35s linear infinite;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

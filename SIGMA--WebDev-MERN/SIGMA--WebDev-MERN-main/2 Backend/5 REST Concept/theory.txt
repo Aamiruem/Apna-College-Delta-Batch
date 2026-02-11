@@ -1,0 +1,30 @@
+:------------------------- (Node Js - REST) -------------------------:
+______________________________________________________________________
+REST :-
+        (Representational State Transfer) :- REST is an architectural style that defines
+        a set of constraints to be used for creating web services.
+_______________________________________________________________________________________
+RESTFUL APIs :-
+                APIs that applies concepts or rules of REST. We will use RESTFUL APIs
+                to perform CRUD operations.
+                [Read a blog post on StackOverflow :- Best practices for REST API design]
+_______________________________________________________________________________________
+CRUD Operations :-
+                  It is a term that comes from databases.
+                  [CRUD :- Create, Read, Update & Delete]
+                  --------------------------------------------                  
+GET : Retrieves resources [Read]
+POST : Submits new data to the server [Create]
+PUT : Update existing data. [Update]
+PATCH : Update existing data partially [Update]
+DELETE : Removes data [Delete]
+_______________________________________________________________________________________
+_______________________________________________________________________________________
+_______________________________________________________________________________________
+Creating RESTful APIs :-
+        GET     -   /posts     =>   to get data for all posts   [INDEX/MAIN ROUTE]
+        POST    -   /posts     =>   to add a new post           [CREATE ROUTE]
+        GET     -   /posts/:id =>   to get one post (using id)          [VIEW ROUTE]
+        PATCH   -   /posts/:id =>   to update specific post (using id)  [UPDATE ROUTE]
+        DELETE  -   /posts/:id =>   to delete specific post (using id)  [DESTROY ROUTE]
+_______________________________________________________________________________________

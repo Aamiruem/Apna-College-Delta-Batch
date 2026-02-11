@@ -1,0 +1,176 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spider-Man</title>
+    <link rel="stylesheet" href="Dom.css" />
+  </head>
+  <body>
+    <h1>Spider Man</h1>
+    <img src="assets/spiderman_img.png" id="mainImg" alt="spiderman" class="abc, xyz"  />
+    <h2>About</h2>
+    <p>
+      <b>Spider-Man</b> is a superhero appearing in American comic books
+      published by
+      <a href="https://www.google.com/search?q=Marvel+Comics">Marvel Comics</a>.
+      Created by writer-editor <b>Stan Lee</b> and artist <b>Steve Ditko</b>, he
+      first appeared in the anthology comic book
+      <a href="https://www.google.com/search?q=Amazing+Fantasy"
+        >Amazing Fantasy</a
+      >
+      #15 (August 1962) in the <a href="#">Silver Age of Comic Books</a>. He has
+      been featured in comic books, television shows, films, video games,
+      novels, and plays
+    </p>
+
+    <div class="box">
+      <h4>Publication Info</h4>
+      <ul>
+        <li><a href="#" class="boxLink">Publisher</a></li>
+        <li><a href="#" class="boxLink">First Appearance</a></li>
+        <li>
+          Created by
+          <ul>
+            <li><a href="#" class="boxLink">Stan Lee</a></li>
+            <li><a href="#" class="boxLink">Steve Ditko</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <h2>Creation & Development</h2>
+    <p id="description">
+      In 1962, with the success of the Fantastic Four, Marvel Comics editor and
+      head writer Stan Lee was casting for a new superhero idea. He said the
+      idea for Spider-Man arose from a surge in teenage demand for comic books
+      and the desire to create a character with whom teens could identify. As
+      with Fantastic Four, Lee saw Spider-Man as an opportunity to "get out of
+      his system" what he felt was missing in comic books. In his autobiography,
+      Lee cites the non-superhuman pulp magazine crime fighter the Spider as a
+      great influence, and in a multitude of print and video interviews, Lee
+      stated he was further inspired by seeing a spider climb up a wall—adding
+      in his autobiography that he has told that story so often he has become
+      unsure of whether or not this is true.
+    </p>
+    <div class="images">
+      <img src="assets/creation_1.png" class="oldImg" alt="Spider-Man creation image 1" />
+      <img src="assets/creation_2.jpeg" class="oldImg" alt="Spider-Man creation image 2" />
+      <img src="assets/creation_3.jpeg" class="oldImg" alt="Spider-Man creation image 3"/>
+    </div>
+
+    <script src="Dom.js"></script>
+  </body>
+</html>
+ -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about Spider-Man, the iconic Marvel Comics superhero created by Stan Lee and Steve Ditko">
+  <title>Spider-Man: The Amazing Superhero | Marvel Comics</title>
+  <link rel="stylesheet" href="Dom.css" />
+  <link rel="preload" href="assets/spiderman_img.png" as="image">
+</head>
+<body>
+  <header>
+    <h1>Spider-Man</h1>
+    <figure>
+      <img src="assets/spiderman_img.png" id="mainImg" alt="Spider-Man in classic red and blue suit swinging between buildings" 
+           class="hero-image" width="800" height="450" loading="lazy" />
+      <figcaption>Spider-Man, Marvel's iconic wall-crawler</figcaption>
+    </figure>
+  </header>
+
+  <main>
+    <article>
+      <section aria-labelledby="about-heading">
+        <h2 id="about-heading">About Spider-Man</h2>
+        <p>
+          <strong>Spider-Man</strong> is a superhero appearing in American comic books
+          published by
+          <a href="https://www.marvel.com/comics" target="_blank" rel="noopener noreferrer">Marvel Comics</a>.
+          Created by writer-editor <strong>Stan Lee</strong> and artist <strong>Steve Ditko</strong>, he
+          first appeared in the anthology comic book
+          <a href="https://www.marvel.com/comics/issue/1272/amazing_fantasy_1962_15" 
+             target="_blank" rel="noopener noreferrer">Amazing Fantasy #15</a>
+          (August 1962) during the <a href="#silver-age">Silver Age of Comic Books</a>. 
+          Spider-Man has since been featured in comic books, television shows, films, 
+          video games, novels, and plays.
+        </p>
+      </section>
+
+      <aside class="publication-info" aria-labelledby="pub-info-heading">
+        <h3 id="pub-info-heading">Publication Info</h3>
+        <ul class="info-list">
+          <li><a href="#publisher" class="info-link">Publisher: Marvel Comics</a></li>
+          <li><a href="#first-appearance" class="info-link">First Appearance: Amazing Fantasy #15</a></li>
+          <li>
+            Created by:
+            <ul class="creator-list">
+              <li><a href="#stan-lee" class="info-link">Stan Lee (Writer)</a></li>
+              <li><a href="#steve-ditko" class="info-link">Steve Ditko (Artist)</a></li>
+            </ul>
+          </li>
+        </ul>
+      </aside>
+
+      <section aria-labelledby="creation-heading">
+        <h2 id="creation-heading">Creation & Development</h2>
+        <p>
+          In 1962, with the success of the Fantastic Four, Marvel Comics editor and
+          head writer Stan Lee was developing a new superhero concept. The idea for 
+          Spider-Man originated from:
+        </p>
+        <ul>
+          <li>A surge in teenage demand for comic books</li>
+          <li>The desire to create a relatable teenage protagonist</li>
+          <li>Lee's observation of a spider climbing a wall (as frequently recounted)</li>
+          <li>Inspiration from the pulp magazine crime fighter "The Spider"</li>
+        </ul>
+        <p>
+          In his autobiography, Lee noted that Spider-Man allowed him to address what 
+          he felt was missing in comic books at the time - a hero with everyday problems 
+          who wasn't perfect.
+        </p>
+
+        <div class="image-gallery" role="group" aria-label="Spider-Man creation images">
+          <figure>
+            <img src="assets/creation_1.png" class="historical-image" 
+                 alt="Original Spider-Man concept art by Steve Ditko" 
+                 width="300" height="450" loading="lazy" />
+            <figcaption>Ditko's original concept art</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/creation_2.jpeg" class="historical-image" 
+                 alt="Stan Lee and Steve Ditko working together" 
+                 width="300" height="450" loading="lazy" />
+            <figcaption>Lee and Ditko collaborating</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/creation_3.jpeg" class="historical-image" 
+                 alt="Early Spider-Man comic book cover" 
+                 width="300" height="450" loading="lazy" />
+            <figcaption>First appearance cover</figcaption>
+          </figure>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Marvel Comics. All rights reserved.</p>
+    <p>Spider-Man and all related characters are trademarks of Marvel.</p>
+  </footer>
+
+  <script src="Dom.js"></script>
+</body>
+</html>

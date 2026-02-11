@@ -1,0 +1,79 @@
+body {
+    margin: 5px;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white;
+}
+h1 {
+    color: aqua;
+    text-shadow: 2px 2px 2px maroon;
+    margin: 10px;
+}
+.all-posts {
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+}
+.post {
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 10px 0 10px 12px;
+}
+.user {
+    color: aqua;
+    letter-spacing: 0.2px;
+    font-style: italic;
+    font-size: 19px;
+    display: inline;
+    transition: 1s ease-in-out;
+}
+.user:hover {
+    font-size: 21px;
+    cursor: pointer;
+}
+.content {
+    color: whitesmoke;
+    font-size: 16px;
+}
+.new-post-btn a {
+    text-decoration: none;
+    background-color: aqua;
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 9px;
+    padding: 6px 8px;
+    margin-left: 22px;
+    margin-top: 10px;
+    transition: 0.5s ease-in-out;
+}
+.new-post-btn a:hover {
+    font-size: 16.5px;
+}
+
+h2 {
+    color: aqua;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+.id {
+    margin-top: 5px;
+    margin-bottom: 28px;
+    color: #fffc;
+}
+.post-btn a, .dlt-btn {
+    text-decoration: none;
+    color: black;
+    background-color: aqua;
+    font-weight: 600;
+    display: inline;
+    border-radius: 6px;
+    padding: 3px 6px;
+    font-size: 12.8px;
+    border: none;
+    cursor: pointer;
+}
+.dlt-btn-form {
+    margin-left: 7.68vw;
+    margin-top: -5.3vh;
+    font-size: 12.8px;
+}

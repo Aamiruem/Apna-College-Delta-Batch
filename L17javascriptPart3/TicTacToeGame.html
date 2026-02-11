@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .cell {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .cell:hover {
+            background-color: #eee;
+        }
+        
+        .status {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .x {
+            color: #f44336;
+        }
+        
+        .o {
+            color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <div class="status">Player X's turn</div>
+    <div class="board" id="board"></div>
+    <button id="reset">Reset Game</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const board = document.getElementById('board');
+            const status = document.querySelector('.status');
+            const resetButton = document.getElementById('reset');
+            
+            let currentPlayer = 'X';
+            let gameState = ['', '', '', '', '', '', '', '', ''];
+            let gameActive = true;
+            
+            const winningConditions = [
+                [0, 1, 2], // top row
+                [3, 4, 5], // middle row
+                [6, 7, 8], // bottom row
+                [0, 3, 6], // left column
+                [1, 4, 7], // middle column
+                [2, 5, 8], // right column
+                [0, 4, 8], // diagonal top-left to bottom-right
+                [2, 4, 6]  // diagonal top-right to bottom-left
+            ];
+            
+            // Create the game board
+            function initializeBoard() {
+                board.innerHTML = '';
+                gameState = ['', '', '', '', '', '', '', '', ''];
+                currentPlayer = 'X';
+                gameActive = true;
+                status.textContent = `Player ${currentPlayer}'s turn`;
+                
+                for (let i = 0; i < 9; i++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell');
+                    cell.setAttribute('data-index', i);
+                    cell.addEventListener('click', handleCellClick);
+                    board.appendChild(cell);
+                }
+            }
+            
+            // Handle cell click
+            function handleCellClick(e) {
+                const clickedCell = e.target;
+                const clickedCellIndex = parseInt(clickedCell.getAttribute('data-index'));
+                
+                // If cell is already filled or game is not active, ignore the click
+                if (gameState[clickedCellIndex] !== '' || !gameActive) {
+                    return;
+                }
+                
+                // Update game state and UI
+                gameState[clickedCellIndex] = currentPlayer;
+                clickedCell.textContent = currentPlayer;
+                clickedCell.classList.add(currentPlayer.toLowerCase());
+                
+                // Check for win or draw
+                checkResult();
+            }
+            
+            // Check if the current player has won or if it's a draw
+            function checkResult() {
+                let roundWon = false;
+                
+                // Check all winning conditions
+                for (let i = 0; i < winningConditions.length; i++) {
+                    const [a, b, c] = winningConditions[i];
+                    
+                    if (gameState[a] === '' || gameState[b] === '' || gameState[c] === '') {
+                        continue;
+                    }
+                    
+                    if (gameState[a] === gameState[b] && gameState[b] === gameState[c]) {
+                        roundWon = true;
+                        break;
+                    }
+                }
+                
+                // If someone won
+                if (roundWon) {
+                    status.textContent = `Player ${currentPlayer} wins!`;
+                    gameActive = false;
+                    return;
+                }
+                
+                // If it's a draw
+                if (!gameState.includes('')) {
+                    status.textContent = "Game ended in a draw!";
+                    gameActive = false;
+                    return;
+                }
+                
+                // If game continues, switch player
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                status.textContent = `Player ${currentPlayer}'s turn`;
+            }
+            
+            // Reset the game
+            function resetGame() {
+                initializeBoard();
+            }
+            
+            // Event listeners
+            resetButton.addEventListener('click', resetGame);
+            
+            // Initialize the game
+            initializeBoard();
+        });
+    </script>
+</body>
+</html>

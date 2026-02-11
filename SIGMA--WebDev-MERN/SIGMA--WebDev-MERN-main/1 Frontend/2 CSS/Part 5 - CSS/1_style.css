@@ -1,0 +1,32 @@
+h1 {
+    text-align: center;
+}
+#container {
+    height: 500px;
+    width: 80%;
+    background-color: azure;
+    border: 2px solid black;
+    margin: 10px auto;
+    display: flex;
+    /* flex-direction: row; default */
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+    /* flex-wrap: wrap; */
+    /* align-items: center; */
+    /* align-content: space-between; */
+}
+#orange {
+    /* height: 200px; */
+    /* align-self: flex-end; */
+    /* flex-basis: 400px; */
+    /* flex-grow: 1; */
+    /* max-height: 490px; */
+    flex: 2 1 300px; /* grow shrink basis */
+}
+#container div {
+    height: 200px;
+    width: 100px;
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+}

@@ -1,0 +1,14 @@
+:-------------------- Miscellaneous - GET & POST Requests --------------------:
+_______________________________________________________________________________
+GET Request :-
+            Used to GET some response
+            Data sent in query strings (Limited, String data & Visible in URL)
+________________________________________________________________________________
+POST Request :-
+             Used to POST something (for Create/Write/Update)
+             Data sent via Request body (any type of data)
+             ----------------------------------------------------------------------
+Handling :- (1) Set up POST request route to get some response
+            (2) Parse POST request data
+            : (i) app.use(express.urlencoded( {extended: true} ));
+            : (ii) app.use(express.json());

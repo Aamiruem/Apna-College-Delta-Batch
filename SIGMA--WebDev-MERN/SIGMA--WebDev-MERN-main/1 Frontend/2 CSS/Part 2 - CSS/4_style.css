@@ -1,0 +1,38 @@
+/* Part A - Q5 (Selectors) */
+#mainTopic { /* Q: 1 */
+    color: blue;
+}
+.para { /* Q: 4 */
+    color: white;
+    background-color: cornflowerblue;
+}
+h1, h3, h5 { /* Q: 3 */
+    font-family: Georgia;
+}
+div button { /* Q: 5 */
+    background-color: purple;
+    color: azure;
+}
+* { /* Q: 2 */
+    text-align: center;
+}
+
+/* Part B - Q5 (Pseudo class & elements) */
+#yes:checked + label {
+    color: darkgreen;
+}
+/* input[type="checkbox"]:checked + label { /* Q: 9 *
+    color: darkgreen;
+} */
+button:hover { /* Q: 6 */
+    background-color: yellow;
+    color: blue;
+}
+p:nth-of-type(2n+1) { /* Q: 7 */
+    color: yellow;
+}
+h1::first-letter { /* Q: 8 */
+    color: red;
+}
+/* Q: 10 */
+/* Order these rules according to specificity algorithm, from least to most specificity */

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #todo-list {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            min-height: 100px;
+        }
+        .task {
+            padding: 5px;
+            margin: 5px 0;
+            background-color: #f5f5f5;
+        }
+        button {
+            padding: 5px 10px;
+            margin: 5px;
+        }
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo App</h1>
+    
+    <div>
+        <button id="list-btn">Show Tasks</button>
+        <button id="add-btn">Add Task</button>
+        <button id="delete-btn">Delete Task</button>
+        <button id="quit-btn">Quit</button>
+    </div>
+    
+    <div id="add-section" style="display: none;">
+        <input type="text" id="task-input" placeholder="Enter task">
+        <button id="submit-add">Add</button>
+    </div>
+    
+    <div id="delete-section" style="display: none;">
+        <input type="number" id="task-index" placeholder="Enter task index">
+        <button id="submit-delete">Delete</button>
+    </div>
+    
+    <div id="todo-list"></div>
+    
+    <script>
+        let todo = [];
+        const todoList = document.getElementById('todo-list');
+        const addSection = document.getElementById('add-section');
+        const deleteSection = document.getElementById('delete-section');
+        
+        document.getElementById('list-btn').addEventListener('click', () => {
+            displayTasks();
+        });
+        
+        document.getElementById('add-btn').addEventListener('click', () => {
+            addSection.style.display = 'block';
+            deleteSection.style.display = 'none';
+        });
+        
+        document.getElementById('delete-btn').addEventListener('click', () => {
+            deleteSection.style.display = 'block';
+            addSection.style.display = 'none';
+            displayTasks();
+        });
+        
+        document.getElementById('quit-btn').addEventListener('click', () => {
+            alert('Quitting app...');
+            // In a real app, you might want to do more here
+        });
+        
+        document.getElementById('submit-add').addEventListener('click', () => {
+            const taskInput = document.getElementById('task-input');
+            if (taskInput.value.trim() !== '') {
+                todo.push(taskInput.value.trim());
+                taskInput.value = '';
+                addSection.style.display = 'none';
+                displayTasks();
+            }
+        });
+        
+        document.getElementById('submit-delete').addEventListener('click', () => {
+            const indexInput = document.getElementById('task-index');
+            const idx = parseInt(indexInput.value);
+            
+            if (!isNaN(idx) && idx >= 0 && idx < todo.length) {
+                todo.splice(idx, 1);
+                indexInput.value = '';
+                deleteSection.style.display = 'none';
+                displayTasks();
+            } else {
+                alert('Invalid index.');
+            }
+        });
+        
+        function displayTasks() {
+            if (todo.length === 0) {
+                todoList.innerHTML = '<p>No tasks yet.</p>';
+                return;
+            }
+            
+            let html = '<div class="task-list">';
+            for (let i = 0; i < todo.length; i++) {
+                html += `<div class="task">${i}: ${todo[i]}</div>`;
+            }
+            html += '</div>';
+            todoList.innerHTML = html;
+        }
+        
+        // Initialize
+        displayTasks();
+    </script>
+</body>
+</html>

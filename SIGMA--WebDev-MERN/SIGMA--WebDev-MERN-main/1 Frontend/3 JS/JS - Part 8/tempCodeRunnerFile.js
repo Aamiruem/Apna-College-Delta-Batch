@@ -1,0 +1,1 @@
+ oddArr, all elements are", oA);

@@ -1,0 +1,159 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Example</title>
+  <style>
+    body {
+      font-family: Arial;
+      scroll-behavior: smooth; /* Smooth scroll */
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #333;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      margin: 10px;
+      text-decoration: none;
+    }
+    section {
+      height: 100vh;
+      padding-top: 60px;
+    }
+    #section1 { background: lightcoral; }
+    #section2 { background: lightblue; }
+    #section3 { background: lightgreen; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#section1">Section 1</a>
+    <a href="#section2">Section 2</a>
+    <a href="#section3">Section 3</a>
+  </nav>
+
+  <section id="section1"><h1>Section 1</h1></section>
+  <section id="section2"><h1>Section 2</h1></section>
+  <section id="section3"><h1>Section 3</h1></section>
+
+  <script>
+    // Optional: Log clicked section
+    document.querySelectorAll("nav a").forEach(link => {
+      link.addEventListener("click", function(event) {
+        console.log("Navigating to:", this.getAttribute("href"));
+      });
+    });
+  </script>
+
+</body>
+</html>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Navigation Example</title>
+  <style>
+    section {
+      height: 100vh;
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #333;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li {
+      margin: 0 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 5px 10px;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: #555;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="home">
+    <h1>Welcome to Our Website</h1>
+    <p>This is the home section.</p>
+  </section>
+
+  <section id="about">
+    <h1>About Us</h1>
+    <p>Learn more about our company.</p>
+  </section>
+
+  <section id="services">
+    <h1>Our Services</h1>
+    <p>Discover what we offer.</p>
+  </section>
+
+  <section id="contact">
+    <h1>Contact Us</h1>
+    <p>Get in touch with our team.</p>
+  </section>
+
+  <!-- example div in an HTML DOC -->
+<div id="div1">Hi Champ!</div>
+
+
+  <script src="NavigationOnPage.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+:------------------ Authentication & Authorization ------------------:
+______________________________________________________________________
+______________________________________________________________________
+______________________________________________________________________
+
+Authentication :-
+                Authentication is the process of verifying who someone is.
+                ___________________________________________________________
+Authorization :-
+                Authorization is the process of verifying what specific 
+                applications, files and data a user has access to.
+______________________________________________________________________
+______________________________________________________________________
+
+Storing Password :-
+                  We never store the passwords as it is, We store their
+                  hashed form.
+                  --------------------------------------------------------
+                  Password      usingFunction       Now it is stored
+                  -------------------------------------------------------------------------------------------------
+                  "hello" ---> Hashing Function ---> "935a185caaa266bb9cbe98l588eb744tta288l199dbb56b933k457ae8bo0"
+___________________________________________________________________________________________________________________
+Hashing :-
+          For every input, there is a fixed output.
+          They are one-way functions, we can't get input from output.
+          For different input, there is a different output but of same langth
+          Small changes in input should bring large changes in output.
+_______________________________________________________________________________
+Salting :-
+         Password salting is a technique to protect passwords stored in databases
+         by adding a string of 32 or more characters and then hashing them.
+_______________________________________________________________________________
+Passport :-
+           Passport is a library that helps us to handle user authentication.
+           Passport is Express-compatible authentication middleware for Node.js.
+           --------------------------------------------------------------------
+Passport-Local :-
+                Passport-Local is a strategy for authenticating with a username
+                and password.
+                ----------------------------------------------------------------
+Passport-Local-Mongoose :-
+                        Passport-Local Mongoose is a Mongoose plugin that simplifies
+                        building username and password login with Passport.
+                        -------------------------------------------------------------
+                        You're free to define your userSchema how you like.
+                        Passport-Local Mongoose will add a username, hash and salt field
+                        to store the username, the hashed password and the salt value.
+                        Additionally, Passport-Local Mongoose adds some methods to your
+                        Schema. See the API Documentation for more details.
+                        -----------------------------------------------------------------
+passport.initialize() :- A middleware that initializes passport.
+passport.session() :- A web application needs the ability to identify users as they
+                      browse from page to page. This series of requests and responses,
+                      each associated with the same user, is known as a session.
+passport.use(new LocalStrategy( User.authenticate() ))
+passport.serializeUser( User.serializeUser() )
+passport.deserializeUser( User.deserializeUser() )
+_______________________________________________________________________________

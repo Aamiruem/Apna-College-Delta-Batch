@@ -1,0 +1,36 @@
+body {
+    background-color: blue;
+    color: white;
+    padding: 5px;
+}
+h1 {
+    color: rgb(111, 245, 1);
+    text-shadow: 2px 2px 5px black;
+    font-size: 3rem;
+}
+h2 {
+    color: rgb(111, 235, 1);
+}
+input {
+    padding: 5px 25px 5px 3px;
+    font-size: 1.1rem;
+    border-radius: 4px;
+}
+button {
+    text-decoration: none;
+    color: red;
+    background-color: lightblue;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 25px;
+    margin-left: 10px;
+}
+ul, li {
+    font-size: 1.25rem;
+    color: yellow;
+    text-shadow: 2px 2px 7px gray;
+}
+button:hover {
+    cursor: pointer;
+    font-size: 0.86rem;
+}

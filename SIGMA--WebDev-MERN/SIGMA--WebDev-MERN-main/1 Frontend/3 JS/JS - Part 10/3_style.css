@@ -1,0 +1,28 @@
+/* Ans : 1 (i) */
+.myDiv {
+    width: 100%;
+    height: 100px;
+    border: 1px solid black;
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+}
+/* Ans : 1 (ii) */
+#text {
+    padding: 0 67% 10px 3px;
+    margin-top: 10px;
+    background-color: yellow;
+    font-size: 1.2rem;
+}
+/* Ans : 1 (iii) */
+body {
+    height: 2000px;
+}
+.scrollStatus {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: lightgray;
+    padding: 10px;
+    border: 1px solid black;
+}

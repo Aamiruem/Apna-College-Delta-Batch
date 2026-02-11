@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Dog Images & Dad Jokes</title>
+    <link rel="stylesheet" href="DogAPIStyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Random Content Generator</h1>
+
+        <div class="section">
+            <h2>Random Dog Image</h2>
+            <button id="dogBtn">Show Dog</button>
+            <div class="image-container">
+                <img id="dogImage" alt="Random dog image">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Random Dad Joke</h2>
+            <button id="jokeBtn">Tell Me a Joke</button>
+            <p id="jokeText"></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.7.4/dist/axios.min.js"></script>
+    <script src="DogAPI.js"></script>
+</body>
+
+</html>

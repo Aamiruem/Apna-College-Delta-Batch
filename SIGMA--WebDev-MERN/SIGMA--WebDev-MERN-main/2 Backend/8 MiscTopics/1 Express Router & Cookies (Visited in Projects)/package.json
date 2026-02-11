@@ -1,0 +1,16 @@
+{
+  "name": "8-express-router-and-cookies",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Sam Altmash",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.19.2"
+  }
+}

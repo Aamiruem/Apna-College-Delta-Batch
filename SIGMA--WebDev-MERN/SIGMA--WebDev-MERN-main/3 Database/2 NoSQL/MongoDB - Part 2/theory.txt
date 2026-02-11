@@ -1,0 +1,84 @@
+:------------------------------ Starting with Mongoose ------------------------------:
+______________________________________________________________________________________
+______________________________________________________________________________________
+Mongoose :-
+         A library that creates a connection between MongoDB and Node.js JavaScript
+         Runtime Environment.
+       : It is an ODM (Object Data Model) library.
+______________________________________________________________________________________
+Schema :-
+        Schema defines the shape of the documents within that collection using mongoose.
+______________________________________________________________________________________
+Models :-
+        Model in mongoose is a class with which we construct documents.
+______________________________________________________________________________________
+INSERTING Document :-
+Inserting One :-
+                Insert a single document with the help of model class and pass an object
+                 inside it and then save it using save() method (to save the document
+                 in the database), save() returns a promise.
+                ---------------------------------------------------------------------
+Inserting Multiple :-
+                    Inserting multiple documents with help of model class and insertMany
+                    method and then pass an array inside insertMany method then pass multiple
+                    objects in the array and see his result so use .then() method for the result.
+                    ------------------------------------------------------------------
+Note :- 
+       Mongoose uses 'Operation Buffering'
+       ------------------------------------
+Operation Buffering :-
+                     Mongoose lets you start using your models immediately, without
+                     waiting for mongoose to establish a connection to MongoDB.
+______________________________________________________________________________________
+FIND Document :-
+                Returns a Query Object (thennable)
+              :- Mongoose Queries are not promises, But they have a .then()
+Model.find({}) ::-          Find all documents.
+Model.find({filter}) ::-    Find all documents on the basis of filter.
+Model.findOne({filter}) ::- Find specific document on the basis of filter.
+Model.findById("") ::-      Find a document on the basis of id.
+______________________________________________________________________________________
+UPDATE Document :-
+                It also returns a Query Object (thennable).
+Model.updateOne() ::- Update only one document on the basis of filter.
+Model.findMany()  ::- Update all documents on the basis of filter.
+Model.findOneAndUpdate() ::- First find and then update on the basis of filter.
+Model.findByIdAndUpdate() ::- First find and then update on the basis of id.
+______________________________________________________________________________________
+DELETE Document :-
+                It also returns a Query Object (thennable).
+Model.deleteOne() ::- Delete single document on the basis of filter.
+Model.deleteMany()  ::- Delete all documents on the basis of filter.
+Model.findOneAndDelete() ::- First find and print then delete on the basis of filter.
+Model.findByIdAndDelete() ::- First find and print then delete on the basis of id.
+______________________________________________________________________________________
+______________________________________________________________________________________
+Schema Validation :-
+                   Basically, Rules for Schema. (Similar to SQL Constraints)
+                   ----------------------------------------------------------
+SchemaType Options :-
+                     These are the some constraints which we sets in the schema when
+                     creating schema with constraints.
+default   :: to set the default value
+min       :: to add a limit of minimum value
+maxLength :: to add a limit a maximum length
+enum      :: to add a limit in the form of an array
+type      :: [String/Number] --> to set the value in the form of an array
+-------------------------------------------------------------------------
+Note :- When we update some value so constraints will not works, if we want
+        that they work so we have to use an option with update methods which is
+{runValidators: true} so after writing this all constraints will work as well.
+--------------------------------------------------------------------------------
+Another Note :- If we want to create a custom error message that comes when we
+        don't follow our constraints so we can use an array and pass that custom
+        error message in the array. for example we set a min: 1 constraints, so
+        we can write our custom error with this :-
+        {min: [10, "Price is too low for amazon selling."]} --> value with error
+        -----------------------------------------------------------------------------------
+        To write the concept of Schema Validation/Constraints, Check official documentation
+        of Mongoose and some Validations/Constraints is used in my book.js file, Check this
+        file for the correct syntax.
+        -------------------------------------------------------------------------------
+______________________________________________________________________________________
+                Visit the official website for more details.
+______________________________________________________________________________________

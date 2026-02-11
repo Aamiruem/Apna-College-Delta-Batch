@@ -1,0 +1,16 @@
+{
+  "name": "l30nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "figlet": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aamir Hussain",
+  "license": "ISC",
+  "description": "",
+  "type": "module"
+}

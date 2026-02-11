@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positions in CSS</title>
+    <style>
+        /* Transform, Filter & Perspective */
+        main {
+            width: 90vw;
+            margin: 5px auto;
+            background-color: pink;
+            /* border: 2px solid black; */
+            outline: 2px solid black;
+            position: relative;
+        }
+        div {
+            height: 150px;
+            width: 150px;
+            margin: 20px;
+            background-color: #0d0;
+            border: 3px solid black;
+            display: inline-block;
+        }
+        #static { /* No effect bcz it is default */
+            background-color: #ff0;
+            position: static;
+            right: 40px;
+            top: 50px;
+        }
+        #relative {
+            background-color: #ff0;
+            position: relative;
+            right: 40px;
+            top: 50px;
+        }
+        #absolute {
+            background-color: #ff0;
+            position: absolute;
+            right: 40px;
+            top: 50px;
+        }
+        #fixed {
+            background-color: #ff0;
+            position: fixed;
+            right: 40px;
+            top: 230px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <h2>Static Demo</h2>
+            <div></div>
+            <div id="static"></div>
+            <div></div>
+        </section>
+        <section>
+            <h2>Relative Demo</h2>
+            <div></div>
+            <div id="relative"></div>
+            <div></div>
+        </section>
+        <section>
+            <h2>Absolute Demo</h2>
+            <div></div>
+            <div id="absolute"></div>
+            <div></div>
+        </section>
+        <section>
+            <h2>Fixed Demo</h2>
+            <div></div>
+            <div id="fixed"></div>
+            <div></div>
+        </section>
+    </main>
+</body>
+
+</html>

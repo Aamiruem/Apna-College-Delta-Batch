@@ -1,0 +1,105 @@
+:------------------------------ Starting with MongoDB ------------------------------:
+______________________________________________________________________________________
+
+The Shell :-
+            Use mongo shell to perform CRUD operations.
+            CRUD :- C -> Create (Insert data), R -> Read (Find data),
+                    U -> Update (Updata data), D -> Delete (Delete data)
+______________________________________________________________________________________
+Basic Commands: mongosh   <--- To start the mongo shell.
+              : Ctrl + L <--- To clear the screen in windows.
+              : exit/quit <--- To quit/exit from the mongo shell.
+              : use college <--- To create & use a new database called "college".
+              : show dbs <--- To show all the databases.
+              : db <--- To see the current database.
+______________________________________________________________________________________
+BSON Data (Binary JSON) :-
+                        Data inserted in MongoDB is in a special format called BSON.BSON
+                        is a binary-encoded serialization of JSON.
+                        JSON has some issues that BSON resolves.
+______________________________________________________________________________________
+Collections :-
+        Document :- Mongo stores data in the form of documents. (BSON Docs)
+        Collection :- MongoDB stores documents in collections.
+        Command: show collections; <--- To show all collections from the database.
+______________________________________________________________________________________
+INSERT Data in DB :- (Create Operations)
+Insert Methods :-
+Command:
+insertOne() :: db.student.insertOne( {key: value}); <--- Inserts a single document into
+               a collection. ("student" is a collection & js object is a single document)
+               ------------------------------------------------------------------------
+insertMany() :: db.student.insertMany([ {key: value}, {key: value}]); <--- It Inserts
+                multiple document into a collection.
+                -----------------------------------------------------------------------
+                if a collection does not exist, MongoDB creates the collection when you
+                first store data for that collection.
+______________________________________________________________________________________
+FIND in DB :- (Read Operations)
+Find Methods :-
+Command:
+find() :: db.student.find(); <--- Returns everything from the collection.
+          -----------------------------------------------------------------------------
+       :: db.student.find( {key: value}); <--- For all specific documents based on keyValue
+          -----------------------------------------------------------------------------
+findOne() :: db.student.findOne( {key: value}); <--- For one document based on keyValue
+______________________________________________________________________________________
+Query Operators :-
+Comparison :-
+            ::- $eq: Matches values that are equal to a specified value.
+            ::- $gt: Matches values that are greater than to a specified value.
+            ::- $lt: Matches values that are less than to a specified value.
+            ::- $gte: Matches values that are greater than & equal to a specified value.
+            ::- $lte: Matches values that are less than & equal to a specified value.
+            ::- $in: Matches values that are specified in an array.
+            ::- $ne: Matches values that are not equal to a specified value.
+            ::- $nin: Matches none of the values that are specified in an array.
+            -----------------------------------------------------------------------
+Logical :-
+        ::- $and: Returns documents that match all conditions.
+        ::- $not: Returns documents that do not match the condition.
+        ::- $nor: Returns documents that match none of the conditions.
+        ::- $or: Returns documents that match any of the conditions.
+        ---------------------------------------------------------------------
+For more operators visit https://www.mongodb.com/docs/manual/reference/operator/query/
+______________________________________________________________________________________
+Command:
+gt :: db.student.find( {key: {$gt: value}}); <- key's val should be greater than
+lt :: db.student.find( {key: {$lt: value}}); <- key's val should be less than
+in :: db.student.find( {key: {$in: [value, value]}}); <- key's val should be in the array
+nin :: db.student.find( {key: {$nin: [value, value]}}); <- key's val should not be in the array
+
+and :: db.student.find( {$and: [ {key: {$gt: val}}, {key: val} ]}); <- both key's val should be true
+or :: db.student.find( {$or: [ {key: {$gt: val}}, {key: val} ]}); <- anyone key's val should be true
+nor :: db.student.find( {$nor: [ {key: {$lt: val}}, {key: val} ]}); <- both key's val should not be true
+not :: db.student.find( {key: {$not: {$lt: val}}}); <- key's val should not be true
+______________________________________________________________________________________
+UPDATE in DB :- (Update Operations)
+Update Methods :-
+Command:
+updateOne() :: db.student.updateOne( {key: value}, {$set: {key: value}} ); <--- Updates at
+                most a single document that match a specified filter even though multiple
+               documents may match the specified filter.
+               -------------------------------------------------------------------------------------------
+updateMany() :: db.student.updateMany( {key: val}, {$set: {key: val}} ); <--- Updates
+                multiple documents and set operators add new field if not exists.
+                -----------------------------------------------------------------------------
+replaceOne() :: db.student.replaceOne( {key: val}, {key: val, key: val}); <-- Replace all
+                the fields of the document with the new document.
+                -----------------------------------------------------------------------------
+For more operators related to update visit https://www.mongodb.com/docs/manual/tutorial/update-documents-with-aggregation-pipeline/
+_________________________________________________________________________________________
+Nesting :-
+Command:
+Add Doc:  db.student.insertOne( {key: val, key: {key: val, key: val}} ); <--- Nesting
+Find Doc: db.student.find( {"key.key": val} ); <--- find from this type
+______________________________________________________________________________________
+DELETE in DB :- (Delete Operations)
+Delete Methods :-
+Command:
+deleteOne() :: db.student.deleteOne( {key: value}); <-- Delete one document.
+deleteMany() :: db.student.deleteMany( {key: value}); <--Delete multiple document based on condition.
+deleteMany() :: db.student.deleteMany( {} ); <-- Delete all document completely.
+------------------------------------------------------------------------------------
+dropDatabase() : db.dropDatabase(); <--- Delete current database completely.
+______________________________________________________________________________________

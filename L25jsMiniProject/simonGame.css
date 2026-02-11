@@ -1,0 +1,303 @@
+/* body{
+    text-align:center;
+}
+.btn{
+    height: 200px;
+    width: 200px;
+    border-radius: 20%;
+    border: 10px solid black;
+    margin: 0.5rem;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+}
+
+.yellow{
+    background-color: #f99b45;
+}
+.red{
+    background-color: #d95980;
+}
+
+.purple{
+    background-color: #819ff9;
+}
+
+.green{
+    background-color: #63aac0;
+}
+
+
+.flash{
+    background-color: white;
+}
+
+.userflash{
+    background-color: green;
+}
+
+
+
+
+
+
+
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.btn-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.line-one {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.flash {
+    animation: flashAnim 0.2s ease;
+}
+
+@keyframes flashAnim {
+    from { opacity: 1; }
+    to { opacity: 0.5; }
+}
+
+.userflash {
+    animation: userFlashAnim 0.2s ease;
+}
+
+@keyframes userFlashAnim {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+
+.game-over {
+    background-color: #ff4e4e;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root {
+    --red: #ff4d4d;
+    --yellow: #ffeb3b;
+    --green: #4caf50;
+    --purple: #9c27b0;
+    --dark: #222;
+    --light: #f8f8f8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--dark);
+    color: var(--light);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.game-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.game-info {
+    margin-bottom: 2rem;
+}
+
+#level-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    min-height: 2.5rem;
+}
+
+.score-display {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #aaa;
+}
+
+.game-board {
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.line-one, .line-two {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn {
+    height: 150px;
+    width: 150px;
+    border-radius: 20%;
+    border: 10px solid var(--dark);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.red {
+    background-color: var(--red);
+}
+
+.yellow {
+    background-color: var(--yellow);
+}
+
+.green {
+    background-color: var(--green);
+}
+
+.purple {
+    background-color: var(--purple);
+}
+
+.flash {
+    animation: flash 0.3s ease;
+}
+
+@keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; box-shadow: 0 0 30px white; }
+}
+
+.userflash {
+    animation: userFlash 0.3s ease;
+}
+
+@keyframes userFlash {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(0.95); box-shadow: 0 0 20px white; }
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.control-btn {
+    padding: 0.8rem 1.5rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    background-color: var(--light);
+    color: var(--dark);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.control-btn:hover {
+    background-color: #ddd;
+    transform: translateY(-2px);
+}
+
+.game-over {
+    animation: gameOver 0.5s ease;
+}
+
+@keyframes gameOver {
+    0%, 100% { background-color: var(--dark); }
+    50% { background-color: var(--red); }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .btn {
+        height: 120px;
+        width: 120px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    #level-title {
+        font-size: 1.2rem;
+    }
+}
