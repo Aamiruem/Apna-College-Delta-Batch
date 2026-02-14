@@ -1,6 +1,6 @@
-let marks1 = 90;
-if((marks1>=90 && marks1<=100) || false){
-console.log("pass");
+let marks1 = 90; // This condition checks if marks1 is between 90 and 100, or if false is true (which it isn't).
+if((marks1>=90 && marks1<=100) || false){ // This will evaluate to true because marks1 is between 90 and 100.
+console.log("pass"); // This will log "pass" to the console.
 }
 
 
@@ -9,7 +9,7 @@ console.log("pass");
 
 
 let marks2 = 90;
-if((marks2>=90 && marks2<=100) || !false){ //!false = true
+if((marks2>=90 && marks2<=100) || !false){ //!false = true so this condition will always be true regardless of the value of marks2.
 console.log("pass");
 }
 
