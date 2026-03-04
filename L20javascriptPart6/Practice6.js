@@ -1,3 +1,5 @@
+
+
 let str = ["Hi", "Hello", "Bye", "!"];
 
 function concat(str){
