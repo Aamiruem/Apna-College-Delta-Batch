@@ -1,4 +1,4 @@
-let btn = document.querySelector("button"); 
+let btn = document.querySelector("button");
 console.dir(btn)
 
 
@@ -7,7 +7,7 @@ btn.onclick = function (event) {
     console.log("button was clicked");
     console.log(event.clientX);
     alert("button was clicked");
-};      
+};
 
 btn.addEventListener("click", function (event) {
     console.log(event);
@@ -15,8 +15,25 @@ btn.addEventListener("click", function (event) {
 });
 
 
+// let buttons = document.querySelectorAll(".btn");
+
+// buttons.forEach(function(btn){
+//     btn.addEventListener("click", function(){
+//         console.log("Button clicked");
+//     });
+// });
 
 
+// let btn1 = document.querySelector("#btn1");
+// let btn2 = document.querySelector("#btn2");
+
+// btn1.addEventListener("click", function(){
+//     console.log("First button clicked");
+// });
+
+// btn2.addEventListener("click", function(){
+//     console.log("Second button clicked");
+// });
 
 
 

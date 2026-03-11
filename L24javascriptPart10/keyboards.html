@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyboard Event</title>
+<style>
+input{
+    width:200px;
+    height:30px;
+    font-size:16px;
+    padding:5px;
+    margin-bottom:20px;
+}
+button{
+    width:100px;
+    height:50px;
+    background-color:blue;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<input type="text" placeholder="Press any key...">
+
+<button>Click Me</button>
+
+<script>
+
+let inp = document.querySelector("input");
+
+inp.addEventListener("keydown", function(event){
+
+    console.log("key =", event.key);
+    console.log("code =", event.code);
+
+    if(event.code === "ArrowUp"){
+        console.log("character moves up");
+
+    } else if(event.code === "ArrowDown"){
+        console.log("character moves down");
+
+    } else if(event.code === "ArrowLeft"){
+        console.log("character moves left");
+
+    } else if(event.code === "ArrowRight"){
+        console.log("character moves right");
+    }
+
+});
+
+</script>
+
+</body>
+</html>
