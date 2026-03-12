@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubbling Todo · DOM demo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background: linear-gradient(145deg, #f0f4fa 0%, #d9e2ec 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            width: 500px;
+            max-width: 96%;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            border-radius: 42px 42px 32px 32px;
+            box-shadow: 0 30px 50px rgba(0, 20, 30, 0.25), 0 10px 20px rgba(0,0,0,0.1);
+            padding: 28px 22px 32px 22px;
+            border: 1px solid rgba(255,255,255,0.7);
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin: 0 0 8px 10px;
+            color: #1a3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h1 span {
+            font-size: 1.8rem;
+            background: #b1d0e8;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 -3px 0 #7d9db5;
+            transform: translateY(-3px);
+        }
+        .creator-tip {
+            margin: 0 0 24px 14px;
+            font-size: 0.95rem;
+            color: #2e4b5f;
+            background: #c7ddefc9;
+            display: inline-block;
+            padding: 6px 20px 6px 16px;
+            border-radius: 50px;
+            backdrop-filter: blur(4px);
+            font-weight: 500;
+        }
+        .creator-tip strong {
+            color: #0d2f40;
+        }
+
+        /* ---------- input section ---------- */
+        .todo-form {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 38px;
+            background: #eef4f8d1;
+            padding: 12px 18px;
+            border-radius: 60px;
+            border: 1px solid #ffffffba;
+            backdrop-filter: blur(2px);
+        }
+        .todo-form input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 12px 5px 12px 18px;
+            font-size: 1.1rem;
+            outline: none;
+            color: #0c2b39;
+            font-weight: 500;
+        }
+        .todo-form input::placeholder {
+            color: #597f96;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+        .todo-form button {
+            background: #1f4b61;
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.7rem;
+            width: 56px;
+            height: 56px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 8px 14px -6px #0f374b, 0 0 0 1px #acc8dd inset;
+            line-height: 1;
+        }
+        .todo-form button:hover {
+            background: #266481;
+            transform: scale(1.02) rotate(2deg);
+            box-shadow: 0 12px 18px -6px #0a3345;
+        }
+
+        /* ---------- todo list container (bubble parent) ---------- */
+        .todo-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 22px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* ———— individual BUBBLE todo item ———— */
+        .todo-item {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.8);
+            border-radius: 80px;          /* super bubbly */
+            padding: 5px 5px 5px 22px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 20px 30px -12px rgba(23, 55, 83, 0.4), 0 4px 0 0 #acc8dd inset, 0 -2px 0 0 #bed3e6 inset;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .todo-item:hover {
+            transform: translateY(-4px) scale(1.01);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 28px 30px -14px #1f4e66;
+        }
+
+        /* custom checkbox area – also click triggers bubbling */
+        .todo-check {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #327a9e;
+            box-shadow: 0 6px 0 #bed3e6;
+            transition: 0.08s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            color: #1f4b61;
+            flex-shrink: 0;
+        }
+        .todo-check:checked {
+            background: #c9e5f5;
+            border-color: #14526b;
+            box-shadow: 0 3px 0 #7faec9;
+            transform: translateY(3px);
+        }
+        .todo-check:checked::after {
+            content: "✓";
+            font-weight: 700;
+            transform: scale(1.2);
+            line-height: 1;
+        }
+
+        /* text content */
+        .todo-text {
+            flex: 1;
+            font-size: 1.35rem;
+            font-weight: 530;
+            color: #0a2e3f;
+            padding: 12px 0;
+            word-break: break-word;
+            transition: 0.2s;
+            text-shadow: 0 1px 0 white;
+        }
+        .todo-item.completed .todo-text {
+            text-decoration: line-through 2px #236277;
+            opacity: 0.7;
+            color: #346477;
+        }
+
+        /* delete button – small bubbly */
+        .delete-btn {
+            background: #ffd4cf;
+            border: none;
+            width: 52px;
+            height: 52px;
+            border-radius: 40px;
+            font-size: 2rem;
+            font-weight: 500;
+            color: #a03d2f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 6px 0 #c49b94, 0 0 0 2px white inset;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .delete-btn:hover {
+            background: #ffbab0;
+            transform: scale(1.07) rotate(3deg);
+            color: #7a2e22;
+            box-shadow: 0 8px 0 #b37f76, 0 0 0 2px white inset;
+        }
+
+        /* event log — shows bubbling path */
+        .bubble-log {
+            background: #d1e1edc2;
+            backdrop-filter: blur(5px);
+            border-radius: 60px;
+            padding: 14px 24px;
+            font-size: 1rem;
+            border: 1px solid #fffffffa;
+            color: #1a4053;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .bubble-log .log-label {
+            background: #164457;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        .bubble-log .log-message {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            background: #eef4f8;
+            padding: 8px 22px;
+            border-radius: 50px;
+            color: #06212e;
+            font-weight: 600;
+            box-shadow: inset 0 2px 5px #a3bed1;
+            flex: 1;
+            min-width: 180px;
+        }
+        .btn-reset {
+            background: transparent;
+            border: 2px solid #366277;
+            color: #1f4b61;
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.1s;
+            font-size: 0.95rem;
+        }
+        .btn-reset:hover {
+            background: #aac7dd;
+            border-color: #1a4f68;
+            color: #09212e;
+        }
+
+        footer {
+            text-align: center;
+            color: #2f5f78;
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="todoApp">
+        <h1>
+            <span>🧼</span> Bubbling Todo
+        </h1>
+        <div class="creator-tip">
+            <strong>⚡ click any:</strong> checkbox • text • delete • container — watch event bubble!
+        </div>
+
+        <!-- input row -->
+        <div class="todo-form" id="formContainer">
+            <input type="text" id="todoInput" placeholder="e.g. wash the bubble ..." autocomplete="off">
+            <button type="button" id="addButton" aria-label="Add todo">➕</button>
+        </div>
+
+        <!-- the TODO list (event parent zone) -->
+        <ul class="todo-list" id="todoListContainer">
+            <!-- example item to demonstrate bubbling (will be removed by reset) -->
+        </ul>
+
+        <!-- event bubbling log console -->
+        <div class="bubble-log" id="bubbleLog">
+            <span class="log-label">📢 BUBBLE</span>
+            <span class="log-message" id="logMessage">click something ...</span>
+            <button class="btn-reset" id="clearLogBtn" type="button">clear log</button>
+        </div>
+        <footer>▼ every click bubbles from item → list → card</footer>
+    </div>
+
+    <script>
+        (function() {
+            // ----- DOM elements -----
+            const todoList = document.getElementById('todoListContainer');   // parent (UL)
+            const inputField = document.getElementById('todoInput');
+            const addBtn = document.getElementById('addButton');
+            const logMessageSpan = document.getElementById('logMessage');
+            const clearLogBtn = document.getElementById('clearLogBtn');
+            const appCard = document.getElementById('todoApp');              // top container (card)
+
+            // ----- helper: update log text (with timestamp feeling)-----
+            function setLog(text, targetName = '') {
+                let prefix = '';
+                if (targetName) {
+                    prefix = `[${targetName}] `;
+                }
+                // limit length to avoid overflow
+                const full = prefix + text;
+                logMessageSpan.textContent = full.length > 70 ? full.slice(0,67)+'…' : full;
+            }
+
+            // ----- clear log button -----
+            clearLogBtn.addEventListener('click', function(e) {
+                e.stopPropagation();       // avoid bubbling to card (we want only clear)
+                setLog('🧽 log cleared', 'clearBtn');
+            });
+
+            // ----- 1) CAPTURE & BUBBLE DEMO: log events with path -----
+            // We'll attach listeners to:
+            //  - each todo item (dynamically)
+            //  - the todoList container (UL)
+            //  - the appCard (main card)
+            // Also for demonstration we capture in capturing phase on card (optional)
+
+            // Helper to get a readable name from element
+            function getElementDescription(el) {
+                if (!el) return 'unknown';
+                if (el === appCard) return 'CARD';
+                if (el === todoList) return 'TODO-LIST';
+                if (el.classList && el.classList.contains('todo-item')) {
+                    const textEl = el.querySelector('.todo-text');
+                    if (textEl && textEl.textContent) {
+                        return `ITEM: "${textEl.textContent.slice(0,12)}..."`;
+                    }
+                    return 'todo-item';
+                }
+                if (el.classList && el.classList.contains('delete-btn')) return 'DELETE-BTN';
+                if (el.classList && el.classList.contains('todo-check')) return 'CHECKBOX';
+                if (el.id === 'addButton') return 'ADD-BTN';
+                if (el.id === 'formContainer') return 'FORM';
+                if (el.id === 'clearLogBtn') return 'CLEAR-LOG-BTN';
+                return el.tagName || 'element';
+            }
+
+            // Bubbling handler: logs where event currently is
+            function bubbleHandler(e) {
+                // e.currentTarget is the element the listener is attached to
+                const targetDesc = getElementDescription(e.currentTarget);
+                const phase = e.eventPhase === 1 ? 'CAPTURE' : (e.eventPhase === 2 ? 'TARGET' : 'BUBBLE');
+                // avoid too many messages if spamming, but it's ok
+                setLog(`👂 ${phase} on ${targetDesc}`, 'bubble');
+                // original target info optionally:
+                // original target is e.target
+            }
+
+            // also log target specifically for extra clarity (target phase)
+            function targetPhaseHandler(e) {
+                if (e.target === e.currentTarget) {
+                    const targetDesc = getElementDescription(e.target);
+                    setLog(`🎯 TARGET phase on ${targetDesc}`, 'target');
+                }
+            }
+
+            // ----- attach static listeners -----
+            // card (listens during bubble phase)
+            appCard.addEventListener('click', function(e) {
+                const desc = getElementDescription(e.currentTarget);
+                setLog(`🏁 CARD (bubble) ← ${getElementDescription(e.target)}`, 'card');
+            });
+
+            // listen on todoList during bubble
+            todoList.addEventListener('click', function(e) {
+                // we can show that we are the parent container
+                setLog(`📌 TODO-LIST (bubble) — target: ${getElementDescription(e.target)}`, 'ul');
+            });
+
+            // optionally capture on card (to demonstrate capture phase)
+            appCard.addEventListener('click', function(e) {
+                // capture phase: prints first (but we won't override log because bubble overwrites later)
+                // we use console for extra demo, but also set a small note.
+                if (e.eventPhase === 1) {
+                    // using console to show capture phase separately, not to disturb main log.
+                    console.log(`📣 CAPTURE on CARD, target: ${getElementDescription(e.target)}`);
+                }
+            }, true); // capture = true
+
+            // also capture on todoList to be explicit
+            todoList.addEventListener('click', function(e) {
+                if (e.eventPhase === 1) {
+                    console.log(`📣 CAPTURE on TODO-LIST, target: ${getElementDescription(e.target)}`);
+                }
+            }, true);
+
+            // ----- dynamic item creation (with BUBBLING handlers on each item) -----
+            function createTodoItem(text, completed = false) {
+                const li = document.createElement('li');
+                li.className = 'todo-item' + (completed ? ' completed' : '');
+                li.setAttribute('data-testid', 'todo-item');
+
+                // checkbox
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.className = 'todo-check';
+                checkbox.checked = completed;
+
+                // text span
+                const span = document.createElement('span');
+                span.className = 'todo-text';
+                span.textContent = text;
+
+                // delete button
+                const delBtn = document.createElement('button');
+                delBtn.className = 'delete-btn';
+                delBtn.innerHTML = '✕'; // multiplication sign
+                delBtn.setAttribute('aria-label', 'delete todo');
+
+                // assemble
+                li.appendChild(checkbox);
+                li.appendChild(span);
+                li.appendChild(delBtn);
+
+                // ---- ATTACH BUBBLE HANDLER on the item itself (target & bubble) ----
+                li.addEventListener('click', function(e) {
+                    // item-level click: show that it's the item (only if target is not ignored? we always show)
+                    // but we stop propagation? NO, we want bubbling, so we just log.
+                    // We don't stop propagation, so it will bubble to UL and CARD.
+                    // To avoid double log from global bubble, we set message but global may override.
+                    // We'll just set log here, then card/ul will update later – but we want final message to reflect path.
+                    // We'll let the card handler be the main one, but for demo we can set intermediate message.
+                    // Instead, we attach a separate listener that doesn't conflict, but we want all to show.
+                    // So we update log at each stage but final update will be card. We'll show quick succession.
+                    // Use console for fine print.
+                    const phase = e.eventPhase === 2 ? 'TARGET' : 'BUBBLE';
+                    console.log(`📍 ${phase} on ITEM: "${span.textContent}"`);
+                });
+
+                // attach listener specifically for checkbox changes (UI)
+                checkbox.addEventListener('click', function(e) {
+                    // toggle .completed class on li when checkbox changes
+                    // but we must NOT stop propagation, we want bubbling
+                    if (checkbox.checked) {
+                        li.classList.add('completed');
+                    } else {
+                        li.classList.remove('completed');
+                    }
+                    // log will naturally come from parent handlers
+                }); // no stop
+
+                // delete button functionality (with stopPropagation? NO, we want bubbling!)
+                delBtn.addEventListener('click', function(e) {
+                    // remove the todo item, but let event bubble for demonstration
+                    // we DO NOT call e.stopPropagation() – we want bubbling to show delete action
+                    li.remove();
+                    setLog(`🗑️ deleted: "${text}"`, 'deleteBtn');
+                    // after removal, event still bubbles but li is gone, but bubbling continues from parent.
+                });
+
+                return li;
+            }
+
+            // ----- add sample items so we have something to click -----
+            const sampleItems = [
+                '🫧 wash bubble machine',
+                '📝 understand event propagation',
+                '🎯 click me & watch log',
+                '🧼 scrub the cauldron'
+            ];
+            sampleItems.forEach(text => {
+                todoList.appendChild(createTodoItem(text, false));
+            });
+            // add one completed sample
+            todoList.appendChild(createTodoItem('✅ completed task (bubbles too)', true));
+
+            // ----- add new todo from input -----
+            function addNewTodo() {
+                const rawText = inputField.value.trim();
+                if (rawText === '') {
+                    setLog('❗ enter a task', 'input');
+                    return;
+                }
+                const newItem = createTodoItem(rawText, false);
+                todoList.appendChild(newItem);
+                inputField.value = '';
+                setLog(`✨ added: "${rawText}"`, 'addBtn');
+                inputField.focus();
+            }
+
+            addBtn.addEventListener('click', function(e) {
+                e.stopPropagation();  // stop so we don't confuse the bubbling demo (button click is just action, but we still want to demo path? let's stop to keep log clean)
+                // but we still want to show that button was clicked. We'll update log
+                addNewTodo();
+                // we also manually log from button
+                setLog('➕ add button clicked', 'addBtn');
+            });
+
+            // press Enter in input field
+            inputField.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    e.stopPropagation();  // prevent bubbling to keep demo tidy, but log manually
+                    addNewTodo();
+                    setLog('⏎ Enter pressed', 'input');
+                }
+            });
+
+            // ----- reset / clear all todos (via clear log button? no, we add extra reset hidden but we have reset for log, we add a small extra: double click card to reset list? not needed. but we might want to reset to initial samples -----
+            // for fun, double-click on card resets to original sample set
+            appCard.addEventListener('dblclick', function(e) {
+                // empty list (but keep event)
+                while (todoList.firstChild) {
+                    todoList.removeChild(todoList.firstChild);
+                }
+                // restore samples
+                const defaults = [
+                    '🫧 wash bubble machine',
+                    '📝 understand event propagation',
+                    '🎯 click me & watch log',
+                    '🧼 scrub the cauldron',
+                    '✅ completed task (bubbles too)'
+                ];
+                defaults.forEach((text, idx) => {
+                    if (idx === 4) todoList.appendChild(createTodoItem(text, true));
+                    else todoList.appendChild(createTodoItem(text, false));
+                });
+                setLog('🔁 reset to sample todos', 'dblclickCARD');
+                e.stopPropagation(); // optional
+            });
+
+            // a clear-all button (hidden in plain sight? we can add small button near log? already have clear log, fine.
+
+            // ----- extra: show initial message -----
+            setLog('👉 click any todo element (check, text, delete)');
+        })();
+    </script>
+</body>
+</html>
