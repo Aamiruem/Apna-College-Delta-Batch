@@ -1,0 +1,187 @@
+Accessing JSON Data (JavaScript)
+
+Accessing JSON data means reading or getting values from a JSON object.
+
+JSON data is usually received from APIs, and in JavaScript we access it like a normal object.
+
+1. Example JSON Data
+{
+  "name": "Aamir",
+  "age": 22,
+  "city": "Delhi"
+}
+
+When JavaScript converts this JSON, it becomes a JavaScript object.
+
+2. Accessing JSON Data (Dot Notation)
+let data = {
+  name: "Aamir",
+  age: 22,
+  city: "Delhi"
+};
+
+console.log(data.name);
+console.log(data.age);
+
+Output
+
+Aamir
+22
+
+Here:
+
+data.name
+
+means get the value of the key "name".
+
+3. Accessing JSON Data (Bracket Notation)
+let data = {
+  name: "Aamir",
+  age: 22,
+  city: "Delhi"
+};
+
+console.log(data["name"]);
+console.log(data["city"]);
+
+Output
+
+Aamir
+Delhi
+4. Accessing Nested JSON Data
+
+Example JSON:
+
+{
+  "name": "Aamir",
+  "address": {
+    "city": "Delhi",
+    "country": "India"
+  }
+}
+
+Accessing nested data:
+
+let data = {
+  name: "Aamir",
+  address: {
+    city: "Delhi",
+    country: "India"
+  }
+};
+
+console.log(data.address.city);
+
+Output
+
+Delhi
+5. Accessing JSON Array
+
+Example JSON:
+
+{
+  "users": ["John", "Sara", "Mike"]
+}
+
+JavaScript:
+
+let data = {
+  users: ["John", "Sara", "Mike"]
+};
+
+console.log(data.users[0]);
+console.log(data.users[1]);
+
+Output
+
+John
+Sara
+6. Accessing Array of Objects
+
+Example JSON:
+
+[
+  {
+    "name": "John",
+    "age": 25
+  },
+  {
+    "name": "Sara",
+    "age": 23
+  }
+]
+
+JavaScript:
+
+let users = [
+  { name: "John", age: 25 },
+  { name: "Sara", age: 23 }
+];
+
+console.log(users[0].name);
+console.log(users[1].age);
+
+Output
+
+John
+23
+7. Accessing JSON from API
+
+Example using Fetch API.
+
+async function getData() {
+
+  let response = await fetch("https://api.github.com/users");
+
+  let data = await response.json();
+
+  console.log(data[0].login);
+
+}
+
+getData();
+
+Steps:
+
+fetch() gets API data
+
+response.json() converts JSON → JavaScript object
+
+We access data using . or [ ]
+
+8. Example API JSON
+
+Example API response:
+
+{
+  "name": "John",
+  "company": {
+    "name": "Google"
+  }
+}
+
+Accessing:
+
+console.log(data.company.name);
+
+Output
+
+Google
+9. Summary
+
+Access JSON using:
+
+Method	Example
+Dot notation	data.name
+Bracket notation	data["name"]
+Nested object	data.address.city
+Array	data.users[0]
+Array of objects	data[0].name
+
+✅ Short Definition
+
+Accessing JSON data means retrieving values from JSON objects or arrays using dot notation or bracket notation in JavaScript.
+
+If you want, I can also explain one very important topic that developers struggle with:
+
+How to read large API JSON data step-by-step (GitHub API / Weather API example) — this will make JSON 100% clear for React and MERN projects. 🚀

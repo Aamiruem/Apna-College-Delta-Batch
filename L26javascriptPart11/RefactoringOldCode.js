@@ -22,45 +22,79 @@
 
 
 
+// let h1 = document.querySelector("h1");
+
+// function changeColor(color, delay) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             h1.style.color = color;
+//             resolve("Color changed to " + color);
+//         }, delay);
+//     });
+// }
+
+// changeColor("red", 1000)
+// .then((result) => {
+//     console.log(result);
+//     return changeColor("green", 1000);
+// })
+// .then((result) => {
+//     console.log(result);
+//     return changeColor("blue", 1000);
+// })
+// .then((result) => {
+//     console.log(result);
+//     return changeColor("orange", 1000);
+// })
+// .then(() => {
+//     console.log("All colors changed");
+// });
+
+
+
+
+
+// async function runColors() {
+//     await changeColor("red",1000);
+//     await changeColor("green",1000);
+//     await changeColor("blue",1000);
+//     await changeColor("orange",1000);
+
+//     console.log("All colors changed");
+// }
+
+// runColors();
+
+
+
+
+
 let h1 = document.querySelector("h1");
 
 function changeColor(color, delay) {
     return new Promise((resolve, reject) => {
+
         setTimeout(() => {
             h1.style.color = color;
-            resolve("Color changed to " + color);
+            resolve("color changed!");
         }, delay);
+
     });
 }
 
 changeColor("red", 1000)
-.then((result) => {
-    console.log(result);
-    return changeColor("green", 1000);
-})
-.then((result) => {
-    console.log(result);
-    return changeColor("blue", 1000);
-})
-.then((result) => {
-    console.log(result);
+.then(() => {
+    console.log("red color was completed");
     return changeColor("orange", 1000);
 })
 .then(() => {
-    console.log("All colors changed");
+    console.log("orange color was completed");
+    return changeColor("green", 1000);
+})
+.then(() => {
+    console.log("green color was completed");
+    return changeColor("blue", 1000);
+})
+.then(() => {
+    console.log("blue color was completed");
 });
-
-
-
-
-
-async function runColors() {
-    await changeColor("red",1000);
-    await changeColor("green",1000);
-    await changeColor("blue",1000);
-    await changeColor("orange",1000);
-
-    console.log("All colors changed");
-}
-
-runColors();

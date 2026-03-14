@@ -1,0 +1,161 @@
+What is JSON?
+
+JSON stands for JavaScript Object Notation.
+
+JSON is a lightweight data format used to store and exchange data between a server and a client (browser/app).
+
+Most APIs send data in JSON format.
+
+Simple Definition
+
+JSON is a text-based format used to store and transfer data between applications.
+
+Example of JSON
+{
+  "name": "Aamir",
+  "age": 22,
+  "city": "Delhi"
+}
+
+Explanation:
+
+Key	Value
+name	Aamir
+age	22
+city	Delhi
+
+JSON stores data in key-value pairs.
+
+Structure of JSON
+
+JSON looks very similar to JavaScript objects.
+
+{
+  "key": "value"
+}
+
+Example:
+
+{
+  "product": "Laptop",
+  "price": 50000,
+  "brand": "Dell"
+}
+JSON Data Types
+
+JSON supports these data types:
+
+Type	Example
+String	"name": "Aamir"
+Number	"age": 22
+Boolean	"isStudent": true
+Array	"skills": ["HTML","CSS","JS"]
+Object	"address": { "city": "Delhi" }
+Null	"data": null
+
+Example:
+
+{
+  "name": "Aamir",
+  "age": 22,
+  "isStudent": true,
+  "skills": ["JavaScript", "React", "Node"],
+  "address": {
+    "city": "Delhi",
+    "country": "India"
+  }
+}
+JSON Array Example
+[
+  {
+    "name": "John",
+    "age": 25
+  },
+  {
+    "name": "Sara",
+    "age": 23
+  }
+]
+
+This is an array of objects.
+
+JSON in API Response
+
+When you access an API, the server sends JSON data.
+
+Example:
+
+{
+  "weather": "Cloudy",
+  "temperature": 28,
+  "city": "Delhi"
+}
+
+JavaScript receives this data and uses it.
+
+JSON in JavaScript
+
+JavaScript converts JSON using two methods.
+
+1. Convert JSON → JavaScript Object
+let jsonData = '{"name":"Aamir","age":22}';
+
+let obj = JSON.parse(jsonData);
+
+console.log(obj.name);
+2. Convert JavaScript Object → JSON
+let obj = {
+  name: "Aamir",
+  age: 22
+};
+
+let jsonData = JSON.stringify(obj);
+
+console.log(jsonData);
+Why JSON is Used
+
+JSON is popular because it is:
+
+✔ Simple
+✔ Lightweight
+✔ Easy to read
+✔ Easy to parse
+✔ Supported by almost all programming languages
+
+JSON vs JavaScript Object
+JSON	JavaScript Object
+Keys must be in double quotes	Quotes not required
+Data format	Programming object
+Used for data transfer	Used inside code
+
+Example:
+
+JSON
+
+{ "name": "Aamir" }
+
+JavaScript Object
+
+{ name: "Aamir" }
+Real Example with API
+async function getUser() {
+
+  let res = await fetch("https://api.github.com/users");
+
+  let data = await res.json();
+
+  console.log(data);
+
+}
+
+Here:
+
+API sends JSON
+
+res.json() converts JSON to JavaScript object
+
+Interview Definition
+
+JSON (JavaScript Object Notation) is a lightweight data format used to store and exchange data between a client and server.
+
+If you want, I can also explain JSON vs XML vs JavaScript Object vs API Response Flow, which is very commonly asked in web developer interviews. 🚀

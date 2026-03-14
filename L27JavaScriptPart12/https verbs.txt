@@ -1,0 +1,147 @@
+HTTP Verbs (HTTP Methods)
+
+HTTP verbs are actions used by a client (browser/app) to tell the server what operation to perform on data.
+
+They are used when working with APIs.
+
+Example:
+
+GET /users
+POST /users
+DELETE /users/1
+
+Each HTTP verb performs a different action.
+
+1. GET
+
+GET is used to retrieve (read) data from the server.
+
+Example:
+
+GET /users
+
+JavaScript Example:
+
+fetch("https://api.example.com/users")
+.then(res => res.json())
+.then(data => console.log(data));
+
+Example response (JSON):
+
+{
+  "name": "John",
+  "age": 25
+}
+
+✔ Only reads data
+✔ Does not change data
+
+2. POST
+
+POST is used to send new data to the server.
+
+Example:
+
+POST /users
+
+JavaScript Example:
+
+fetch("https://api.example.com/users", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    name: "Aamir",
+    age: 22
+  })
+});
+
+✔ Creates new data
+
+3. PUT
+
+PUT is used to update existing data.
+
+Example:
+
+PUT /users/1
+
+JavaScript Example:
+
+fetch("https://api.example.com/users/1", {
+  method: "PUT",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    name: "Aamir",
+    age: 23
+  })
+});
+
+✔ Updates entire data
+
+4. PATCH
+
+PATCH is used to update part of the data.
+
+Example:
+
+PATCH /users/1
+
+Example:
+
+fetch("https://api.example.com/users/1", {
+  method: "PATCH",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    age: 24
+  })
+});
+
+✔ Updates specific fields
+
+5. DELETE
+
+DELETE removes data from the server.
+
+Example:
+
+DELETE /users/1
+
+JavaScript Example:
+
+fetch("https://api.example.com/users/1", {
+  method: "DELETE"
+});
+
+✔ Deletes data
+
+Summary Table
+HTTP Verb	Purpose	Example
+GET	Get data	/users
+POST	Create data	/users
+PUT	Update full data	/users/1
+PATCH	Update partial data	/users/1
+DELETE	Remove data	/users/1
+Real API Example
+GET /products
+POST /products
+PUT /products/10
+DELETE /products/10
+HTTP Verbs Flow
+Client (Browser / App)
+        ↓
+Send HTTP Request
+        ↓
+Server Processes Request
+        ↓
+Server Sends Response (JSON)
+Interview Definition
+
+HTTP verbs (HTTP methods) are actions used in HTTP requests to specify what operation the client wants to perform on the server resource.
+
+If you want, I can also explain REST API concepts (REST architecture + endpoints + CRUD operations) which is very important for MERN stack developers and interviews.

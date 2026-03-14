@@ -1,0 +1,207 @@
+What is AJAX?
+
+AJAX stands for Asynchronous JavaScript and XML.
+
+AJAX is a technique used in web development to update part of a webpage without reloading the whole page.
+
+It allows the browser to send and receive data from a server in the background.
+
+Simple Definition
+
+AJAX is a technique that allows web pages to communicate with a server asynchronously and update content without refreshing the page.
+
+Real-Life Example
+
+When you use:
+
+Google search suggestions
+
+Instagram likes
+
+Chat applications
+
+Loading comments
+
+The page updates data without reloading — this is done using AJAX.
+
+Example flow:
+
+User Action
+     ↓
+JavaScript sends request
+     ↓
+Server processes request
+     ↓
+Server sends data
+     ↓
+Webpage updates part of page
+Why AJAX is Used
+
+AJAX improves:
+
+✔ User experience
+✔ Website speed
+✔ Dynamic content loading
+
+Instead of refreshing the whole page, only specific parts update.
+
+Technologies Used in AJAX
+
+AJAX is not a single technology. It combines several technologies:
+
+Technology	Purpose
+HTML	Structure of page
+CSS	Styling
+JavaScript	Send requests
+DOM	Update webpage
+Server (API)	Send data
+JSON / XML	Data format
+
+Today JSON is used more than XML.
+
+How AJAX Works
+Browser
+   ↓
+JavaScript creates request
+   ↓
+Server receives request
+   ↓
+Server sends response (JSON/XML)
+   ↓
+JavaScript updates DOM
+AJAX Using XMLHttpRequest (Old Method)
+let xhr = new XMLHttpRequest();
+
+xhr.open("GET", "https://api.example.com/data");
+
+xhr.onload = function () {
+   if (xhr.status === 200) {
+      console.log(xhr.responseText);
+   }
+};
+
+xhr.send();
+
+Steps:
+
+Create request object
+
+Open connection
+
+Send request
+
+Receive response
+
+AJAX Using Fetch API (Modern Method)
+
+Modern JavaScript uses fetch instead of XMLHttpRequest.
+
+fetch("https://api.example.com/data")
+.then(response => response.json())
+.then(data => {
+   console.log(data);
+})
+.catch(error => {
+   console.log(error);
+});
+AJAX Using Async / Await
+
+Cleaner version:
+
+async function getData() {
+
+   try {
+
+      let response = await fetch("https://api.example.com/data");
+
+      let data = await response.json();
+
+      console.log(data);
+
+   } catch(error) {
+
+      console.log(error);
+
+   }
+
+}
+
+getData();
+Example of AJAX in Web Page
+<button onclick="loadData()">Load Data</button>
+<div id="result"></div>
+
+<script>
+function loadData(){
+
+fetch("https://api.github.com/users")
+.then(res => res.json())
+.then(data => {
+document.getElementById("result").innerText = data[0].login;
+});
+
+}
+</script>
+
+Here:
+
+User clicks button
+
+AJAX request is sent
+
+Data loads without refreshing page
+
+Advantages of AJAX
+
+✔ No full page reload
+✔ Faster user experience
+✔ Dynamic web applications
+✔ Reduced server load
+
+Disadvantages of AJAX
+
+❌ Debugging can be difficult
+❌ Depends on JavaScript
+❌ SEO issues sometimes
+
+AJAX vs Traditional Web Request
+Traditional Request	AJAX
+Full page reload	No page reload
+Slow	Faster
+Server returns full page	Server returns data
+Example Flow
+
+Traditional:
+
+Click button
+↓
+Page reload
+↓
+New page loads
+
+AJAX:
+
+Click button
+↓
+Background request
+↓
+Data updates instantly
+Interview Definition
+
+AJAX (Asynchronous JavaScript and XML) is a web development technique that allows web pages to send and receive data from a server asynchronously without reloading the entire page.
+
+✅ Important Modern Fact
+
+Most modern apps like React, Angular, Vue, MERN apps use AJAX through Fetch or Axios.
+
+If you want, I can also explain 5 advanced AJAX concepts that are very important for JavaScript interviews:
+
+AJAX vs Fetch vs Axios
+
+ReadyState and Status codes
+
+CORS problem
+
+API request lifecycle
+
+How React uses AJAX internally.

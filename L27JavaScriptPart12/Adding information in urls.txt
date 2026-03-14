@@ -1,0 +1,130 @@
+Adding Information in URLs
+
+When working with APIs or web requests, sometimes we need to send extra information in the URL.
+This information helps the server understand what data we want.
+
+There are three main ways to add information in URLs:
+
+Query Parameters
+
+Path Parameters
+
+Hash / Fragment
+
+1️⃣ Query Parameters (Most Common)
+
+Query parameters are extra data added after ? in the URL.
+
+Example:
+
+https://example.com/search?q=laptop
+
+Here:
+
+Part	Meaning
+?	Starts query parameters
+q	Key
+laptop	Value
+Multiple Query Parameters
+https://example.com/products?category=electronics&price=50000
+
+Explanation:
+
+Parameter	Value
+category	electronics
+price	50000
+
+Symbol & is used to separate parameters.
+
+Example in JavaScript
+fetch("https://api.example.com/users?id=10")
+.then(res => res.json())
+.then(data => console.log(data));
+
+This requests user with id = 10.
+
+2️⃣ Path Parameters
+
+Path parameters are part of the URL path and identify a specific resource.
+
+Example:
+
+https://api.example.com/users/10
+
+Here:
+
+Part	Meaning
+users	resource
+10	specific user ID
+
+Example request:
+
+GET /users/10
+
+This means get user with ID 10.
+
+JavaScript Example
+fetch("https://api.example.com/users/10")
+.then(res => res.json())
+.then(data => console.log(data));
+3️⃣ Hash / Fragment
+
+A fragment is used to navigate to a specific section of a page.
+
+Example:
+
+https://example.com/page#section1
+
+Here:
+
+Symbol	Meaning
+#	Fragment identifier
+
+It is mostly used for navigation inside a webpage.
+
+Example URL with All Parts
+https://example.com/products/10?color=red&size=large#details
+
+Explanation:
+
+Part	Meaning
+products/10	Path parameter
+color=red	Query parameter
+size=large	Query parameter
+#details	Fragment
+Real API Example
+
+Example:
+
+https://api.github.com/users?since=100
+
+Here:
+
+Parameter	Meaning
+since	start user list from ID 100
+Why Add Information in URLs?
+
+It helps the server:
+
+✔ filter data
+✔ search data
+✔ identify resources
+✔ control API responses
+
+Example:
+
+/products?category=mobile
+
+Returns only mobile products.
+
+Summary
+Method	Example	Purpose
+Query Parameter	?id=10	Filter/search
+Path Parameter	/users/10	Specific resource
+Fragment	#section	Page navigation
+
+✅ Short Definition
+
+Adding information in URLs means sending extra data to the server using query parameters, path parameters, or fragments.
+
+If you want, I can also explain URL structure completely (protocol, domain, port, path, query, fragment) — this concept is very important for web developers and API interviews.

@@ -1,0 +1,167 @@
+HTTP Headers
+
+HTTP headers are extra information sent with HTTP requests and responses between a client (browser/app) and a server.
+
+They help both sides understand how to process the request or response.
+
+Simple Definition
+
+HTTP headers are key-value pairs that send additional information about the request or response.
+
+Example:
+
+Content-Type: application/json
+Authorization: Bearer token
+
+Here:
+
+Content-Type → key
+
+application/json → value
+
+Where Headers Are Used
+
+Headers are used in both request and response.
+
+Client Request
+      ↓
+[Request Headers]
+      ↓
+Server
+      ↓
+[Response Headers]
+      ↓
+Client
+1️⃣ Request Headers
+
+Request headers are sent from client to server.
+
+Example request:
+
+GET /users HTTP/1.1
+Host: example.com
+Authorization: Bearer token
+Content-Type: application/json
+
+Common request headers:
+
+Header	Purpose
+Authorization	Authentication token
+Content-Type	Format of data
+User-Agent	Information about browser
+Accept	Data format client accepts
+2️⃣ Response Headers
+
+Response headers are sent from server to client.
+
+Example:
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 120
+
+Common response headers:
+
+Header	Purpose
+Content-Type	Type of response data
+Content-Length	Size of response
+Cache-Control	Caching rules
+Set-Cookie	Send cookies to browser
+Example Using JavaScript Fetch
+fetch("https://api.example.com/users", {
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer token123"
+  }
+})
+.then(res => res.json())
+.then(data => console.log(data));
+
+Explanation:
+
+Header	Meaning
+Content-Type	Sending JSON data
+Authorization	Authentication token
+Important HTTP Headers
+1. Content-Type
+
+Specifies data format.
+
+Example:
+
+Content-Type: application/json
+
+Other types:
+
+text/html
+application/xml
+image/png
+2. Authorization
+
+Used for authentication and security.
+
+Example:
+
+Authorization: Bearer token123
+3. Accept
+
+Tells server which format the client accepts.
+
+Example:
+
+Accept: application/json
+4. Cache-Control
+
+Controls caching behavior.
+
+Example:
+
+Cache-Control: no-cache
+Example HTTP Request with Headers
+GET /users HTTP/1.1
+Host: api.example.com
+Accept: application/json
+Authorization: Bearer token
+HTTP Headers Structure
+
+Headers follow key : value format.
+
+Header-Name: Value
+
+Example:
+
+Content-Type: application/json
+Why HTTP Headers Are Important
+
+Headers help:
+
+✔ send authentication information
+✔ define data format
+✔ control caching
+✔ manage cookies
+✔ secure communication
+
+Example Flow
+Client
+   ↓
+Request Headers
+   ↓
+Server
+   ↓
+Response Headers
+   ↓
+Client
+Interview Definition
+
+HTTP headers are key-value pairs sent with HTTP requests and responses that provide additional information about the request or response.
+
+✅ Important headers developers should know
+
+Content-Type
+Authorization
+Accept
+Cache-Control
+User-Agent
+Set-Cookie
+
+If you want, I can also explain HTTP request lifecycle (from typing URL to receiving response) — this is one of the most important concepts for web developers and MERN interviews.

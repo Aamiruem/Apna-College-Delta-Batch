@@ -1,0 +1,150 @@
+Using fetch() with async–await
+
+fetch() is used in JavaScript to request data from an API.
+When we combine it with async–await, the code becomes cleaner and easier to read.
+
+1️⃣ Basic Syntax
+async function getData() {
+
+  let response = await fetch("API_URL");
+
+  let data = await response.json();
+
+  console.log(data);
+
+}
+
+getData();
+
+Explanation:
+
+fetch() → sends request to the API
+
+await → waits for the response
+
+response.json() → converts response into JSON
+
+data → contains the API data
+
+2️⃣ Example: Getting Users from an API
+async function getUsers() {
+
+  let response = await fetch("https://api.github.com/users");
+
+  let data = await response.json();
+
+  console.log(data);
+
+}
+
+getUsers();
+
+Output → List of GitHub users in JSON format.
+
+3️⃣ Step-by-Step Flow
+Call function
+      ↓
+fetch() sends request
+      ↓
+Server processes request
+      ↓
+Server sends response
+      ↓
+await waits for response
+      ↓
+response.json() converts JSON
+      ↓
+JavaScript uses the data
+4️⃣ Handling Errors with try...catch
+
+When using async-await, errors are handled with try-catch.
+
+async function getData() {
+
+  try {
+
+    let response = await fetch("https://api.github.com/users");
+
+    let data = await response.json();
+
+    console.log(data);
+
+  } catch(error) {
+
+    console.log("Error:", error);
+
+  }
+
+}
+
+getData();
+5️⃣ Example: Random Dog Image API
+
+API:
+
+https://dog.ceo/api/breeds/image/random
+
+Code:
+
+async function getDog() {
+
+  let response = await fetch("https://dog.ceo/api/breeds/image/random");
+
+  let data = await response.json();
+
+  console.log(data.message);
+
+}
+
+getDog();
+
+Output:
+
+https://images.dog.ceo/....
+6️⃣ Fetch with Options (Method, Headers)
+
+Sometimes we need to specify method or headers.
+
+Example:
+
+async function sendData() {
+
+  let response = await fetch("https://api.example.com/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: "Aamir",
+      age: 22
+    })
+  });
+
+  let data = await response.json();
+
+  console.log(data);
+
+}
+7️⃣ Important Points
+
+✔ fetch() returns a Promise
+✔ await waits for the Promise to resolve
+✔ response.json() converts response into JavaScript object
+✔ try-catch handles errors
+
+8️⃣ Example Flow
+async function
+      ↓
+await fetch()
+      ↓
+response received
+      ↓
+await response.json()
+      ↓
+data used in JavaScript
+
+✅ Short Definition
+
+Using fetch with async-await allows developers to handle API requests in a cleaner and more readable way by waiting for promises to resolve before continuing execution.
+
+If you want, I can also explain 5 important mistakes developers make when using fetch() with async-await (this is very helpful for real projects and interviews).

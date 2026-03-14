@@ -1,0 +1,152 @@
+API Testing Tools
+
+API testing tools are software tools used to test APIs to check if they work correctly.
+They help developers send requests to an API and see the response.
+
+For example, you can test:
+
+GET request
+
+POST request
+
+PUT request
+
+DELETE request
+
+without writing full frontend code.
+
+1. Postman (Most Popular)
+
+Postman is the most widely used API testing tool.
+
+Features
+
+Send HTTP requests
+
+Test REST APIs
+
+View JSON responses
+
+Add headers and body
+
+Save API collections
+
+Example Request in Postman
+GET https://api.github.com/users
+
+You will see the JSON response in Postman.
+
+2. Insomnia
+
+Insomnia is another simple and powerful API client.
+
+Features
+
+Clean interface
+
+GraphQL support
+
+Environment variables
+
+Easy API testing
+
+Developers often use it as an alternative to Postman.
+
+3. Swagger UI
+
+Swagger is used to document and test APIs.
+
+Features
+
+Interactive API documentation
+
+Test API directly in browser
+
+Shows all endpoints
+
+Example endpoint:
+
+GET /users
+POST /users
+DELETE /users/{id}
+4. cURL
+
+cURL is a command-line tool used to send HTTP requests.
+
+Example:
+
+curl https://api.github.com/users
+
+It returns the JSON response in terminal.
+
+5. Hoppscotch
+
+Hoppscotch is a free browser-based API tester.
+
+Features
+
+Fast API testing
+
+No installation required
+
+Supports REST and GraphQL
+
+6. Thunder Client
+
+Thunder Client works inside VS Code.
+
+Features
+
+Lightweight
+
+Easy API testing
+
+Works directly in VS Code
+
+Many JavaScript developers prefer this.
+
+Common Things Tested with API Tools
+Feature	Example
+Endpoint	/users
+Method	GET / POST
+Headers	Authorization
+Request Body	JSON data
+Response	JSON
+
+Example response:
+
+{
+  "name": "John",
+  "age": 25
+}
+Example API Testing Flow
+API Tool
+   ↓
+Send Request
+   ↓
+Server
+   ↓
+Server Sends JSON Response
+   ↓
+Tool Displays Result
+Most Used API Testing Tools (Summary)
+Tool	Use
+Postman	Most popular API testing
+Insomnia	Simple API client
+Swagger	API documentation + testing
+cURL	Terminal testing
+Thunder Client	VS Code extension
+
+✅ Short Definition
+
+API testing tools are applications that allow developers to send requests to APIs and analyze the responses to verify that the API works correctly.
+
+💡 Since you are learning MERN and JavaScript, the 3 best tools for you are:
+
+Postman
+
+Thunder Client (VS Code)
+
+Hoppscotch
+
+If you want, I can also explain how developers test APIs in real projects step-by-step using Postman (GET, POST, PUT, DELETE with examples). 🚀

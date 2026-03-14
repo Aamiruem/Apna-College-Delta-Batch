@@ -1,0 +1,135 @@
+Our First API Request (JavaScript)
+
+An API request means sending a request to a server to get data.
+In JavaScript, we usually make API requests using the Fetch API.
+
+1️⃣ Simple API Request Using Fetch
+
+Example:
+
+fetch("https://api.github.com/users")
+.then(response => response.json())
+.then(data => {
+   console.log(data);
+});
+Explanation
+
+fetch() → sends request to the API
+
+response.json() → converts response into JSON
+
+data → contains the API data
+
+2️⃣ Step-by-Step Flow
+JavaScript fetch()
+        ↓
+Send request to API
+        ↓
+Server processes request
+        ↓
+Server sends response (JSON)
+        ↓
+JavaScript receives data
+3️⃣ Example API Response
+
+The API may return JSON like this:
+
+[
+  {
+    "login": "mojombo",
+    "id": 1
+  },
+  {
+    "login": "defunkt",
+    "id": 2
+  }
+]
+
+Accessing data:
+
+console.log(data[0].login);
+
+Output:
+
+mojombo
+4️⃣ API Request Using Async / Await (Modern Way)
+async function getUsers() {
+
+   let response = await fetch("https://api.github.com/users");
+
+   let data = await response.json();
+
+   console.log(data);
+
+}
+
+getUsers();
+
+This method is cleaner and easier to read.
+
+5️⃣ Handling Errors
+fetch("https://api.github.com/users")
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.log("Error:", error));
+
+If the request fails → catch() handles the error.
+
+6️⃣ Example: Random Dog Image API
+
+API:
+
+https://dog.ceo/api/breeds/image/random
+
+Code:
+
+fetch("https://dog.ceo/api/breeds/image/random")
+.then(res => res.json())
+.then(data => console.log(data.message));
+
+Output:
+
+https://images.dog.ceo/....
+7️⃣ API Request Structure
+fetch(URL, options)
+
+Example:
+
+fetch("https://api.example.com/users", {
+   method: "GET"
+});
+8️⃣ Important Things in API Request
+Item	Meaning
+URL	API endpoint
+Method	GET / POST / PUT / DELETE
+Headers	Extra request info
+Body	Data sent to server
+9️⃣ Real Use in Web Apps
+
+API requests are used in:
+
+Weather apps
+
+Social media apps
+
+Online stores
+
+Chat applications
+
+Example:
+
+React App
+   ↓
+API Request
+   ↓
+Server
+   ↓
+JSON Response
+   ↓
+UI Updates
+
+✅ Short Definition
+
+An API request is a process where a client sends a request to a server to retrieve or send data using HTTP methods.
+
+If you want, I can also show you a small real project (Random Joke Generator using API + JavaScript) — it will help you understand API requests, JSON, fetch, and DOM together. 🚀
