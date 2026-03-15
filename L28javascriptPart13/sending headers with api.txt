@@ -1,0 +1,151 @@
+Sending Headers with an API Request
+
+When making API requests (for example with Axios), headers are used to send extra information to the server.
+
+Headers can include things like:
+
+Authorization tokens
+
+Content type (JSON, text, etc.)
+
+API keys
+
+Language preferences
+
+They are part of the HTTP request protocol used by the web and APIs.
+
+1️⃣ Basic Axios Request with Headers
+axios.get("https://api.example.com/users", {
+  headers: {
+    Authorization: "Bearer token123"
+  }
+})
+.then(res => {
+  console.log(res.data);
+});
+Explanation
+headers → extra information sent to the server
+Authorization → used for authentication
+Bearer token123 → access token
+2️⃣ Multiple Headers Example
+axios.get("https://api.example.com/data", {
+  headers: {
+    Authorization: "Bearer myToken123",
+    "Content-Type": "application/json",
+    "Custom-Header": "HelloAPI"
+  }
+})
+.then(res => {
+  console.log(res.data);
+});
+
+Common headers:
+
+Header	Purpose
+Authorization	Login / security token
+Content-Type	Format of data
+Accept	Type of response expected
+User-Agent	Client information
+3️⃣ Headers with POST Request
+axios.post(
+  "https://api.example.com/users",
+  {
+    name: "Aamir",
+    age: 22
+  },
+  {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }
+)
+.then(res => {
+  console.log(res.data);
+});
+
+Structure:
+
+axios.post(URL, DATA, CONFIG)
+4️⃣ Headers with Async / Await
+async function getData() {
+  try {
+    const res = await axios.get("https://api.example.com/users", {
+      headers: {
+        Authorization: "Bearer token123"
+      }
+    });
+
+    console.log(res.data);
+
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+getData();
+5️⃣ Setting Default Headers
+
+You can set headers globally for all requests.
+
+axios.defaults.headers.common["Authorization"] = "Bearer token123";
+
+Now every request will include this header.
+
+6️⃣ Creating Axios Instance with Headers
+const api = axios.create({
+  baseURL: "https://api.example.com",
+  headers: {
+    Authorization: "Bearer token123"
+  }
+});
+
+api.get("/users");
+
+This is very common in projects built with frameworks like React.
+
+7️⃣ Example Using a Public API Key
+
+Some APIs require keys in headers.
+
+Example format:
+
+axios.get("https://api.example.com/weather", {
+  headers: {
+    "x-api-key": "123456789"
+  }
+});
+🎯 Simple Flow
+Client (Browser)
+      ↓
+Axios Request
+      ↓
+Headers attached
+      ↓
+API Server
+      ↓
+Response
+
+✅ Short Definition
+
+Headers = extra information sent with an API request.
+
+Examples:
+
+Authorization
+Content-Type
+API Keys
+Cookies
+
+💡 If you want, I can also explain very important interview concepts related to APIs:
+
+HTTP headers in detail
+
+Authorization vs Authentication
+
+CORS headers
+
+Request vs Response headers
+
+Real API debugging in Postman
+
+These are very important for MERN developers.

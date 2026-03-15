@@ -1,0 +1,183 @@
+Using Axios
+
+Axios is used to send HTTP requests to APIs and get data from servers.
+You can use it in JavaScript, Node.js, or frontend frameworks like React.
+
+1️⃣ Step 1: Install Axios
+Using npm
+npm install axios
+Import Axios
+import axios from "axios";
+
+Or with CDN in HTML:
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+2️⃣ Basic Axios Request
+axios({
+  method: "get",
+  url: "https://api.example.com/users"
+})
+.then(function(response){
+  console.log(response.data);
+})
+.catch(function(error){
+  console.log(error);
+});
+3️⃣ Using Axios GET Request
+
+Used to fetch data from API.
+
+axios.get("https://jsonplaceholder.typicode.com/posts")
+.then((response) => {
+  console.log(response.data);
+})
+.catch((error) => {
+  console.log(error);
+});
+
+Output → API data
+
+4️⃣ Using Axios POST Request
+
+Used to send data to server.
+
+axios.post("https://jsonplaceholder.typicode.com/posts", {
+  title: "Hello",
+  body: "This is a post",
+  userId: 1
+})
+.then((response) => {
+  console.log(response.data);
+});
+5️⃣ Using Axios with async / await
+
+Modern JavaScript uses async-await.
+
+async function getData() {
+  try {
+    const response = await axios.get(
+      "https://jsonplaceholder.typicode.com/users"
+    );
+
+    console.log(response.data);
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+getData();
+6️⃣ Using Axios with Parameters
+axios.get("https://jsonplaceholder.typicode.com/posts", {
+  params: {
+    userId: 1
+  }
+})
+.then((res) => {
+  console.log(res.data);
+});
+
+URL becomes:
+
+/posts?userId=1
+7️⃣ Using Axios Headers
+
+Headers send extra information.
+
+axios.get("https://api.example.com/users", {
+  headers: {
+    Authorization: "Bearer token123"
+  }
+});
+8️⃣ Axios Response Object
+
+When request is successful:
+
+axios.get("https://api.example.com/users")
+.then(res => {
+  console.log(res);
+});
+
+Important properties:
+
+res.data      → actual API data
+res.status    → status code
+res.headers   → response headers
+res.config    → request configuration
+9️⃣ Handling Errors
+axios.get("https://wrong-api.com")
+.catch(error => {
+
+  if(error.response){
+    console.log(error.response.status);
+  }
+
+  else{
+    console.log(error.message);
+  }
+
+});
+🔟 Example: Real API Request
+async function getJoke() {
+
+  const res = await axios.get(
+    "https://official-joke-api.appspot.com/random_joke"
+  );
+
+  console.log(res.data.setup);
+  console.log(res.data.punchline);
+
+}
+
+getJoke();
+
+Example Output:
+
+Why did the computer show up at work late?
+It had a hard drive!
+1️⃣1️⃣ Axios in React Example
+import axios from "axios";
+import { useEffect } from "react";
+
+function App(){
+
+  useEffect(() => {
+
+    axios.get("https://jsonplaceholder.typicode.com/users")
+    .then(res => {
+      console.log(res.data);
+    });
+
+  }, []);
+
+}
+🎯 Simple Flow of Axios
+Client (Browser)
+      ↓
+Axios Request
+      ↓
+API Server
+      ↓
+Response
+      ↓
+Axios returns Data
+
+✅ In one line:
+
+Axios is used to send HTTP requests and receive API data easily in JavaScript.
+
+If you want, I can also explain advanced Axios topics that are very important for interviews and real projects:
+
+Axios Interceptors
+
+Axios Instance
+
+Axios BaseURL
+
+Axios Timeout
+
+Axios Cancel Request
+
+Axios vs Fetch
+
+Just tell me and I’ll explain them step-by-step with examples. 🚀

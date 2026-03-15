@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>State Based College Finder</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    text-align:center;
+    background:#f4f4f4;
+}
+
+input{
+    padding:10px;
+    width:250px;
+}
+
+button{
+    padding:10px 15px;
+    cursor:pointer;
+}
+
+#results{
+    margin-top:20px;
+}
+
+.card{
+    background:white;
+    padding:15px;
+    margin:10px auto;
+    width:60%;
+    border:1px solid #ddd;
+    border-radius:5px;
+}
+
+.error{
+    color:red;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>Find Colleges by State (India)</h2>
+
+<input type="text" id="stateInput" placeholder="Enter State (ex: Punjab)">
+<button id="searchBtn">Search</button>
+
+<div id="results"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="script.js"></script>
+
+<script src="ActivityHomeWork.js"></script>
+
+</body>
+</html>

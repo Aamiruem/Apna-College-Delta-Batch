@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>University Finder</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background:#f4f4f4;
+    text-align:center;
+}
+
+.container{
+    width:80%;
+    margin:auto;
+}
+
+input{
+    padding:10px;
+    width:250px;
+}
+
+button{
+    padding:10px 15px;
+    cursor:pointer;
+}
+
+#results{
+    margin-top:20px;
+}
+
+.university-card{
+    background:white;
+    border:1px solid #ddd;
+    padding:15px;
+    margin:10px;
+    border-radius:5px;
+}
+
+.error-message{
+    color:red;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>University Search</h1>
+
+<input 
+type="text" 
+id="countryInput" 
+placeholder="Enter Country Name"
+/>
+
+<button id="searchbtn">Search</button>
+
+<div id="results"></div>
+
+</div>
+
+<!-- Axios CDN -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const searchBtn = document.getElementById('searchbtn');
+    const countryInput = document.getElementById('countryInput');
+    const resultsDiv = document.getElementById('results');
+
+    searchBtn.addEventListener('click', async () => {
+
+        const country = countryInput.value.trim();
+
+        if(!country){
+            showError('Please enter a country name!');
+            return;
+        }
+
+        try{
+
+            const universities = await getUniversities(country);
+            displayUniversities(universities);
+
+        }catch(error){
+
+            console.error(error);
+            showError('Failed to fetch universities.');
+
+        }
+
+    });
+
+    async function getUniversities(country){
+
+        const url = `http://universities.hipolabs.com/search?country=${encodeURIComponent(country)}`;
+
+        const response = await axios.get(url);
+
+        return response.data;
+
+    }
+
+    function displayUniversities(universities){
+
+        resultsDiv.innerHTML = "";
+
+        if(universities.length === 0){
+            showError('No universities found');
+            return;
+        }
+
+        universities.forEach(university => {
+
+            const universityCard = document.createElement('div');
+            universityCard.className = "university-card";
+
+            universityCard.innerHTML = `
+            <h3>${university.name}</h3>
+            <p><strong>Country:</strong> ${university.country}</p>
+            <p><strong>Website:</strong> 
+            <a href="${university.web_pages[0]}" target="_blank">
+            ${university.web_pages[0]}
+            </a></p>
+            `;
+
+            resultsDiv.appendChild(universityCard);
+
+        });
+
+    }
+
+    function showError(message){
+        resultsDiv.innerHTML = `<p class="error-message">${message}</p>`;
+    }
+
+});
+
+</script>
+
+</body>
+</html>

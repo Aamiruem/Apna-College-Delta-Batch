@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Dog Generator</title>
+</head>
+
+<body>
+
+  <h2>Random Dog Image 🐶</h2>
+
+  <button id="btn">Get Dog Image</button>
+  <br><br>
+
+  <img id="dogImg" width="300">
+
+  <!-- Axios CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script>
+
+    const btn = document.querySelector("#btn");
+    const img = document.querySelector("#dogImg");
+
+    btn.addEventListener("click", async () => {
+
+      let res = await axios.get("https://dog.ceo/api/breeds/image/random");
+
+      img.src = res.data.message;
+
+    });
+
+  </script>
+
+</body>
+</html>
