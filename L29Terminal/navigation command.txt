@@ -1,0 +1,130 @@
+Navigation commands are terminal commands used to move between folders (directories) and understand where you are in the file system. These commands are common in shells like Bash, Z shell, and tools such as Git Bash or Windows Terminal.
+
+1. pwd – Print Working Directory
+
+Shows the current directory (where you are).
+
+Example:
+
+pwd
+
+Output example:
+
+/c/Users/Aamir/Desktop/project
+
+Meaning: you are inside the project folder.
+
+2. ls – List Files
+
+Shows files and folders inside the current directory.
+
+Example:
+
+ls
+
+Example output:
+
+index.js
+package.json
+images
+app.js
+
+Useful options:
+
+ls -l
+
+(detailed list)
+
+ls -a
+
+(show hidden files)
+
+3. cd – Change Directory
+
+Used to move into another folder.
+
+Example:
+
+cd Desktop
+
+Moves to the Desktop folder.
+
+Example result:
+
+/c/Users/Aamir/Desktop
+4. cd .. – Move One Folder Back
+
+Moves one level up.
+
+Example:
+
+cd ..
+
+Example:
+
+/c/Users/Aamir/Desktop
+
+after running:
+
+cd ..
+
+you get:
+
+/c/Users/Aamir
+5. cd / – Go to Root Directory
+
+Moves to the top-level directory.
+
+Example:
+
+cd /
+
+Output:
+
+/
+6. cd ~ – Go to Home Directory
+
+Moves directly to the user home folder.
+
+Example:
+
+cd ~
+
+Output example:
+
+/c/Users/Aamir
+7. cd - – Go to Previous Directory
+
+Returns to the previous folder you were in.
+
+Example:
+
+cd -
+Example Navigation Workflow
+pwd
+ls
+cd Desktop
+ls
+cd project
+pwd
+cd ..
+
+Example output:
+
+/c/Users/Aamir
+Desktop Documents Downloads
+
+/c/Users/Aamir/Desktop/project
+Simple Summary
+Command	Purpose
+pwd	Show current location
+ls	Show files in folder
+cd folder	Enter folder
+cd ..	Go back one folder
+cd /	Go to root directory
+cd ~	Go to home directory
+cd -	Return to previous folder
+
+✅ These navigation commands are used daily by developers working with tools like Node.js, Git, and Visual Studio Code.
+
+If you want, I can also show you the 20 most important terminal commands every developer uses daily (mkdir, touch, rm, cp, mv, etc.).

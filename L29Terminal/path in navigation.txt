@@ -1,0 +1,390 @@
+In terminal navigation, a path means the location of a file or folder in the file system.
+It tells the terminal where a directory or file exists.
+
+Paths are used with commands like cd, ls, cp, mv, etc. in shells such as Bash and Z shell, which you may use through Windows Terminal or Git Bash.
+
+1. What is a Path?
+
+A path is the address of a file or folder.
+
+Example path:
+
+/c/Users/Aamir/Desktop/project/index.js
+
+Here:
+
+Part	Meaning
+/c	C drive
+Users	Folder
+Aamir	User folder
+Desktop	Desktop folder
+project	Project folder
+index.js	File
+2. Types of Paths
+
+There are two main types of paths in navigation.
+
+1️⃣ Absolute Path
+
+An absolute path is the complete path from the root directory.
+
+Example:
+
+/c/Users/Aamir/Desktop/project
+
+Command example:
+
+cd /c/Users/Aamir/Desktop/project
+
+This works from anywhere in the terminal.
+
+2️⃣ Relative Path
+
+A relative path is a path relative to your current directory.
+
+Example:
+
+Current location:
+
+/c/Users/Aamir
+
+Command:
+
+cd Desktop
+
+Result:
+
+/c/Users/Aamir/Desktop
+
+So relative path = shorter path from current location.
+
+3. Special Navigation Paths
+. (Current Directory)
+
+Represents the current folder.
+
+Example:
+
+ls .
+
+Shows files in the current directory.
+
+.. (Parent Directory)
+
+Moves one folder back.
+
+Example:
+
+cd ..
+
+Example:
+
+/c/Users/Aamir/Desktop
+
+After running:
+
+cd ..
+
+Result:
+
+/c/Users/Aamir
+~ (Home Directory)
+
+Represents the user's home directory.
+
+Example:
+
+cd ~
+
+Result:
+
+/c/Users/Aamir
+4. Example Navigation Using Paths
+
+Example workflow:
+
+pwd
+ls
+cd Desktop/project
+pwd
+
+Output example:
+
+/c/Users/Aamir
+Desktop Downloads Documents
+
+/c/Users/Aamir/Desktop/project
+5. Path Example (Developer)
+
+When running a project using Node.js:
+
+cd /c/Users/Aamir/Desktop/myapp
+node app.js
+
+The path tells the terminal where the project exists.
+
+6. Simple Visualization
+C:
+ └── Users
+      └── Aamir
+           └── Desktop
+                └── project
+                     └── index.js
+
+Path:
+
+/c/Users/Aamir/Desktop/project/index.js
+7. Quick Summary
+Path Type	Meaning
+Absolute Path	Full path from root
+Relative Path	Path from current folder
+.	Current directory
+..	Parent directory
+~	Home directory
+
+✅ Understanding paths is essential for developers, especially when working with tools like:
+
+Node.js
+
+Git
+
+Visual Studio Code
+
+If you want, I can also explain File Manipulation Commands in Terminal (touch, mkdir, rm, cp, mv) which are the next important topic after navigation.
+
+
+
+
+
+
+
+In Terminal Navigation, “path” means the location of a folder or file in the file system. There are mainly 2 types of paths used while navigating directories.
+
+1️⃣ Absolute Path
+
+Definition:
+An absolute path starts from the root directory and gives the complete location of a folder or file.
+
+Symbol
+/   → root directory
+Example
+/Users/aamir/Desktop/project
+Command Example
+cd /Users/aamir/Desktop
+
+✅ No matter where you are in the terminal, this path will always work.
+
+Structure
+/ (root)
+   Users
+      aamir
+         Desktop
+            project
+2️⃣ Relative Path
+
+Definition:
+A relative path starts from your current working directory.
+
+Example
+
+Current directory:
+
+/Users/aamir
+
+Move to Desktop:
+
+cd Desktop
+
+Move to project folder:
+
+cd Desktop/project
+3️⃣ Special Navigation Paths
+1. . (Current Directory)
+
+Represents the current folder.
+
+Example:
+
+cd .
+2. .. (Parent Directory)
+
+Moves one level up.
+
+Example
+
+cd ..
+
+Example structure
+
+Users
+ └── aamir
+      └── Desktop
+
+If you are in Desktop
+
+cd ..
+
+You go back to aamir
+
+3. ~ (Home Directory)
+
+Represents the user's home folder.
+
+Example
+
+cd ~
+
+or
+
+cd ~/Desktop
+4️⃣ Multiple Level Navigation
+Go two folders up
+cd ../..
+Example structure
+Users
+ └── aamir
+      └── Desktop
+           └── project
+
+If you are inside project
+
+cd ../..
+
+You reach aamir
+
+5️⃣ Viewing Current Path
+pwd
+
+Example Output
+
+/Users/aamir/Desktop/project
+6️⃣ Quick Navigation Commands
+Command	Meaning
+pwd	show current path
+cd foldername	move inside folder
+cd ..	go back one folder
+cd ../..	go back two folders
+cd ~	go to home directory
+cd /	go to root directory
+
+✅ Simple Example Flow
+
+pwd
+/Users/aamir
+
+cd Desktop
+
+pwd
+/Users/aamir/Desktop
+
+cd ..
+
+pwd
+/Users/aamir
+
+💡 Since you are learning terminal basics, the most important navigation commands you should master are:
+
+pwd
+ls
+cd
+cd ..
+cd ~
+
+If you want, I can also explain Terminal Navigation with a full diagram + real examples step by step so it becomes very easy to remember (like a map of folders).
+
+you ndidnt get direct project it means no such as file show cd project 
+
+The error “No such file or directory” means the folder named project does not exist in your current location. So when you run:
+
+cd project
+
+Terminal cannot find that folder.
+
+🔎 Step 1: Check your current location
+
+First run:
+
+pwd
+
+Example output:
+
+C:\Users\MyPC
+
+This tells you where you are currently.
+
+🔎 Step 2: See available folders
+
+Run:
+
+ls
+
+(or in Windows PowerShell)
+
+dir
+
+Example output:
+
+Desktop
+Documents
+Downloads
+Pictures
+
+If project is not in the list, then cd project will show the error.
+
+✅ Step 3: Go to the correct folder
+
+If the project folder is inside Desktop, then run:
+
+cd Desktop
+
+Then check again:
+
+ls
+
+If you see:
+
+project
+
+Now run:
+
+cd project
+📁 Example Navigation
+
+Current location:
+
+C:\Users\MyPC
+
+Commands:
+
+cd Desktop
+cd project
+
+Final location:
+
+C:\Users\MyPC\Desktop\project
+⚠️ Another common mistake
+
+Sometimes the folder name is capitalized or slightly different.
+
+Example:
+
+Projects
+project1
+my-project
+
+So cd project will not work.
+
+✅ Correct way
+
+ls
+cd exact-folder-name
+
+💡 Pro Terminal Tip
+
+Press TAB key to auto-complete folder names:
+
+cd pro + TAB
+
+It will automatically complete project.
+
+If you want, I can also show you 5 common cd mistakes beginners make in terminal (very important for developers) 🚀

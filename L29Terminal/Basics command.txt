@@ -1,0 +1,157 @@
+Here are the basic terminal commands for Windows that every beginner should know. These commands work mainly in Command Prompt and also mostly in PowerShell.
+
+1. dir – Show Files and Folders
+
+Displays all files and folders in the current directory.
+
+Example:
+
+dir
+
+Output example:
+
+Documents
+Downloads
+index.js
+package.json
+2. cd – Change Directory
+
+Used to move from one folder to another.
+
+Example:
+
+cd Desktop
+
+Go inside a folder named Desktop.
+
+Go back one folder:
+
+cd ..
+
+Example:
+
+C:\Users\Aamir> cd Desktop
+C:\Users\Aamir\Desktop>
+3. mkdir – Create Folder
+
+Creates a new directory.
+
+Example:
+
+mkdir project
+
+This creates a folder named project.
+
+4. rmdir – Delete Folder
+
+Deletes a folder.
+
+Example:
+
+rmdir project
+
+If folder has files:
+
+rmdir /s project
+5. cls – Clear Screen
+
+Clears the terminal screen.
+
+Example:
+
+cls
+6. echo – Print Text
+
+Displays text in terminal.
+
+Example:
+
+echo Hello World
+
+Output:
+
+Hello World
+7. type – Show File Content
+
+Displays the content of a file.
+
+Example:
+
+type index.js
+8. copy – Copy File
+
+Copies a file.
+
+Example:
+
+copy file1.txt file2.txt
+9. move – Move File
+
+Moves a file to another folder.
+
+Example:
+
+move file.txt Desktop
+10. del – Delete File
+
+Deletes a file.
+
+Example:
+
+del file.txt
+11. help – Show All Commands
+
+Shows all available commands.
+
+Example:
+
+help
+12. exit – Close Terminal
+
+Closes the terminal window.
+
+Example:
+
+exit
+Example Workflow (Developer)
+
+Example when creating a project folder:
+
+mkdir myproject
+cd myproject
+dir
+
+Output:
+
+C:\Users\Aamir\myproject>
+Important Commands for Developers
+
+When working with tools like:
+
+Node.js
+
+Git
+
+Visual Studio Code
+
+You will often run commands like:
+
+npm install
+git init
+node app.js
+
+✅ Summary of Basic Commands
+
+Command	Use
+dir	Show files
+cd	Change folder
+mkdir	Create folder
+rmdir	Delete folder
+cls	Clear screen
+echo	Print text
+type	Show file content
+copy	Copy file
+move	Move file
+del	Delete file
+
+If you want, I can also show you 30 most important terminal commands every developer must know (very useful for React / Node.js developers). 🚀

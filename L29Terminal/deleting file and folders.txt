@@ -1,0 +1,115 @@
+Deleting Files and Folders in Terminal
+
+In the terminal, we delete files and folders using commands like rm.
+These commands are commonly used in shells such as Bash or Z shell, often through terminals like Git Bash or Windows Terminal.
+
+1. Delete a File
+
+Use the rm (remove) command.
+
+Example:
+
+rm file.txt
+
+This deletes the file file.txt.
+
+Example:
+
+rm app.js
+
+This removes the file app.js from the current directory.
+
+2. Delete Multiple Files
+
+You can delete multiple files at once.
+
+Example:
+
+rm file1.txt file2.txt file3.txt
+
+All listed files will be deleted.
+
+3. Delete a Folder (Empty Folder)
+
+To delete an empty directory:
+
+rmdir foldername
+
+Example:
+
+rmdir project
+
+This deletes the project folder if it is empty.
+
+4. Delete Folder with Files
+
+To delete a folder that contains files, use rm -r.
+
+Example:
+
+rm -r project
+
+-r means recursive, so it deletes the folder and everything inside it.
+
+Example structure:
+
+project
+ ├── index.js
+ ├── style.css
+ └── images
+
+Command:
+
+rm -r project
+
+Result: the entire folder is removed.
+
+5. Force Delete
+
+Use the -f flag to force deletion.
+
+Example:
+
+rm -rf project
+
+Flags meaning:
+
+Flag	Meaning
+-r	delete folders recursively
+-f	force delete without confirmation
+
+⚠️ Be careful with this command.
+
+6. Example Workflow
+ls
+rm app.js
+mkdir project
+rm -r project
+7. Windows PowerShell Commands
+
+If you are using PowerShell, the command is different.
+
+Delete file:
+
+Remove-Item app.js
+
+Delete folder:
+
+Remove-Item project -Recurse
+Summary
+Command	Purpose
+rm file.txt	delete file
+rm file1 file2	delete multiple files
+rmdir folder	delete empty folder
+rm -r folder	delete folder with files
+rm -rf folder	force delete folder
+
+✅ Simple definition
+
+rm → delete files
+
+rmdir → delete empty folders
+
+rm -r → delete folders with files
+
+If you want, I can also explain the next important terminal topic: “Copying and Moving Files (cp and mv)”, which developers use very often.

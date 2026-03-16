@@ -1,0 +1,127 @@
+Your notes are about Flags and the man (manual) command in the terminal. I’ll correct and organize them so they are clear and accurate.
+
+These commands are commonly used in shells like Bash and Z shell, which you can run in terminals like Windows Terminal or Git Bash.
+
+1. What are Flags?
+
+Flags are characters added to a command to modify its behavior.
+
+Definition:
+
+Flags are characters that we pass with commands to change or extend how the command works.
+
+Flags usually start with:
+
+-
+
+Example:
+
+ls -a
+
+Here:
+
+ls → command
+
+-a → flag
+
+Meaning: show all files including hidden files.
+
+2. Manual Command (man)
+
+man stands for manual.
+
+It is used to get information about a command.
+
+Example:
+
+man ls
+
+This shows:
+
+what the command does
+
+available flags
+
+usage examples
+
+Another example:
+
+man mkdir
+
+This shows the manual page for the mkdir command.
+
+3. Example Using Flags with ls
+Basic command
+ls
+
+Shows files and folders.
+
+ls -l
+ls -l
+
+Shows files in long format with details:
+
+permissions
+
+owner
+
+file size
+
+date
+
+ls -a
+ls -a
+
+Shows all files including hidden files.
+
+Hidden files usually start with:
+
+.
+
+Example:
+
+.git
+.env
+ls -la
+ls -la
+
+Combines two flags:
+
+-l → long list
+
+-a → show hidden files
+
+So it shows detailed information + hidden files.
+
+4. Example Output
+
+Command:
+
+ls -la
+
+Example output:
+
+drwxr-xr-x  project
+-rw-r--r--  index.js
+-rw-r--r--  package.json
+drwxr-xr-x  .git
+5. Summary
+Command	Meaning
+ls	list files
+ls -l	detailed list
+ls -a	show hidden files
+ls -la	detailed list + hidden files
+man ls	manual info about ls
+man mkdir	manual info about mkdir
+
+✅ Simple idea
+
+command + flag = modified behavior
+
+Example:
+
+ls -a
+
+means list all files including hidden ones.
+
+If you want, I can also explain the next terminal topic: “Creating Files (touch command)”, which usually comes right after mkdir in terminal basics.

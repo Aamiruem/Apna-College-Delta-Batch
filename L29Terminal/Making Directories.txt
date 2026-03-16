@@ -1,0 +1,111 @@
+Making Directories (Creating Folders) in Terminal
+
+A directory means a folder in the file system. In the terminal, you create directories using commands in shells like Bash or Z shell, often through terminals such as Windows Terminal or Git Bash.
+
+1. mkdir – Make Directory
+
+The mkdir command is used to create a new folder.
+
+Example:
+
+mkdir project
+
+This creates a folder named project.
+
+2. Example
+mkdir Delta
+
+After running this command, a new folder Delta will be created in the current directory.
+
+You can check it using:
+
+ls
+
+Output example:
+
+Desktop
+Documents
+Delta
+3. Create Multiple Directories
+
+You can create multiple folders at the same time.
+
+Example:
+
+mkdir project1 project2 project3
+
+This creates:
+
+project1
+project2
+project3
+4. Create Directory Inside Another Directory
+
+Example:
+
+mkdir Desktop/project
+
+This creates the folder project inside Desktop.
+
+5. Create Nested Directories
+
+Use -p to create multiple levels of directories.
+
+Example:
+
+mkdir -p project/src/components
+
+This creates:
+
+project
+ └── src
+      └── components
+
+Even if the parent folders don’t exist, they will be created automatically.
+
+6. Example Workflow
+pwd
+mkdir project
+cd project
+mkdir src
+mkdir public
+ls
+
+Output example:
+
+src
+public
+7. Simple Visualization
+
+Before:
+
+Desktop
+
+Command:
+
+mkdir project
+
+After:
+
+Desktop
+ └── project
+8. Summary
+Command	Meaning
+mkdir foldername	Create a new folder
+mkdir folder1 folder2	Create multiple folders
+mkdir -p folder/subfolder	Create nested folders
+
+💡 Developers use mkdir when creating project structures for tools like:
+
+Node.js
+
+Git
+
+Visual Studio Code
+
+Example:
+
+mkdir myapp
+cd myapp
+
+This is usually the first step when starting a project. 🚀
