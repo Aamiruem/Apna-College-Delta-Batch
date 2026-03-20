@@ -1,0 +1,101 @@
+pull commands
+
+
+Here’s a complete explanation of git pull command 📥🚀
+This is one of the most important Git commands in real projects.
+
+🔹 What is git pull?
+
+👉 git pull is used to get latest code from GitHub (remote repository)
+
+📌 It does TWO things:
+
+git pull = git fetch + git merge
+🔰 Basic Syntax
+git pull <remote> <branch>
+📥 Most Common Command
+git pull origin main
+
+👉 Meaning:
+
+origin = GitHub repo
+
+main = branch
+
+🧠 What happens internally?
+GitHub → Your Local Repository → Your Files Updated
+🔁 Daily Workflow
+
+Before starting work:
+
+git pull
+
+👉 Always do this to get latest code
+
+📊 Example
+git pull origin main
+
+👉 Downloads new commits + merges into your branch
+
+🔀 Pull Specific Branch
+git pull origin feature-login
+⚠️ Pull with Rebase (Advanced)
+git pull --rebase
+
+👉 Keeps history clean (no extra merge commits)
+
+🛠️ Fix Common Error
+❌ Error: merge conflict
+
+👉 Happens when same file changed
+
+Fix:
+
+Open conflicted file
+
+Resolve manually
+
+Then:
+
+git add .
+git commit
+⚠️ Important Rules
+
+Always git pull before git push
+
+Pull before starting work
+
+Resolve conflicts carefully
+
+🔥 Full Workflow
+git pull
+git add .
+git commit -m "update"
+git push
+🔗 Works with
+
+GitHub
+
+GitLab / Bitbucket (same command)
+
+🎯 Simple Meaning
+git pull = "Get latest code from GitHub"
+🚀 Pro Tips
+
+Use git pull --rebase for clean history
+
+Check git status after pull
+
+Avoid pulling with uncommitted changes
+
+💡 Next Step
+
+I can explain:
+
+🔥 git fetch vs git pull
+
+🔥 Rebase vs merge (interview topic)
+
+🔥 Real team workflow
+
+Just say: "fetch vs pull" 👍

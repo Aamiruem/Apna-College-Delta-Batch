@@ -1,0 +1,194 @@
+Here’s a complete guide to using Git with VS Code (very practical) 🚀
+This is how most developers actually work daily.
+
+🔹 1. Requirements
+
+Make sure you have:
+
+Git installed (git --version)
+
+Visual Studio Code installed
+
+🔰 2. Open Project in VS Code
+
+👉 Steps:
+
+Open VS Code
+
+Click File → Open Folder
+
+Select your project
+
+📌 Now you’re ready to use Git inside VS Code
+
+🔧 3. Initialize Git in VS Code
+Method 1 (UI):
+
+Click Source Control icon (left sidebar)
+
+Click Initialize Repository
+
+Method 2 (Terminal):
+git init
+
+📌 Now your project is tracked by Git
+
+📌 4. Track Changes (Important)
+
+When you modify files:
+
+VS Code shows:
+
+M → Modified
+
+U → Untracked
+
+👉 Click Source Control icon to see all changes
+
+➕ 5. Add Files (Staging)
+Method 1 (UI):
+
+Click + icon next to file
+
+Method 2 (Terminal):
+git add .
+
+📌 Moves files to staging area
+
+💾 6. Commit Changes
+Method 1 (UI):
+
+Write message in input box
+
+Click ✔️ (Commit)
+
+Method 2:
+git commit -m "your message"
+
+📌 Saves your code version
+
+🔄 7. Push to GitHub
+
+Connect to GitHub:
+
+git remote add origin <repo-url>
+git branch -M main
+git push -u origin main
+
+👉 In VS Code:
+
+Click Sync Changes / Push
+
+📥 8. Pull Latest Code
+UI:
+
+Click … → Pull
+
+Terminal:
+git pull
+
+📌 Always pull before starting work
+
+🌿 9. Branching in VS Code
+Create branch:
+
+Bottom-left corner → click branch name
+
+Click Create new branch
+
+Or terminal:
+git checkout -b feature-login
+
+📌 Use branches for new features
+
+🔀 10. Merge Branch
+UI:
+
+Switch to main
+
+Click Merge Branch
+
+Terminal:
+git checkout main
+git merge feature-login
+🔍 11. View Changes (Best Feature 🔥)
+
+Click any file → see line-by-line changes
+
+Green → added
+
+Red → deleted
+
+📌 Very helpful for debugging
+
+🧠 12. Git Panel Features in VS Code
+
+Stage / Unstage files
+
+Commit history
+
+Compare changes
+
+Resolve conflicts
+
+Push / Pull
+
+⚡ 13. VS Code Terminal (Recommended)
+
+Open terminal inside VS Code:
+
+Ctrl + `
+
+👉 Use all Git commands here
+
+🔌 14. Useful Extensions
+
+Install:
+
+GitLens → better history & insights
+
+GitHub Pull Requests → manage PRs
+
+🎯 15. Daily Workflow (Real Life)
+
+Open project in VS Code
+
+Pull latest:
+
+git pull
+
+Make changes
+
+Stage + commit
+
+Push:
+
+git push
+⚠️ Common Mistakes
+
+❌ Not committing changes
+❌ Forgetting to pull
+❌ Working directly on main
+❌ Ignoring merge conflicts
+
+🚀 Pro Tips
+
+Use UI for visualization
+
+Use terminal for power
+
+Commit small changes
+
+Use meaningful messages
+
+💡 Next Step
+
+I can help you:
+
+🔥 Upload your project using VS Code (live demo steps)
+
+🔥 Fix Git errors in VS Code
+
+🔥 Create a professional GitHub portfolio
+
+Just say: "upload project using vs code" 👍

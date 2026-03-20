@@ -1,0 +1,103 @@
+what is forking
+
+Here’s a simple and clear explanation of Forking in GitHub 🍴🚀
+
+🔹 What is Forking?
+
+👉 Forking means creating a copy of someone else’s repository into your own account
+
+📌 This is done on GitHub
+
+🧠 Simple Definition
+Fork = Copy someone else's project to your GitHub account
+🔰 Why Use Forking?
+
+👉 You use forking when:
+
+You want to contribute to open-source projects
+
+You don’t have permission to edit original repo
+
+You want your own copy to experiment safely
+
+📊 Visual Understanding
+Original Repo (Owner)
+        ↓ (Fork)
+Your GitHub Repo (Copy)
+        ↓ (Clone)
+Your Local Computer
+🔄 Fork vs Clone
+Feature	Fork	Clone
+Where it happens	GitHub	Your computer
+Purpose	Copy repo to your account	Download repo
+Use case	Open-source contribution	Local development
+🔰 Steps to Fork a Repository
+
+Open repository on GitHub
+
+Click Fork button (top right)
+
+GitHub creates a copy in your account
+
+📥 After Forking (Next Steps)
+👉 Clone your fork
+git clone <your-fork-url>
+👉 Make changes
+git add .
+git commit -m "changes"
+git push
+🔀 Pull Request (Important 🔥)
+
+👉 After making changes:
+
+Go to GitHub
+
+Click Compare & Pull Request
+
+Send request to original repo
+
+📌 This is how you contribute
+
+👥 Real Example
+
+You want to contribute to a project:
+
+Fork repo
+
+Clone it
+
+Make changes
+
+Push
+
+Create Pull Request
+
+⚠️ Important Points
+
+Fork keeps connection with original repo
+
+You can sync updates from original repo
+
+Safe way to contribute without breaking original code
+
+🎯 Simple Meaning
+Fork = "Take someone else's project and make your own copy on GitHub"
+🚀 Pro Tips
+
+Always fork before contributing
+
+Create branch in your fork
+
+Keep your fork updated with original repo
+
+💡 Next Step
+
+I can explain:
+
+🔥 Fork + Pull Request workflow (step-by-step)
+
+🔥 Difference between fork, clone, branch
+
+🔥 How to contribute to open source
+
+Just say: "fork workflow" 👍

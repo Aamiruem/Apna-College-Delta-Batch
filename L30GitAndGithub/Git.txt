@@ -1,0 +1,221 @@
+Alright — here is a complete Git command guide with explanations (from basic → advanced) 🚀
+I’ll explain each command in simple English + why we use it so you actually understand, not just memorize.
+
+🔹 Git & GitHub
+
+Git → Version control tool
+
+GitHub → Online platform to store your Git repositories
+
+🔰 1. Setup (First Time Only)
+👉 Set username & email
+git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
+
+📌 Used to identify who made the commits
+
+👉 Check config
+git config --list
+
+📌 Shows all settings
+
+📁 2. Repository Commands
+👉 Initialize Git
+git init
+
+📌 Converts a normal folder into a Git repository
+
+👉 Clone repository
+git clone <repo-url>
+
+📌 Downloads project from GitHub to your system
+
+📌 3. Basic Workflow Commands
+👉 Check file status
+git status
+
+📌 Shows:
+
+Modified files
+
+Staged files
+
+Untracked files
+
+👉 Add files (Staging Area)
+git add file.txt
+git add .
+
+📌 Moves files to staging area (ready for commit)
+
+👉 Commit changes
+git commit -m "message"
+
+📌 Saves snapshot of your code
+
+👉 Push to GitHub
+git push origin main
+
+📌 Uploads code to GitHub
+
+👉 Pull latest code
+git pull origin main
+
+📌 Downloads + merges latest changes
+
+🌿 4. Branching Commands
+👉 Create branch
+git branch feature
+
+📌 Creates new version of code
+
+👉 List branches
+git branch
+
+📌 Shows all branches
+
+👉 Switch branch
+git checkout feature
+
+OR
+
+git switch feature
+
+📌 Move to another branch
+
+👉 Create + switch
+git checkout -b feature
+
+📌 Shortcut for new branch
+
+👉 Delete branch
+git branch -d feature
+
+📌 Removes branch
+
+🔀 5. Merge Commands
+👉 Merge branch into main
+git checkout main
+git merge feature
+
+📌 Combines code from another branch
+
+🔗 6. Remote (GitHub) Commands
+👉 Add remote repo
+git remote add origin <url>
+
+📌 Connects local repo to GitHub
+
+👉 Check remote
+git remote -v
+
+📌 Shows linked GitHub repo
+
+👉 Change remote URL
+git remote set-url origin <new-url>
+
+📌 Update repo link
+
+📜 7. History Commands
+👉 Show commits
+git log
+
+📌 Full history
+
+👉 Short history
+git log --oneline
+
+📌 One-line version
+
+⏪ 8. Undo / Reset Commands (Very Important ⚠️)
+👉 Undo last commit (keep code)
+git reset --soft HEAD~1
+👉 Undo last commit (delete code)
+git reset --hard HEAD~1
+
+⚠️ Deletes changes permanently
+
+👉 Unstage file
+git reset file.txt
+
+📌 Remove from staging
+
+⚡ 9. Stash (Temporary Save)
+👉 Save work temporarily
+git stash
+👉 Restore work
+git stash pop
+👉 List stash
+git stash list
+
+📌 Useful when switching branches without committing
+
+📦 10. Remove Files
+git rm file.txt
+
+📌 Deletes file from Git + system
+
+🔍 11. Compare Changes
+git diff
+
+📌 Shows changes not staged
+
+git diff --staged
+
+📌 Shows staged changes
+
+🧠 12. Helpful Shortcuts
+👉 Add + Commit
+git commit -am "message"
+
+📌 Works only for tracked files
+
+👉 Rename branch
+git branch -M main
+🔐 13. Authentication (GitHub)
+
+📌 Now GitHub uses:
+
+Personal Access Token (instead of password)
+
+🔥 14. Full Workflow (Real Example)
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin <url>
+git push -u origin main
+🎯 Important Concepts
+Working flow:
+Working Directory → Staging Area → Repository
+Key terms:
+
+Repo → Project
+
+Commit → Save version
+
+Branch → New feature line
+
+Merge → Combine code
+
+🚀 Final Advice
+
+Use branches for features
+
+Always pull before push
+
+Write clear commit messages
+
+Avoid --hard unless sure
+
+💡 Want next level?
+
+I can teach you:
+
+🔥 Git interview questions
+
+🔥 Merge conflicts (real example)
+
+🔥 Upload your MERN project step-by-step
+
+Just say: "teach advanced git with real project" 👍

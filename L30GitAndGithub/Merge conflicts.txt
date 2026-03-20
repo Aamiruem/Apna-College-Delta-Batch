@@ -1,0 +1,140 @@
+Merge conflicts 
+
+Here’s a complete and easy explanation of Merge Conflicts in Git ⚠️🔥
+This is a very important concept for projects + interviews.
+
+🔹 What is a Merge Conflict?
+
+👉 A merge conflict happens when Git cannot decide which code to keep
+
+📌 Usually occurs when:
+
+Same file is edited
+
+Same line is changed
+
+In different branches
+
+🧠 Simple Example
+On main branch:
+let name = "Aamir";
+On feature branch:
+let name = "Azad";
+
+👉 Now Git is confused 🤯
+👉 Which one should it keep?
+
+📊 Visual Idea
+main       → change A
+feature    → change B
+             ❌ conflict
+🔰 When Does Conflict Happen?
+
+During git merge
+
+During git pull
+
+During git rebase
+
+🔀 Example Conflict
+
+When you merge:
+
+git checkout main
+git merge feature-login
+
+👉 Git shows:
+
+CONFLICT (content): Merge conflict in app.js
+🔍 How Conflict Looks in Code
+<<<<<<< HEAD
+let name = "Aamir";
+=======
+let name = "Azad";
+>>>>>>> feature-login
+🧠 Meaning of This
+
+HEAD → current branch (main)
+
+Below ======= → incoming branch (feature-login)
+
+🛠️ How to Fix Merge Conflict
+✅ Step 1: Open file
+
+👉 Find conflict markers
+
+✅ Step 2: Edit manually
+
+Choose correct code:
+
+let name = "Aamir Azad";
+
+👉 Remove:
+
+<<<<<<<
+
+=======
+
+>>>>>>>
+
+✅ Step 3: Add file
+git add .
+✅ Step 4: Commit
+git commit -m "resolved merge conflict"
+🔁 Full Fix Flow
+git merge feature-login
+# conflict happens
+# fix code manually
+git add .
+git commit -m "resolved conflict"
+⚠️ Important Rules
+
+Never panic 😄
+
+Always read both changes carefully
+
+Don’t delete code blindly
+
+🚨 Common Mistakes
+
+❌ Deleting both codes
+❌ Not removing conflict markers
+❌ Committing without fixing
+
+🎯 Best Practices
+
+✅ Pull latest code before working
+
+git pull
+
+✅ Use small commits
+✅ Work on separate branches
+✅ Communicate in team
+
+🔥 Pro Tips
+
+Use VS Code → shows conflicts clearly
+
+Use GitLens extension for better view
+
+Test code after resolving
+
+🔗 Used with
+
+GitHub
+
+Team projects
+
+🎯 Simple Meaning
+Merge conflict = "Git is confused, you decide the correct code"
+🚀 Next Step
+
+I can teach you:
+
+🔥 Live conflict example (step-by-step)
+
+🔥 Rebase vs Merge (advanced)
+
+🔥 Pull Request workflow (real industry)
+
+Just say: "live conflict example" 👍

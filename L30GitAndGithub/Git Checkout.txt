@@ -1,0 +1,110 @@
+Git Checkout 
+
+
+Here’s a clear and complete explanation of git checkout 🚀
+This is one of the most used Git commands.
+
+🔹 What is git checkout?
+
+👉 git checkout is used to:
+
+Switch between branches
+
+Restore files
+
+Create new branches
+
+📌 It basically changes your working environment
+
+🔰 1. Switch Branch
+git checkout branch-name
+
+👉 Example:
+
+git checkout feature-login
+
+📌 Now you are working on feature-login branch
+
+🔰 2. Create + Switch Branch (Most Used 🔥)
+git checkout -b branch-name
+
+👉 Example:
+
+git checkout -b feature-login
+
+📌 Creates new branch + switches to it
+
+🔰 3. Switch Back to Main
+git checkout main
+
+👉 Go back to main branch
+
+🔰 4. Restore File (Undo Changes)
+git checkout file.txt
+
+👉 Discards changes in file
+⚠️ Changes will be lost
+
+🔰 5. Checkout Specific Commit
+git checkout <commit-id>
+
+👉 Moves to a previous version of code
+
+📊 Visual Understanding
+main  → stable code
+  \
+   feature-login → new feature
+
+👉 git checkout lets you move between these
+
+⚠️ Important Notes
+
+Switching branch changes your files instantly
+
+Always commit before switching
+
+Uncommitted changes may be lost
+
+🔄 Modern Alternative (Recommended)
+
+👉 New Git uses:
+
+git switch branch-name
+
+📌 For switching branches only
+👉 Safer and clearer than checkout
+
+🧠 Example Workflow
+git checkout -b feature-login
+# write code
+git add .
+git commit -m "added login"
+git checkout main
+⚠️ Common Mistakes
+
+❌ Switching without saving changes
+❌ Using checkout instead of switch (confusing)
+❌ Losing work due to overwrite
+
+🎯 Simple Meaning
+git checkout = "move to another branch or version"
+🚀 Pro Tips
+
+Use git switch for branches
+
+Use git restore for files
+
+Always check branch before coding:
+
+git branch
+💡 Next Step
+
+I can explain:
+
+🔥 git merge (very important)
+
+🔥 Merge conflicts (real interview question)
+
+🔥 Difference between checkout & switch
+
+Just say: "merge command" 👍

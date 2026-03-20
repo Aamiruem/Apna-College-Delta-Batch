@@ -1,0 +1,111 @@
+Branch command
+
+
+
+Here’s a complete explanation of the git branch command 🌿🚀
+This command is used to create, view, and manage branches.
+
+🔹 What is git branch?
+
+👉 git branch is used to:
+
+View branches
+
+Create branches
+
+Delete branches
+
+📌 Branch = separate version of your code
+
+🔰 1. Check All Branches
+git branch
+
+👉 Output example:
+
+* main
+  feature-login
+
+📌 * = current branch
+
+🔰 2. Create New Branch
+git branch feature-login
+
+👉 Creates a new branch
+❗ But does NOT switch to it
+
+🔰 3. Switch Branch
+git checkout feature-login
+
+OR (modern way):
+
+git switch feature-login
+
+👉 Now you are working on that branch
+
+🔰 4. Create + Switch (Shortcut 🔥)
+git checkout -b feature-login
+
+👉 Most used command
+
+🔰 5. Rename Branch
+git branch -M main
+
+👉 Rename current branch to main
+
+🔰 6. Delete Branch
+git branch -d feature-login
+
+👉 Deletes branch (safe delete)
+
+🔰 7. Force Delete Branch
+git branch -D feature-login
+
+⚠️ Deletes even if not merged
+
+🔰 8. Show All Branches (Local + Remote)
+git branch -a
+🔰 9. Show Remote Branches
+git branch -r
+🔗 10. Push Branch to GitHub
+git push origin feature-login
+
+👉 Upload branch to GitHub
+
+📊 Real Workflow Example
+git branch feature-login
+git checkout feature-login
+git add .
+git commit -m "added login"
+git push origin feature-login
+🎯 Simple Understanding
+git branch = manage different versions of your code
+⚠️ Common Mistakes
+
+❌ Creating branch but not switching
+❌ Deleting important branch
+❌ Working directly on main
+
+🚀 Pro Tips
+
+Use meaningful names:
+
+feature-login
+
+bug-fix-navbar
+
+Use git switch instead of checkout (modern)
+
+Always check branch before coding:
+
+git branch
+💡 Next Step
+
+I can explain:
+
+🔥 git merge (very important)
+
+🔥 Merge conflicts (interview topic)
+
+🔥 Branching strategy (pro level)
+
+Just say: "merge command" 👍

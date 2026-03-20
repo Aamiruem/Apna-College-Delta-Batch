@@ -1,0 +1,168 @@
+Here’s a complete beginner → practical guide on using Git (step-by-step) 🚀
+This will help you actually use Git in real projects, not just remember commands.
+
+🔹 What is Git?
+
+Git is a tool to:
+
+Track code changes
+
+Save versions (like history)
+
+Work safely without losing code
+
+📌 Think: Save button + Time machine for your code
+
+🔰 1. First-Time Setup
+git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
+
+👉 This tells Git who you are (for commits)
+
+📁 2. Start Using Git in a Project
+👉 Go to your project folder
+cd project-folder
+👉 Initialize Git
+git init
+
+📌 Now Git starts tracking your project
+
+📌 3. Basic Workflow (Most Important)
+Step 1: Check status
+git status
+
+👉 Shows changed/new files
+
+Step 2: Add files (Staging)
+git add file.txt
+git add .
+
+👉 Moves files to staging area
+
+Step 3: Commit (Save version)
+git commit -m "Added login page"
+
+👉 Saves snapshot of code
+
+🔁 4. Daily Usage (Real Workflow)
+
+Every time you work:
+
+git status
+git add .
+git commit -m "your message"
+
+📌 This is your daily Git routine
+
+🌿 5. Branching (Very Important)
+👉 Create branch
+git branch feature-login
+👉 Switch branch
+git checkout feature-login
+
+OR (new way):
+
+git switch feature-login
+👉 Create + switch
+git checkout -b feature-login
+
+📌 Use branches to:
+
+Add new features
+
+Avoid breaking main code
+
+🔀 6. Merge Branch
+git checkout main
+git merge feature-login
+
+👉 Combines your feature into main
+
+📜 7. View History
+git log
+
+Short version:
+
+git log --oneline
+
+👉 Shows all commits
+
+⏪ 8. Undo Changes (Important ⚠️)
+👉 Unstage file
+git reset file.txt
+👉 Undo last commit (keep code)
+git reset --soft HEAD~1
+👉 Undo last commit (delete code)
+git reset --hard HEAD~1
+
+⚠️ Dangerous (permanent delete)
+
+⚡ 9. Temporary Save (Stash)
+git stash
+
+👉 Saves work temporarily
+
+git stash pop
+
+👉 Restores work
+
+🔍 10. Check Changes
+git diff
+
+👉 Shows what changed
+
+📦 11. Remove Files
+git rm file.txt
+🎯 12. Simple Flow (Remember This)
+Working Directory → Staging → Commit
+🔥 13. Real Example
+
+You are building a project:
+
+Write code
+
+Check:
+
+git status
+
+Add:
+
+git add .
+
+Save:
+
+git commit -m "added feature"
+
+👉 Repeat daily
+
+⚠️ Common Mistakes
+
+❌ Skipping git add
+❌ Wrong commit message
+❌ Using --hard without knowledge
+❌ Not using branches
+
+🚀 Pro Tips
+
+Commit often (small changes)
+
+Use meaningful messages
+
+Use branches for features
+
+Check git status frequently
+
+💡 Next Step
+
+Now you should learn:
+👉 Connecting Git with GitHub
+
+I can guide you:
+
+Upload project step-by-step
+
+Fix Git errors
+
+Practice with real project
+
+Just say: "practice git with project" 👍

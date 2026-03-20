@@ -1,0 +1,136 @@
+Git Branches
+
+Here’s a complete and simple explanation of Git Branches 🌿🚀
+This is one of the most important concepts in Git (and interviews).
+
+🔹 What is a Git Branch?
+
+👉 A branch is a separate line of development
+
+📌 It lets you:
+
+Work on new features
+
+Fix bugs
+
+Experiment safely
+
+👉 Without affecting the main project
+
+🧠 Simple Example
+
+Think like this:
+
+main branch → stable code
+feature branch → new feature work
+
+👉 You work on a feature branch → then merge into main
+
+📊 Default Branch
+
+After git init, default branch is:
+
+main
+🔰 Basic Branch Commands
+✅ 1. Check branches
+git branch
+
+👉 Shows all branches
+👉 * = current branch
+
+✅ 2. Create new branch
+git branch feature-login
+
+👉 Creates a new branch
+
+✅ 3. Switch branch
+git checkout feature-login
+
+OR (new way):
+
+git switch feature-login
+✅ 4. Create + switch (shortcut)
+git checkout -b feature-login
+
+👉 Most used command 🔥
+
+✅ 5. Delete branch
+git branch -d feature-login
+🔀 Merge Branch
+👉 Step-by-step:
+git checkout main
+git merge feature-login
+
+👉 Combines feature code into main
+
+🔗 Push Branch to GitHub
+git push origin feature-login
+
+👉 Upload branch to GitHub
+
+🔄 Pull Branch
+git pull origin feature-login
+🌿 Branch Workflow (Real Life)
+git checkout -b feature-login
+# write code
+git add .
+git commit -m "added login"
+git push origin feature-login
+
+👉 Then merge into main
+
+👥 Team Workflow
+
+Create branch
+
+Work on feature
+
+Push branch
+
+Create Pull Request on GitHub
+
+Merge after review
+
+⚠️ Common Mistakes
+
+❌ Working directly on main
+❌ Not switching branch before coding
+❌ Deleting branch before merge
+
+🎯 Best Practices
+
+✅ Always use branches for features
+✅ Keep main clean and stable
+✅ Use meaningful branch names:
+
+feature-login
+
+bug-fix-navbar
+
+🔥 Visual Flow
+main ────────●────────●──────
+              \
+               ●──●──● (feature-login)
+🚀 Pro Tips
+
+Use git switch (modern command)
+
+Create small branches
+
+Merge frequently
+
+Delete unused branches
+
+💡 Simple Meaning
+Branch = "Work on something new without breaking main code"
+🚀 Next Step
+
+I can teach you:
+
+🔥 Merge conflicts (very important)
+
+🔥 Pull requests (GitHub workflow)
+
+🔥 Advanced branching strategies
+
+Just say: "merge conflict" 👍

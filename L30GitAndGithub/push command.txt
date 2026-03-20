@@ -1,0 +1,101 @@
+push command
+
+
+Here’s a clear and practical explanation of the git push command 🚀
+
+🔹 What is git push?
+
+👉 git push is used to upload your local commits to GitHub (remote repository)
+
+📌 It sends your code from:
+
+Local Repository → Remote Repository (GitHub)
+🔰 Basic Syntax
+git push <remote-name> <branch-name>
+📥 Most Common Command
+git push origin main
+
+👉 Meaning:
+
+origin = remote (GitHub repo)
+
+main = branch name
+
+🔗 First Time Push (Important)
+git push -u origin main
+
+👉 -u sets upstream
+📌 After this, you can simply use:
+
+git push
+🧠 Example Workflow
+git add .
+git commit -m "added feature"
+git push origin main
+
+👉 Your changes are now uploaded to GitHub
+
+🌿 Push Branch to GitHub
+git push origin feature-login
+
+👉 Uploads new branch
+
+🔄 Push All Branches
+git push --all
+⚠️ Force Push (Dangerous 🚨)
+git push -f
+
+👉 Overwrites remote code
+⚠️ Can delete others’ work
+
+🔐 Authentication
+
+GitHub does NOT use password ❌
+👉 Use:
+
+Personal Access Token (PAT)
+
+SSH keys
+
+⚠️ Common Errors & Fix
+❌ Error: rejected (non-fast-forward)
+
+👉 Fix:
+
+git pull origin main
+git push origin main
+🎯 When to Use git push?
+
+After committing changes
+
+Upload code to GitHub
+
+Share work with team
+
+🔥 Full Flow
+git add .
+git commit -m "update code"
+git push
+🚀 Pro Tips
+
+Always git pull before git push
+
+Use branches for features
+
+Avoid -f unless necessary
+
+Write meaningful commits
+
+💡 Simple Meaning
+git push = "Send my code to GitHub"
+🚀 Next Step
+
+I can explain:
+
+🔹 git pull (very important)
+
+🔹 Merge conflicts (interview topic)
+
+🔹 Full real project workflow
+
+Just say: "next command" 👍

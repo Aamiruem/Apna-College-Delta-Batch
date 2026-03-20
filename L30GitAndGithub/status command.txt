@@ -1,0 +1,94 @@
+Here’s a simple and clear explanation of the git status command 🚀
+
+🔹 What is git status?
+
+👉 git status shows the current state of your project
+
+📌 It tells you:
+
+Which files are changed
+
+Which files are staged
+
+Which files are not tracked
+
+Which branch you are on
+
+🔰 Syntax
+git status
+📊 Example Output
+On branch main
+
+Changes not staged for commit:
+  modified: index.js
+
+Untracked files:
+  style.css
+🧠 Understanding the Output
+✅ 1. On branch
+On branch main
+
+👉 You are currently working on main branch
+
+⚠️ 2. Modified files
+modified: index.js
+
+👉 File changed but not added yet
+
+❌ 3. Untracked files
+style.css
+
+👉 New file → Git is not tracking it yet
+
+✅ 4. Staged files (after git add)
+Changes to be committed:
+  new file: app.js
+
+👉 Ready to commit
+
+🔁 Workflow with git status
+git status
+git add .
+git status
+git commit -m "message"
+git status
+
+📌 Helps you track every step
+
+🎯 Why Use git status?
+
+Avoid mistakes
+
+Know what you are committing
+
+Check progress
+
+Debug Git issues
+
+⚠️ Common Mistakes
+
+❌ Skipping git status
+❌ Committing wrong files
+❌ Forgetting to add files
+
+🚀 Pro Tips
+
+Run git status frequently
+
+Always check before commit
+
+Use it after every change
+
+🔥 Short Version
+git status = "What is happening in my project right now?"
+💡 Next Step
+
+I can explain:
+
+🔹 git add (staging concept deeply)
+
+🔹 git commit (important for interviews)
+
+🔹 Full workflow with real example
+
+Just say: "next command" 👍
