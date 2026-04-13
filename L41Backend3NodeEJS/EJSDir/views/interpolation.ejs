@@ -1,0 +1,15 @@
+<h1>Hello <%= name %>
+</h1>
+
+<p>Age: <%= age %>
+</p>
+
+<p>Status: <%= age> 18 ? "Adult" : "Minor" %></p>
+
+<ul>
+    <% users.forEach(user=> { %>
+        <li>
+            <%= user %>
+        </li>
+        <% }) %>
+</ul>
