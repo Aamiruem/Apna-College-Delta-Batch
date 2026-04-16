@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,4 +15,38 @@
     </form>
 </body>
 <script src="index.js"></script>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+</head>
+<body>
+
+    <h2>Edit Your Post</h2>
+
+    <p>Post ID: <%= post.id %></p>
+    <p>Username: @<%= post.username %></p>
+
+    <form method="POST" action="/posts/<%= post.id %>?_method=PATCH">
+        
+        <textarea rows="10" cols="35" name="content"><%= post.content %></textarea>
+        
+        <br><br>
+        <button type="submit">Update Post</button>
+    </form>
+
+    <br>
+
+    <a href="/posts">
+        <button>Cancel</button>
+    </a>
+
+</body>
 </html>
