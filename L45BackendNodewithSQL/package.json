@@ -1,8 +1,18 @@
 {
+  "name": "l45backendnodewithsql",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "aamir",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "@faker-js/faker": "^10.4.0",
     "express": "^5.2.1",
-    "mysql2": "^3.22.2",
-    "start": "node index.js"
+    "method-override": "^3.0.0",
+    "mysql2": "^3.22.2"
   }
 }
