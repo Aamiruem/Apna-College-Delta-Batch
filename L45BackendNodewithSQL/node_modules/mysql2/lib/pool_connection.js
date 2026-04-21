@@ -1,17 +1,13 @@
 'use strict';
 
-const Connection = require('../index.js').Connection;
+const Connection = require('./connection.js');
 
 class PoolConnection extends Connection {
   constructor(pool, options) {
     super(options);
     this._pool = pool;
-    // The last active time of this connection
+    this._released = false;
     this.lastActiveTime = Date.now();
-    // When a fatal error occurs the connection's protocol ends, which will cause
-    // the connection to end as well, thus we only need to watch for the end event
-    // and we will be notified of disconnects.
-    // REVIEW: Moved to `once`
     this.once('end', () => {
       this._removeFromPool();
     });
@@ -21,20 +17,29 @@ class PoolConnection extends Connection {
   }
 
   release() {
+    if (this._released) {
+      return;
+    }
     if (!this._pool || this._pool._closed) {
       return;
     }
-    // update last active time
+    this._released = true;
     this.lastActiveTime = Date.now();
     this._pool.releaseConnection(this);
   }
 
-  promise(promiseImpl) {
-    const PromisePoolConnection = require('../promise').PromisePoolConnection;
-    return new PromisePoolConnection(this, promiseImpl);
+  [Symbol.dispose]() {
+    this.release();
   }
 
-  end() {
+  end(callback) {
+    if (this.config.gracefulEnd) {
+      this._removeFromPool();
+      super.end(callback);
+
+      return;
+    }
+
     const err = new Error(
       'Calling conn.end() to release a pooled connection is ' +
         'deprecated. In next version calling conn.end() will be ' +
@@ -42,9 +47,11 @@ class PoolConnection extends Connection {
         'conn.release() instead.'
     );
     this.emit('warn', err);
-    // eslint-disable-next-line no-console
     console.warn(err.message);
     this.release();
+    if (typeof callback === 'function') {
+      callback();
+    }
   }
 
   destroy() {
@@ -59,6 +66,11 @@ class PoolConnection extends Connection {
     const pool = this._pool;
     this._pool = null;
     pool._removeConnection(this);
+  }
+
+  promise(promiseImpl) {
+    const PromisePoolConnection = require('./promise/pool_connection.js');
+    return new PromisePoolConnection(this, promiseImpl);
   }
 }
 

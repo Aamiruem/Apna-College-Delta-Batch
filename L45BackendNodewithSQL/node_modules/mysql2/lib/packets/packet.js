@@ -9,7 +9,7 @@ const ErrorCodeToName = require('../constants/errors.js');
 const NativeBuffer = require('buffer').Buffer;
 const Long = require('long');
 const StringParser = require('../parsers/string.js');
-
+const Types = require('../constants/types.js');
 const INVALID_DATE = new Date(NaN);
 
 // this is nearly duplicate of previous function so generated code is not slower
@@ -73,7 +73,6 @@ class Packet {
   }
 
   dump() {
-    // eslint-disable-next-line no-console
     console.log(
       [this.buffer.asciiSlice(this.start, this.end)],
       this.buffer.slice(this.start, this.end),
@@ -156,21 +155,17 @@ class Packet {
   readInt64() {
     const word0 = this.readInt32();
     const word1 = this.readInt32();
-    let res = new Long(word0, word1, true);
+    const res = new Long(word0, word1, true);
     const resNumber = res.toNumber();
-    const resString = res.toString();
-    res = resNumber.toString() === resString ? resNumber : resString;
-    return res;
+    return Number.isSafeInteger(resNumber) ? resNumber : res.toString();
   }
 
   readSInt64() {
     const word0 = this.readInt32();
     const word1 = this.readInt32();
-    let res = new Long(word0, word1, false);
+    const res = new Long(word0, word1, false);
     const resNumber = res.toNumber();
-    const resString = res.toString();
-    res = resNumber.toString() === resString ? resNumber : resString;
-    return res;
+    return Number.isSafeInteger(resNumber) ? resNumber : res.toString();
   }
 
   isEOF() {
@@ -224,10 +219,12 @@ class Packet {
       res = new Long(word0, word1, !signed); // Long need unsigned
       const resNumber = res.toNumber();
       const resString = res.toString();
-      res = resNumber.toString() === resString ? resNumber : resString;
-      return bigNumberStrings ? resString : res;
+      if (bigNumberStrings || !Number.isSafeInteger(resNumber)) {
+        return resString;
+      }
+      return resNumber;
     }
-    // eslint-disable-next-line no-console
+
     console.trace();
     throw new Error(`Should not reach here: ${tag}`);
   }
@@ -292,14 +289,17 @@ class Packet {
       }
       return new Date(y, m - 1, d, H, M, S, ms);
     }
-    let str = this.readDateTimeString(6, 'T');
+    let str = this.readDateTimeString(6, 'T', null);
+    if (!str) {
+      return INVALID_DATE;
+    }
     if (str.length === 10) {
       str += 'T00:00:00';
     }
     return new Date(str + timezone);
   }
 
-  readDateTimeString(decimals, timeSep) {
+  readDateTimeString(decimals, timeSep, columnType) {
     const length = this.readInt8();
     let y = 0;
     let m = 0;
@@ -322,8 +322,10 @@ class Packet {
       str += `${timeSep || ' '}${[
         leftPad(2, H),
         leftPad(2, M),
-        leftPad(2, S)
+        leftPad(2, S),
       ].join(':')}`;
+    } else if (columnType === Types.DATETIME) {
+      str += ' 00:00:00';
     }
     if (length > 10) {
       ms = this.readInt32();
@@ -405,8 +407,8 @@ class Packet {
   readNullTerminatedString(encoding) {
     const start = this.offset;
     let end = this.offset;
-    while (this.buffer[end]) {
-      end = end + 1; // TODO: handle OOB check
+    while (end < this.end && this.buffer[end] !== 0x00) {
+      end = end + 1;
     }
     this.offset = end + 1;
     return StringParser.decode(this.buffer, encoding, start, end);
@@ -425,7 +427,7 @@ class Packet {
     return StringParser.decode(
       this.buffer,
       encoding,
-      this.offset - len, 
+      this.offset - len,
       this.offset
     );
   }
@@ -457,7 +459,7 @@ class Packet {
       if (numDigits >= 15) {
         str = this.readString(end - this.offset, 'binary');
         result = parseInt(str, 10);
-        if (result.toString() === str) {
+        if (Number.isSafeInteger(sign * result)) {
           return sign * result;
         }
         return sign === -1 ? `-${str}` : str;
@@ -479,11 +481,10 @@ class Packet {
     if (!supportBigNumbers) {
       return num;
     }
-    str = this.buffer.toString('ascii', start, end);
-    if (num.toString() === str) {
+    if (Number.isSafeInteger(num)) {
       return num;
     }
-    return str;
+    return this.buffer.toString('ascii', start, end);
   }
 
   // note that if value of inputNumberAsString is bigger than MAX_SAFE_INTEGER
@@ -515,16 +516,20 @@ class Packet {
     return result * sign;
   }
 
-  // copy-paste from https://github.com/mysqljs/mysql/blob/master/lib/protocol/Parser.js
+  // adapted from https://github.com/mysqljs/mysql/blob/dc9c152a87ec51a1f647447268917243d2eab1fd/lib/protocol/Parser.js
   parseGeometryValue() {
     const buffer = this.readLengthCodedBuffer();
     let offset = 4;
     if (buffer === null || !buffer.length) {
       return null;
     }
+    const bufferLength = buffer.length;
     function parseGeometry() {
-      let x, y, i, j, numPoints, line;
+      let x, y, i, j, numPoints, numRings, num, line;
       let result = null;
+      if (offset + 5 > bufferLength) {
+        return null;
+      }
       const byteOrder = buffer.readUInt8(offset);
       offset += 1;
       const wkbType = byteOrder
@@ -533,6 +538,9 @@ class Packet {
       offset += 4;
       switch (wkbType) {
         case 1: // WKBPoint
+          if (offset + 16 > bufferLength) {
+            return null;
+          }
           x = byteOrder
             ? buffer.readDoubleLE(offset)
             : buffer.readDoubleBE(offset);
@@ -544,12 +552,21 @@ class Packet {
           result = { x: x, y: y };
           break;
         case 2: // WKBLineString
+          if (offset + 4 > bufferLength) {
+            return null;
+          }
           numPoints = byteOrder
             ? buffer.readUInt32LE(offset)
             : buffer.readUInt32BE(offset);
           offset += 4;
+          if (numPoints > (bufferLength - offset) / 16) {
+            return null;
+          }
           result = [];
           for (i = numPoints; i > 0; i--) {
+            if (offset + 16 > bufferLength) {
+              break;
+            }
             x = byteOrder
               ? buffer.readDoubleLE(offset)
               : buffer.readDoubleBE(offset);
@@ -562,19 +579,30 @@ class Packet {
           }
           break;
         case 3: // WKBPolygon
-          // eslint-disable-next-line no-case-declarations
-          const numRings = byteOrder
+          if (offset + 4 > bufferLength) {
+            return null;
+          }
+          numRings = byteOrder
             ? buffer.readUInt32LE(offset)
             : buffer.readUInt32BE(offset);
           offset += 4;
+          if (numRings > (bufferLength - offset) / 4) {
+            return null;
+          }
           result = [];
           for (i = numRings; i > 0; i--) {
+            if (offset + 4 > bufferLength) {
+              break;
+            }
             numPoints = byteOrder
               ? buffer.readUInt32LE(offset)
               : buffer.readUInt32BE(offset);
             offset += 4;
             line = [];
             for (j = numPoints; j > 0; j--) {
+              if (offset + 16 > bufferLength) {
+                break;
+              }
               x = byteOrder
                 ? buffer.readDoubleLE(offset)
                 : buffer.readDoubleBE(offset);
@@ -592,11 +620,16 @@ class Packet {
         case 5: // WKBMultiLineString
         case 6: // WKBMultiPolygon
         case 7: // WKBGeometryCollection
-          // eslint-disable-next-line no-case-declarations
-          const num = byteOrder
+          if (offset + 4 > bufferLength) {
+            return null;
+          }
+          num = byteOrder
             ? buffer.readUInt32LE(offset)
             : buffer.readUInt32BE(offset);
           offset += 4;
+          if (num > (bufferLength - offset) / 9) {
+            return null;
+          }
           result = [];
           for (i = num; i > 0; i--) {
             result.push(parseGeometry());
@@ -659,14 +692,27 @@ class Packet {
     if (len === null) {
       return null;
     }
+    if (len === 0) {
+      return 0; // TODO: assert? exception?
+    }
+
+    // For numbers with many digits (>17), use built-in parseFloat to avoid
+    // precision loss from accumulated rounding errors in repeated *10 operations.
+    // This fixes issues #2928 (MAX_VALUE doubles) and #3690 (DECIMAL(36,18))
+    // where very large numbers or numbers with many fractional digits lose precision.
+    // The threshold of 17 is based on IEEE 754 double precision (~15-17 significant digits).
+    // Testing shows minimal performance impact as most real-world numbers are shorter.
+    if (len > 17) {
+      const str = this.buffer.toString('utf8', this.offset, this.offset + len);
+      this.offset += len;
+      return Number.parseFloat(str);
+    }
+
     let result = 0;
     const end = this.offset + len;
     let factor = 1;
     let pastDot = false;
     let charCode = 0;
-    if (len === 0) {
-      return 0; // TODO: assert? exception?
-    }
     if (this.buffer[this.offset] === minus) {
       this.offset++;
       factor = -1;
@@ -680,9 +726,13 @@ class Packet {
         pastDot = true;
         this.offset++;
       } else if (charCode === exponent || charCode === exponentCapital) {
-        this.offset++;
-        const exponentValue = this.parseInt(end - this.offset);
-        return (result / factor) * Math.pow(10, exponentValue);
+        // Scientific notation detected - bail out to parseFloat for exact match.
+        // Manual calculation with Math.pow(10, exp) cannot match parseFloat()
+        // exactly for most non-zero exponents due to accumulated rounding errors.
+        const start = end - len;
+        const str = this.buffer.toString('utf8', start, end);
+        this.offset = end;
+        return Number.parseFloat(str);
       } else {
         result *= 10;
         result += this.buffer[this.offset] - 48;
@@ -830,11 +880,10 @@ class Packet {
     if (n === null) {
       return this.writeInt8(0xfb);
     }
-    // TODO: check that n is out of int precision
     this.writeInt8(0xfe);
-    this.buffer.writeUInt32LE(n, this.offset);
+    this.buffer.writeUInt32LE(n >>> 0, this.offset);
     this.offset += 4;
-    this.buffer.writeUInt32LE(n >> 32, this.offset);
+    this.buffer.writeUInt32LE(Math.floor(n / 0x100000000), this.offset);
     this.offset += 4;
     return this.offset;
   }

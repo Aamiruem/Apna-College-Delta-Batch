@@ -5,6 +5,7 @@ const Query = require('./query.js');
 const Packets = require('../packets/index.js');
 
 const getBinaryParser = require('../parsers/binary_parser.js');
+const getStaticBinaryParser = require('../parsers/static_binary_parser.js');
 
 class Execute extends Command {
   constructor(options, callback) {
@@ -25,12 +26,16 @@ class Execute extends Command {
     this._executeOptions = options;
     this._resultIndex = 0;
     this._localStream = null;
-    this._unpipeStream = function() {};
+    this._unpipeStream = function () {};
     this._streamFactory = options.infileStreamFactory;
     this._connection = null;
   }
 
   buildParserFromFields(fields, connection) {
+    if (this.options.disableEval) {
+      return getStaticBinaryParser(fields, this.options, connection.config);
+    }
+
     return getBinaryParser(fields, this.options, connection.config);
   }
 
@@ -38,11 +43,15 @@ class Execute extends Command {
     this._connection = connection;
     this.options = Object.assign({}, connection.config, this._executeOptions);
     this._setTimeout();
+    const clientFlags =
+      connection.config.clientFlags & (connection.serverCapabilityFlags || 0);
     const executePacket = new Packets.Execute(
       this.statement.id,
       this.parameters,
       connection.config.charsetNumber,
-      connection.config.timezone
+      connection.config.timezone,
+      this._executeOptions.attributes,
+      clientFlags
     );
     //For reasons why this try-catch is here, please see
     // https://github.com/sidorares/node-mysql2/pull/689
