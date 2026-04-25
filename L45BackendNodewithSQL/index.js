@@ -51,7 +51,7 @@ let getRandomUser = () => {
 }
 
 // // let q = "SHOW TABLES";
-// let q = "INSERT INTO user (id, username, email, password) VALUES ?";
+// let q = "INSERT INTO user (id, username, email, password) VALUES (?, ?, ?, ?)";
 
 // let data = [];
 // for (let i = 0; i < 100; i++) {
@@ -196,10 +196,3 @@ let port = 8080;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
-
-
-
-
-
-
-
