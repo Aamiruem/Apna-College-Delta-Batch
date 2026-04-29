@@ -27,7 +27,7 @@ async function main() {
 }
 
 // index Route
-app.get("/chats", async (req, res) => {
+app.get("/chats", async (req, res) => { // async means that this function will return a promise and we can use await inside it to wait for the promise to resolve before moving on to the next line of code.
     let chats = await Chat.find();
     // console.log(chats);
     res.render("index.ejs", { chats });
@@ -66,6 +66,11 @@ res.redirect("/chats");
 
 
 //Show Route
+app.get("/chats/:id", async (req, res) => {
+    let { id } = req.params;
+    let chat = await Chat.findById(id);
+    res.render("show.ejs", { chat });
+});
 
 
 
@@ -117,3 +122,5 @@ app.get("/", (req, res) => {
 app.listen(8080, () => {
     console.log("Server is running on port 8080");
 });
+
+

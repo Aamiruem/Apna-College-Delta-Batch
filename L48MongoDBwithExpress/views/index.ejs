@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,5 +31,166 @@
         <br>
         <br>
     <% } %>
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini WhatsApp</title>
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #d9afd9, #97d9e1);
+            margin: 0;
+            padding: 20px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+            font-size: 28px;
+        }
+
+        .new-chat-btn {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .new-chat-btn button {
+            padding: 12px 20px;
+            background: #25d366;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .new-chat-btn button:hover {
+            background: #1ebe5d;
+        }
+
+        .chat {
+            background: white;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .chat p {
+            margin: 8px 0;
+            color: #333;
+        }
+
+        .msg {
+            background: #dcf8c6;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .msg p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-group form {
+            display: inline;
+        }
+
+        .btn-group button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            color: white;
+            font-size: 14px;
+        }
+
+        .edit-btn {
+            background: #4CAF50;
+        }
+
+        .edit-btn:hover {
+            background: #45a049;
+        }
+
+        .delete-btn {
+            background: #f44336;
+        }
+
+        .delete-btn:hover {
+            background: #d32f2f;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 15px 0;
+        }
+
+        .time-date {
+            font-size: 13px;
+            color: gray;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>All Chats</h3>
+
+    <div class="new-chat-btn">
+        <form method="GET" action="/chats/new">
+            <button>+ New Chat</button>
+        </form>
+    </div>
+
+    <% for(let chat of chats){ %>
+        <div class="chat">
+            <p><strong>From:</strong> <i><%= chat.from %></i></p>
+
+            <div class="msg">
+                <p><%= chat.msg %></p>
+
+                <div class="btn-group">
+                    <form method="GET" action="/chats/<%= chat._id %>/edit">
+                        <button class="edit-btn">Edit</button>
+                    </form>
+
+                    <form method="POST" action="/chats/<%= chat._id %>?_method=DELETE">
+                        <button class="delete-btn">Delete</button>
+                    </form>
+                </div>
+            </div>
+
+            <p><strong>Received by:</strong> <i><%= chat.to %></i></p>
+
+            <hr>
+
+            <div class="time-date">
+                <p><%= chat.created_at.toString().split(" ")[4] %></p>
+                <p><%= chat.created_at.toString().split(" ").slice(0,4).join("-") %></p>
+            </div>
+        </div>
+    <% } %>
+
 </body>
 </html>

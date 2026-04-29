@@ -53,7 +53,9 @@ const userSchema = new mongoose.Schema({
 
 
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema); // collection name will be users in database and model means
+//Model = structure or blueprint of data
+// Model = data design / schema / template
 
 User.insertMany([
     {

@@ -1,17 +1,64 @@
-body{
-    margin-left: 20px;
+/* Delete Button Style */
+.delete-btn {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-
-.chat{
-    background-color: aliceblue;
-    padding: 20px;
-    border-radius: 16px;
-    display: inline-block;
+/* Hover Effect */
+.delete-btn:hover {
+    background: #e60000;
+    transform: scale(1.05);
 }
-.msg{
-    background-color: aquamarine;
-    /* color:white; */
-    padding: 10px;
-    border-radius: 16px;
+
+/* Click Effect */
+.delete-btn:active {
+    transform: scale(0.95);
+}
+
+/* Optional Popup Overlay */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup Box */
+.popup-content {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Popup Buttons */
+.popup-content button {
+    margin: 10px;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.confirm-btn {
+    background: red;
+    color: white;
+}
+
+.cancel-btn {
+    background: gray;
+    color: white;
 }
