@@ -35,7 +35,7 @@ app.get("/listings", async (req, res) => {
   res.render("listings/index.ejs", { allListings });
 });
 
-//New Route
+//New Route => to show form to create new listing 
 app.get("/listings/new", (req, res) => {
   res.render("listings/new.ejs");
 });
