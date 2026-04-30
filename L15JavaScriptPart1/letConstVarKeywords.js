@@ -1,5 +1,71 @@
-// let keywords
 
+// let keywords
+// Scope = Accessibility of variables (where a variable can be used in code).
+
+// Global Scope → usable everywhere
+// Variables declared outside any function or block can be accessed from anywhere in the code.
+
+let globalVar = "I am global";
+
+function showGlobal() {
+    console.log(globalVar);
+}
+
+showGlobal(); // I am global
+
+
+// Function Scope → usable inside function only
+// var variables declared inside a function are accessible only within that function.
+
+function myFunction() {
+    var functionVar = "I am function scoped";
+    console.log(functionVar);
+}
+
+myFunction(); // I am function scoped
+// console.log(functionVar); // Error
+
+
+// Block Scope → usable inside {}
+// let and const variables declared inside a block are accessible only inside that block.
+
+{
+    let blockVar = "I am block scoped";
+    const blockConst = "I am also block scoped";
+
+    console.log(blockVar);
+    console.log(blockConst);
+}
+
+// console.log(blockVar); // Error
+// console.log(blockConst); // Error
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let keywords
+// Scope = Accessibility of variables (where a variable can be used in code).
+
+// Global Scope → usable everywhere => let variables declared outside of any function or block are in the global scope and can be accessed from anywhere in the code. For example:
+
+    
+// Function Scope → usable inside function only => var variables declared inside a function are not accessible outside the function. They are local to that function and can only be used within it. This is known as function scope. For example:
+
+
+// Block Scope → usable inside {} only=>   const  Block Scope => let and const variables declared inside a block (e.g., within curly braces {}) are only accessible within that block. This is known as block scope. For example:
 
 let num1 = 1;
 let num2 = 2;
