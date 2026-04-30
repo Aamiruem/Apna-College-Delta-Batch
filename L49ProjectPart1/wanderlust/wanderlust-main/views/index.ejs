@@ -1,0 +1,141 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WanderLust</title>
+  </head>
+  <body>
+    <h3>All Listings</h3>
+    <form method="GET" action="/listings/new">
+      <button>Create New Listing</button>
+    </form>
+    <ul>
+      <% for(let listing of allListings) { %>
+      <li><a href="/listings/<%= listing._id %>"> <%= listing.title %> </a></li>
+      <% } %>
+    </ul>
+  </body>
+</html>
+ -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WanderLust | All Listings</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #f5f5f5;
+        padding: 40px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: auto;
+      }
+
+      h3 {
+        text-align: center;
+        font-size: 32px;
+        color: #333;
+        margin-bottom: 30px;
+      }
+
+      .create-btn {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+
+      .create-btn button {
+        padding: 12px 24px;
+        font-size: 18px;
+        background-color: #ff385c;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .create-btn button:hover {
+        background-color: #e03150;
+      }
+
+      .listing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .listing-card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .listing-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+      }
+
+      .listing-card a {
+        text-decoration: none;
+        color: #333;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .listing-card a:hover {
+        color: #ff385c;
+      }
+
+      .empty-message {
+        text-align: center;
+        color: #777;
+        font-size: 18px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h3>All Listings</h3>
+
+      <form method="GET" action="/listings/new" class="create-btn">
+        <button>Create New Listing</button>
+      </form>
+
+      <% if(allListings.length > 0) { %>
+      <div class="listing-grid">
+        <% for(let listing of allListings) { %>
+        <div class="listing-card">
+          <a href="/listings/<%= listing._id %>">
+            <%= listing.title %>
+          </a>
+        </div>
+        <% } %>
+      </div>
+      <% } else { %>
+      <p class="empty-message">No listings available yet.</p>
+      <% } %>
+    </div>
+  </body>
+</html>

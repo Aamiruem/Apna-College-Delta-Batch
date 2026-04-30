@@ -1,0 +1,167 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wanderlust</title>
+  </head>
+  <body>
+    <h3>Listing Details :</h3>
+    <ul>
+      <li><%= listing.title %></li>
+      <li><%= listing.description %></li>
+      <li>&#8377; <%= listing.price.toLocaleString("en-IN") %></li>
+      <li><%= listing.location %></li>
+      <li><%= listing.country %></li>
+    </ul>
+    <br />
+    <a href="/listings/<%= listing._id %>/edit">Edit this Listing</a>
+    <br /><br />
+    <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
+      <button>Delete this listing</button>
+    </form>
+  </body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listing Details | Wanderlust</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 30px;
+            color: #333;
+        }
+
+        .listing-details {
+            list-style: none;
+            padding: 0;
+        }
+
+        .listing-details li {
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 18px;
+            color: #444;
+            border-left: 4px solid #ff385c;
+        }
+
+        .actions {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .edit-btn,
+        .delete-btn {
+            text-align: center;
+            text-decoration: none;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .edit-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background-color: #b02a37;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Listing Details</h3>
+
+        <ul class="listing-details">
+            <li><strong>Title:</strong>
+                <%= listing.title %>
+            </li>
+            <li><strong>Description:</strong>
+                <%= listing.description %>
+            </li>
+            <li class="price">
+                <strong>Price:</strong> ₹ <%= listing.price.toLocaleString("en-IN") %>
+            </li>
+            <li><strong>Location:</strong>
+                <%= listing.location %>
+            </li>
+            <li><strong>Country:</strong>
+                <%= listing.country %>
+            </li>
+        </ul>
+
+        <div class="actions">
+            <a href="/listings/<%= listing._id %>/edit" class="edit-btn">
+                Edit this Listing
+            </a>
+
+            <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+                <button type="submit" class="delete-btn">
+                    Delete this Listing
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

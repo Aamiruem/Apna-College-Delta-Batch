@@ -1,0 +1,187 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WanderLust</title>
+  </head>
+  <body>
+    <h3>Create a New Listing</h3>
+    <form method="POST" action="/listings">
+      <input name="listing[title]" placeholder="enter title" type="text" />
+      <br /><br />
+      <textarea
+        name="listing[description]"
+        placeholder="enter description"
+      ></textarea>
+      <br /><br />
+      <input
+        name="listing[image]"
+        placeholder="enter image URL/Link"
+        type="text"
+      />
+      <br /><br />
+      <input name="listing[price]" placeholder="enter price" type="number" />
+      <br /><br />
+      <input name="listing[country]" placeholder="enter country" type="text" />
+      <br /><br />
+      <input
+        name="listing[location]"
+        placeholder="enter location"
+        type="text"
+      />
+      <br /><br />
+      <button>Add</button>
+    </form>
+  </body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create New Listing | WanderLust</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(to right, #f8f9fa, #e9ecef);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        background: white;
+        padding: 35px;
+        width: 100%;
+        max-width: 550px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      h3 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #333;
+        font-size: 30px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #444;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 18px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border 0.3s;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: #ff385c;
+        outline: none;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      button {
+        width: 100%;
+        padding: 14px;
+        background-color: #ff385c;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background-color: #e03150;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h3>Create a New Listing</h3>
+
+      <form method="POST" action="/listings">
+
+        <label>Title</label>
+        <input
+          name="listing[title]"
+          placeholder="Enter title"
+          type="text"
+          required
+        />
+
+        <label>Description</label>
+        <textarea
+          name="listing[description]"
+          placeholder="Enter description"
+          required
+        ></textarea>
+
+        <label>Image URL</label>
+        <input
+          name="listing[image]"
+          placeholder="Enter image URL/Link"
+          type="text"
+          required
+        />
+
+        <label>Price</label>
+        <input
+          name="listing[price]"
+          placeholder="Enter price"
+          type="number"
+          required
+        />
+
+        <label>Country</label>
+        <input
+          name="listing[country]"
+          placeholder="Enter country"
+          type="text"
+          required
+        />
+
+        <label>Location</label>
+        <input
+          name="listing[location]"
+          placeholder="Enter location"
+          type="text"
+          required
+        />
+
+        <button type="submit">Add Listing</button>
+      </form>
+    </div>
+  </body>
+</html>
