@@ -2,6 +2,8 @@
 let dice = Math.floor(Math.random() * 6) + 1;
 console.log("PrQs1 :", dice);
 
+
+
 // Ans : 2
 const car = {
     name: "Maruti",
@@ -11,15 +13,19 @@ const car = {
 console.log("PrQs2 :", car,
     "Car Name :-", car.name);
 
+
+
     // Ans : 3
     const person = {
         name: "Brendan Eich",
         age: 55,
         city: "New Jersey"
     };
-    console.log("PrQs3 :", person);
+console.log("PrQs3 :", person);
+    // console.log(person)
 
     person.city = "New York"; // Change
     person.country = "United States"; // Add
 
     console.log("PrQs3 after change and add :", person);
+    // console.log(person)

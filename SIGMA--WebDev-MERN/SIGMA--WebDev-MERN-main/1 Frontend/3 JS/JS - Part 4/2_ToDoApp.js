@@ -22,7 +22,7 @@ while (true) {
     }
     else if (req == "delete") {
         let idx = prompt("Please enter the task index which you want to delete :");
-        todo.splice(idx-1, 1);
+        todo.splice(idx-1, 1); //
         console.log("Task deleted successfully.");
     }
     else {

@@ -5,7 +5,7 @@ console.dir(document.all); // document.all returns HTMLAllCollections
 
 // let's see an example, if i want to change the h1 heading of document (HTML Code)
 let changedH1 = document.all[9].innerText = "SPIDER MAN"; // changed
-let changed = document.all[9].innerText = "Spider Man"; // again changed to origianl value
+let changed = document.all[9].innerText = "Spider Man"; // again changed to original value
 
 
 // 1. SELECTING ELEMENTS
@@ -89,7 +89,7 @@ for (link of links) {
 
 // using classList
 console.dir(heading1.classList); // returns DOMTokenList (shows all classes)
-heading1.classList.add("addedCls", "newCls"); // added 2 new class tpgether
+heading1.classList.add("addedCls", "newCls"); // added 2 new class together
 console.dir(heading1.classList); // see all the classes
 heading1.classList.remove("addedCls"); // removed 1 class
 console.dir(heading1.classList); // see all the classes

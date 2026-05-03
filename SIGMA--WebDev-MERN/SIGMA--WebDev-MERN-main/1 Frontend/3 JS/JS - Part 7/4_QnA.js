@@ -18,7 +18,7 @@ console.log( isEven(7) );
 
 // Ans : 3
 const object = {
-    message: "Helo World!",
+    message: "Hello World!",
     logMessage() {
         console.log(this.message);
     }

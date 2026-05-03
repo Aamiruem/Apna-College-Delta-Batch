@@ -34,7 +34,7 @@ const square = (n) => (n*n);
 console.log("PrQs1: Square of a number :", square(7));
 
 let id = setInterval( () => {
-    console.log("PrQs2: Helo World!");
+    console.log("PrQs2: Hello World!");
 }, 2000);
 
 setTimeout( () => { // it'll stop interval after 10s, this mean they'll print 5 time at every 2s

@@ -42,7 +42,7 @@ Fragment :-
          Fragment let you group a list of children without adding extra nodes to the DOM.
 Usage :- <></>
 ______________________________________________________________________________
-JSX with Currely Braces :-
+JSX with Curly Braces :-
                         We can write pure javascript code inside currely braces.
 ______________________________________________________________________________
 

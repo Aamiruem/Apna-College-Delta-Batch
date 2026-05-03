@@ -13,6 +13,9 @@ const item = {
 };
 console.log("Object Literal for item:-", item);
 
+
+
+
 // Practice Qs : Create an object literal for the properties of Twitter/Thread post
 const post = {
     username: "@altamash",
@@ -30,18 +33,30 @@ const myInfo = {
     hobbies: ["Coding", "Hacking", "Learning"]
 };
 console.log("ObjectLiteral myInfo :-", myInfo); // Print object literal
+
+
+
+
 // 1. First way to access/print values of an object literal
 console.log("1. 'name' value in myInfo :-", myInfo["name"]);
 console.log("1. 'age' value in myInfo :-", myInfo["age"]);
 console.log("1. 'hobbies' value in myInfo :-", myInfo["hobbies"]); // don't work without ""
+
+
+
 // Access index value of an array in object literal
 console.log("1. 'hobbies[0]' value in myInfo :-", myInfo["hobbies"]["0"]);
 console.log("1. 'hobbies[1]' value in myInfo :-", myInfo["hobbies"][1]); // work without ""
 console.log("1. 'hobbies[2]' value in myInfo :-", myInfo["hobbies"]["2"]); // recommended with ""
+
+
+
 // 2. Second way to access/print values of an object literal
 console.log("2. 'name' value in myInfo :-", myInfo.name);
 console.log("2. 'age' value in myInfo :-", myInfo.age);
 console.log("2. 'hobbies' value in myInfo :-", myInfo.hobbies);
+
+
 // Access index value of an array in object literal
 console.log("2. 'hobbies[0]' value in myInfo :-", myInfo.hobbies[0]);
 console.log("2. 'hobbies[1]' value in myInfo :-", myInfo.hobbies[1]);

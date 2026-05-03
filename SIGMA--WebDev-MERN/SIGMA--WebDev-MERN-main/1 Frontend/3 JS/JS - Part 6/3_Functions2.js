@@ -27,7 +27,7 @@ function greet() {
     console.log("AssalamuAleikum");
 }
 multipleGreet(greet, 3); // function in function call
-multipleGreet(function() {console.log("Helo")}, 2); // also it will be fine
+multipleGreet(function() {console.log("Hello")}, 2); // also it will be fine
 
 // Higher order functions : Returns a function 
 console.log("High order function (which returns a function) example :");
@@ -54,8 +54,8 @@ evenCheck(10);/*true*/ evenCheck(15);/*false*/
 
 
 /* Methods :-
-          Actions that can be performed on an object or
-          A function that is a property of an object.    */
+        Actions that can be performed on an object or
+        A function that is a property of an object.    */
 const calculator = {
     add: function(a, b) {
         return a+b;
@@ -68,7 +68,7 @@ const calculator = {
     }
 };
 console.log("Addition using method of calculator object :", calculator.add(5, 4));
-console.log("Substraction using method of calculator object :", calculator.sub(7, 3));
+console.log("Subtraction using method of calculator object :", calculator.sub(7, 3));
 console.log("Multiplication using method of calculator object :", calculator.mul(3, 5));
 
 // Methods : ShortHand
@@ -85,5 +85,5 @@ const shortHandCalculator = {
 };
 console.log("ShortHand for writing a method :");
 console.log("Addition :", shortHandCalculator.add(5, 4));
-console.log("Substraction :", shortHandCalculator.sub(7, 3));
+console.log("Subtraction :", shortHandCalculator.sub(7, 3));
 console.log("Multiplication :", shortHandCalculator.mul(3, 5));

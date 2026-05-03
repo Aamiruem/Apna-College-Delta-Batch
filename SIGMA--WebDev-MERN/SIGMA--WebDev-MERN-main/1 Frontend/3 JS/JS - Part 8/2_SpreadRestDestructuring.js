@@ -1,5 +1,5 @@
-// Spread in JS
-let name = "ALTAMASH";
+// Spread in JS => means
+let name = "AAMIR";
 console.log("String :", ...name); // spread on strings
 
 let nums = [1, 2, 3, 0, 4, 5];
@@ -13,7 +13,7 @@ let arr = [1, 2, 3, 4, 5];
 let newArr = [...arr]; // copy array using spread
 newArr.push(6); console.log(newArr); // added a new value and print full array
 
-let chars = [..."ALTAMASH"];
+let chars = [..."AAMIR"];
 console.log("Characters array :", chars, "Length :", chars.length);
 
 let odd = [1, 3, 5, 7, 9];
@@ -34,7 +34,7 @@ let obj1 = { ...arr }, obj2 = { ...chars }; // index is the key and element is v
 console.log("Object of nums :", obj1, "Object of chars :", obj2);
 
 
-//  Rest
+//  Rest => means
 function restExample(...args) {
     for (let i = 0; i < args.length; i++) {
         console.log("You gave us :", args[i]);
@@ -68,7 +68,7 @@ console.log("Minimum is :", min("Hey, What are you doing?", 8, 2, 5, 7, 3, 9, 4,
 
 
 // Destructuring
-let names = ["Tony", "Bruce", "Peter", "Steve", "Asknf", "Lfsnj", "Tslhf"];
+let names = ["Tony", "Bruce", "Peter", "Steve", "SMITH", "LAME", "Telingh"];
 
 // let winner = names[0];
 // let runnerUp = names[1];

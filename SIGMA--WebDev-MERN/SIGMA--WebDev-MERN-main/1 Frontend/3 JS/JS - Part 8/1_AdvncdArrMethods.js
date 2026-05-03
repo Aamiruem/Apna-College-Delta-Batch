@@ -34,7 +34,7 @@ stuObj.forEach(function (student) {
 } );
 
 
-// Map method
+// Map method => 
 let num = [1, 2, 3, 4, 5];
 let copyNum = num.map( (elmnt) => (elmnt * 2) ); // it creates a new arr and returned it
 copyNum.push(20); // add an elmnt in new copied array
@@ -46,7 +46,7 @@ let gpa = stuObj.map( (elmnt) => {
 console.log("CGPA :", gpa);
 
 
-// Filter method
+// Filter method =>
 let numsArr = [2, 5,  8, 11, 14, 17, 20, 23, 26];
 let evenArr = numsArr.filter( (elmnt) => ( elmnt%2 == 0) ); // when condition will be true
 let oddArr = numsArr.filter( (elmnt) => ( elmnt%2 != 0) ); // when condition will be true
@@ -70,6 +70,7 @@ console.log("Some elements are greater than three :", isGreaterArr);
 let array = [1, 2, 3, 4, 5];
 let finalValue = array.reduce( (accumulator, elmnt) => (accumulator + elmnt) );
 console.log("Array converted into a single value using reduced :", finalValue);
+
 // Practice Qs
 // Qs : 1 answer
 let arrayRandom = [1, 5, 11, 3, 15, 8, 2, 18, 7, 14, 9, 15, 4, 9];
@@ -79,6 +80,7 @@ let arrayRandom = [1, 5, 11, 3, 15, 8, 2, 18, 7, 14, 9, 15, 4, 9];
 //         max = arrayRandom[i];
 //     }
 // }
+
 let max = arrayRandom.reduce( (max, elmnt) => {
     if (max > elmnt) {
         return max;
@@ -94,7 +96,7 @@ let isMultipleOfTen = arrayRandom2.every( (elmnt) => (elmnt%10 == 0) );
 console.log("Multiple of 10 :", isMultipleOfTen);
 
 // Qs : 3 answer
-let min = arrayRandom2.reduce( (min, elmnt) => {
+let min = arrayRandom2.reduce( (min, elmnt) => { //reduce => means
     if (min < elmnt) {
         return min;
     } else {
@@ -105,8 +107,8 @@ console.log("Minimum value in array is :", min);
 
 
 // Default parameters
-function sum(a, b = 5) { // 'b' has a defualt value
+function sum(a, b = 5) { // 'b' has a default value
     return a + b;
 }
-console.log(sum(2)); // a = 2 and 'b' has a defulat value = 5
+console.log(sum(2)); // a = 2 and 'b' has a default value = 5
 console.log(sum(6, 3)); // a=6 and b=3

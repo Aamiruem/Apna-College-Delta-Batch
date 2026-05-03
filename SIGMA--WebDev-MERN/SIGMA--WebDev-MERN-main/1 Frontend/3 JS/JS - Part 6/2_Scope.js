@@ -3,7 +3,7 @@
 /* 1. Global scope :-
                     Variables defined inside a program are accessible (visible) from anywhere
                     within the program/file. */
-let hlo = "Hwllo"; // Global scoped
+let hlo = "Hello"; // Global scoped
 console.log("Global scoped :", hlo); // Everywhere can use in this js file
 
 
@@ -70,7 +70,7 @@ outerFunc(); // function call
 
 
 // Practice Qs
-let greet = "Helo";
+let greet = "Hello";
 
 function changeGreet() {
     let greet = "AssalamuAleikum";
@@ -80,5 +80,5 @@ function changeGreet() {
         console.log(greet); // it will not print without function call
     }
 }
-console.log(greet); // it will print "Helo"
+console.log(greet); // it will print "Hello"
 changeGreet(); // it will print "AssalamuAleikum"

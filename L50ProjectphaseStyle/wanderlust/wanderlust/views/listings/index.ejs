@@ -1,29 +1,64 @@
 <% layout("/layouts/boilerplate") %>
-    <title>WanderLust</title>
-  
-    <h3>All Listings</h3>
 
-    <!-- <form method="GET" action="/listings/new">
-      <button>Create New Listing</button>
-    </form> -->
- <% for(let listing of allListings) { %>
-  <% } %>
-    <div class="card" style="width: 18rem;">
-  <img src="<%= listing.image %>" class="card-img-top" alt="listing_image">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">
-      <%= listing.title %>
-      <%= listing.price %>
-    </p>
+<div class="container mt-4">
+  <!-- Heading -->
+  <h3 class="text-center mb-4">All Listings</h3>
 
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+  <!-- Create New Listing Button -->
+  <div class="text-center mb-4">
+    <a href="/listings/new" class="btn btn-dark">
+      Create New Listing
+    </a>
+  </div>
+
+  <!-- Listings Grid -->
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+
+    <% for(let listing of allListings) { %>
+      <div class="col">
+
+        <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+
+          <!-- Listing Image -->
+          <img
+            src="<%= listing.image %>"
+            class="card-img-top"
+            alt="listing_image"
+            style="height: 250px; object-fit: cover;"
+          />
+
+          <!-- Card Body -->
+          <div class="card-body">
+
+            <!-- Title -->
+            <h5 class="card-title fw-bold">
+              <%= listing.title %>
+            </h5>
+
+            <!-- Price -->
+            <p class="card-text mb-1">
+              ₹ <%= listing.price.toLocaleString("en-IN") %> / night
+            </p>
+
+            <!-- Location -->
+            <p class="card-text text-muted">
+              <%= listing.location %>, <%= listing.country %>
+            </p>
+
+            <!-- Details Button -->
+            <a
+              href="/listings/<%= listing._id %>"
+              class="btn btn-primary w-100"
+            >
+              View Details
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+    <% } %>
+
   </div>
 </div>
-
-
-    <ul>
-      <% for(let listing of allListings) { %>
-      <li><a href="/listings/<%= listing._id %>"> <%= listing.title %> </a></li>
-      <% } %>
-    </ul>

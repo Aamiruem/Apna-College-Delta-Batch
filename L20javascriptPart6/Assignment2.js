@@ -6,7 +6,7 @@ function getUniqueString(str) {
     let ans = "";
     for (let i = 0; i < str.length; i++) {
         let currChar = str[i];
-        if (ans.indexOf(currChar) == -1) {
+        if (ans.indexOf(currChar) == -1) { //indexOf means =>
             // if current character is not added then add it in ans.
             // otherwise it is duplicates
 

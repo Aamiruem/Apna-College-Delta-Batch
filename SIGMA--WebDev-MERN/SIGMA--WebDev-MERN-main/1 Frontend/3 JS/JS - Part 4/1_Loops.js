@@ -72,7 +72,7 @@ console.log("!_____WHILE LOOP_____!");
 
     // Practice Qs
     // console.log("Guess favourite movie :");
-    // const favMovie = "Pathaan";
+    // const favMovie = "Pathan";
     // let guessName = prompt("Guess my favourite movie :");
     // while ( (guessName != favMovie) && (guessName != "Quit") ) {
     // if (guessName == "Quit") {
@@ -89,7 +89,7 @@ console.log("!_____WHILE LOOP_____!");
     i=1;
     while (i<=5) {
         if (i == 4) {
-            break;
+            break; //
         }
         console.log(i);
         i++;

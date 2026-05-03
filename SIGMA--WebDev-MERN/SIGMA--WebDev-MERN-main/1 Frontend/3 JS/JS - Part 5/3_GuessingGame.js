@@ -20,7 +20,10 @@ while (true) {
     else if (guessNum < randomNum) {
         guessNum = prompt("Hint : Your guess number was too small, Please try again :");
     }
-    else {
+    else if (guessNum > randomNum) {
         guessNum = prompt("Hint : Your guess number was too large, Please try again :");
+    }
+    else {
+        guessNum = prompt("Congratulations : Your guess number was found :");
     }
 }

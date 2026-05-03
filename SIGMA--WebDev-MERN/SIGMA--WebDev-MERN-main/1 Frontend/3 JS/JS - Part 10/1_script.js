@@ -23,6 +23,7 @@ for (btn of btns) {
         console.log("You double clicked"); // double click
     });
 }
+
 function heloEtLr() {
     alert("Helo Event Listener");
 }
@@ -42,6 +43,7 @@ function doSomeThing() {
     console.log(this.innerText);
     this.style.backgroundColor = "blue";
 }
+
 let h1 = document.querySelector("h1");
 h1.addEventListener("click", doSomeThing);
 

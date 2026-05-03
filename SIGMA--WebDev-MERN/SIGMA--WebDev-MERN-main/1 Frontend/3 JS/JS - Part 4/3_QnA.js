@@ -5,7 +5,7 @@ let num = 2;
 console.log(`Original array : ${arr}`);
 for (let i=0; i<arr.length; i++) {
     if (arr[i] == num) {
-        arr.splice(i, 1);
+        arr.splice(i, 1); // splice means =>
     }
 }
 console.log(`Array after removing all occurance of num : ${arr}`);
@@ -14,7 +14,7 @@ console.log(`Array after removing all occurance of num : ${arr}`);
 let number = 287152;
 // 1. First way to solve using toString method (Changing Number into String)
 let count1 = 0;
-let numberStr = number.toString();
+let numberStr = number.toString(); // toString means => 
 
 for (let i=0; i<numberStr.length; i++) {
     count1++;
@@ -40,6 +40,9 @@ for (let i=0; i<numberStr.length; i++) {
     sum1 += digit;
 }
 console.log("1. Sum of digits :", sum1);
+
+
+
 // 2. Second way to solve
 let sum2 = 0;
 while (number > 0) {
@@ -49,6 +52,8 @@ while (number > 0) {
 }
 console.log("2. Sum of digits :", sum2);
 
+
+
 // Ans : 4
 let n = 5;
 // 1. First way to solve
@@ -57,6 +62,8 @@ for (let i=1; i<=n; i++) {
     factorial *= i;
 }
 console.log(`1. Factorial of ${n} is : ${factorial}`);
+
+
 // 2. Second way to solve
 let fact = 1;
 while (n >= 1) {
@@ -64,6 +71,8 @@ while (n >= 1) {
     n = n-1;
 }
 console.log("2. Factorial :", fact);
+
+
 
 // Ans : 5
 let numArray = [3, 7, 1, 5, 10, 8, 15, 9, 2];
@@ -74,4 +83,4 @@ for (let i=0; i<numArray.length; i++) {
         largestNum = numArray[i];
     }
 }
-console.log("Largest numbner is :", largestNum);
+console.log("Largest number is :", largestNum);

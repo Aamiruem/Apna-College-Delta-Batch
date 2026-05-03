@@ -6,9 +6,12 @@ console.log("E value :", Math.E);
 
 // 2. Methods
 console.log("Absolute value (remove negative) :", Math.abs(-5.4) );
-console.log("Power value :", Math.pow(2, 4) );
-console.log("Floor (nearest smallest integer) value :", Math.floor(5.8),"(inPositive) :", Math.floor(-5.8),"(inNegative)" );
-console.log("Ceil (nearest largest integer) value :", Math.ceil(5.8),"(inPositive) :", Math.ceil(-5.8),"(inNegative)" );
+console.log("Power value :", Math.pow(2, 4));
+
+console.log("Floor (nearest smallest integer) value :", Math.floor(5.8), "(inPositive) :", Math.floor(-5.8), "(inNegative)");
+
+console.log("Ceil (nearest largest integer) value :", Math.ceil(5.8), "(inPositive) :", Math.ceil(-5.8), "(inNegative)");
+
 console.log("Generate random value :", Math.random(), ":", Math.random(), ":", Math.random() );
 
 // Random integers from 1 to 10
