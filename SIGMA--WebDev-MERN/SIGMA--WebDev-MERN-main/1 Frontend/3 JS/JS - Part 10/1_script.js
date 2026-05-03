@@ -1,4 +1,5 @@
-// DOM Events
+// DOM Events => when something happens on the page, we can respond to it using DOM Events
+// we can add event listeners to elements to listen for specific events and execute a function when that event occurs
 // 1st method is inline in the html tag (don't recommend)
 // 2nd method is js file
 let btns = document.querySelectorAll("button");
@@ -9,6 +10,7 @@ for (btn of btns) {
         console.log("You entered a button"); // hover
     }
 }
+
 function btnClicked() {
     alert("Button clicked");
     console.log("Button was clicked");
