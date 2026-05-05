@@ -65,10 +65,10 @@ app.use((err, req, res, next) => {
 //     res.send(err);
 // });
 
-// app.use((err, req, res, next) => {
-//     console.log("-----ERROR2 Middleware -----");
-//     next(err);
-// });
+app.use((err, req, res, next) => {
+    console.log("-----ERROR2 Middleware -----");
+    next(err);
+});
 
 
 

@@ -38,7 +38,7 @@ if (process.env.NODE_ENV != "production") {
   
   //listing server
   app.listen(8080, () => {
-    console.log("port is runing");
+    console.log("port is running");
   });
   
   // db connection
