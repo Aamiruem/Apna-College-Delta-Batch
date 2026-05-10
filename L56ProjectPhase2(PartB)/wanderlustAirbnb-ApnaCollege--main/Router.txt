@@ -1,0 +1,518 @@
+
+
+
+what is Express router explain easy for understanding
+
+In Express.js, an Express Router is like a mini app that helps you organize routes in separate files.
+
+Instead of writing all routes in one big app.js file, we divide them into smaller router files.
+
+Without Express Router
+const express = require("express");
+const app = express();
+
+app.get("/users", (req, res) => {
+    res.send("All Users");
+});
+
+app.get("/products", (req, res) => {
+    res.send("All Products");
+});
+
+app.listen(3000);
+If your project becomes large, this file becomes messy.
+
+With Express Router
+We create separate route files.
+
+Folder Structure
+project/
+│
+├── app.js
+├── routes/
+│     ├── users.js
+│     └── products.js
+Step 1: Create Router File
+routes/users.js
+const express = require("express");
+const router = express.Router();
+
+router.get("/", (req, res) => {
+    res.send("All Users");
+});
+
+router.get("/new", (req, res) => {
+    res.send("Create New User");
+});
+
+module.exports = router;
+Step 2: Use Router in app.js
+app.js
+const express = require("express");
+const app = express();
+
+const userRouter = require("./routes/users");
+
+app.use("/users", userRouter);
+
+app.listen(3000, () => {
+    console.log("Server Running");
+});
+How It Works
+When user visits:
+
+/users
+Express checks:
+
+app.use("/users", userRouter);
+Then router handles:
+
+router.get("/")
+Final path becomes:
+
+/users
+When user visits:
+
+/users/new
+Router handles:
+
+router.get("/new")
+Final path becomes:
+
+/users/new
+Easy Real-Life Example
+Imagine:
+
+app.js = Main Office
+
+users.js = User Department
+
+products.js = Product Department
+
+Main office sends requests to correct department.
+
+Why We Use Express Router
+1. Clean Code
+Separate files for routes.
+
+2. Easy Maintenance
+Large projects become manageable.
+
+3. Reusable
+You can create many routers.
+
+4. Better Teamwork
+Different developers can work on different route files.
+
+Important Line
+const router = express.Router();
+This creates a new router object.
+
+Difference Between app and router
+app	router
+Main application	Mini application
+Used in app.js	Used in route files
+app.get()	router.get()
+Common Router Methods
+Method	Meaning
+router.get()	Get data
+router.post()	Send/Create data
+router.put()	Update data
+router.delete()	Delete data
+Small Full Example
+users.js
+const express = require("express");
+const router = express.Router();
+
+router.get("/", (req, res) => {
+    res.send("User Home");
+});
+
+router.get("/profile", (req, res) => {
+    res.send("User Profile");
+});
+
+module.exports = router;
+app.js
+const express = require("express");
+const app = express();
+
+const users = require("./routes/users");
+
+app.use("/users", users);
+
+app.listen(3000);
+Output
+URL	Result
+/users	User Home
+/users/profile	User Profile
+One-Line Definition
+Express Router helps us split routes into separate organized files in Express.js applications.
+
+
+Sending Cookies in Express.js
+Sending cookies means:
+
+Server sends small data to the browser using res.cookie().
+
+Browser stores that cookie automatically.
+
+Step 1: Install Cookie Parser
+npm install cookie-parser
+Step 2: Setup Express
+const express = require("express");
+const cookieParser = require("cookie-parser");
+
+const app = express();
+
+app.use(cookieParser());
+
+app.listen(3000, () => {
+    console.log("Server Started");
+});
+Step 3: Send Cookie
+app.get("/getsend", (req, res) => {
+
+    res.cookie("name", "Aamir");
+
+    res.send("Cookie Sent");
+});
+What Happens?
+When user visits:
+
+/getsend
+Server sends cookie:
+
+name=Aamir
+Browser stores it automatically.
+
+Reading Sent Cookie
+app.get("/getcookies", (req, res) => {
+
+    console.log(req.cookies);
+
+    res.send(req.cookies);
+});
+Output
+{
+   name: "Aamir"
+}
+Sending Multiple Cookies
+app.get("/send", (req, res) => {
+
+    res.cookie("name", "Aamir");
+    res.cookie("age", 22);
+    res.cookie("city", "Delhi");
+
+    res.send("Multiple Cookies Sent");
+});
+Output
+{
+   name: "Aamir",
+   age: "22",
+   city: "Delhi"
+}
+Cookie with Options
+res.cookie("token", "abc123", {
+    maxAge: 1000 * 60 * 60,
+    httpOnly: true
+});
+Meaning
+Option	Meaning
+maxAge	Expiry time
+httpOnly	JS cannot access
+secure	HTTPS only
+signed	Secure cookie
+Signed Cookie Example
+Setup Secret
+app.use(cookieParser("secretcode"));
+Send Signed Cookie
+res.cookie("fruit", "apple", { signed: true });
+Read Signed Cookie
+console.log(req.signedCookies);
+Full Example
+const express = require("express");
+const cookieParser = require("cookie-parser");
+
+const app = express();
+
+app.use(cookieParser());
+
+app.get("/send", (req, res) => {
+
+    res.cookie("username", "Aamir");
+
+    res.send("Cookie Sent");
+});
+
+app.get("/read", (req, res) => {
+
+    res.send(req.cookies);
+});
+
+app.listen(3000);
+Output
+Visit
+/send
+Output:
+
+Cookie Sent
+Cookie stored in browser.
+
+Visit
+/read
+Output:
+
+{
+   username: "Aamir"
+}
+Most Asked Interview Question
+Question
+Which method is used to send cookies in Express?
+
+Answer
+res.cookie()
+Syntax
+res.cookie(name, value)
+Example:
+
+res.cookie("name", "Aamir");
+One-Line Definition
+Sending cookies means storing small data in the browser using res.cookie() in Express.js.
+
+
+cookie parser
+
+cookie-parser in Express.js
+cookie-parser is a middleware used to:
+
+Read cookies sent by the browser.
+
+Without it:
+
+req.cookies
+will not work properly.
+
+Why We Need cookie-parser
+Browser sends cookies like:
+
+name=Aamir
+cookie-parser converts them into:
+
+{
+   name: "Aamir"
+}
+so Express can easily read them.
+
+Install cookie-parser
+npm install cookie-parser
+Import cookie-parser
+const cookieParser = require("cookie-parser");
+Use Middleware
+app.use(cookieParser());
+Complete Example
+const express = require("express");
+const cookieParser = require("cookie-parser");
+
+const app = express();
+
+app.use(cookieParser());
+
+app.get("/set", (req, res) => {
+
+    res.cookie("name", "Aamir");
+
+    res.send("Cookie Set");
+});
+
+app.get("/read", (req, res) => {
+
+    console.log(req.cookies);
+
+    res.send(req.cookies);
+});
+
+app.listen(3000);
+Output
+Visit
+/set
+Cookie stored:
+
+name=Aamir
+Visit
+/read
+Output:
+
+{
+   name: "Aamir"
+}
+How cookie-parser Works
+Without cookie-parser
+req.cookies
+Output:
+
+undefined
+With cookie-parser
+req.cookies
+Output:
+
+{ name: "Aamir" }
+Signed Cookies
+Used for security.
+
+Setup Secret Key
+app.use(cookieParser("secretcode"));
+Send Signed Cookie
+res.cookie("fruit", "apple", { signed: true });
+Read Signed Cookies
+console.log(req.signedCookies);
+Output
+{ fruit: "apple" }
+Difference Between req.cookies and req.signedCookies
+Property	Meaning
+req.cookies	Normal cookies
+req.signedCookies	Signed secure cookies
+Middleware Meaning
+app.use(cookieParser());
+means:
+
+Run cookie-parser on every request
+Most Asked Interview Questions
+1. What is cookie-parser?
+Middleware used to parse/read cookies in Express.
+
+2. Why use cookie-parser?
+To access cookies using req.cookies.
+
+3. How to install cookie-parser?
+npm install cookie-parser
+4. How to use cookie-parser?
+app.use(cookieParser());
+One-Line Definition
+cookie-parser is Express middleware that reads browser cookies and stores them inside req.cookies.
+
+
+signed parser
+
+Signed Cookies in Express.js
+A signed cookie is a secure cookie.
+
+It helps detect if someone changed (tampered with) the cookie value.
+
+Normal Cookie Problem
+Suppose server sends:
+
+role=user
+A hacker can change it to:
+
+role=admin
+This is unsafe.
+
+Solution → Signed Cookies
+Signed cookies use a secret key.
+
+If cookie data changes, Express detects it automatically.
+
+Step 1: Install cookie-parser
+npm install cookie-parser
+Step 2: Setup Secret Key
+const express = require("express");
+const cookieParser = require("cookie-parser");
+
+const app = express();
+
+app.use(cookieParser("secretcode"));
+Important
+"secretcode"
+is used to sign and verify cookies.
+
+Step 3: Send Signed Cookie
+app.get("/getsigned", (req, res) => {
+
+    res.cookie("fruit", "apple", {
+        signed: true
+    });
+
+    res.send("Signed Cookie Sent");
+});
+What Happens?
+Browser stores encrypted-like value.
+
+User cannot safely modify it.
+
+Step 4: Read Signed Cookie
+app.get("/verify", (req, res) => {
+
+    console.log(req.signedCookies);
+
+    res.send(req.signedCookies);
+});
+Output
+{
+   fruit: "apple"
+}
+Full Example
+const express = require("express");
+const cookieParser = require("cookie-parser");
+
+const app = express();
+
+app.use(cookieParser("secretcode"));
+
+app.get("/send", (req, res) => {
+
+    res.cookie("fruit", "mango", {
+        signed: true
+    });
+
+    res.send("Signed Cookie Sent");
+});
+
+app.get("/read", (req, res) => {
+
+    res.send(req.signedCookies);
+});
+
+app.listen(3000);
+Output
+Visit
+/send
+Cookie stored.
+
+Visit
+/read
+Output:
+
+{
+   fruit: "mango"
+}
+Difference Between Normal & Signed Cookies
+Normal Cookie	Signed Cookie
+Easy to modify	Tamper detection
+Less secure	More secure
+req.cookies	req.signedCookies
+Important Syntax
+Setup Secret
+app.use(cookieParser("secret"));
+Send Signed Cookie
+res.cookie("name", "Aamir", {
+   signed: true
+});
+Read Signed Cookie
+req.signedCookies
+Interview Questions
+1. What is a Signed Cookie?
+A signed cookie is a secure cookie verified using a secret key.
+
+2. Why Use Signed Cookies?
+To detect cookie tampering.
+
+3. Which property reads signed cookies?
+req.signedCookies
+4. How to create signed cookies?
+res.cookie("key", "value", { signed: true });
+One-Line Definition
+Signed cookies are secure cookies protected with a secret key to prevent tampering.
+
+
+
