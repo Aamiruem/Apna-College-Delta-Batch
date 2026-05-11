@@ -1,0 +1,2495 @@
+
+
+
+what is state explain all concept in MERN
+
+What is State in MERN?
+In the MERN Stack
+(MongoDB + Express.js + React.js + Node.js),
+
+the word State is mostly used in React.js.
+
+State means:
+
+A variable that stores changing data in a component.
+
+When data changes, React automatically updates the UI (screen).
+
+Real-Life Example of State
+Imagine a counter app.
+
+Count = 0
+When user clicks button:
+
+Count = 1
+The value changed.
+
+This changing value is called State.
+
+Why State is Important?
+State helps React:
+
+Store dynamic data
+
+Update UI automatically
+
+Handle user interaction
+
+Create interactive applications
+
+Without state, websites become static.
+
+Example Without State
+let count = 0;
+
+function increase() {
+  count++;
+  console.log(count);
+}
+Problem:
+
+UI will NOT update automatically.
+
+Example With State
+import { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h1>{count}</h1>
+
+      <button onClick={() => setCount(count + 1)}>
+        Increase
+      </button>
+    </div>
+  );
+}
+
+export default Counter;
+Now UI updates automatically.
+
+Understanding useState()
+const [count, setCount] = useState(0);
+This line creates state.
+
+Breakdown
+Part	Meaning
+count	Current value
+setCount	Function to update value
+useState(0)	Initial value = 0
+Syntax of State
+const [stateName, setStateName] = useState(initialValue);
+Example:
+
+const [name, setName] = useState("Aamir");
+How State Works
+Step 1: Create State
+const [age, setAge] = useState(20);
+Step 2: Show State
+<h1>{age}</h1>
+Step 3: Update State
+setAge(25);
+React re-renders component automatically.
+
+Types of State in React
+1. Primitive State
+Stores:
+
+string
+
+number
+
+boolean
+
+Example:
+
+const [name, setName] = useState("Aamir");
+const [age, setAge] = useState(22);
+const [isLogin, setIsLogin] = useState(false);
+2. Object State
+const [user, setUser] = useState({
+  name: "Aamir",
+  age: 22
+});
+Update object:
+
+setUser({
+  ...user,
+  age: 23
+});
+3. Array State
+const [items, setItems] = useState([]);
+Add data:
+
+setItems([...items, "Mango"]);
+4. Boolean State
+Mostly used for:
+
+toggle
+
+dark mode
+
+login/logout
+
+popup open/close
+
+Example:
+
+const [dark, setDark] = useState(false);
+Toggle:
+
+setDark(!dark);
+State vs Props
+State	Props
+Mutable	Immutable
+Changes data	Receives data
+Managed inside component	Passed from parent
+useState used	Parent sends props
+Example of Props + State
+Parent Component
+<Child name="Aamir" />
+Child Component
+function Child(props) {
+
+  const [age, setAge] = useState(22);
+
+  return (
+    <>
+      <h1>{props.name}</h1>
+      <h2>{age}</h2>
+    </>
+  );
+}
+Rules of State
+1. Never Change State Directly ❌
+Wrong:
+
+count = count + 1;
+Correct:
+
+setCount(count + 1);
+2. State Updates are Asynchronous
+Wrong expectation:
+
+setCount(count + 1);
+console.log(count);
+Old value may print.
+
+Correct Way
+setCount((prev) => prev + 1);
+Functional Update
+Best when updating previous value.
+
+setCount((prevCount) => prevCount + 1);
+Multiple States
+const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+Form Handling Using State
+import { useState } from "react";
+
+function Form() {
+
+  const [name, setName] = useState("");
+
+  return (
+    <>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <h1>{name}</h1>
+    </>
+  );
+}
+Lifting State Up
+When multiple components need same data.
+
+Parent stores state and sends via props.
+
+Parent
+ ├── Child1
+ └── Child2
+Local State vs Global State
+Local State	Global State
+Inside one component	Shared everywhere
+useState	Redux / Context API
+Small apps	Large apps
+Context API State
+Used to avoid prop drilling.
+
+Example:
+
+const UserContext = createContext();
+Redux State Management
+Used in large MERN apps.
+
+Stores all app data centrally.
+
+Example:
+
+store
+Contains:
+
+users
+
+cart
+
+products
+
+auth
+
+State Lifecycle
+Create State
+    ↓
+Render UI
+    ↓
+User Action
+    ↓
+Update State
+    ↓
+Re-render UI
+Re-rendering
+When state changes:
+
+setCount(count + 1);
+React re-renders component.
+
+Common State Interview Questions
+Q1. What is state?
+State is a built-in React object used to store dynamic data that changes over time.
+
+Q2. Why use state?
+To make UI interactive and dynamic.
+
+Q3. Difference between state and props?
+State is managed inside component.
+
+Props come from parent component.
+
+Q4. Can we update state directly?
+No.
+
+Use setter function.
+
+Q5. What hook is used for state?
+useState()
+Real MERN Examples of State
+Project	State Example
+E-commerce	Cart items
+Instagram Clone	Likes/comments
+Login System	User authentication
+Chat App	Messages
+Todo App	Tasks
+Dashboard	Charts/data
+Complete Counter Example
+import React, { useState } from "react";
+
+function Counter() {
+
+  const [count, setCount] = useState(0);
+
+  const increase = () => {
+    setCount(count + 1);
+  };
+
+  const decrease = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+
+      <h1>{count}</h1>
+
+      <button onClick={increase}>
+        Increase
+      </button>
+
+      <button onClick={decrease}>
+        Decrease
+      </button>
+
+    </div>
+  );
+}
+
+export default Counter;
+Important Hooks Related to State
+Hook	Purpose
+useState	Manage state
+useEffect	Side effects
+useReducer	Complex state
+useContext	Global state
+useRef	Store mutable values
+useReducer Example
+const reducer = (state, action) => {
+  switch(action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+
+    default:
+      return state;
+  }
+};
+State Management Libraries
+Library	Use
+Redux	Large apps
+Context API	Medium apps
+Zustand	Simple global state
+Recoil	Advanced state
+MobX	Reactive state
+Best Practices
+✅ Keep state minimal
+✅ Use functional updates
+✅ Split large state
+✅ Avoid unnecessary re-renders
+✅ Use Redux only when needed
+
+Simple Definition for Interview
+State is a React feature used to store and manage changing data inside components. When state changes, React automatically updates the UI.
+
+
+Storing AND USING SESSION INFO
+
+Storing and Using Session Info in Express
+In Express.js sessions, we store user-specific data inside:
+
+req.session
+This data stays available across multiple requests.
+
+What is Session Info?
+Session info means:
+
+user login data
+
+cart items
+
+username
+
+theme
+
+authentication status
+
+Example:
+
+req.session.user = "Aamir";
+Basic Flow
+User Login
+    ↓
+Store Data in Session
+    ↓
+Browser Gets Session ID Cookie
+    ↓
+User Makes New Request
+    ↓
+Server Reads Session Data
+Step 1: Install Session Package
+npm install express-session
+Step 2: Setup Session Middleware
+const express = require("express");
+const session = require("express-session");
+
+const app = express();
+
+app.use(
+  session({
+    secret: "mysupersecret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+Step 3: Store Session Data
+app.get("/login", (req, res) => {
+
+  req.session.username = "Aamir";
+
+  res.send("Session Data Stored");
+
+});
+What Happens Internally?
+req.session.username = "Aamir"
+Server stores:
+
+{
+   username: "Aamir"
+}
+Step 4: Access Session Data
+app.get("/profile", (req, res) => {
+
+  res.send(req.session.username);
+
+});
+Output:
+
+Aamir
+Complete Example
+const express = require("express");
+const session = require("express-session");
+
+const app = express();
+
+app.use(
+  session({
+    secret: "secretkey",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.get("/login", (req, res) => {
+
+  req.session.user = "Aamir";
+
+  res.send("Logged In");
+
+});
+
+app.get("/profile", (req, res) => {
+
+  if(req.session.user) {
+    res.send(`Welcome ${req.session.user}`);
+  } else {
+    res.send("Please Login");
+  }
+
+});
+
+app.listen(8080);
+Session Object Structure
+Example:
+
+req.session
+May contain:
+
+{
+  cookie: {
+    path: '/',
+    httpOnly: true
+  },
+
+  user: "Aamir"
+}
+Storing Multiple Values
+req.session.name = "Aamir";
+req.session.age = 22;
+req.session.isLogin = true;
+Using Session Data
+app.get("/dashboard", (req, res) => {
+
+  if(req.session.isLogin) {
+
+    res.send(`
+      Name: ${req.session.name}
+      Age: ${req.session.age}
+    `);
+
+  } else {
+    res.send("Please Login");
+  }
+
+});
+Login Authentication Example
+app.get("/login", (req, res) => {
+
+  let username = "Aamir";
+  let password = "1234";
+
+  if(username === "Aamir" && password === "1234") {
+
+    req.session.user = username;
+
+    res.send("Login Successful");
+
+  } else {
+    res.send("Invalid Credentials");
+  }
+
+});
+Protected Routes Using Session
+app.get("/admin", (req, res) => {
+
+  if(req.session.user) {
+    res.send("Welcome Admin");
+  } else {
+    res.send("Access Denied");
+  }
+
+});
+Logout and Destroy Session
+app.get("/logout", (req, res) => {
+
+  req.session.destroy((err) => {
+
+    if(err) {
+      return res.send("Error");
+    }
+
+    res.send("Logged Out");
+
+  });
+
+});
+After Logout
+Session deleted.
+
+req.session.user → undefined
+Saving Session Manually
+Normally auto-save happens.
+
+But manually:
+
+req.session.save((err) => {
+   console.log("Session Saved");
+});
+Regenerating Session
+Creates new session ID.
+
+Useful after login.
+
+req.session.regenerate((err) => {
+   console.log("New Session");
+});
+Session Expiry
+cookie: {
+   maxAge: 1000 * 60 * 60
+}
+Expires after:
+
+1 hour
+
+Flash Messages Using Session
+Install:
+
+npm install connect-flash
+Example
+req.flash("success", "Logged In Successfully");
+Stored temporarily in session.
+
+Session with MongoDB
+Install:
+
+npm install connect-mongo
+Store Sessions in MongoDB
+const MongoStore = require("connect-mongo");
+
+app.use(
+  session({
+
+    secret: "secret",
+
+    store: MongoStore.create({
+      mongoUrl: "mongodb://127.0.0.1:27017/test"
+    }),
+
+    resave: false,
+    saveUninitialized: false
+  })
+);
+Why Store Session in Database?
+Default memory store problems:
+
+lost after restart
+
+not scalable
+
+memory leak
+
+Database store fixes these.
+
+Session Lifecycle
+User Visits Site
+      ↓
+Session Created
+      ↓
+Data Stored in req.session
+      ↓
+Cookie Sent to Browser
+      ↓
+Browser Sends Cookie
+      ↓
+Server Reads Session Data
+Common Session Properties
+Property	Work
+req.session.user	Store user
+req.session.id	Session ID
+req.session.cookie	Cookie object
+req.session.destroy()	Delete session
+req.session.save()	Save session
+Session Example with Counter
+app.get("/", (req, res) => {
+
+  if(req.session.count) {
+    req.session.count++;
+  } else {
+    req.session.count = 1;
+  }
+
+  res.send(`Visited ${req.session.count} times`);
+
+});
+Output
+Visited 1 times
+Visited 2 times
+Visited 3 times
+Common Interview Questions
+Q1. Where do we store session data?
+Inside:
+
+req.session
+Q2. How to access session info?
+req.session.user
+Q3. How to destroy session?
+req.session.destroy()
+Q4. What happens after login?
+session created
+
+user data stored
+
+session ID sent to browser
+
+Q5. Can sessions store objects?
+Yes.
+
+Example:
+
+req.session.user = {
+   name: "Aamir",
+   role: "admin"
+}
+Best Practices
+✅ Store minimum data
+✅ Store only necessary user info
+✅ Use MongoStore/Redis
+✅ Destroy session on logout
+✅ Use secure cookies in production
+
+Easy Revision Notes
+req.session → session object
+Store data → req.session.user = "Aamir"
+Access data → req.session.user
+Delete session → req.session.destroy()
+Session persists across requests
+
+Using connect flash
+
+Using Connect Flash in Express
+connect-flash is used to show:
+
+success messages
+
+error messages
+
+warning messages
+
+temporarily after redirects.
+
+Real-Life Example
+When you login to websites, you may see:
+
+Login Successful
+or
+
+Invalid Password
+These are usually flash messages.
+
+What is Flash Message?
+A flash message is a temporary message stored in session and removed after being displayed once.
+
+Why Connect Flash is Used?
+Because after redirect:
+
+res.redirect("/home");
+normal variables disappear.
+
+Flash messages solve this problem.
+
+Important Requirement
+Flash uses:
+
+sessions
+
+So first install:
+
+express-session
+
+Install Packages
+npm install express-session connect-flash
+Basic Setup
+const express = require("express");
+const session = require("express-session");
+const flash = require("connect-flash");
+
+const app = express();
+
+app.use(
+  session({
+    secret: "mysupersecret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(flash());
+Important Order
+Correct order:
+
+app.use(session(...));
+app.use(flash());
+Because flash depends on session.
+
+How Flash Works
+Store Flash Message
+        ↓
+Redirect User
+        ↓
+Read Flash Message
+        ↓
+Message Deleted Automatically
+Storing Flash Message
+Syntax:
+
+req.flash("type", "message");
+Example
+req.flash("success", "Login Successful");
+Using Redirect
+app.get("/login", (req, res) => {
+
+  req.flash("success", "Welcome Back!");
+
+  res.redirect("/profile");
+
+});
+Access Flash Message
+app.get("/profile", (req, res) => {
+
+  let message = req.flash("success");
+
+  res.send(message);
+
+});
+Output
+Welcome Back!
+Complete Example
+const express = require("express");
+const session = require("express-session");
+const flash = require("connect-flash");
+
+const app = express();
+
+app.use(
+  session({
+    secret: "secretkey",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(flash());
+
+app.get("/login", (req, res) => {
+
+  req.flash("success", "Logged In Successfully");
+
+  res.redirect("/profile");
+
+});
+
+app.get("/profile", (req, res) => {
+
+  let msg = req.flash("success");
+
+  res.send(msg);
+
+});
+
+app.listen(8080);
+Important Point
+Flash message appears only once.
+
+Example
+First refresh:
+
+Logged In Successfully
+Second refresh:
+
+(empty)
+Because flash deletes message after reading.
+
+Multiple Flash Types
+req.flash("success", "Account Created");
+req.flash("error", "Invalid Password");
+req.flash("warning", "Low Balance");
+Access Different Messages
+req.flash("success");
+req.flash("error");
+req.flash("warning");
+Flash Message in EJS
+Very common in MERN + EJS apps.
+
+Middleware for Global Access
+app.use((req, res, next) => {
+
+  res.locals.success = req.flash("success");
+
+  res.locals.error = req.flash("error");
+
+  next();
+
+});
+Why res.locals?
+Makes flash messages available in all EJS pages.
+
+EJS Example
+<%= success %>
+Example Layout
+<body>
+
+  <% if(success.length > 0) { %>
+
+    <h3><%= success %></h3>
+
+  <% } %>
+
+</body>
+Error Flash Example
+app.get("/failed", (req, res) => {
+
+  req.flash("error", "Invalid Credentials");
+
+  res.redirect("/login");
+
+});
+Login Page
+app.get("/login", (req, res) => {
+
+  res.render("login");
+
+});
+EJS Display
+<% if(error.length > 0) { %>
+
+  <p><%= error %></p>
+
+<% } %>
+Flash Message Flow
+User Login
+     ↓
+req.flash()
+     ↓
+Redirect
+     ↓
+Next Route Reads Message
+     ↓
+Message Removed
+Internally Flash Uses Session
+Actually stored like:
+
+req.session.flash
+Temporary storage.
+
+Connect Flash with Authentication
+Very common with:
+
+Passport.js
+
+Login systems
+
+Example
+if(!user) {
+
+  req.flash("error", "User Not Found");
+
+  return res.redirect("/login");
+}
+Success Message Example
+req.flash("success", "Welcome Aamir");
+Logout Flash
+app.get("/logout", (req, res) => {
+
+  req.flash("success", "Logged Out");
+
+  res.redirect("/");
+
+});
+Common Flash Types
+Type	Use
+success	Successful action
+error	Errors
+warning	Warnings
+info	Information
+Best Practice
+req.flash("success", "Listing Created");
+Use meaningful names.
+
+Common Interview Questions
+Q1. What is connect-flash?
+Middleware used to store temporary messages in session.
+
+Q2. Why use flash messages?
+To show messages after redirects.
+
+Q3. Does connect-flash require sessions?
+Yes.
+
+Q4. How to store flash message?
+req.flash("success", "Done");
+Q5. How to access flash message?
+req.flash("success");
+Full Production Example
+const express = require("express");
+const session = require("express-session");
+const flash = require("connect-flash");
+
+const app = express();
+
+app.set("view engine", "ejs");
+
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(flash());
+
+app.use((req, res, next) => {
+
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+
+  next();
+});
+
+app.get("/login", (req, res) => {
+
+  req.flash("success", "Login Successful");
+
+  res.redirect("/home");
+
+});
+
+app.get("/home", (req, res) => {
+
+  res.render("home");
+
+});
+
+app.listen(8080);
+Easy Revision Notes
+connect-flash → temporary messages
+Uses session internally
+req.flash(type, message)
+Message shown once only
+Mostly used after redirects
+
+using res.locals
+
+Using res.locals in Express
+In Express.js, res.locals is used to:
+
+pass data to views
+
+share variables with EJS templates
+
+make data globally available
+
+especially useful with:
+
+sessions
+
+flash messages
+
+current user data
+
+Simple Definition
+res.locals stores local variables that are available only during one request-response cycle.
+
+Basic Syntax
+res.locals.variableName = value;
+Example
+app.get("/", (req, res) => {
+
+  res.locals.name = "Aamir";
+
+  res.render("home");
+
+});
+Access in EJS
+<h1><%= name %></h1>
+Output:
+
+Aamir
+Why Use res.locals?
+Without res.locals:
+
+res.render("home", { name: "Aamir" });
+Works only for one route.
+
+With res.locals
+Variables become available:
+
+globally
+
+in all views
+
+cleaner code
+
+Most Common Use Cases
+Use	Example
+Flash messages	success/error
+Current user	logged-in user
+Authentication	isLoggedIn
+Global variables	app name
+Theme/layout data	dark mode
+Using res.locals with Flash Messages
+Very common.
+
+Setup
+app.use((req, res, next) => {
+
+  res.locals.success = req.flash("success");
+
+  res.locals.error = req.flash("error");
+
+  next();
+
+});
+What Happens?
+Now every EJS page can access:
+
+success
+error
+Example Route
+app.get("/login", (req, res) => {
+
+  req.flash("success", "Login Successful");
+
+  res.redirect("/home");
+
+});
+EJS File
+<%= success %>
+Output:
+
+Login Successful
+Why next() is Important?
+next();
+Moves control to next middleware/route.
+
+Without it:
+
+request hangs
+
+Full Flash + res.locals Example
+const express = require("express");
+const session = require("express-session");
+const flash = require("connect-flash");
+
+const app = express();
+
+app.set("view engine", "ejs");
+
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(flash());
+
+app.use((req, res, next) => {
+
+  res.locals.success = req.flash("success");
+
+  res.locals.error = req.flash("error");
+
+  next();
+
+});
+
+app.get("/test", (req, res) => {
+
+  req.flash("success", "Welcome Aamir");
+
+  res.redirect("/home");
+
+});
+
+app.get("/home", (req, res) => {
+
+  res.render("home");
+
+});
+
+app.listen(8080);
+EJS File
+<body>
+
+  <% if(success.length > 0) { %>
+
+    <h2><%= success %></h2>
+
+  <% } %>
+
+</body>
+Using res.locals for Current User
+Very important in authentication systems.
+
+Middleware
+app.use((req, res, next) => {
+
+  res.locals.currUser = req.session.user;
+
+  next();
+
+});
+Now Available Everywhere
+<%= currUser %>
+Example Navbar
+<% if(currUser) { %>
+
+   <h3>Welcome <%= currUser %></h3>
+
+<% } %>
+Authentication Example
+Login Route
+app.get("/login", (req, res) => {
+
+  req.session.user = "Aamir";
+
+  res.redirect("/profile");
+
+});
+Middleware
+app.use((req, res, next) => {
+
+  res.locals.user = req.session.user;
+
+  next();
+
+});
+Profile EJS
+<h1>Welcome <%= user %></h1>
+Difference: res.locals vs app.locals
+res.locals	app.locals
+Per request	Global forever
+Temporary	Permanent
+Mostly used	Rarely changed
+app.locals Example
+app.locals.appName = "Wanderlust";
+Available in all views permanently.
+
+res.locals Lifecycle
+Request Starts
+      ↓
+res.locals Created
+      ↓
+Variables Added
+      ↓
+Render View
+      ↓
+Request Ends
+      ↓
+res.locals Destroyed
+Best Place to Use res.locals
+Usually inside middleware.
+
+app.use((req, res, next) => {
+
+   res.locals.user = req.session.user;
+
+   next();
+
+});
+Common Pattern in MERN + EJS Apps
+app.use((req, res, next) => {
+
+  res.locals.success = req.flash("success");
+
+  res.locals.error = req.flash("error");
+
+  res.locals.currUser = req.user;
+
+  next();
+
+});
+Why req.user?
+When using:
+
+Passport.js authentication
+
+Passport automatically creates:
+
+req.user
+Common Mistakes
+1. Forgetting next()
+Wrong:
+
+app.use((req, res) => {
+
+  res.locals.name = "Aamir";
+
+});
+Correct:
+
+app.use((req, res, next) => {
+
+  res.locals.name = "Aamir";
+
+  next();
+
+});
+2. Using Before Session/Flash
+Wrong order:
+
+app.use(flash());
+
+app.use(session(...));
+Correct:
+
+app.use(session(...));
+
+app.use(flash());
+Interview Questions
+Q1. What is res.locals?
+Used to store variables accessible in views during one request.
+
+Q2. Why use res.locals?
+To avoid sending variables manually in every res.render().
+
+Q3. Difference between req and res.locals?
+req	res.locals
+Incoming request data	Data for views
+Q4. Is res.locals temporary?
+Yes. Only for current request-response cycle.
+
+Q5. Common use of res.locals?
+flash messages
+
+current user
+
+authentication data
+
+Easy Revision Notes
+res.locals → send data to EJS views
+Temporary variables
+Mostly used with:
+- flash messages
+- current user
+- auth
+Need next() in middleware
+
+Response locals
+
+Response Locals (res.locals) in Express
+In Express.js:
+
+res.locals
+means:
+
+A special object used to store variables that are available only during the current request-response cycle.
+
+Simple Meaning
+res.locals helps send data from:
+
+Express backend
+to
+
+EJS frontend (views)
+
+Syntax
+res.locals.variableName = value;
+Example:
+
+res.locals.name = "Aamir";
+Basic Example
+Server Code
+app.get("/", (req, res) => {
+
+  res.locals.username = "Aamir";
+
+  res.render("home");
+
+});
+EJS File
+<h1><%= username %></h1>
+Output
+Aamir
+Why res.locals is Used?
+Without it:
+
+res.render("home", {
+  username: "Aamir"
+});
+You must pass data manually every time.
+
+With res.locals
+Data becomes available automatically in views.
+
+Cleaner code.
+
+Real-World Uses
+Use	Example
+Flash messages	success/error
+Current user	logged-in user
+Authentication	req.user
+Global data	navbar data
+Theme info	dark mode
+Flow of res.locals
+Request Comes
+      ↓
+Middleware Runs
+      ↓
+res.locals Data Added
+      ↓
+View Rendered
+      ↓
+Data Available in EJS
+      ↓
+Request Ends
+Using Middleware
+Most common approach:
+
+app.use((req, res, next) => {
+
+  res.locals.name = "Aamir";
+
+  next();
+
+});
+Now every route/view can access:
+
+name
+Example with EJS
+Middleware
+app.use((req, res, next) => {
+
+  res.locals.appName = "Wanderlust";
+
+  next();
+
+});
+EJS
+<h1><%= appName %></h1>
+Output
+Wanderlust
+Using with Sessions
+Very common.
+
+Example
+app.use((req, res, next) => {
+
+  res.locals.currUser = req.session.user;
+
+  next();
+
+});
+Login Route
+app.get("/login", (req, res) => {
+
+  req.session.user = "Aamir";
+
+  res.redirect("/profile");
+
+});
+Profile EJS
+<h1>Welcome <%= currUser %></h1>
+Output
+Welcome Aamir
+Using with Flash Messages
+Most popular use.
+
+Middleware
+app.use((req, res, next) => {
+
+  res.locals.success = req.flash("success");
+
+  res.locals.error = req.flash("error");
+
+  next();
+
+});
+Route
+app.get("/test", (req, res) => {
+
+  req.flash("success", "Login Successful");
+
+  res.redirect("/home");
+
+});
+EJS
+<%= success %>
+Output
+Login Successful
+Temporary Nature of res.locals
+res.locals exists only for:
+
+current request
+
+After response:
+
+destroyed automatically
+
+Difference Between res.locals and req.session
+res.locals	req.session
+Temporary	Persistent
+Current request only	Multiple requests
+Used for views	Used for storage
+Auto destroyed	Stored in session
+Example Comparison
+res.locals
+res.locals.name = "Aamir";
+Destroyed after response.
+
+req.session
+req.session.user = "Aamir";
+Available until logout/session expiry.
+
+Difference Between app.locals and res.locals
+app.locals	res.locals
+Global forever	Temporary
+Whole app	One request
+Rarely changes	Changes frequently
+app.locals Example
+app.locals.appName = "Wanderlust";
+Available in all views permanently.
+
+res.locals Lifecycle
+New Request
+    ↓
+res.locals Created
+    ↓
+Data Stored
+    ↓
+View Rendered
+    ↓
+Response Sent
+    ↓
+res.locals Removed
+Important Rule
+Always call:
+
+next();
+inside middleware.
+
+Wrong Example
+app.use((req, res) => {
+
+  res.locals.name = "Aamir";
+
+});
+Request hangs.
+
+Correct Example
+app.use((req, res, next) => {
+
+  res.locals.name = "Aamir";
+
+  next();
+
+});
+Common Pattern in Authentication
+app.use((req, res, next) => {
+
+  res.locals.currUser = req.user;
+
+  next();
+
+});
+Used with:
+
+Passport.js
+
+Full Example
+const express = require("express");
+
+const app = express();
+
+app.set("view engine", "ejs");
+
+app.use((req, res, next) => {
+
+  res.locals.username = "Aamir";
+
+  next();
+
+});
+
+app.get("/", (req, res) => {
+
+  res.render("home");
+
+});
+
+app.listen(8080);
+home.ejs
+<h1>Welcome <%= username %></h1>
+Output
+Welcome Aamir
+Common Interview Questions
+Q1. What is res.locals?
+An object used to pass data to views during current request-response cycle.
+
+Q2. Is res.locals permanent?
+No.
+
+Temporary for one request only.
+
+Q3. Common use of res.locals?
+flash messages
+
+current user
+
+authentication info
+
+Q4. Difference between res.locals and session?
+res.locals is temporary, session persists across requests.
+
+Q5. Why use middleware with res.locals?
+To make variables globally available in all views.
+
+Easy Revision Notes
+res.locals
+   ↓
+Temporary variables for EJS views
+
+Common Uses:
+- flash messages
+- current user
+- auth data
+
+Destroyed after response
+Need next() in middleware
+
+implement session in project
+
+cookie in session options
+
+implement flash in project
+
+Implement Flash Messages in Express Project
+Using connect-flash in a real project.
+
+Flash messages are used for:
+
+success alerts
+
+error alerts
+
+warnings
+
+login/logout notifications
+
+Step 1: Install Packages
+Install required packages:
+
+npm install express-session connect-flash
+Step 2: Import Packages
+Inside app.js
+
+const express = require("express");
+const session = require("express-session");
+const flash = require("connect-flash");
+Step 3: Configure Session
+Flash depends on session.
+
+app.use(
+  session({
+    secret: "mysupersecret",
+
+    resave: false,
+
+    saveUninitialized: false,
+  })
+);
+Step 4: Enable Flash
+app.use(flash());
+Important Middleware Order
+Correct order:
+
+app.use(session(...));
+
+app.use(flash());
+Wrong order breaks flash messages.
+
+Step 5: Create Global Middleware
+Use res.locals
+
+app.use((req, res, next) => {
+
+  res.locals.success = req.flash("success");
+
+  res.locals.error = req.flash("error");
+
+  next();
+
+});
+Why res.locals?
+Makes flash messages available in:
+
+all EJS files
+
+Step 6: Create Flash Message
+Example login route:
+
+app.get("/login", (req, res) => {
+
+  req.flash("success", "Login Successful");
+
+  res.redirect("/home");
+
+});
+Step 7: Access in Route
+app.get("/home", (req, res) => {
+
+  res.render("home");
+
+});
+Step 8: Show Message in EJS
+home.ejs
+<% if(success.length > 0) { %>
+
+   <h2><%= success %></h2>
+
+<% } %>
+Output
+Login Successful
+Complete Project Example
+app.js
+const express = require("express");
+const session = require("express-session");
+const flash = require("connect-flash");
+
+const app = express();
+
+app.set("view engine", "ejs");
+
+app.use(
+  session({
+    secret: "secretkey",
+
+    resave: false,
+
+    saveUninitialized: false,
+  })
+);
+
+app.use(flash());
+
+app.use((req, res, next) => {
+
+  res.locals.success = req.flash("success");
+
+  res.locals.error = req.flash("error");
+
+  next();
+
+});
+
+app.get("/", (req, res) => {
+
+  res.render("home");
+
+});
+
+app.get("/login", (req, res) => {
+
+  req.flash("success", "Welcome Back!");
+
+  res.redirect("/");
+
+});
+
+app.get("/error", (req, res) => {
+
+  req.flash("error", "Something Went Wrong");
+
+  res.redirect("/");
+
+});
+
+app.listen(8080, () => {
+  console.log("Server Running");
+});
+home.ejs
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Flash Messages</title>
+</head>
+
+<body>
+
+  <% if(success.length > 0) { %>
+
+     <h2><%= success %></h2>
+
+  <% } %>
+
+  <% if(error.length > 0) { %>
+
+     <h2><%= error %></h2>
+
+  <% } %>
+
+</body>
+
+</html>
+Flash Message Flow
+req.flash()
+      ↓
+Store Message in Session
+      ↓
+Redirect
+      ↓
+Read Message
+      ↓
+Message Deleted Automatically
+Important Point
+Flash messages appear:
+
+only once
+
+Example
+First refresh:
+
+Welcome Back!
+Second refresh:
+
+(empty)
+Because message is removed after reading.
+
+Different Flash Types
+req.flash("success", "Account Created");
+
+req.flash("error", "Invalid Password");
+
+req.flash("warning", "Low Balance");
+
+req.flash("info", "Profile Updated");
+Access Messages
+req.flash("success");
+
+req.flash("error");
+Bootstrap Flash Alerts
+Very common in projects.
+
+EJS Example
+<% if(success.length > 0) { %>
+
+<div class="alert alert-success">
+
+   <%= success %>
+
+</div>
+
+<% } %>
+Error Alert
+<% if(error.length > 0) { %>
+
+<div class="alert alert-danger">
+
+   <%= error %>
+
+</div>
+
+<% } %>
+Flash in Authentication
+Very common with:
+
+Passport.js
+
+Login systems
+
+Example
+if(!user) {
+
+   req.flash("error", "User Not Found");
+
+   return res.redirect("/login");
+
+}
+Logout Flash Example
+app.get("/logout", (req, res) => {
+
+  req.flash("success", "Logged Out Successfully");
+
+  res.redirect("/");
+
+});
+Flash in CRUD Project
+Create Listing
+req.flash("success", "Listing Created Successfully");
+Delete Listing
+req.flash("success", "Listing Deleted");
+Update Listing
+req.flash("success", "Listing Updated");
+Common Mistakes
+1. Forgetting Session
+Wrong:
+
+app.use(flash());
+Correct:
+
+app.use(session(...));
+
+app.use(flash());
+2. Forgetting res.locals
+Then EJS cannot access flash messages.
+
+3. Forgetting next()
+Wrong:
+
+app.use((req, res) => {
+
+   res.locals.success = req.flash("success");
+
+});
+Correct:
+
+app.use((req, res, next) => {
+
+   res.locals.success = req.flash("success");
+
+   next();
+
+});
+Best Practice Structure
+project/
+│
+├── app.js
+├── views/
+│    ├── home.ejs
+│
+├── public/
+│
+└── routes/
+Interview Questions
+Q1. What is connect-flash?
+Middleware used for temporary session-based messages.
+
+Q2. Why use flash messages?
+To display messages after redirects.
+
+Q3. Does flash require sessions?
+Yes.
+
+Q4. Why use res.locals?
+To make flash messages available globally in views.
+
+Q5. Are flash messages permanent?
+No. Displayed once only.
+
+Easy Revision Notes
+1. Install connect-flash
+2. Setup session
+3. app.use(flash())
+4. req.flash(type, message)
+5. Use res.locals
+6. Show in EJS
+7. Flash appears once only
+
+flash success includes
+
+Flash Success Includes in Express + EJS
+In real Express.js projects, we usually create a separate EJS file for flash messages and include it everywhere.
+
+This keeps code:
+
+clean
+
+reusable
+
+professional
+
+Goal
+Instead of writing this in every file:
+
+<% if(success.length > 0) { %>
+
+  <h3><%= success %></h3>
+
+<% } %>
+We create:
+
+views/includes/flash.ejs
+and include it everywhere.
+
+Folder Structure
+views/
+│
+├── includes/
+│      └── flash.ejs
+│
+├── home.ejs
+├── listings.ejs
+└── layout.ejs
+Step 1: Setup Flash Middleware
+app.js
+const session = require("express-session");
+const flash = require("connect-flash");
+
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(flash());
+Step 2: Setup res.locals
+app.use((req, res, next) => {
+
+  res.locals.success = req.flash("success");
+
+  res.locals.error = req.flash("error");
+
+  next();
+
+});
+Now all EJS files can access:
+
+success
+
+error
+
+Step 3: Create flash.ejs
+views/includes/flash.ejs
+<% if(success.length > 0) { %>
+
+  <div class="alert alert-success">
+
+    <%= success %>
+
+  </div>
+
+<% } %>
+
+<% if(error.length > 0) { %>
+
+  <div class="alert alert-danger">
+
+    <%= error %>
+
+  </div>
+
+<% } %>
+Bootstrap Styling
+alert alert-success
+creates green success box.
+
+Error Styling
+alert alert-danger
+creates red error box.
+
+Step 4: Include flash.ejs
+Inside any EJS file:
+
+<%- include("./includes/flash.ejs") %>
+Example home.ejs
+<body>
+
+  <%- include("./includes/flash.ejs") %>
+
+  <h1>Home Page</h1>
+
+</body>
+Step 5: Create Flash Message
+Route Example
+app.get("/login", (req, res) => {
+
+  req.flash("success", "Login Successful");
+
+  res.redirect("/");
+
+});
+Output
+Login Successful
+shown in green alert box.
+
+Error Example
+app.get("/error", (req, res) => {
+
+  req.flash("error", "Something Went Wrong");
+
+  res.redirect("/");
+
+});
+Output
+Something Went Wrong
+shown in red alert box.
+
+Complete Example
+app.js
+const express = require("express");
+const session = require("express-session");
+const flash = require("connect-flash");
+
+const app = express();
+
+app.set("view engine", "ejs");
+
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(flash());
+
+app.use((req, res, next) => {
+
+  res.locals.success = req.flash("success");
+
+  res.locals.error = req.flash("error");
+
+  next();
+
+});
+
+app.get("/", (req, res) => {
+
+  res.render("home");
+
+});
+
+app.get("/success", (req, res) => {
+
+  req.flash("success", "Data Saved Successfully");
+
+  res.redirect("/");
+
+});
+
+app.get("/error", (req, res) => {
+
+  req.flash("error", "Invalid Request");
+
+  res.redirect("/");
+
+});
+
+app.listen(8080);
+includes/flash.ejs
+<% if(success.length > 0) { %>
+
+<div class="alert alert-success">
+
+  <%= success %>
+
+</div>
+
+<% } %>
+
+<% if(error.length > 0) { %>
+
+<div class="alert alert-danger">
+
+  <%= error %>
+
+</div>
+
+<% } %>
+home.ejs
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container mt-3">
+
+  <%- include("./includes/flash.ejs") %>
+
+  <h1>Home Page</h1>
+
+</div>
+
+</body>
+
+</html>
+Why Use Includes?
+Benefits:
+
+✅ reusable
+✅ cleaner code
+✅ professional structure
+✅ easier maintenance
+
+Flash Message Lifecycle
+req.flash()
+      ↓
+Message Stored in Session
+      ↓
+Redirect
+      ↓
+flash.ejs Reads Message
+      ↓
+Message Deleted
+Using with Layouts
+If using:
+
+ejs-mate
+
+layouts
+
+Add include inside layout:
+
+<%- include("../includes/flash.ejs") %>
+Then flash appears on every page automatically.
+
+Common Bootstrap Classes
+Class	Color
+alert-success	Green
+alert-danger	Red
+alert-warning	Yellow
+alert-info	Blue
+Warning Flash Example
+req.flash("warning", "Low Balance");
+flash.ejs
+<% if(warning.length > 0) { %>
+
+<div class="alert alert-warning">
+
+  <%= warning %>
+
+</div>
+
+<% } %>
+Common Interview Questions
+Q1. Why use includes for flash?
+To avoid repeating code in every EJS file.
+
+Q2. What does <%- include() %> do?
+Includes another EJS file.
+
+Q3. Why use res.locals with flash?
+To access flash messages globally.
+
+Q4. Where should flash.ejs be stored?
+Usually:
+
+views/includes/
+Q5. Why use Bootstrap alerts?
+For styled success/error messages.
+
+Easy Revision Notes
+flash.ejs → reusable flash component
+
+Steps:
+1. Setup session
+2. Setup flash
+3. Use res.locals
+4. Create includes/flash.ejs
+5. Include using:
+   <%- include() %>
+
+flash failure includes
+
+Flash Failure (Error) Includes in Express + EJS
+In Express.js projects, failure/error flash messages are usually shown using:
+
+req.flash("error", "Something Went Wrong");
+Then displayed using:
+
+includes/flash.ejs
+
+Goal
+Show error messages like:
+
+Invalid Password
+or
+
+Please Login First
+inside reusable Bootstrap alert boxes.
+
+Step 1: Setup Flash Middleware
+app.js
+const session = require("express-session");
+const flash = require("connect-flash");
+
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(flash());
+Step 2: Setup res.locals
+app.use((req, res, next) => {
+
+  res.locals.success = req.flash("success");
+
+  res.locals.error = req.flash("error");
+
+  next();
+
+});
+Now all EJS files can access:
+
+success
+
+error
+
+Step 3: Create flash.ejs
+views/includes/flash.ejs
+<% if(success.length > 0) { %>
+
+<div class="alert alert-success">
+
+   <%= success %>
+
+</div>
+
+<% } %>
+
+<% if(error.length > 0) { %>
+
+<div class="alert alert-danger">
+
+   <%= error %>
+
+</div>
+
+<% } %>
+Important Bootstrap Class
+alert alert-danger
+Creates:
+
+red error box
+
+Step 4: Include flash.ejs
+Inside any page:
+
+<%- include("./includes/flash.ejs") %>
+Step 5: Create Failure Flash Message
+Example Route
+app.get("/login", (req, res) => {
+
+  let isValid = false;
+
+  if(!isValid) {
+
+    req.flash("error", "Invalid Credentials");
+
+    return res.redirect("/");
+  }
+
+});
+Output
+Invalid Credentials
+inside red alert box.
+
+Authentication Failure Example
+app.get("/admin", (req, res) => {
+
+  if(!req.session.user) {
+
+    req.flash("error", "Please Login First");
+
+    return res.redirect("/login");
+  }
+
+  res.send("Welcome Admin");
+
+});
+Output
+Please Login First
+CRUD Failure Example
+Delete Failure
+req.flash("error", "Unable to Delete Listing");
+Update Failure
+req.flash("error", "Update Failed");
+Form Validation Error
+if(!req.body.title) {
+
+  req.flash("error", "Title is Required");
+
+  return res.redirect("/listings/new");
+}
+Complete Example
+app.js
+const express = require("express");
+const session = require("express-session");
+const flash = require("connect-flash");
+
+const app = express();
+
+app.set("view engine", "ejs");
+
+app.use(
+  session({
+    secret: "secretkey",
+
+    resave: false,
+
+    saveUninitialized: false,
+  })
+);
+
+app.use(flash());
+
+app.use((req, res, next) => {
+
+  res.locals.success = req.flash("success");
+
+  res.locals.error = req.flash("error");
+
+  next();
+
+});
+
+app.get("/", (req, res) => {
+
+  res.render("home");
+
+});
+
+app.get("/failure", (req, res) => {
+
+  req.flash("error", "Something Went Wrong");
+
+  res.redirect("/");
+
+});
+
+app.listen(8080);
+includes/flash.ejs
+<% if(error.length > 0) { %>
+
+<div class="alert alert-danger">
+
+   <%= error %>
+
+</div>
+
+<% } %>
+home.ejs
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container mt-3">
+
+  <%- include("./includes/flash.ejs") %>
+
+  <h1>Home Page</h1>
+
+</div>
+
+</body>
+
+</html>
+Output UI
+┌─────────────────────────────┐
+│ Something Went Wrong        │
+└─────────────────────────────┘
+(red Bootstrap alert)
+
+Flash Failure Lifecycle
+req.flash("error")
+        ↓
+Stored in Session
+        ↓
+Redirect
+        ↓
+flash.ejs Reads Message
+        ↓
+Message Deleted
+Using Multiple Errors
+req.flash("error", "Email Required");
+
+req.flash("error", "Password Too Short");
+Show All Errors
+<% error.forEach((msg) => { %>
+
+<div class="alert alert-danger">
+
+   <%= msg %>
+
+</div>
+
+<% }) %>
+Professional Bootstrap Version
+<% if(error.length > 0) { %>
+
+<div class="alert alert-danger alert-dismissible fade show">
+
+   <%= error %>
+
+   <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert">
+   </button>
+
+</div>
+
+<% } %>
+Why Use Includes?
+Benefits:
+
+✅ reusable
+✅ cleaner code
+✅ professional structure
+✅ maintainable
+
+Common Interview Questions
+Q1. How to show failure flash message?
+req.flash("error", "Invalid User");
+Q2. Which Bootstrap class is used?
+alert alert-danger
+Q3. Why use includes?
+To avoid repeating flash code.
+
+Q4. Why use res.locals?
+To make flash globally available in EJS.
+
+Q5. Are flash errors permanent?
+No. Displayed once only.
+
+Easy Revision Notes
+Failure Flash:
+req.flash("error", "message")
+
+Display:
+alert alert-danger
+
+Reusable file:
+views/includes/flash.ejs
+
+
