@@ -1,0 +1,2765 @@
+
+
+
+Authentication and authorization all concept explain
+
+Authentication vs Authorization in Easy Words
+Authentication and Authorization are two important security concepts used in web applications like MERN apps, banking apps, social media apps, etc.
+
+1. What is Authentication?
+Authentication means:
+
+"Who are you?"
+
+It checks whether the user is real or not.
+
+Example
+When you login with:
+
+Email
+
+Username
+
+Password
+
+The system verifies your identity.
+
+If correct → user logged in
+If wrong → access denied
+
+Real Life Example
+ATM Machine
+You insert ATM card
+
+Enter PIN
+
+Bank checks:
+
+Is this really you?
+
+This is Authentication.
+
+2. What is Authorization?
+Authorization means:
+
+"What can you access?"
+
+After login, system checks permissions.
+
+Example
+In a website:
+
+User Type	Access
+Student	View courses
+Teacher	Upload courses
+Admin	Delete users
+All are authenticated users.
+
+But permissions are different.
+
+This is Authorization.
+
+Authentication vs Authorization
+Feature	Authentication	Authorization
+Meaning	Verify identity	Verify permissions
+Question	Who are you?	What can you do?
+Happens First?	Yes	After authentication
+Example	Login	Admin access
+Uses	Password, OTP	Roles & permissions
+Flow of Authentication & Authorization
+User Login
+   ↓
+Authentication
+(Check Email & Password)
+   ↓
+User Verified
+   ↓
+Authorization
+(Check Permission/Role)
+   ↓
+Allow or Deny Access
+Types of Authentication
+1. Password Authentication
+Using:
+
+Username
+
+Password
+
+Most common.
+
+2. OTP Authentication
+Using:
+
+Mobile OTP
+
+Email OTP
+
+Example:
+
+Banking apps
+
+Google login verification
+
+3. Biometric Authentication
+Using:
+
+Fingerprint
+
+Face ID
+
+Retina scan
+
+4. Token Authentication
+After login:
+
+Server gives token
+
+User sends token in future requests
+
+Used in:
+
+APIs
+
+MERN stack
+
+Mobile apps
+
+Example:
+
+JWT
+
+5. Multi-Factor Authentication (MFA)
+Using multiple checks:
+
+Password + OTP
+
+Password + Fingerprint
+
+Very secure.
+
+Types of Authorization
+1. Role-Based Authorization (RBAC)
+Permissions based on roles.
+
+Example
+Admin → Full access
+Editor → Edit access
+User → Read access
+Very common.
+
+2. Permission-Based Authorization
+Specific permissions given.
+
+Example:
+
+can_edit
+
+can_delete
+
+can_view
+
+3. Attribute-Based Authorization
+Access depends on:
+
+Location
+
+Time
+
+Department
+
+Device
+
+Advanced systems use this.
+
+Authentication in MERN Stack
+Common methods:
+
+Method	Usage
+Session Authentication	Traditional websites
+JWT Authentication	APIs & React apps
+OAuth	Google/Facebook login
+1. Session Authentication
+Server stores login session.
+
+Browser stores:
+
+Session ID in cookie
+
+Flow
+Login
+↓
+Server creates session
+↓
+Session ID stored in cookie
+↓
+Browser sends cookie every request
+↓
+Server verifies session
+Express Session Example
+const session = require("express-session");
+
+app.use(session({
+    secret: "mysupersecret",
+    resave: false,
+    saveUninitialized: true
+}));
+Store User Info
+req.session.user = {
+   id: user._id,
+   username: user.username
+};
+Check Login
+if(req.session.user){
+   console.log("Logged In");
+}
+2. JWT Authentication
+JWT = JSON Web Token
+
+Very popular in:
+
+React
+
+APIs
+
+Mobile apps
+
+JWT Flow
+User Login
+↓
+Server verifies credentials
+↓
+Server creates JWT token
+↓
+Client stores token
+↓
+Client sends token in headers
+↓
+Server verifies token
+JWT Structure
+JWT has 3 parts:
+
+Header.Payload.Signature
+Example:
+
+eyJhbGc...eyJ1c2Vy...abc123
+Install JWT
+npm install jsonwebtoken
+Create JWT
+const jwt = require("jsonwebtoken");
+
+const token = jwt.sign(
+   { id: user._id },
+   "secretkey",
+   { expiresIn: "1d" }
+);
+Verify JWT
+jwt.verify(token, "secretkey");
+Send JWT
+res.json({ token });
+Authorization using Middleware
+Middleware checks permissions.
+
+Example
+function isLoggedIn(req, res, next){
+
+   if(!req.user){
+      return res.send("Please Login");
+   }
+
+   next();
+}
+Admin Authorization Example
+function isAdmin(req, res, next){
+
+   if(req.user.role !== "admin"){
+      return res.send("Access Denied");
+   }
+
+   next();
+}
+Route Protection
+app.get("/admin",
+   isLoggedIn,
+   isAdmin,
+   (req,res)=>{
+      res.send("Welcome Admin");
+});
+Passport Authentication
+Passport.js is a popular authentication middleware for Node.js.
+
+Install Passport
+npm install passport passport-local
+Basic Setup
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+
+app.use(passport.initialize());
+app.use(passport.session());
+OAuth Authentication
+Login using:
+
+Google
+
+GitHub
+
+Facebook
+
+Example
+Login with Google
+↓
+Google verifies user
+↓
+Google sends user data
+↓
+Your app logs user in
+Cookies in Authentication
+Cookies store:
+
+Session IDs
+
+Tokens
+
+Preferences
+
+Set Cookie
+res.cookie("token", token);
+Read Cookie
+req.cookies.token
+Using:
+
+npm install cookie-parser
+Secure Authentication Practices
+1. Hash Passwords
+Never store plain passwords.
+
+Use:
+
+bcrypt
+
+Install:
+
+npm install bcrypt
+Hash Password Example
+const bcrypt = require("bcrypt");
+
+const hash = await bcrypt.hash(password, 10);
+Compare Password
+bcrypt.compare(password, user.password);
+2. Use HTTPS
+Protects data during transfer.
+
+3. Use Strong Secrets
+Bad:
+
+"12345"
+Good:
+
+process.env.SECRET_KEY
+4. Token Expiration
+Always set expiry.
+
+expiresIn: "1h"
+5. Store Secrets in ENV
+Using:
+
+dotenv
+
+npm install dotenv
+Common Authentication Terms
+Term	Meaning
+Credential	Login data
+Token	Authentication key
+Session	Server-side login storage
+Cookie	Small browser storage
+Hashing	Secure password conversion
+Middleware	Function between request-response
+OAuth	Third-party login
+MFA	Multiple verification steps
+Complete MERN Authentication Flow
+Frontend React
+↓
+Login Form
+↓
+Backend Express API
+↓
+MongoDB User Check
+↓
+Password Compare
+↓
+JWT/Session Create
+↓
+Send Token/Cookie
+↓
+Protected Routes Access
+Interview Questions
+Basic
+Q1. Difference between Authentication and Authorization?
+Authentication checks identity.
+Authorization checks permissions.
+
+Q2. What is JWT?
+JWT is a token-based authentication system.
+
+Q3. Why use bcrypt?
+To hash passwords securely.
+
+Q4. What is middleware?
+Function executed between request and response cycle.
+
+Q5. What is session?
+Server-side storage for logged-in users.
+
+Advanced Interview Questions
+Q1. JWT vs Session
+JWT	Session
+Stateless	Stateful
+Faster APIs	More secure for websites
+Stored client-side	Stored server-side
+Q2. Why hash passwords?
+To prevent password theft.
+
+Q3. What happens if token expires?
+User must login again or refresh token.
+
+Q4. What is refresh token?
+Used to generate new access token without login.
+
+Real Project Authentication Structure
+project/
+│
+├── models/
+├── routes/
+├── middleware/
+├── controllers/
+├── config/
+├── utils/
+Middleware Folder Example
+middleware/
+   auth.js
+   isAdmin.js
+auth.js
+const jwt = require("jsonwebtoken");
+
+module.exports = (req,res,next)=>{
+
+   const token = req.headers.authorization;
+
+   if(!token){
+      return res.send("Unauthorized");
+   }
+
+   try{
+      const decoded = jwt.verify(token, "secret");
+      req.user = decoded;
+      next();
+   }
+   catch(err){
+      res.send("Invalid Token");
+   }
+};
+Summary
+Authentication
+Checks:
+
+Who are you?
+Authorization
+Checks:
+
+What can you access?
+Most Used in MERN
+JWT Authentication
+
+Session Authentication
+
+Passport.js
+
+OAuth Login
+
+bcrypt Password Hashing
+
+Middleware Authorization
+
+
+how are password store 
+
+How Passwords Are Stored Securely
+Passwords should NEVER be stored in plain text.
+
+❌ Wrong:
+
+Aamir123
+If database gets hacked, all passwords become visible.
+
+Correct Way → Hash Passwords
+Passwords are stored using hashing.
+
+What is Hashing?
+Hashing converts a password into an unreadable string.
+
+Example:
+
+Password: Aamir123
+
+Hashed Password:
+$2b$10$K8sdfj2390sdfj0239sdlf...
+You cannot easily convert hash back to original password.
+
+Real Flow of Password Storage
+User Signup
+↓
+User enters password
+↓
+Password gets hashed
+↓
+Hashed password stored in DB
+Login Flow
+User enters password
+↓
+Server hashes entered password
+↓
+Compare with stored hash
+↓
+If match → Login success
+Why Hashing is Important?
+Suppose database is hacked.
+
+Without hashing:
+
+aamir123
+admin123
+hello123
+With hashing:
+
+$2b$10$asdasdasd...
+$2b$10$kjhkjhkjh...
+Hackers cannot directly read passwords.
+
+bcrypt (Most Popular Library)
+In Node.js/Express apps, we use:
+
+bcrypt
+
+Install bcrypt
+npm install bcrypt
+Hash Password Example
+const bcrypt = require("bcrypt");
+
+async function hashPassword(){
+
+   const password = "Aamir123";
+
+   const hashedPassword = await bcrypt.hash(password, 10);
+
+   console.log(hashedPassword);
+}
+
+hashPassword();
+What is 10?
+bcrypt.hash(password, 10)
+10 = Salt Rounds
+
+More rounds:
+
+More secure
+
+More time to hash
+
+Usually:
+
+10 or 12 is common.
+
+Store in MongoDB
+Example User Document:
+
+{
+   username: "aamir",
+   password: "$2b$10$8kshd89shd..."
+}
+Only hashed password is stored.
+
+Compare Password During Login
+const bcrypt = require("bcrypt");
+
+const isMatch = await bcrypt.compare(
+   enteredPassword,
+   user.password
+);
+
+if(isMatch){
+   console.log("Login Success");
+}else{
+   console.log("Wrong Password");
+}
+Complete Signup Example
+const bcrypt = require("bcrypt");
+
+app.post("/signup", async(req,res)=>{
+
+   const { username, password } = req.body;
+
+   const hashedPassword = await bcrypt.hash(password, 10);
+
+   const user = new User({
+      username,
+      password: hashedPassword
+   });
+
+   await user.save();
+
+   res.send("User Registered");
+});
+Complete Login Example
+app.post("/login", async(req,res)=>{
+
+   const { username, password } = req.body;
+
+   const user = await User.findOne({ username });
+
+   if(!user){
+      return res.send("User Not Found");
+   }
+
+   const validUser = await bcrypt.compare(
+      password,
+      user.password
+   );
+
+   if(validUser){
+      res.send("Login Successful");
+   }else{
+      res.send("Invalid Password");
+   }
+});
+What is Salt?
+Salt = Random value added before hashing.
+
+Example:
+
+Password = hello123
+Salt = xYz@12
+Then hash generated.
+
+Why Salt is Important?
+Two users may have same password:
+
+123456
+123456
+Without salt:
+
+Same hash generated
+
+With salt:
+
+Different hashes generated
+
+This increases security.
+
+Hashing vs Encryption
+Hashing	Encryption
+One-way	Two-way
+Cannot easily reverse	Can decrypt
+Used for passwords	Used for sensitive data
+Common Hashing Algorithms
+Algorithm	Status
+MD5	❌ Unsafe
+SHA1	❌ Unsafe
+bcrypt	✅ Safe
+Argon2	✅ Very Safe
+scrypt	✅ Safe
+Best Practices
+1. Never Store Plain Passwords
+❌ Wrong:
+
+password: "aamir123"
+✅ Correct:
+
+password: hashedPassword
+2. Use bcrypt or Argon2
+Recommended:
+
+bcrypt
+
+Argon2
+
+3. Use Environment Variables
+Store secrets in:
+
+.env
+Using:
+dotenv
+
+Example
+SECRET_KEY=mysecretkey
+4. Use HTTPS
+Protect passwords during transfer.
+
+5. Add Password Rules
+Example:
+
+Minimum 8 characters
+
+Uppercase
+
+Number
+
+Special character
+
+Password Security Flow in MERN
+React Frontend
+↓
+User enters password
+↓
+Express Backend
+↓
+bcrypt hashes password
+↓
+MongoDB stores hash
+Important Interview Questions
+Q1. Why not store plain passwords?
+Because database hacks can expose all passwords.
+
+Q2. What is bcrypt?
+A password hashing library.
+
+Q3. What is salt in bcrypt?
+Random value added before hashing.
+
+Q4. Difference between hashing and encryption?
+Hashing is one-way.
+Encryption can be reversed.
+
+Q5. Why bcrypt better than MD5?
+bcrypt is slower and more secure against brute-force attacks.
+
+
+what is hashing 
+
+What is Hashing?
+Hashing is a process that converts data into a fixed-size unreadable value called a hash.
+
+It is mainly used for:
+
+Password security
+
+Data verification
+
+Digital signatures
+
+Blockchain
+
+Authentication systems
+
+Easy Definition
+Hashing converts original data into a secret-looking string using a mathematical algorithm.
+
+Example
+Original Password:
+
+hello123
+After Hashing:
+
+$2b$10$Xk92jshs8sksk282...
+This unreadable string is called a hash value.
+
+Important Point
+Hashing is usually:
+
+One-Way Process
+Meaning:
+
+Easy to create hash
+
+Very hard to reverse back
+
+Real Life Example
+Imagine:
+
+You put fruit into a grinder
+
+Juice comes out
+
+You cannot easily convert juice back into original fruit.
+
+Hashing works similarly.
+
+How Hashing Works
+Original Data
+↓
+Hash Function
+↓
+Hash Value
+Example in Password System
+User Password
+↓
+Hashing Algorithm
+↓
+Store Hash in Database
+Why Hashing is Used?
+Because storing real passwords is dangerous.
+
+Without Hashing
+Database:
+
+username: aamir
+password: hello123
+If hacked:
+
+Password visible
+
+With Hashing
+username: aamir
+password: $2b$10$asjdhajshd...
+Now attacker cannot easily know original password.
+
+Properties of Hashing
+1. One-Way
+You cannot easily reverse it.
+
+Password → Hash
+But:
+
+Hash → Password ❌
+2. Fixed Length
+No matter input size, output length remains fixed.
+
+Example:
+
+hello
+and
+
+helloooooooooooooooooooo
+Both generate fixed-size hashes.
+
+3. Same Input = Same Hash
+hello123 → abc456
+hello123 → abc456
+Always same output.
+
+4. Small Change = Completely Different Hash
+hello123
+and
+
+hello124
+Produce totally different hashes.
+
+Common Hashing Algorithms
+Algorithm	Safe?
+MD5	❌ Old/Unsafe
+SHA1	❌ Unsafe
+SHA256	✅ Better
+bcrypt	✅ Very Safe
+Argon2	✅ Modern & Secure
+Most Used for Passwords
+In MERN/Node.js:
+
+bcrypt
+
+Argon2
+
+Hashing Example Using bcrypt
+Install:
+
+npm install bcrypt
+Create Hash
+const bcrypt = require("bcrypt");
+
+async function run(){
+
+   const password = "hello123";
+
+   const hash = await bcrypt.hash(password, 10);
+
+   console.log(hash);
+}
+
+run();
+Output Example
+$2b$10$hT92jshd92jshd...
+Compare Passwords
+During login:
+
+const match = await bcrypt.compare(
+   "hello123",
+   storedHash
+);
+
+console.log(match);
+Output:
+
+true
+What is Salt?
+Salt = Random value added before hashing.
+
+Why Salt is Important?
+Without salt:
+
+123456 → same hash
+123456 → same hash
+Attackers can guess passwords easily.
+
+With Salt
+123456 → different hash
+123456 → different hash
+Much more secure.
+
+Hashing vs Encryption
+Hashing	Encryption
+One-way	Two-way
+Cannot decrypt easily	Can decrypt
+Used for passwords	Used for private data
+Secure verification	Secure communication
+Hashing in MERN Stack
+React Form
+↓
+Express Backend
+↓
+bcrypt.hash()
+↓
+MongoDB stores hash
+Real Authentication Flow
+Signup
+↓
+Password Hash
+↓
+Store Hash
+↓
+Login
+↓
+Compare Hash
+↓
+Access Granted
+Advantages of Hashing
+✅ Protects passwords
+✅ Prevents data leaks
+✅ Secure authentication
+✅ Used in cybersecurity
+✅ Detects file changes
+
+Disadvantages
+❌ Cannot recover original password
+❌ Weak algorithms can be attacked
+
+Interview Questions
+Q1. What is hashing?
+Hashing converts data into unreadable fixed-size value.
+
+Q2. Is hashing reversible?
+Usually no.
+
+Q3. Why use hashing for passwords?
+To secure passwords in database.
+
+Q4. Difference between hashing and encryption?
+Hashing is one-way, encryption is reversible.
+
+Q5. Which hashing library is popular in Node.js?
+bcrypt
+
+
+What is Salting?
+Salting means:
+
+Adding a random value to a password before hashing it.
+
+This random value is called a:
+
+Salt
+Why Salting is Needed?
+Suppose two users use same password:
+
+123456
+123456
+Without salt:
+
+Both hashes become same
+
+Example:
+
+123456 → abc123
+123456 → abc123
+Hackers can guess common passwords easily.
+
+With Salt
+Random salt added before hashing.
+
+Example:
+
+Password = 123456
+Salt = xYz12
+Now hash becomes:
+
+xYz12123456 → kjsd8923...
+Another user:
+
+Password = 123456
+Salt = pQr78
+Hash:
+
+pQr78123456 → asd892ks...
+Now both hashes are different.
+
+Main Purpose of Salt
+✅ Makes passwords more secure
+✅ Prevents rainbow table attacks
+✅ Prevents duplicate hashes
+✅ Harder for hackers to crack passwords
+
+Flow of Salting
+Password
+↓
+Add Salt
+↓
+Hashing
+↓
+Store Hash
+Real Example
+Password:
+
+hello123
+Salt:
+
+A1@x9
+Combined:
+
+hello123A1@x9
+Then hashed.
+
+bcrypt Automatically Uses Salt
+In Node.js, bcrypt automatically generates salt.
+
+Install bcrypt
+npm install bcrypt
+Example with Salt
+const bcrypt = require("bcrypt");
+
+async function run(){
+
+   const password = "hello123";
+
+   const hash = await bcrypt.hash(password, 10);
+
+   console.log(hash);
+}
+
+run();
+What Does 10 Mean?
+bcrypt.hash(password, 10)
+10 = Salt Rounds
+
+More rounds:
+
+More secure
+
+Slower hashing
+
+bcrypt Internally Does
+Generate Salt
+↓
+Combine Password + Salt
+↓
+Create Hash
+Compare Passwords
+During login:
+
+bcrypt.compare(password, storedHash)
+bcrypt automatically:
+
+extracts salt
+
+hashes entered password again
+
+compares both hashes
+
+Without Salt Problem
+Suppose database has:
+
+User1 → 123456
+User2 → 123456
+Without salt:
+
+Both hashes same
+Hackers understand:
+
+both users use same password
+
+With Salt
+Different salts
+↓
+Different hashes
+Much safer.
+
+What is Rainbow Table Attack?
+Hackers keep pre-generated password hashes.
+
+Example:
+
+Password	Hash
+123456	abc123
+password	xyz789
+If your database stores same hashes:
+
+hackers instantly know passwords.
+
+Salt Prevents This
+Because every hash becomes unique.
+
+Hashing vs Salting
+Hashing	Salting
+Converts password into hash	Adds random value before hashing
+Security process	Extra security layer
+Same password → same hash	Same password → different hashes
+Example Together
+Password = hello123
+Salt = xYz12
+↓
+hello123xYz12
+↓
+Hash Function
+↓
+Final Hash
+Important Interview Questions
+Q1. What is salt?
+Random value added before hashing password.
+
+Q2. Why use salt?
+To make hashes unique and secure.
+
+Q3. Does bcrypt use salt?
+Yes, automatically.
+
+Q4. Can two same passwords have different hashes?
+Yes, because of different salts.
+
+Q5. What attack does salt prevent?
+Rainbow table attacks.
+
+
+passport getting started
+
+Passport.js Getting Started
+Passport.js is a popular authentication middleware for Node.js and Express.
+
+It helps you implement:
+
+Login
+
+Signup
+
+Sessions
+
+Google Login
+
+GitHub Login
+
+JWT Authentication
+
+Why Use Passport?
+Without Passport:
+
+Authentication code becomes complex
+
+With Passport:
+
+Easy login system
+
+Secure authentication
+
+Session handling
+
+OAuth support
+
+Passport Flow
+User Login
+↓
+Passport verifies user
+↓
+Create Session
+↓
+Store user info
+↓
+User stays logged in
+Most Common Strategy
+Passport works using Strategies.
+
+Popular strategies:
+
+Strategy	Usage
+Local Strategy	Username/password login
+Google Strategy	Login with Google
+GitHub Strategy	GitHub login
+JWT Strategy	Token authentication
+Install Passport
+npm install passport
+Install Local Strategy
+npm install passport-local
+Install Session Support
+npm install express-session
+Complete Basic Setup
+Step 1: Create Express App
+const express = require("express");
+const app = express();
+
+app.listen(3000, ()=>{
+   console.log("Server Running");
+});
+Step 2: Setup Session
+const session = require("express-session");
+
+app.use(session({
+   secret: "mysupersecret",
+   resave: false,
+   saveUninitialized: false
+}));
+What is secret?
+Used to sign session cookies securely.
+
+Better practice:
+
+process.env.SECRET
+Step 3: Initialize Passport
+const passport = require("passport");
+
+app.use(passport.initialize());
+app.use(passport.session());
+Difference
+Method	Work
+passport.initialize()	Starts Passport
+passport.session()	Enables session login
+Step 4: Setup Local Strategy
+const LocalStrategy = require("passport-local");
+Dummy User Example
+const user = {
+   id: 1,
+   username: "aamir",
+   password: "12345"
+};
+Configure Strategy
+passport.use(new LocalStrategy(
+
+   function(username, password, done){
+
+      if(username === user.username &&
+         password === user.password){
+
+         return done(null, user);
+      }
+
+      return done(null, false);
+   }
+));
+Meaning of done()
+done(error, user)
+Examples:
+
+Success:
+
+done(null, user)
+Failure:
+
+done(null, false)
+Error:
+
+done(err)
+Step 5: Serialize User
+Passport stores user ID in session.
+
+passport.serializeUser((user, done)=>{
+   done(null, user.id);
+});
+Step 6: Deserialize User
+Get user from session ID.
+
+passport.deserializeUser((id, done)=>{
+   done(null, user);
+});
+Complete Login Route
+app.post("/login",
+   passport.authenticate("local", {
+      successRedirect: "/profile",
+      failureRedirect: "/login"
+   })
+);
+Protected Route
+function isLoggedIn(req,res,next){
+
+   if(req.isAuthenticated()){
+      return next();
+   }
+
+   res.send("Please Login");
+}
+Use Protected Route
+app.get("/profile",
+   isLoggedIn,
+   (req,res)=>{
+      res.send("Welcome Profile");
+});
+Logout Route
+app.get("/logout", (req,res)=>{
+
+   req.logout(()=>{
+      res.redirect("/");
+   });
+
+});
+Full Passport Flow
+User Login
+↓
+Passport checks username/password
+↓
+serializeUser()
+↓
+User ID stored in session
+↓
+Browser gets session cookie
+↓
+Future requests use cookie
+↓
+deserializeUser()
+↓
+req.user available
+req.user
+After login:
+
+console.log(req.user);
+Output:
+
+{
+   id: 1,
+   username: "aamir"
+}
+req.isAuthenticated()
+Checks login status.
+
+if(req.isAuthenticated()){
+   console.log("Logged In");
+}
+Passport + MongoDB
+Usually used with:
+
+MongoDB
+
+Mongoose
+
+Install Mongoose Support
+npm install passport-local-mongoose
+What is passport-local-mongoose?
+passport-local-mongoose simplifies authentication.
+
+It automatically:
+
+hashes passwords
+
+adds login methods
+
+adds authentication methods
+
+User Schema Example
+const mongoose = require("mongoose");
+const passportLocalMongoose =
+require("passport-local-mongoose");
+
+const userSchema = new mongoose.Schema({});
+
+userSchema.plugin(passportLocalMongoose);
+
+module.exports =
+mongoose.model("User", userSchema);
+Register User
+const User = require("./models/user");
+
+const newUser = new User({
+   username: "aamir"
+});
+
+User.register(newUser, "12345");
+Password automatically hashed.
+
+Passport Setup with Mongoose
+const User = require("./models/user");
+
+passport.use(
+   new LocalStrategy(User.authenticate())
+);
+Serialize & Deserialize
+passport.serializeUser(User.serializeUser());
+
+passport.deserializeUser(
+   User.deserializeUser()
+);
+Flash Messages
+Install:
+
+npm install connect-flash
+Setup Flash
+const flash = require("connect-flash");
+
+app.use(flash());
+Use Flash
+req.flash("success", "Welcome Back");
+Common Passport Methods
+Method	Purpose
+req.login()	Login user
+req.logout()	Logout user
+req.user	Current user
+req.isAuthenticated()	Check login
+Passport Folder Structure
+project/
+│
+├── models/
+├── routes/
+├── middleware/
+├── views/
+├── app.js
+Security Best Practices
+✅ Use bcrypt hashing
+✅ Use HTTPS
+✅ Store secrets in .env
+✅ Use strong session secret
+✅ Use secure cookies
+
+Passport vs JWT
+Passport Session	JWT
+Stateful	Stateless
+Cookie based	Token based
+Best for websites	Best for APIs
+Server stores session	Client stores token
+Interview Questions
+Q1. What is Passport.js?
+Authentication middleware for Node.js.
+
+Q2. What is Local Strategy?
+Username-password authentication strategy.
+
+Q3. What is serializeUser()?
+Stores user ID in session.
+
+Q4. What is deserializeUser()?
+Gets user data from session ID.
+
+Q5. What is req.isAuthenticated()?
+Checks whether user is logged in.
+
+
+user model 
+
+User Model in MERN / Node.js
+A User Model is used to store user data in MongoDB.
+
+It defines:
+
+username
+
+email
+
+password
+
+role
+
+profile info
+
+using:
+
+Mongoose schemas.
+
+Why User Model is Important?
+User model helps in:
+
+Authentication
+
+Login system
+
+Registration
+
+Authorization
+
+Storing user information
+
+Basic User Model Structure
+User
+│
+├── username
+├── email
+├── password
+├── role
+├── createdAt
+Step 1: Install Mongoose
+npm install mongoose
+Step 2: Create User Model
+Create file:
+
+models/User.js
+Basic User Schema
+const mongoose = require("mongoose");
+
+const userSchema = new mongoose.Schema({
+
+   username: {
+      type: String,
+      required: true
+   },
+
+   email: {
+      type: String,
+      required: true,
+      unique: true
+   },
+
+   password: {
+      type: String,
+      required: true
+   }
+
+});
+
+module.exports =
+mongoose.model("User", userSchema);
+Explanation
+Field	Meaning
+type	Data type
+required	Mandatory field
+unique	No duplicate values
+Database Example
+MongoDB document:
+
+{
+   _id: "123",
+   username: "aamir",
+   email: "aamir@gmail.com",
+   password: "$2b$10$abcxyz..."
+}
+Add Role in User Model
+Useful for:
+
+Admin
+
+User
+
+Moderator
+
+Example
+role: {
+   type: String,
+   enum: ["user", "admin"],
+   default: "user"
+}
+Complete User Model
+const mongoose = require("mongoose");
+
+const userSchema = new mongoose.Schema({
+
+   username: {
+      type: String,
+      required: true,
+      trim: true
+   },
+
+   email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true
+   },
+
+   password: {
+      type: String,
+      required: true
+   },
+
+   role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user"
+   }
+
+}, { timestamps: true });
+
+module.exports =
+mongoose.model("User", userSchema);
+What is timestamps: true?
+Automatically creates:
+
+createdAt
+updatedAt
+Example Output
+{
+   username: "aamir",
+   email: "aamir@gmail.com",
+   role: "user",
+   createdAt: "2026-05-12"
+}
+User Registration Example
+const User = require("./models/User");
+
+app.post("/signup", async(req,res)=>{
+
+   const { username, email, password } =
+   req.body;
+
+   const user = new User({
+      username,
+      email,
+      password
+   });
+
+   await user.save();
+
+   res.send("User Registered");
+});
+Problem with Above Code
+❌ Password stored as plain text.
+
+Need hashing.
+
+Password Hashing with bcrypt
+Install:
+
+npm install bcrypt
+Signup with Hashing
+const bcrypt = require("bcrypt");
+
+app.post("/signup", async(req,res)=>{
+
+   const { username, email, password } =
+   req.body;
+
+   const hashedPassword =
+      await bcrypt.hash(password, 10);
+
+   const user = new User({
+      username,
+      email,
+      password: hashedPassword
+   });
+
+   await user.save();
+
+   res.send("Registered");
+});
+Login Example
+app.post("/login", async(req,res)=>{
+
+   const { email, password } = req.body;
+
+   const user = await User.findOne({ email });
+
+   if(!user){
+      return res.send("User Not Found");
+   }
+
+   const validUser =
+      await bcrypt.compare(
+         password,
+         user.password
+      );
+
+   if(validUser){
+      res.send("Login Success");
+   }else{
+      res.send("Wrong Password");
+   }
+
+});
+Using passport-local-mongoose
+passport-local-mongoose simplifies authentication.
+
+Install
+npm install passport-local-mongoose
+User Model with Passport
+const mongoose = require("mongoose");
+
+const passportLocalMongoose =
+require("passport-local-mongoose");
+
+const userSchema = new mongoose.Schema({});
+
+userSchema.plugin(
+   passportLocalMongoose
+);
+
+module.exports =
+mongoose.model("User", userSchema);
+What Plugin Adds Automatically?
+It adds:
+
+username
+
+hash
+
+salt
+
+authenticate()
+
+register()
+
+Register User
+const User = require("./models/User");
+
+const newUser = new User({
+   username: "aamir"
+});
+
+User.register(newUser, "12345");
+Password automatically hashed.
+
+Authenticate User
+passport.use(
+   new LocalStrategy(
+      User.authenticate()
+   )
+);
+Common Schema Validations
+Min Length
+password: {
+   type: String,
+   minlength: 6
+}
+Email Validation
+email: {
+   type: String,
+   match: /.+\@.+\..+/
+}
+Trim Spaces
+trim: true
+Lowercase Email
+lowercase: true
+User Model Folder Structure
+project/
+│
+├── models/
+│     └── User.js
+│
+├── routes/
+├── controllers/
+├── middleware/
+User Roles Example
+{
+   username: "admin",
+   role: "admin"
+}
+Authorization Example
+if(user.role === "admin"){
+   console.log("Admin Access");
+}
+Best Practices
+✅ Hash passwords
+✅ Use validations
+✅ Keep email unique
+✅ Use roles
+✅ Store secrets in .env
+
+Interview Questions
+Q1. What is User Model?
+Schema used to store user data in MongoDB.
+
+Q2. Why use Mongoose Schema?
+To define structure and validation.
+
+Q3. Why hash passwords?
+For security.
+
+Q4. What does unique: true do?
+Prevents duplicate values.
+
+Q5. What is passport-local-mongoose?
+Plugin for easy authentication setup.
+
+
+// SECOND CODE 
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const port = 8080;
+const path = require("path");
+const methodOverride = require("method-override");
+const ejsMate = require("ejs-mate");
+const ExpressError = require("./utils/ExpressError.js");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js");
+
+const listingRouter = require("./routes/listing.js");
+const reviewRouter = require("./routes/review.js");
+const userRouter = require("./routes/user.js");
+
+const MONGO_URL = mongodb://127.0.0.1:27017/wanderlust;
+
+main()
+    .then(() => {
+        console.log(DB CONNECTED!);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+
+async function main() {
+    await mongoose.connect(MONGO_URL);
+}
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
+app.engine("ejs", ejsMate);
+app.use(express.static(path.join(__dirname, "/public")));
+app.use(cookieParser("signedCookie"));
+
+const sessionOptions = {
+    secret: "mysupersecretcode",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+    },
+};
+
+app.get("/", (req, res) => {
+    res.send(Hii I'm Root!);
+});
+
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.currUser = req.user;
+    next();
+});
+
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
+app.use("/", userRouter);
+
+app.all("*", (req, res, next) => {
+    next(new ExpressError(404, "Page not Found!"));
+});
+
+app.use((err, req, res, next) => {
+    let { statusCode = 500, message = "something went wrong!" } = err;
+    res.status(statusCode).render("error.ejs", { err });
+});
+
+
+app.get("/testListing", async (req, res) => {
+    let sampleListing = new Listing({
+        title: "My New Villa",
+        description: "By the beach",
+        price: 1200,
+        location: "Calangute, Goa",
+        country: "India",
+    });
+    await sampleListing.save();
+    console.log("sample was saved");
+    res.send("successful testing");
+});
+
+app.listen(port, () => {
+    console.log(App is running on port ${port});
+}); explain and correct 
+
+Your Code Overview
+Your code is a complete:
+
+Express.js app
+
+MongoDB connection
+
+Session setup
+
+Passport authentication setup
+
+Flash messages
+
+Routing system
+
+This is a very good MERN backend structure 👍
+
+Now I’ll explain:
+
+What each line does
+
+Mistakes in code
+
+Correct version
+
+Authentication flow
+
+1. Importing Packages
+const express = require("express");
+Imports:
+
+Express framework.
+
+const mongoose = require("mongoose");
+Imports:
+
+Mongoose
+
+Used for MongoDB connection.
+
+const methodOverride = require("method-override");
+Allows:
+
+PUT
+DELETE
+requests from forms.
+
+const ejsMate = require("ejs-mate");
+Used for:
+
+EJS layouts
+
+Boilerplate templates
+
+const cookieParser = require("cookie-parser");
+Reads cookies from browser.
+
+const session = require("express-session");
+Creates login sessions.
+
+const flash = require("connect-flash");
+Used for temporary messages:
+
+Success
+
+Error
+
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+Used for authentication.
+
+const User = require("./models/user.js");
+Imports user model.
+
+2. MongoDB Connection
+const MONGO_URL = `mongodb://127.0.0.1:27017/wanderlust`;
+Database URL.
+
+Database Connect Function
+async function main() {
+    await mongoose.connect(MONGO_URL);
+}
+Connects MongoDB.
+
+Running Function
+main()
+.then(()=>{})
+.catch(()=>{})
+Runs DB connection.
+
+3. View Engine Setup
+app.set("view engine", "ejs");
+Using:
+
+EJS templates
+
+app.set("views", path.join(__dirname, "views"));
+Tells Express:
+
+views folder location
+4. Middleware Setup
+Body Parser
+app.use(express.urlencoded({ extended: true }));
+Reads form data.
+
+Method Override
+app.use(methodOverride("_method"));
+Allows:
+
+?_method=PUT
+?_method=DELETE
+Static Files
+app.use(express.static(path.join(__dirname, "/public")));
+Serves:
+
+CSS
+
+JS
+
+Images
+
+5. Cookie Parser
+app.use(cookieParser("signedCookie"));
+Reads signed cookies.
+
+6. Session Setup
+const sessionOptions = {
+Session configuration.
+
+Important Fields
+secret
+secret: "mysupersecretcode",
+Signs session cookie securely.
+
+Better:
+
+process.env.SECRET
+resave
+resave: false,
+Avoids unnecessary session saving.
+
+saveUninitialized
+saveUninitialized: true,
+Creates session even before login.
+
+Usually better:
+
+false
+cookie
+cookie: {
+   expires,
+   maxAge,
+   httpOnly
+}
+httpOnly
+httpOnly: true
+Prevents JavaScript access to cookies.
+
+Security feature.
+
+7. Root Route
+app.get("/", (req,res)=>{
+   res.send("Hii I'm Root!");
+});
+Homepage route.
+
+8. Session Middleware
+app.use(session(sessionOptions));
+Must come BEFORE:
+
+passport.session()
+Correct in your code ✅
+
+9. Flash Messages
+app.use(flash());
+Enables flash messages.
+
+10. Passport Setup
+Initialize Passport
+app.use(passport.initialize());
+Starts Passport.
+
+Session Support
+app.use(passport.session());
+Enables persistent login sessions.
+
+Local Strategy
+passport.use(new LocalStrategy(User.authenticate()));
+Uses:
+
+username/password login
+
+Requires:
+
+passport-local-mongoose
+
+inside user model.
+
+Serialize User
+passport.serializeUser(User.serializeUser());
+Stores user ID into session.
+
+Deserialize User
+passport.deserializeUser(User.deserializeUser());
+Gets full user from session ID.
+
+Authentication Flow
+Login
+↓
+Passport verifies user
+↓
+serializeUser()
+↓
+Session stores user id
+↓
+Browser gets cookie
+↓
+Next request
+↓
+deserializeUser()
+↓
+req.user available
+11. res.locals Middleware
+app.use((req,res,next)=>{
+Makes variables available in all EJS files.
+
+Flash Variables
+res.locals.success
+res.locals.error
+Accessible in EJS:
+
+<%= success %>
+Current User
+res.locals.currUser = req.user;
+Now every EJS file can access:
+
+currUser
+Very useful.
+
+12. Routes
+app.use("/listings", listingRouter);
+All listing routes start with:
+
+/listings
+app.use("/listings/:id/reviews", reviewRouter);
+Review routes nested under listings.
+
+app.use("/", userRouter);
+User routes:
+
+signup
+
+login
+
+logout
+
+13. Error Handling
+404 Route
+app.all("*", ...)
+Handles invalid routes.
+
+Custom Error
+next(new ExpressError(404, "Page not Found!"));
+Custom error object.
+
+Global Error Middleware
+app.use((err,req,res,next)=>{
+Handles all errors centrally.
+
+Very important in Express.
+
+14. Problem in Your Code ❌
+ERROR 1
+You used:
+
+let sampleListing = new Listing({
+But:
+
+Listing
+NOT imported.
+
+Fix
+Add:
+
+const Listing = require("./models/listing");
+ERROR 2
+This route should be ABOVE error handlers.
+
+Wrong order:
+
+app.all("*", ...)
+After this:
+
+all routes become 404
+
+Your /testListing route may never run.
+
+Correct Order
+app.get("/testListing", ...)
+must come BEFORE:
+
+app.all("*", ...)
+Corrected Code
+const Listing = require("./models/listing");
+
+app.get("/testListing", async (req, res) => {
+
+    let sampleListing = new Listing({
+        title: "My New Villa",
+        description: "By the beach",
+        price: 1200,
+        location: "Calangute, Goa",
+        country: "India",
+    });
+
+    await sampleListing.save();
+
+    console.log("sample was saved");
+
+    res.send("successful testing");
+});
+
+app.all("*", (req, res, next) => {
+    next(new ExpressError(404, "Page not Found!"));
+});
+15. Better Session Config
+Use:
+
+saveUninitialized: false
+Recommended version:
+
+const sessionOptions = {
+    secret: process.env.SECRET || "mysupersecretcode",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+    },
+};
+16. Your App Architecture
+Express App
+↓
+MongoDB Connection
+↓
+Session Setup
+↓
+Passport Authentication
+↓
+Routes
+↓
+Flash Messages
+↓
+Error Handling
+17. Important Interview Questions
+Q1. Why passport.session() used?
+To maintain login sessions.
+
+Q2. What serializeUser() does?
+Stores user ID in session.
+
+Q3. Why res.locals used?
+To access variables in all EJS templates.
+
+Q4. Why flash messages used?
+Temporary success/error messages.
+
+Q5. Why method-override used?
+HTML forms only support GET & POST.
+It enables PUT and DELETE.
+
+
+
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const port = 8080;
+const path = require("path");
+const methodOverride = require("method-override");
+const ejsMate = require("ejs-mate");
+const ExpressError = require("./utils/ExpressError.js");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js");
+
+const listingRouter = require("./routes/listing.js");
+const reviewRouter = require("./routes/review.js");
+const userRouter = require("./routes/user.js");
+
+const MONGO_URL = mongodb://127.0.0.1:27017/wanderlust;
+
+// Database connection
+main()
+    .then(() => {
+        console.log(DB CONNECTED!);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+
+async function main() {
+    await mongoose.connect(MONGO_URL);
+}
+
+// View engine setup
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.engine("ejs", ejsMate);
+
+// Middleware (ORDER MATTERS!)
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());  // ✅ Added for JSON support
+app.use(methodOverride("_method"));
+app.use(express.static(path.join(__dirname, "/public")));
+app.use(cookieParser("mysupersecretcode"));  // ✅ Using the same secret
+
+// Session configuration (MUST come before passport)
+const sessionOptions = {
+    secret: "mysupersecretcode",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+    },
+};
+
+// ✅ CORRECT ORDER: Session first, then Passport
+app.use(session(sessionOptions));
+app.use(flash());
+
+// Passport setup (after session)
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Passport Local Strategy with passport-local-mongoose
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+
+
+// In app.js - replace the passport configuration
+const User = require("./models/user.js");
+const bcrypt = require("bcrypt");
+
+// Manual Local Strategy (without plugin)
+passport.use(new LocalStrategy(async (username, password, done) => {
+    try {
+        const user = await User.findOne({ username });
+        if (!user) {
+            return done(null, false, { message: "Incorrect username" });
+        }
+        
+        const isValid = await user.comparePassword(password);
+        if (!isValid) {
+            return done(null, false, { message: "Incorrect password" });
+        }
+        
+        return done(null, user);
+    } catch (err) {
+        return done(err);
+    }
+}));
+
+// Serialize/Deserialize - same as before
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+    try {
+        const user = await User.findById(id);
+        done(null, user);
+    } catch (err) {
+        done(err);
+    }
+});
+
+// Make user and flash messages available to all views
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.currUser = req.user;
+    next();
+});
+
+// Routes
+app.get("/", (req, res) => {
+    res.send("Hii I'm Root!");
+});
+
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
+app.use("/", userRouter);
+
+// 404 handler
+app.all("*", (req, res, next) => {
+    next(new ExpressError(404, "Page not Found!"));
+});
+
+// Global error handler
+app.use((err, req, res, next) => {
+    let { statusCode = 500, message = "something went wrong!" } = err;
+    res.status(statusCode).render("error.ejs", { err });
+});
+
+// Test route (make sure Listing model is imported)
+// app.get("/testListing", async (req, res) => {
+//     let sampleListing = new Listing({
+//         title: "My New Villa",
+//         description: "By the beach",
+//         price: 1200,
+//         location: "Calangute, Goa",
+//         country: "India",
+//     });
+//     await sampleListing.save();
+//     console.log("sample was saved");
+//     res.send("successful testing");
+// });
+
+app.listen(port, () => {
+    console.log(App is running on port ${port});
+});  correct this code 
+
+Your code is mostly correct, but there are some important mistakes and duplicate code issues.
+
+Main Problems in Your Code
+❌ Problem 1: Duplicate User Import
+You already imported:
+
+const User = require("./models/user.js");
+But again later:
+
+const User = require("./models/user.js");
+This causes:
+
+Identifier 'User' has already been declared
+✅ Remove second import.
+
+❌ Problem 2: Unused bcrypt Import
+You imported:
+
+const bcrypt = require("bcrypt");
+But not using directly inside app.js.
+
+✅ Remove it from app.js.
+
+bcrypt should be inside:
+
+models/user.js
+or
+
+routes/user.js
+❌ Problem 3: saveUninitialized: true
+Not recommended.
+
+Use:
+
+saveUninitialized: false
+❌ Problem 4: Session Secret Hardcoded
+Bad practice:
+
+secret: "mysupersecretcode"
+Better:
+
+process.env.SECRET
+❌ Problem 5: comparePassword() May Not Exist
+You used:
+
+user.comparePassword(password)
+This only works if you created custom method in user model.
+
+Otherwise:
+
+app crashes
+
+Correct User Model Needed
+If using manual authentication, your user model should contain:
+
+userSchema.methods.comparePassword = async function(password){
+   return await bcrypt.compare(password, this.password);
+};
+FULL CORRECTED CODE
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const path = require("path");
+const methodOverride = require("method-override");
+const ejsMate = require("ejs-mate");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+
+const ExpressError = require("./utils/ExpressError.js");
+const User = require("./models/user.js");
+
+const listingRouter = require("./routes/listing.js");
+const reviewRouter = require("./routes/review.js");
+const userRouter = require("./routes/user.js");
+
+const port = 8080;
+
+const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+
+
+// DATABASE CONNECTION
+main()
+.then(() => {
+    console.log("DB CONNECTED!");
+})
+.catch((err) => {
+    console.log(err);
+});
+
+async function main() {
+    await mongoose.connect(MONGO_URL);
+}
+
+
+// VIEW ENGINE
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.engine("ejs", ejsMate);
+
+
+// MIDDLEWARE
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use(methodOverride("_method"));
+
+app.use(express.static(path.join(__dirname, "/public")));
+
+app.use(cookieParser("mysupersecretcode"));
+
+
+// SESSION CONFIG
+const sessionOptions = {
+    secret: "mysupersecretcode",
+    resave: false,
+    saveUninitialized: false,
+
+    cookie: {
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+
+        httpOnly: true,
+    },
+};
+
+
+// SESSION MIDDLEWARE
+app.use(session(sessionOptions));
+
+
+// FLASH
+app.use(flash());
+
+
+// PASSPORT INITIALIZE
+app.use(passport.initialize());
+
+
+// PASSPORT SESSION
+app.use(passport.session());
+
+
+// LOCAL STRATEGY
+passport.use(
+    new LocalStrategy(async (username, password, done) => {
+
+        try {
+
+            const user = await User.findOne({ username });
+
+            if (!user) {
+                return done(null, false, {
+                    message: "Invalid Username",
+                });
+            }
+
+            const isMatch =
+                await user.comparePassword(password);
+
+            if (!isMatch) {
+
+                return done(null, false, {
+                    message: "Invalid Password",
+                });
+            }
+
+            return done(null, user);
+
+        } catch (err) {
+
+            return done(err);
+
+        }
+    })
+);
+
+
+// SERIALIZE USER
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+
+// DESERIALIZE USER
+passport.deserializeUser(async (id, done) => {
+
+    try {
+
+        const user = await User.findById(id);
+
+        done(null, user);
+
+    } catch (err) {
+
+        done(err);
+
+    }
+});
+
+
+// GLOBAL VARIABLES
+app.use((req, res, next) => {
+
+    res.locals.success =
+        req.flash("success");
+
+    res.locals.error =
+        req.flash("error");
+
+    res.locals.currUser =
+        req.user;
+
+    next();
+});
+
+
+// ROUTES
+app.get("/", (req, res) => {
+    res.send("Hii I'm Root!");
+});
+
+
+app.use("/listings", listingRouter);
+
+app.use("/listings/:id/reviews", reviewRouter);
+
+app.use("/", userRouter);
+
+
+// 404 HANDLER
+app.all("*", (req, res, next) => {
+
+    next(
+        new ExpressError(
+            404,
+            "Page Not Found!"
+        )
+    );
+});
+
+
+// GLOBAL ERROR HANDLER
+app.use((err, req, res, next) => {
+
+    let {
+        statusCode = 500,
+        message = "Something Went Wrong!",
+    } = err;
+
+    res.status(statusCode).render("error.ejs", {
+        err,
+    });
+});
+
+
+// SERVER
+app.listen(port, () => {
+
+    console.log(
+        `Server Running On Port ${port}`
+    );
+});
+Correct User Model for This Code
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+
+const userSchema = new mongoose.Schema({
+
+    username: {
+        type: String,
+        required: true,
+    },
+
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+
+    password: {
+        type: String,
+        required: true,
+    },
+});
+
+
+// HASH PASSWORD BEFORE SAVE
+userSchema.pre("save", async function(next){
+
+    if(!this.isModified("password")){
+        return next();
+    }
+
+    this.password =
+        await bcrypt.hash(this.password, 10);
+
+    next();
+});
+
+
+// COMPARE PASSWORD METHOD
+userSchema.methods.comparePassword =
+async function(password){
+
+    return await bcrypt.compare(
+        password,
+        this.password
+    );
+};
+
+
+module.exports =
+mongoose.model("User", userSchema);
+Authentication Flow in Your App
+User Login
+↓
+Passport Local Strategy
+↓
+Find User
+↓
+Compare Password
+↓
+Session Created
+↓
+Cookie Sent
+↓
+User Logged In
+Important Notes
+If Using passport-local-mongoose
+Then DON'T use:
+
+bcrypt manually
+
+comparePassword manually
+
+Instead use:
+
+passport.use(
+   new LocalStrategy(User.authenticate())
+);
+If Using Manual bcrypt
+Then:
+
+your current corrected code is right
+
+Choose ONE method only.
+
+Recommended for Beginners
+Use:
+
+passport-local-mongoose
+
+because:
+
+easier
+
+less code
+
+fewer bugs

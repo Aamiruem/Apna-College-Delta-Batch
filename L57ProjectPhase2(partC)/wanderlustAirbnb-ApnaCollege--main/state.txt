@@ -108,6 +108,9 @@ Example:
 const [name, setName] = useState("Aamir");
 const [age, setAge] = useState(22);
 const [isLogin, setIsLogin] = useState(false);
+
+
+
 2. Object State
 const [user, setUser] = useState({
   name: "Aamir",
@@ -119,11 +122,18 @@ setUser({
   ...user,
   age: 23
 });
+
+
+
 3. Array State
 const [items, setItems] = useState([]);
 Add data:
 
 setItems([...items, "Mango"]);
+
+
+
+
 4. Boolean State
 Mostly used for:
 
@@ -162,14 +172,19 @@ function Child(props) {
     </>
   );
 }
+
+
+
+
 Rules of State
+
 1. Never Change State Directly ❌
 Wrong:
-
 count = count + 1;
-Correct:
 
+Correct:
 setCount(count + 1);
+
 2. State Updates are Asynchronous
 Wrong expectation:
 
@@ -2491,5 +2506,3 @@ alert alert-danger
 
 Reusable file:
 views/includes/flash.ejs
-
-
