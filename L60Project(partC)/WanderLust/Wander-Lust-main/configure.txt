@@ -1,0 +1,1107 @@
+configuring strategy
+
+Configuring Strategy in Passport.js (MERN / Express Authentication)
+In Passport.js, a strategy means how users will log in.
+
+Examples:
+
+Local Strategy → username/password
+
+Google Strategy → Google login
+
+GitHub Strategy → GitHub login
+
+Most beginners start with:
+
+passport-local
+1. Install Packages
+npm install passport passport-local passport-local-mongoose
+2. User Schema Setup
+models/user.js
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const passportLocalMongoose = require("passport-local-mongoose");
+
+const userSchema = new Schema({
+    email: {
+        type: String,
+        required: true,
+    },
+});
+
+userSchema.plugin(passportLocalMongoose);
+
+module.exports = mongoose.model("User", userSchema);
+What passport-local-mongoose Does
+It automatically adds:
+
+username field
+
+hashed password
+
+authentication methods
+
+Methods added:
+
+User.register()
+User.authenticate()
+User.serializeUser()
+User.deserializeUser()
+3. Configure Passport
+app.js
+const express = require("express");
+const app = express();
+
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+
+const User = require("./models/user");
+4. Configure Session
+app.use(session({
+    secret: "mysupersecretcode",
+    resave: false,
+    saveUninitialized: true,
+}));
+5. Initialize Passport
+app.use(passport.initialize());
+app.use(passport.session());
+6. Configure Strategy
+THIS is called Configuring Strategy 👇
+
+passport.use(
+    new LocalStrategy(User.authenticate())
+);
+How It Works
+LocalStrategy() checks:
+
+username
+
+password
+
+User.authenticate() comes from:
+
+passport-local-mongoose
+It automatically compares:
+
+entered password
+
+hashed password in database
+
+Flow Diagram
+User Login Form
+       ↓
+Passport Local Strategy
+       ↓
+User.authenticate()
+       ↓
+Check Username & Password
+       ↓
+Login Success / Fail
+7. Serialize User
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+Meaning
+serializeUser()
+Stores user ID into session.
+
+Example:
+
+req.session.passport = {
+   user: "6874abc123"
+}
+deserializeUser()
+Gets full user data from database using stored ID.
+
+Complete Passport Configuration
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user");
+
+app.use(session({
+    secret: "mysupersecret",
+    resave: false,
+    saveUninitialized: true,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(
+    new LocalStrategy(User.authenticate())
+);
+
+passport.serializeUser(User.serializeUser());
+
+passport.deserializeUser(User.deserializeUser());
+Registration Example
+app.post("/signup", async(req, res) => {
+
+    let { username, email, password } = req.body;
+
+    const newUser = new User({
+        email,
+        username,
+    });
+
+    const registeredUser = await User.register(
+        newUser,
+        password
+    );
+
+    res.send(registeredUser);
+});
+Login Example
+app.post("/login",
+    passport.authenticate("local", {
+        failureRedirect: "/login",
+    }),
+    async(req, res) => {
+        res.send("Welcome!");
+    }
+);
+Logout Example
+app.get("/logout", (req, res, next) => {
+
+    req.logout((err) => {
+        if(err) {
+            return next(err);
+        }
+
+        res.redirect("/");
+    });
+
+});
+Authentication Flow
+Signup
+   ↓
+Password Hash Stored
+
+Login
+   ↓
+passport.authenticate("local")
+   ↓
+LocalStrategy()
+   ↓
+User.authenticate()
+   ↓
+Session Created
+   ↓
+User Logged In
+Important Interview Questions
+Q1. What is Passport Strategy?
+A strategy is a method used for authentication.
+
+Example:
+
+Local Strategy
+
+Google OAuth Strategy
+
+Q2. What is LocalStrategy?
+It authenticates users using username & password.
+
+Q3. Why use passport-local-mongoose?
+Because it automatically:
+
+hashes passwords
+
+authenticates users
+
+manages sessions
+
+Q4. Why serializeUser & deserializeUser?
+serializeUser → store user ID in session
+
+deserializeUser → get full user details from DB
+
+Common Errors
+Error:
+Failed to serialize user into session
+Fix:
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+Error:
+passport.initialize() middleware not in use
+Fix:
+app.use(passport.initialize());
+Error:
+Login sessions require session support
+Fix:
+Session middleware must come BEFORE passport session.
+
+Correct order:
+
+app.use(session({...}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+Real Project Structure
+project/
+│
+├── models/
+│   └── user.js
+│
+├── routes/
+│   └── user.js
+│
+├── app.js
+│
+└── views/
+Easy Memory Trick
+Session First
+Passport Initialize
+Passport Session
+Strategy Configure
+Serialize
+Deserialize
+Order matters 🚀
+
+
+Demo user
+
+Demo User in Authentication Project
+A Demo User is a temporary/sample user account used for:
+
+testing login
+
+checking authentication
+
+showing project functionality
+
+avoiding repeated signup
+
+Example:
+
+Username: demoUser
+Password: demo123
+Why Use Demo User?
+Suppose you made:
+
+Airbnb Clone
+
+Social Media App
+
+MERN Dashboard
+
+You may want recruiters/users to test login quickly.
+
+So you create a demo account.
+
+Method 1 — Create Demo User Manually
+Route Example
+app.get("/demouser", async(req, res) => {
+
+    let fakeUser = new User({
+        email: "demo@gmail.com",
+        username: "demoUser",
+    });
+
+    let registeredUser = await User.register(
+        fakeUser,
+        "demo123"
+    );
+
+    res.send(registeredUser);
+
+});
+What Happens Here?
+Step 1
+Create user object:
+
+let fakeUser = new User({
+    email: "demo@gmail.com",
+    username: "demoUser",
+});
+Step 2
+Register user:
+
+User.register(fakeUser, "demo123");
+This automatically:
+
+hashes password
+
+stores user in DB
+
+Database Output
+{
+   username: "demoUser",
+   email: "demo@gmail.com",
+   hash: "...",
+   salt: "..."
+}
+Password is NOT stored directly.
+
+Important
+Run this route ONLY once.
+
+Otherwise MongoDB gives:
+
+UserExistsError
+because username already exists.
+
+Better Way (Recommended)
+Use try-catch.
+
+app.get("/demouser", async(req, res) => {
+
+    try {
+
+        let fakeUser = new User({
+            email: "demo@gmail.com",
+            username: "demoUser",
+        });
+
+        let registeredUser = await User.register(
+            fakeUser,
+            "demo123"
+        );
+
+        res.send(registeredUser);
+
+    } catch(err) {
+
+        res.send(err.message);
+
+    }
+
+});
+Login with Demo User
+Username: demoUser
+Password: demo123
+Auto Login Demo User
+You can directly log in demo user.
+
+app.get("/login-demo", (req, res, next) => {
+
+    let fakeUser = {
+        username: "demoUser",
+        password: "demo123"
+    };
+
+    req.login(fakeUser, (err) => {
+
+        if(err) {
+            return next(err);
+        }
+
+        res.redirect("/listings");
+
+    });
+
+});
+Understanding req.login()
+req.login() creates login session manually.
+
+Normally Passport does:
+
+Form Submit
+   ↓
+passport.authenticate()
+   ↓
+Login
+But req.login() skips form submission.
+
+Demo User Flow
+Create Demo User
+       ↓
+Store in Database
+       ↓
+Login using Passport
+       ↓
+Session Created
+       ↓
+Access Protected Routes
+Protected Route Example
+const isLoggedIn = (req, res, next) => {
+
+    if(!req.isAuthenticated()) {
+        return res.redirect("/login");
+    }
+
+    next();
+};
+Use:
+
+app.get("/profile", isLoggedIn, (req, res) => {
+    res.send("Welcome");
+});
+Interview Questions
+Q1. What is Demo User?
+A predefined test account used for testing or showcasing application features.
+
+Q2. Why use User.register() instead of save()?
+Because register():
+
+hashes password
+
+adds salt
+
+stores securely
+
+Q3. What is req.login()?
+It manually creates a login session for a user.
+
+Real Project Use Case
+Example in:
+
+Airbnb Clone
+
+Admin Panel
+
+E-commerce Website
+
+Try Demo Account
+Username: demo
+Password: demo123
+Very common in portfolio projects 🚀
+
+
+signup user get 
+
+How to Get Signup User Data in Express + Passport
+When a user signs up, you get data from:
+
+<form method="POST" action="/signup">
+using:
+
+req.body
+Example Signup Form
+<form action="/signup" method="POST">
+
+    <input type="text" name="username" placeholder="username">
+
+    <input type="email" name="email" placeholder="email">
+
+    <input type="password" name="password" placeholder="password">
+
+    <button>Signup</button>
+
+</form>
+Important Middleware
+Without this, req.body will be undefined.
+
+app.use(express.urlencoded({ extended: true }));
+Getting Signup User
+app.post("/signup", async(req, res) => {
+
+    let { username, email, password } = req.body;
+
+    console.log(req.body);
+
+    res.send("User Received");
+
+});
+Output Example
+{
+   username: "aamir",
+   email: "aamir@gmail.com",
+   password: "12345"
+}
+Full Signup + Save User
+app.post("/signup", async(req, res) => {
+
+    try {
+
+        let { username, email, password } = req.body;
+
+        const newUser = new User({
+            email,
+            username,
+        });
+
+        const registeredUser = await User.register(
+            newUser,
+            password
+        );
+
+        console.log(registeredUser);
+
+        res.send("User Registered");
+
+    } catch(err) {
+
+        res.send(err.message);
+
+    }
+
+});
+How This Works
+Step 1
+Get form data:
+
+req.body
+Step 2
+Destructure values:
+
+let { username, email, password } = req.body;
+Step 3
+Create new user:
+
+const newUser = new User({
+    email,
+    username,
+});
+Step 4
+Register user:
+
+await User.register(newUser, password);
+This:
+
+hashes password
+
+saves user
+
+adds salt
+
+Database Output
+{
+   _id: ObjectId(...),
+   username: "aamir",
+   email: "aamir@gmail.com",
+   hash: "...",
+   salt: "..."
+}
+Important Point
+Password is NOT stored directly.
+
+Passport stores:
+
+hash
+
+salt
+
+for security.
+
+Auto Login After Signup
+req.login(registeredUser, (err) => {
+
+    if(err) {
+        return next(err);
+    }
+
+    res.redirect("/listings");
+
+});
+Full Real Example
+app.post("/signup", async(req, res, next) => {
+
+    try {
+
+        let { username, email, password } = req.body;
+
+        const newUser = new User({
+            email,
+            username,
+        });
+
+        const registeredUser = await User.register(
+            newUser,
+            password
+        );
+
+        req.login(registeredUser, (err) => {
+
+            if(err) {
+                return next(err);
+            }
+
+            res.redirect("/listings");
+
+        });
+
+    } catch(err) {
+
+        res.send(err.message);
+
+    }
+
+});
+Authentication Flow
+User Fills Form
+        ↓
+req.body Gets Data
+        ↓
+Create User Object
+        ↓
+User.register()
+        ↓
+Password Hashing
+        ↓
+User Saved
+        ↓
+Auto Login
+        ↓
+Session Created
+Common Errors
+Error:
+req.body undefined
+Fix:
+app.use(express.urlencoded({ extended: true }));
+Error:
+UserExistsError
+Reason:
+Username already exists.
+
+Error:
+Cannot POST /signup
+Fix:
+Check:
+
+form action
+
+route path
+
+method POST
+
+Interview Questions
+Q1. How do you get form data in Express?
+Using:
+
+req.body
+Q2. Why use express.urlencoded()?
+To parse form data from HTML forms.
+
+Q3. Why use User.register()?
+Because it securely:
+
+hashes password
+
+saves user
+
+authenticates properly
+
+Easy Memory Trick
+Form Data
+   ↓
+req.body
+   ↓
+Destructure
+   ↓
+Create User
+   ↓
+Register User
+   ↓
+Login User
+
+signup user post
+
+Signup User POST Route in Express + Passport
+A signup POST route is used to:
+
+receive form data
+
+create new user
+
+hash password
+
+save user in database
+
+Complete Signup POST Route
+app.post("/signup", async(req, res, next) => {
+
+    try {
+
+        let { username, email, password } = req.body;
+
+        const newUser = new User({
+            email,
+            username,
+        });
+
+        const registeredUser = await User.register(
+            newUser,
+            password
+        );
+
+        req.login(registeredUser, (err) => {
+
+            if(err) {
+                return next(err);
+            }
+
+            res.redirect("/listings");
+
+        });
+
+    } catch(err) {
+
+        res.send(err.message);
+
+    }
+
+});
+Step-by-Step Explanation
+1. POST Route
+app.post("/signup")
+Handles form submission.
+
+2. Get Form Data
+let { username, email, password } = req.body;
+Example output:
+
+{
+   username: "aamir",
+   email: "aamir@gmail.com",
+   password: "12345"
+}
+3. Create User Object
+const newUser = new User({
+    email,
+    username,
+});
+Password is NOT added directly.
+
+4. Register User
+await User.register(newUser, password);
+register() automatically:
+
+hashes password
+
+creates salt
+
+stores securely
+
+Password Security
+Instead of:
+
+password: "12345"
+Database stores:
+
+hash: "ajshdjahd..."
+salt: "xyz123..."
+5. Auto Login User
+req.login(registeredUser)
+Creates login session after signup.
+
+User does not need to login again.
+
+6. Redirect
+res.redirect("/listings");
+Redirect after successful signup.
+
+Required Middleware
+Parse Form Data
+app.use(express.urlencoded({ extended: true }));
+Session
+app.use(session({
+    secret: "mysupersecret",
+    resave: false,
+    saveUninitialized: true,
+}));
+Passport
+app.use(passport.initialize());
+app.use(passport.session());
+HTML Signup Form
+<form action="/signup" method="POST">
+
+    <input type="text" name="username">
+
+    <input type="email" name="email">
+
+    <input type="password" name="password">
+
+    <button>Signup</button>
+
+</form>
+Full Flow
+User Fill Form
+       ↓
+POST /signup
+       ↓
+req.body
+       ↓
+Create User
+       ↓
+User.register()
+       ↓
+Password Hashing
+       ↓
+Save User
+       ↓
+req.login()
+       ↓
+Session Created
+       ↓
+Redirect
+Real Project Example
+router.post("/signup", wrapAsync(async(req, res) => {
+
+    let { username, email, password } = req.body;
+
+    const newUser = new User({
+        email,
+        username,
+    });
+
+    const registeredUser = await User.register(
+        newUser,
+        password
+    );
+
+    req.flash("success", "Welcome to Wanderlust!");
+
+    res.redirect("/listings");
+
+}));
+Common Errors
+1. req.body Undefined
+Fix
+app.use(express.urlencoded({ extended: true }));
+2. User Already Exists
+Error:
+
+UserExistsError
+Reason:
+
+same username already exists
+
+3. Cannot POST /signup
+Check:
+
+route path
+
+form action
+
+POST method
+
+Interview Questions
+Q1. Why use POST for signup?
+Because signup sends sensitive data to server.
+
+Q2. Why use User.register()?
+It securely hashes passwords automatically.
+
+Q3. What does req.login() do?
+Creates authentication session manually.
+
+Easy Memory Trick
+POST Route
+   ↓
+req.body
+   ↓
+Create User
+   ↓
+Register User
+   ↓
+Login User
+   ↓
+Redirect
+
+login user
+
+Login User in Express + Passport.js
+Login means:
+
+checking username/password
+
+authenticating user
+
+creating session
+
+Passport.js handles this using:
+
+passport.authenticate("local")
+Login Form
+<form action="/login" method="POST">
+
+    <input type="text" name="username" placeholder="username">
+
+    <input type="password" name="password" placeholder="password">
+
+    <button>Login</button>
+
+</form>
+Login Route
+app.post("/login",
+    passport.authenticate("local", {
+        failureRedirect: "/login",
+    }),
+    async(req, res) => {
+
+        res.redirect("/listings");
+
+});
+How This Works
+Step 1 — User Submit Form
+username + password
+goes to:
+
+POST /login
+Step 2 — Passport Authenticate
+passport.authenticate("local")
+uses:
+
+LocalStrategy
+
+User.authenticate()
+
+to verify user.
+
+Local Strategy Configuration
+passport.use(
+    new LocalStrategy(User.authenticate())
+);
+What Passport Checks
+Passport compares:
+
+Entered Password
+        VS
+Stored Hashed Password
+If Login Success
+Passport:
+
+creates session
+
+stores user ID
+
+logs user in
+
+Example:
+
+req.session.passport = {
+   user: "687abc123"
+}
+If Login Fails
+Redirects:
+
+failureRedirect: "/login"
+Complete Login Example
+app.post("/login",
+    passport.authenticate("local", {
+        failureRedirect: "/login",
+        failureFlash: true,
+    }),
+    async(req, res) => {
+
+        req.flash("success", "Welcome back!");
+
+        res.redirect("/listings");
+
+});
+Required Passport Setup
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(
+    new LocalStrategy(User.authenticate())
+);
+
+passport.serializeUser(User.serializeUser());
+
+passport.deserializeUser(User.deserializeUser());
+Login Flow
+User Enter Credentials
+         ↓
+POST /login
+         ↓
+passport.authenticate("local")
+         ↓
+LocalStrategy
+         ↓
+User.authenticate()
+         ↓
+Password Match?
+    ↓             ↓
+ Success         Fail
+    ↓             ↓
+Session       Redirect
+Created       /login
+Access Logged-In User
+After login:
+
+req.user
+contains current user data.
+
+Example:
+
+app.get("/profile", (req, res) => {
+
+    console.log(req.user);
+
+    res.send(req.user);
+
+});
+Example Output
+{
+   _id: "...",
+   username: "aamir",
+   email: "aamir@gmail.com"
+}
+Check Authentication
+req.isAuthenticated()
+Returns:
+
+true
+
+false
+
+Protected Route
+const isLoggedIn = (req, res, next) => {
+
+    if(!req.isAuthenticated()) {
+        return res.redirect("/login");
+    }
+
+    next();
+};
+Use:
+
+app.get("/profile", isLoggedIn, (req, res) => {
+    res.send("Protected Route");
+});
+Logout User
+app.get("/logout", (req, res, next) => {
+
+    req.logout((err) => {
+
+        if(err) {
+            return next(err);
+        }
+
+        res.redirect("/");
+
+    });
+
+});
+Common Errors
+Error:
+passport.initialize() middleware not in use
+Fix:
+app.use(passport.initialize());
+Error:
+Login sessions require session support
+Fix:
+app.use(session({...}));
+must come BEFORE passport session.
+
+Error:
+Failed to serialize user into session
+Fix:
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+Interview Questions
+Q1. What does passport.authenticate("local") do?
+It authenticates user using username & password.
+
+Q2. What is req.user?
+Current logged-in user object.
+
+Q3. What is req.isAuthenticated()?
+Checks whether user is logged in or not.
+
+Easy Memory Trick
+Login Form
+    ↓
+POST /login
+    ↓
+passport.authenticate()
+    ↓
+Session Created
+    ↓
+req.user Available
