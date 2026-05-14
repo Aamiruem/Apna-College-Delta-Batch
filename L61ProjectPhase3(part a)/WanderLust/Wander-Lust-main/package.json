@@ -5,6 +5,7 @@
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.16.2",
     "bcrypt": "^6.0.0",
+    "cloudinary": "^2.10.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^6.0.0",
     "cookie-parser": "^1.4.7",
@@ -15,6 +16,7 @@
     "joi": "^18.2.1",
     "method-override": "^3.0.0",
     "mongoose": "^9.6.2",
+    "multer": "^2.1.1",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^9.1.0"
