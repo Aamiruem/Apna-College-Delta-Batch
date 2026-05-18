@@ -1,4 +1,4 @@
-const mapToken = 'YOUR_MAPBOX_ACCESS_TOKEN'; // replace with your Mapbox access token
+const mapToken = 'MAP_TOKEN'; // replace with your Mapbox access token
 const mapboxgl = require('mapbox-gl');
 
 mapboxgl.accessToken = mapToken;
