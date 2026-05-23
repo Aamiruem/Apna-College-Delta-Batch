@@ -132,68 +132,29 @@
 
 
 
-// import { useState } from "react";
-// // import "./Lottery.css";
-// import { genTicket, sum } from "./helper";
-// import Ticket from "./Ticket";
-
-// export default function Lottery({ n = 3, winningSum = 15 }) {
-
-//     // Initialize tickets as an array of n tickets
-//     let [ticket, setTicket] = useState(n);
-
-//     // Check if any ticket is a winning ticket
-//     let isWinning =  sum(ticket) === winningSum;
-
-//     // Function to add a new ticket
-//     let buyTicket = () => {
-//         setTicket(genTicket(n));
-//     };
-
-//     return (
-//         <div>
-//             <h1>Lottery Game</h1>
-//             <Ticket ticket={ticket}/>
-//             <div className="ticket">
-//                 {ticket.map((ticket, idx) => (
-//                     <Ticket key={idx} ticket={ticket} />
-//                 ))}
-//             </div>
-//             <button onClick={buyTicket}>Buy New Ticket</button>
-//             <h3>Current Balance: {ticket.length}</h3>
-//             <h3>{isWinning && "Congratulations, You won!"}</h3>
-//         </div>
-//     );
-// }
-
-
-
-
-
-
-
 import { useState } from "react";
+import "./Lottery.css";
 import { genTicket, sum } from "./helper";
 import Ticket from "./Ticket";
-export default function Lottery({ n = 3, winCondition }){
+import PropTypes from "prop-types";
+
+export default function Lottery({ n = 3, winningSum = 15 }) {
 
     // Initialize tickets as an array of n tickets
-    let [ticket, setTicket] = useState(genTicket(n))
+    let [ticket, setTicket] = useState(n);
 
     // Check if any ticket is a winning ticket
-    let isWinning =   winCondition(ticket);
+    let isWinning =  sum(ticket) === winningSum;
 
     // Function to add a new ticket
     let buyTicket = () => {
-        setTicket([ genTicket(n)]);
+        setTicket(genTicket(n));
     };
 
     return (
         <div>
-            
             <h1>Lottery Game</h1>
-            
-            <Ticket ticket={ticket} />
+            <Ticket ticket={ticket}/>
             <div className="ticket">
                 {ticket.map((ticket, idx) => (
                     <Ticket key={idx} ticket={ticket} />
@@ -201,9 +162,12 @@ export default function Lottery({ n = 3, winCondition }){
             </div>
             <button onClick={buyTicket}>Buy New Ticket</button>
             <h3>Current Balance: {ticket.length}</h3>
-            
             <h3>{isWinning && "Congratulations, You won!"}</h3>
-            
         </div>
     );
 }
+
+Lottery.propTypes = {
+    n: PropTypes.number,
+    winningSum: PropTypes.number,
+};
