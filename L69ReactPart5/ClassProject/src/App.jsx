@@ -1,10 +1,8 @@
-/* eslint-disable no-unused-vars */
+
 import Lottery from './Lottery';
 import './App.css';
-import TicketNum from './TicketNum';
-import Ticket from './Ticket';
-import { sum } from "./helper"
-
+// import TicketNum from './TicketNum';
+// import Ticket from './Ticket';
 
 
 function App() {
@@ -16,9 +14,8 @@ function App() {
     <>
   
       <Lottery n={3} winCondition={winCondition} />
-      <TicketNum />
-      <ticket />
-      <Ticket /> 
+      {/* <TicketNum /> */}
+      {/* <Ticket /> */}
 
     </>
   )
