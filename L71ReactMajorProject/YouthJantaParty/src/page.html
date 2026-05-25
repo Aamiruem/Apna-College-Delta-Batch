@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Successful - Youth Janta Party</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .success-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .checkmark {
+            width: 100px;
+            height: 100px;
+            background: #4CAF50;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: bounce 0.5s ease-out;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+        
+        .checkmark svg {
+            width: 60px;
+            height: 60px;
+            color: white;
+        }
+        
+        h1 {
+            color: #FF5722;
+            margin-bottom: 10px;
+        }
+        
+        .app-id {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 18px;
+        }
+        
+        .button {
+            background: linear-gradient(135deg, #FF5722 0%, #FF8A50 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .share-buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .share-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .facebook { background: #1877f2; }
+        .twitter { background: #1da1f2; }
+        .whatsapp { background: #25d366; }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="checkmark">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+            </svg>
+        </div>
+        <h1>Registration Successful!</h1>
+        <p>Thank you for joining Youth Janta Party. Your application has been received.</p>
+        <div class="app-id">
+            <strong>Application ID:</strong> <span id="appId">YJP-2024-001</span>
+        </div>
+        <p>Our team will contact you within 48 hours.</p>
+        <button class="button" onclick="window.location.href='/'">Go to Homepage</button>
+        
+        <div class="share-buttons">
+            <button class="share-btn facebook" onclick="shareOnFacebook()">Share on Facebook</button>
+            <button class="share-btn twitter" onclick="shareOnTwitter()">Share on Twitter</button>
+            <button class="share-btn whatsapp" onclick="shareOnWhatsApp()">Share on WhatsApp</button>
+        </div>
+    </div>
+    
+    <script>
+        // Get application ID from URL or localStorage
+        const appId = localStorage.getItem('lastSubmissionId') || 'YJP-' + Date.now();
+        document.getElementById('appId').textContent = appId;
+        
+        function shareOnFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+        
+        function shareOnTwitter() {
+            const text = encodeURIComponent("I just registered with Youth Janta Party! Join the movement for change!");
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+        
+        function shareOnWhatsApp() {
+            const text = encodeURIComponent("Check out Youth Janta Party registration!");
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+    </script>
+</body>
+</html>

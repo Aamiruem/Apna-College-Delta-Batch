@@ -15,24 +15,24 @@
 //         <h1>React Project</h1>
 //         <h2>Material UI Demo</h2>
 //         <Button variant="contained" onClick={handleClick} startIcon={<DeleteIcon />}>
-//           Delete 
+//           Delete
 //         </Button>
         
 //         &nbsp;
 //         <Button variant="contained" color="black" onClick={handleClick} disabled>
-//           Click Me 
+//           Click Me
 //         </Button>
         
 
 
 //        &nbsp;
 //         <Button variant="contained" color="success" size="large" onClick={handleClick} >
-//           Click Me 
+//           Click Me
 //         </Button>
 //         &nbsp;
 
 //         <Button variant="contained" color="error" onClick={handleClick} >
-//           Click Me 
+//           Click Me
 //         </Button>
 //       </div>
 //       &nbsp;
@@ -63,19 +63,38 @@
 
 
 
-import './App.css'
+// import './App.css'
 // import SearchBox from './SearchBox';
 // import InfoBox from './InfoBox';
-import WeatherApp from './WeatherApp';  
+// import WeatherApp from './WeatherApp';
+
+// function App() {
+//   return (
+//     <>
+//       <WeatherApp/>
+//       { { <SearchBox /> }
+//       <InfoBox/> }
+//     </>
+//   )
+// }
+
+// export default App;
+
+
+
+
+
+
+
+import './App.css';
+import WeatherApp from './WeatherApp';
 
 function App() {
   return (
     <>
-      <WeatherApp/>
-      {/* <SearchBox />
-      <InfoBox/> */}
+      <WeatherApp />
     </>
-  )
+  );
 }
 
 export default App;
