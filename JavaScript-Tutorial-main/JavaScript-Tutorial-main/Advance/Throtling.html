@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throttling</title>
+    <style>
+        body {
+            height: 2000px;
+            padding: 20px;
+            background: linear-gradient(to bottom, #f0f0f0, #ccc);
+        }
+    </style>
+</head>
+<body>
+    <h1>Scroll Page down to see the Throttling</h1>
+    <script>
+        function throttle(func, limit) {
+            let inThrottle;
+            return function(...agr) {
+               if(!inThrottle){
+                    func.apply(this, agr);
+                    inThrottle = true;
+                    setTimeout(() => {
+                        inThrottle = false;
+                    }, limit);
+               }
+            };
+        }
+
+        function handleScroll() {
+            console.log('Scroll event triggered', new Date().toLocaleTimeString());
+        }
+        const throttleFile = throttle(handleScroll, 1000);
+        window.addEventListener('scroll', throttleFile);
+    </script>
+</body>
+</html>

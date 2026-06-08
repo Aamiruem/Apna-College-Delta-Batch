@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web API Demo</title>
+    <style>
+      body {
+        font-family: monospace;
+        background-color: #111;
+        color: #0f0;
+        padding: 20px;
+      }
+      button {
+        margin-top: 10px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      #output {
+        margin-top: 20px;
+        background: #333;
+        padding: 10px;
+        border-radius: 6px;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Geolocation API Example</h2>
+
+    <button onclick="getLocation()">Get My Location</button>
+
+    <div id="output">📍 Output will appear here...</div>
+
+    <script>
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((position) => {
+            document.getElementById(
+              "output"
+            ).innerText = `Latitude: ${position.coords.latitude}\nLongitude: ${position.coords.longitude}`;
+          });
+        } else {
+          document.getElementById("output").innerText =
+            "Geolocation is not supported.";
+        }
+      }
+    </script>
+  </body>
+</html>

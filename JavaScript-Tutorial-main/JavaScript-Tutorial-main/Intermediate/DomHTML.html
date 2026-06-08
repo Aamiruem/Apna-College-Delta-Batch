@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body>
+    <!-- <h1 class="demo">Mohit Decodes</h1> -->
+     <!-- <p id="content">Old Text</p>
+     <img id="logo" src="https://picsum.photos/200/300" alt="Image" />
+     <a id="link" href="https://www.google.com" target="_blank">Google</a> -->
+
+     <!-- <div id="container"></div>
+     <button onclick="addButton()">Add Me</button>
+     <button onclick="removeButton()">Remove Me</button> -->
+
+     <button id="btn">Click Me</button>
+
+    <script>
+    //   console.log("Dom Body", document.body.firstChild.nextSibling);
+        // document.getElementById("demo");
+        // console.log(document.getElementById("demo"));
+        // document.getElementsByClassName("demo");
+        // ducument.getElementsByTagName("h1");
+        // document.querySelector("#demo");
+        // document.querySelectorAll(".demo");
+
+        //Manipulating the DOM
+        // document.getElementById("content").innerText = "New Text";
+        // document.getElementById("content").innerHTML = "<b>Bold Text</b>";
+        // document.getElementById("logo").src = "https://picsum.photos/200/300";
+        // document.getElementById("link").href = "https://www.youtube.com";
+
+        //Adding and removing elements
+        // function addButton() {
+        //   const box = document.createElement("div");
+        //   box.innerText = "New Box";
+        //   box.id = "box";
+        //   document.getElementById("container").appendChild(box);
+        // }
+        // function removeButton() {
+        //   const box = document.getElementById("box");
+        //   if (box) {
+        //     box.remove();
+        //   }
+        // }
+
+        //Event Listeners or DOM Events
+        document.getElementById("btn").addEventListener("click", function () {
+          alert("Button Clicked");
+        });
+
+        </script>
+  </body>
+</html>

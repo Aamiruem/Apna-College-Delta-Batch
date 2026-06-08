@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubble</title>
+</head>
+<body>
+
+    <!-- <div id="parent-div">
+        <button id="child-btn">Button</button>
+    </div> -->
+
+    <!-- Event Deligation -->
+     <div>
+        <ul id="parent-div">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+        </ul>
+     </div>
+
+    <script>
+        // const parentDiv = document.getElementById('parent-div');
+        // const childBtn = document.getElementById('child-btn');
+
+        // parentDiv.addEventListener('click', function() {
+        //     console.log('Parent Div Clicked');
+        // });
+
+        // childBtn.addEventListener('click', function() {
+        //     console.log('Child Button Clicked');
+        // });
+
+        // Event Delegation
+        const parentDiv = document.getElementById('parent-div');
+        parentDiv.addEventListener('click', function(event) {
+            if (event.target.tagName === 'LI') {
+                console.log('List Item Clicked:', event.target.textContent);
+            }
+        });
+
+    </script>
+    
+</body>
+</html>

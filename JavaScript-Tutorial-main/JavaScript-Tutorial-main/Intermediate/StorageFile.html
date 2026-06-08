@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Console</title>
+</head>
+<body>
+    <h1>Check Console Output</h1>
+    
+    <script>
+        // localStorage.setItem('name', 'Mohit Decodes');
+        // localStorage.setItem('age', '28');
+        // // console.log('Local Storage:', localStorage);
+        // const user = localStorage.getItem('name');
+        // const age = localStorage.getItem('age');
+        // console.log('User:', user);
+        // console.log('Age:', age);
+        // localStorage.removeItem('name');
+        // localStorage.clear();
+
+        // sessionStorage.setItem('name', 'Mohit Decodes');
+        // const user = sessionStorage.getItem('name');
+        // console.log('User:', user);
+        // sessionStorage.removeItem('name');
+        // sessionStorage.clear();
+
+        document.cookie = "name=Mohit Decodes; expires=Fri, 31 Dec 2026 23:59:59 GMT; path=/";
+        document.cookie = "age=28; expires=Fri, 31 Dec 2026 23:59:59 GMT; path=/";
+
+        console.log('Cookies:', document.cookie);
+    </script>
+</body>
+</html>

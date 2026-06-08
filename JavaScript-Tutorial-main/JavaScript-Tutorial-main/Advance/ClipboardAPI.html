@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clipboard API Example</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 10px;
+      margin-right: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #pasteOutput {
+      margin-top: 20px;
+      padding: 10px;
+      background: #333;
+      border-radius: 5px;
+      color: #0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Clipboard API: Copy & Paste Example</h2>
+
+  <textarea id="myText">Hello from Mohit Decodes!</textarea><br>
+
+  <button onclick="copyText()">Copy Text</button>
+  <button onclick="pasteText()">Paste Text</button>
+
+  <div id="pasteOutput">📌 Paste output will appear here...</div>
+
+  <script>
+    async function copyText() {
+      const text = document.getElementById("myText").value;
+      try {
+        await navigator.clipboard.writeText(text);
+        alert("Text copied to clipboard!");
+      } catch (err) {
+        alert("Failed to copy: " + err);
+      }
+    }
+
+    async function pasteText() {
+      try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById("pasteOutput").innerText = "Pasted: " + text;
+      } catch (err) {
+        alert("Failed to paste: " + err);
+      }
+    }
+  </script>
+
+</body>
+</html>

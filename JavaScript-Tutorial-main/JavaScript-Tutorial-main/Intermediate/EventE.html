@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event and Event Listner</title>
+</head>
+<body>
+    <!-- Inline Event(Not Recommended) -->
+    <!-- <button onclick="sayHello()">Click Me</button> -->
+
+    <!-- HTML DOM property -->
+    <!-- <button id="btn">Click Me</button> -->
+
+    <!-- Event Listner -->
+    <!-- <button id="btn">Click Me</button> -->
+
+    <!-- Event Removed -->
+    <button id="btn">Add Me</button>
+    <button id="removeBtn">Remove Me</button>
+
+
+    <script>
+    //    function sayHello() {
+    //     alert('Hello, World!');
+    // }
+
+    //    document.getElementById('btn').onclick = function() {
+    //     alert('Hello, World!');
+    //    }
+
+    //    document.getElementById('btn').addEventListener('click', sayHello);
+        const btn = document.getElementById('btn');
+        const removeBtn = document.getElementById('removeBtn');
+       function sayHello() {
+        alert('Hello, World!');
+       }
+       btn.addEventListener('click', sayHello);
+         removeBtn.addEventListener('click', function() {
+          btn.removeEventListener('click', sayHello);
+          alert('Event listener removed');
+         });
+    </script>
+</body>
+</html>

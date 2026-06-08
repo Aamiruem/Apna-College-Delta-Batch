@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <script>
+    //  navigator.geolocation.getCurrentPosition((position)=>{
+    //   console.log("Latitude: " + position.coords.latitude);
+    //   console.log("Longitude: " + position.coords.longitude);
+    //  })
+    const text = "Mohit Decodes";
+    navigator.clipboard.writeText(text).then(() => {
+      console.log('Text copied to clipboard');
+    })
+    navigator.clipboard.readText().then((text) => {
+      console.log('Text from clipboard: ', text);
+    })
+    </script>
+  </body>
+</html>
