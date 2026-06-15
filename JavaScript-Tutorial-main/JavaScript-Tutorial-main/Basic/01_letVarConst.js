@@ -1,6 +1,6 @@
 // In this tutorial, you'll learn Difference between var, let, and const
 // Scope in JavaScript (Function Scope vs Block Scope)
-// Hoisting in JavaScript
+// Hoisting in JavaScript=> variable and function moves to the top of their scope before code execution
 // When to use var, let, or const
 
 function testVar() {
