@@ -1,0 +1,142 @@
+1. Difference between for and while?
+2. Difference between while and do-while?
+3. Difference between for...of and for...in?
+Difference between forEach and for loop?
+break vs continue?
+Why var prints 3 3 3 in setTimeout loop?
+Why let prints 0 1 2?
+Can we break forEach?
+Which loop is fastest?
+How nested loops work? with dry run and explanation
+
+
+
+
+
+
+
+
+Alright Aamir, let’s break each of these down in easy words + examples + dry runs so you can revise quickly 👌
+
+🔹 Difference between for and while
+for loop → used when you know the number of iterations.
+
+js
+for(let i=0; i<3; i++){
+  console.log(i); // 0,1,2
+}
+while loop → used when you don’t know how many times, runs until condition is false.
+
+js
+let i=0;
+while(i<3){
+  console.log(i); // 0,1,2
+  i++;
+}
+🔹 Difference between while and do-while
+while → checks condition first, may run 0 times.
+
+do-while → runs at least once, then checks condition.
+
+js
+let i=5;
+while(i<3){ console.log(i); } // ❌ never runs
+
+do{
+  console.log(i); // ✅ runs once
+}while(i<3);
+🔹 Difference between for...of and for...in
+for...of → iterates values of array.
+
+js
+let arr=[10,20];
+for(let val of arr){ console.log(val); } // 10,20
+for...in → iterates keys/indexes.
+
+js
+for(let idx in arr){ console.log(idx); } // 0,1
+🔹 Difference between forEach and for loop
+forEach → array method, runs function for each item, cannot break/continue.
+
+for loop → more flexible, can use break and continue.
+
+js
+[1,2,3].forEach(n => console.log(n)); // 1,2,3
+for(let i=0;i<3;i++){ console.log(i); } // 0,1,2
+🔹 break vs continue
+break → exits the loop completely.
+
+continue → skips current iteration, goes to next.
+
+js
+for(let i=1;i<=3;i++){
+  if(i===2) continue; // skip 2
+  console.log(i); // 1,3
+}
+🔹 Why var prints 3 3 3 in setTimeout loop
+var is function scoped, all callbacks share the same i.
+
+After loop ends, i=3.
+
+When timers run → all print 3.
+
+🔹 Why let prints 0 1 2
+let is block scoped, each iteration has its own copy of i.
+
+So callbacks remember their own value → prints 0,1,2.
+
+🔹 Can we break forEach?
+❌ No, forEach doesn’t allow break or continue.
+✅ Use for or some/every if you need to stop early.
+
+🔹 Which loop is fastest?
+Classic for loop is usually fastest (low overhead).
+
+But difference is small; readability matters more.
+
+🔹 How nested loops work (dry run)
+js
+for(let i=1;i<=2;i++){
+  for(let j=1;j<=3;j++){
+    console.log(i,j);
+  }
+}
+Dry Run:
+i=1 → inner loop runs j=1,2,3 → prints (1,1),(1,2),(1,3)
+
+i=2 → inner loop runs j=1,2,3 → prints (2,1),(2,2),(2,3)
+
+👉 Output:
+
+Code
+1 1
+1 2
+1 3
+2 1
+2 2
+2 3
+⚡ Super short revision:
+
+for → fixed count
+
+while → unknown count
+
+do-while → runs at least once
+
+for...of → values
+
+for...in → keys
+
+forEach → no break/continue
+
+break → exit loop
+
+continue → skip iteration
+
+var in async → same variable → prints last value
+
+let in async → block scoped → prints each value
+
+fastest → for loop
+
+nested loops → outer × inner combinations
