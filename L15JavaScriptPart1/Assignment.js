@@ -40,7 +40,7 @@ console.log(d);
 //x = x >> 5
 let e = 10;
 e >>= 5
-console.log(e);
+console.log(e); // 10 in binary is 1010, when we right shift it by 5 positions, we get 0 because all bits are shifted out of the number.
 
 
 //x = x >>> 5
@@ -71,6 +71,3 @@ console.log(i);
 let j = 10;
 j **= 5
 console.log(j);
-
-
-

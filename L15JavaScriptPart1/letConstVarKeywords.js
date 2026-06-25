@@ -2,7 +2,7 @@
 // let keywords
 // Scope = Accessibility of variables (where a variable can be used in code).
 
-// Global Scope → usable everywhere
+//1. Global Scope → usable everywhere
 // Variables declared outside any function or block can be accessed from anywhere in the code.
 
 let globalVar = "I am global";
@@ -14,7 +14,7 @@ function showGlobal() {
 showGlobal(); // I am global
 
 
-// Function Scope → usable inside function only
+//2. Function Scope → usable inside function only
 // var variables declared inside a function are accessible only within that function.
 
 function myFunction() {
@@ -26,7 +26,7 @@ myFunction(); // I am function scoped
 // console.log(functionVar); // Error
 
 
-// Block Scope → usable inside {}
+//3. Block Scope → usable inside {}
 // let and const variables declared inside a block are accessible only inside that block.
 
 {

@@ -10,9 +10,9 @@
 let firstFavNum = 21;
 let secondFavNum = 7;
 
-console.log(firstFavNum + secondFavNum);
-console.log(firstFavNum - secondFavNum);
-console.log(firstFavNum * secondFavNum);
+console.log(firstFavNum + secondFavNum); // add value 21+7 = 28
+console.log(firstFavNum - secondFavNum);  // subtract value 21-7 = 14
+console.log(firstFavNum * secondFavNum);  // 
 console.log(firstFavNum / secondFavNum);
 console.log(firstFavNum % secondFavNum);
 console.log(firstFavNum ** secondFavNum);
