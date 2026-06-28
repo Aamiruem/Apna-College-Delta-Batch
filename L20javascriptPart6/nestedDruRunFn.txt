@@ -1,0 +1,47 @@
+Let’s dry run your code step by step in easy words:
+
+js
+function outer() {
+
+   function inner() {
+      console.log("Inner");
+   }
+
+   inner();
+}
+
+outer();
+🔹 Word‑by‑word meaning
+function outer() → defines a function named outer.
+
+Inside it → another function inner() is defined.
+
+inner(); → calls the inner function.
+
+outer(); → calls the outer function, which then calls the inner one.
+
+🔹 Dry Run (step by step)
+Define outer → stored in memory.
+
+Call outer() → execution enters outer.
+
+Inside outer → inner function is defined.
+
+inner(); → now calls inner.
+
+Inside inner → console.log("Inner"); runs.
+
+Output → "Inner" is printed.
+
+Both functions finish → program ends.
+
+🔹 Final Output
+Code
+Inner
+👉 Easy takeaway:
+
+outer is the parent function.
+
+inner is the child function.
+
+Calling outer() indirectly calls inner() → prints "Inner".
