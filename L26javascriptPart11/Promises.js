@@ -288,3 +288,36 @@ changeColor("red", 1000)
     console.log("blue color was completed");
     // return changeColor("orange", 1000);
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const promise = new Promise((resolve, reject) => {
+//     const success = Math.random() > 0.5; // random true/false
+//     if (success) {
+//         resolve("Data saved successfully!");
+//     } else {
+//         reject("Failed to save data. Check internet connection.");
+//     }
+// });
+
+// promise.then((message) => {
+//     console.log(message);
+// }).catch((error) => {
+//     console.log(error);
+// });
+
+
+
+
+
+
